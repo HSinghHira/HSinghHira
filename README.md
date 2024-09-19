@@ -9,3 +9,7 @@
 - ⚡ Fun fact about me: I am kinda stupid
 
 ![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=hsinghhira&date_format=M%20j%5B%2C%20Y%5D)
+
+# Blog posts
+<!-- BLOG-POST-LIST:START -->
+<!-- BLOG-POST-LIST:END -->
