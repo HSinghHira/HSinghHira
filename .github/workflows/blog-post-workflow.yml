@@ -16,4 +16,4 @@ jobs:
       - name: Pull in my posts
         uses: gautamkrishnar/blog-post-workflow@v1
         with:
-          feed_list: "https://terminaltales.com/sitemap"
+          feed_list: "https://me.hsinghhira.me/feeds/posts/default"
