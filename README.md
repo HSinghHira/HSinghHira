@@ -12,4 +12,9 @@
 
 ### My Latest Blog posts
 <!-- BLOG-POST-LIST:START -->
+- [Creating a Website for Apple&#39;s iOS Shortcuts](https://me.hsinghhira.me/2024/07/creating-website-for-apples-ios.html)
+- [Muerte KOD - All-in-One PUBG Mobile Software](https://me.hsinghhira.me/2024/07/muerte-kod-all-in-one-pubg-mobile.html)
+- [My Excel Adventure at Domino&#39;s Pizza](https://me.hsinghhira.me/2024/07/my-excel-adventure-at-dominos-pizza.html)
+- [AWS Cloud Practitioner Practice - Quiz - Make in JS](https://me.hsinghhira.me/2024/07/aws-cloud-practitioner-practice-quiz.html)
+- [The Time I made an Another Dekh Bhai Meme Creator](https://me.hsinghhira.me/2024/07/the-time-i-made-another-dekh-bhai-meme.html)
 <!-- BLOG-POST-LIST:END -->
