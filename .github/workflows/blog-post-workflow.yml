@@ -1,143 +1,19 @@
-name: Update Blog Posts
-
+name: Latest blog post workflow
 on:
-  schedule:
-    # Runs every day at 6:00 AM UTC
-    - cron: "0 6 * * *"
-  workflow_dispatch: # Allows manual triggering
+  schedule: # Run workflow automatically
+    - cron: "0 * * * *" # Runs every hour, on the hour
+  workflow_dispatch: # Run workflow manually (without waiting for the cron to be called), through the GitHub Actions Workflow page directly
+permissions:
+  contents: write # To write the generated contents to the readme
 
 jobs:
-  update-blog-posts:
+  update-readme-with-blog:
+    name: Update this repo's README with latest blog posts
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v4
+      - name: Pull in dev.to posts
+        uses: gautamkrishnar/blog-post-workflow@v1
         with:
-          python-version: "3.9"
-
-      - name: Install dependencies
-        run: |
-          pip install feedparser requests
-
-      - name: Fetch blog posts and update README
-        run: |
-          cat << 'EOF' > update_blog.py
-          import feedparser
-          import re
-          from datetime import datetime
-          import sys
-
-          def update_blog_posts():
-              try:
-                  print("Fetching feed from: https://me.hsinghhira.me/atom.xml")
-                  
-                  # Parse the feed
-                  feed = feedparser.parse('https://me.hsinghhira.me/atom.xml')
-                  
-                  if feed.bozo:
-                      print(f"Feed parsing warning: {feed.bozo_exception}")
-                  
-                  print(f"Feed title: {feed.feed.get('title', 'N/A')}")
-                  print(f"Total entries found: {len(feed.entries)}")
-                  
-                  if not feed.entries:
-                      print("No entries found in feed!")
-                      return
-                  
-                  # Get latest 5 posts
-                  posts = feed.entries[:5]
-                  print(f"Processing {len(posts)} posts")
-                  
-                  # Generate markdown for blog posts
-                  blog_posts_markdown = "## 📝 Latest Blog Posts\n\n"
-                  
-                  for i, post in enumerate(posts):
-                      print(f"\nPost {i+1}:")
-                      print(f"  Title: {post.get('title', 'No title')}")
-                      print(f"  Link: {post.get('link', 'No link')}")
-                      print(f"  Published: {post.get('published', 'No published date')}")
-                      
-                      title = post.get('title', 'Untitled')
-                      link = post.get('link', '#')
-                      
-                      # Handle date parsing
-                      pub_date = 'Recent'
-                      if 'published_parsed' in post and post.published_parsed:
-                          try:
-                              date_obj = datetime(*post.published_parsed[:6])
-                              pub_date = date_obj.strftime('%b %d, %Y')
-                          except:
-                              pub_date = 'Recent'
-                      elif 'published' in post:
-                          try:
-                              # Try to parse the date string
-                              date_obj = datetime.fromisoformat(post.published.replace('Z', '+00:00'))
-                              pub_date = date_obj.strftime('%b %d, %Y')
-                          except:
-                              pub_date = 'Recent'
-                      
-                      print(f"  Formatted date: {pub_date}")
-                      blog_posts_markdown += f"- [{title}]({link}) - {pub_date}\n"
-                  
-                  print(f"\nGenerated markdown:\n{blog_posts_markdown}")
-                  
-                  # Read current README.md
-                  try:
-                      with open('README.md', 'r', encoding='utf-8') as f:
-                          readme_content = f.read()
-                      print("Successfully read README.md")
-                  except FileNotFoundError:
-                      print("README.md not found!")
-                      return
-                  
-                  # Define markers for the blog posts section
-                  start_marker = '<!-- BLOG-POST-LIST:START -->'
-                  end_marker = '<!-- BLOG-POST-LIST:END -->'
-                  
-                  # Check if markers exist
-                  if start_marker in readme_content and end_marker in readme_content:
-                      print("Found markers in README.md")
-                      # Replace content between markers
-                      pattern = f'{re.escape(start_marker)}.*?{re.escape(end_marker)}'
-                      replacement = f'{start_marker}\n{blog_posts_markdown}\n{end_marker}'
-                      new_content = re.sub(pattern, replacement, readme_content, flags=re.DOTALL)
-                  else:
-                      print("Markers not found, appending to end of README.md")
-                      # If markers don't exist, append to the end
-                      new_content = readme_content + f'\n\n{start_marker}\n{blog_posts_markdown}\n{end_marker}'
-                  
-                  # Write updated content back to README.md
-                  with open('README.md', 'w', encoding='utf-8') as f:
-                      f.write(new_content)
-                  
-                  print("✅ Blog posts updated successfully!")
-                  
-              except Exception as e:
-                  print(f"❌ Error: {str(e)}")
-                  import traceback
-                  traceback.print_exc()
-                  sys.exit(1)
-
-          if __name__ == "__main__":
-              update_blog_posts()
-          EOF
-
-          python update_blog.py
-
-      - name: Commit and push changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add README.md
-
-          # Check if there are changes to commit
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "📝 Update blog posts"
-            git push
-          fi
+          feed_list: "https://me.hsinghhira.me/rss.xml"
