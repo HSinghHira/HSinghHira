@@ -1,20 +1,24 @@
 const fs = require('fs');
 
-const README_FILE = 'README.md';
-const START_MARK = '<!-- BLOG-POST-LIST:START -->';
-const END_MARK = '<!-- BLOG-POST-LIST:END -->';
+const START = '<!-- BLOG-POST-LIST:START -->';
+const END = '<!-- BLOG-POST-LIST:END -->';
+const FILE = 'README.md';
 
-const testPosts = [
-  '- [Test Post 1](https://example.com/post1)',
-  '- [Test Post 2](https://example.com/post2)',
-  '- [Test Post 3](https://example.com/post3)',
+const readme = fs.readFileSync(FILE, 'utf8');
+
+const lines = [
+  '- [Test Inject 1](https://example.com/1)',
+  '- [Test Inject 2](https://example.com/2)',
 ];
 
-const readme = fs.readFileSync(README_FILE, 'utf8');
-const updated = readme.replace(
-  new RegExp(`${START_MARK}[\\s\\S]*?${END_MARK}`),
-  `${START_MARK}\n${testPosts.join('\n')}\n${END_MARK}`
-);
+const regex = new RegExp(`${START}[\\s\\S]*?${END}`, 'g');
 
-fs.writeFileSync(README_FILE, updated);
-console.log('✅ Test blog posts injected into README.');
+if (!regex.test(readme)) {
+  console.error('❌ Could not find blog post markers in README.md');
+  process.exit(1);
+}
+
+const result = readme.replace(regex, `${START}\n${lines.join('\n')}\n${END}`);
+
+fs.writeFileSync(FILE, result);
+console.log('✅ README.md updated.');
