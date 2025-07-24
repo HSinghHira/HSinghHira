@@ -3,110 +3,141 @@ name: Update Blog Posts
 on:
   schedule:
     # Runs every day at 6:00 AM UTC
-    - cron: '0 6 * * *'
+    - cron: "0 6 * * *"
   workflow_dispatch: # Allows manual triggering
 
 jobs:
   update-blog-posts:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        
-    - name: Install dependencies
-      run: |
-        npm install rss-parser
-        
-    - name: Fetch blog posts and update README
-      run: |
-        cat << 'EOF' > update-blog.js
-        const Parser = require('rss-parser');
-        const fs = require('fs');
-        
-        async function updateBlogPosts() {
-          const parser = new Parser();
-          
-          try {
-            console.log('Fetching feed from: https://me.hsinghhira.me/atom.xml');
-            const feed = await parser.parseURL('https://me.hsinghhira.me/atom.xml');
-            
-            console.log('Feed title:', feed.title);
-            console.log('Total items found:', feed.items.length);
-            
-            // Get latest 5 posts
-            const posts = feed.items.slice(0, 5);
-            console.log('Processing', posts.length, 'posts');
-            
-            // Generate markdown for blog posts
-            let blogPostsMarkdown = '## 📝 Latest Blog Posts\n\n';
-            
-            posts.forEach(post => {
-              const title = post.title;
-              const link = post.link;
-              const pubDate = new Date(post.pubDate || post.isoDate).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric'
-              });
-              
-              blogPostsMarkdown += `- [${title}](${link}) - ${pubDate}\n`;
-            });
-            
-            // Read current README.md
-            let readmeContent = fs.readFileSync('README.md', 'utf8');
-            
-            // Define markers for the blog posts section
-            const startMarker = '<!-- BLOG-POST-LIST:START -->';
-            const endMarker = '<!-- BLOG-POST-LIST:END -->';
-            
-            // Check if markers exist
-            if (readmeContent.includes(startMarker) && readmeContent.includes(endMarker)) {
-              // Replace content between markers
-              const beforeMarker = readmeContent.split(startMarker)[0];
-              const afterMarker = readmeContent.split(endMarker)[1];
-              
-              readmeContent = beforeMarker + startMarker + '\n' + blogPostsMarkdown + '\n' + endMarker + afterMarker;
-            } else {
-              // If markers don't exist, append to the end
-              readmeContent += '\n\n' + startMarker + '\n' + blogPostsMarkdown + '\n' + endMarker;
-            }
-            
-            // Write updated content back to README.md
-            fs.writeFileSync('README.md', readmeContent);
-            
-            console.log('Blog posts updated successfully!');
-            console.log('Updated posts:');
-            posts.forEach(post => {
-              console.log(`- ${post.title}`);
-            });
-            
-          } catch (error) {
-            console.error('Error fetching blog posts:', error);
-            process.exit(1);
-          }
-        }
-        
-        updateBlogPosts();
-        EOF
-        
-        node update-blog.js
-        
-    - name: Commit and push changes
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add README.md
-        
-        # Check if there are changes to commit
-        if git diff --staged --quiet; then
-          echo "No changes to commit"
-        else
-          git commit -m "Update blog posts"
-          git push
-        fi
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Install dependencies
+        run: |
+          pip install feedparser requests
+
+      - name: Fetch blog posts and update README
+        run: |
+          cat << 'EOF' > update_blog.py
+          import feedparser
+          import re
+          from datetime import datetime
+          import sys
+
+          def update_blog_posts():
+              try:
+                  print("Fetching feed from: https://me.hsinghhira.me/atom.xml")
+                  
+                  # Parse the feed
+                  feed = feedparser.parse('https://me.hsinghhira.me/atom.xml')
+                  
+                  if feed.bozo:
+                      print(f"Feed parsing warning: {feed.bozo_exception}")
+                  
+                  print(f"Feed title: {feed.feed.get('title', 'N/A')}")
+                  print(f"Total entries found: {len(feed.entries)}")
+                  
+                  if not feed.entries:
+                      print("No entries found in feed!")
+                      return
+                  
+                  # Get latest 5 posts
+                  posts = feed.entries[:5]
+                  print(f"Processing {len(posts)} posts")
+                  
+                  # Generate markdown for blog posts
+                  blog_posts_markdown = "## 📝 Latest Blog Posts\n\n"
+                  
+                  for i, post in enumerate(posts):
+                      print(f"\nPost {i+1}:")
+                      print(f"  Title: {post.get('title', 'No title')}")
+                      print(f"  Link: {post.get('link', 'No link')}")
+                      print(f"  Published: {post.get('published', 'No published date')}")
+                      
+                      title = post.get('title', 'Untitled')
+                      link = post.get('link', '#')
+                      
+                      # Handle date parsing
+                      pub_date = 'Recent'
+                      if 'published_parsed' in post and post.published_parsed:
+                          try:
+                              date_obj = datetime(*post.published_parsed[:6])
+                              pub_date = date_obj.strftime('%b %d, %Y')
+                          except:
+                              pub_date = 'Recent'
+                      elif 'published' in post:
+                          try:
+                              # Try to parse the date string
+                              date_obj = datetime.fromisoformat(post.published.replace('Z', '+00:00'))
+                              pub_date = date_obj.strftime('%b %d, %Y')
+                          except:
+                              pub_date = 'Recent'
+                      
+                      print(f"  Formatted date: {pub_date}")
+                      blog_posts_markdown += f"- [{title}]({link}) - {pub_date}\n"
+                  
+                  print(f"\nGenerated markdown:\n{blog_posts_markdown}")
+                  
+                  # Read current README.md
+                  try:
+                      with open('README.md', 'r', encoding='utf-8') as f:
+                          readme_content = f.read()
+                      print("Successfully read README.md")
+                  except FileNotFoundError:
+                      print("README.md not found!")
+                      return
+                  
+                  # Define markers for the blog posts section
+                  start_marker = '<!-- BLOG-POST-LIST:START -->'
+                  end_marker = '<!-- BLOG-POST-LIST:END -->'
+                  
+                  # Check if markers exist
+                  if start_marker in readme_content and end_marker in readme_content:
+                      print("Found markers in README.md")
+                      # Replace content between markers
+                      pattern = f'{re.escape(start_marker)}.*?{re.escape(end_marker)}'
+                      replacement = f'{start_marker}\n{blog_posts_markdown}\n{end_marker}'
+                      new_content = re.sub(pattern, replacement, readme_content, flags=re.DOTALL)
+                  else:
+                      print("Markers not found, appending to end of README.md")
+                      # If markers don't exist, append to the end
+                      new_content = readme_content + f'\n\n{start_marker}\n{blog_posts_markdown}\n{end_marker}'
+                  
+                  # Write updated content back to README.md
+                  with open('README.md', 'w', encoding='utf-8') as f:
+                      f.write(new_content)
+                  
+                  print("✅ Blog posts updated successfully!")
+                  
+              except Exception as e:
+                  print(f"❌ Error: {str(e)}")
+                  import traceback
+                  traceback.print_exc()
+                  sys.exit(1)
+
+          if __name__ == "__main__":
+              update_blog_posts()
+          EOF
+
+          python update_blog.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "📝 Update blog posts"
+            git push
+          fi
