@@ -33,10 +33,15 @@ jobs:
           const parser = new Parser();
           
           try {
+            console.log('Fetching feed from: https://me.hsinghhira.me/atom.xml');
             const feed = await parser.parseURL('https://me.hsinghhira.me/atom.xml');
+            
+            console.log('Feed title:', feed.title);
+            console.log('Total items found:', feed.items.length);
             
             // Get latest 5 posts
             const posts = feed.items.slice(0, 5);
+            console.log('Processing', posts.length, 'posts');
             
             // Generate markdown for blog posts
             let blogPostsMarkdown = '## 📝 Latest Blog Posts\n\n';
