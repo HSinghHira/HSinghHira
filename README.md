@@ -8,6 +8,6 @@
 - 📫 How to reach me?: me.hsinghhira.me
 - ⚡ Fun fact about me: I am kinda stupid
 
-### My Latest Blog posts
+## 📝 Latest Blog Posts
 <!-- BLOG-POST-LIST:START -->
 <!-- BLOG-POST-LIST:END -->
