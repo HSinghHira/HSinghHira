@@ -5,7 +5,7 @@ description: "Welcome to my personal blog where I share my thoughts on coding, t
 keywords: Harman Singh Hira, hsinghhira, hsinghhira.me, blog, personal blog, hexo, hexo theme minima
 author: Harman Singh Hira
 language: en
-timezone: "Auckland, New Zealand"
+timezone: Pacific/Auckland
 url: http://me.hsinghhira.me/
 root: /
 permalink: :title/
@@ -37,14 +37,18 @@ post_asset_folder: true
 relative_link: false
 future: true
 
-highlight: false
-prismjs: false
-syntax_highlighter: "shiki"
-
-shiki:
-  themes:
-    dark: "github-dark"
-    light: "github-light"
+highlight:
+  enable: true
+  line_number: false
+  auto_detect: false
+  tab_replace: ""
+  wrap: true
+  hljs: false
+prismjs:
+  enable: false
+  preprocess: true
+  line_number: true
+  tab_replace: ""
 
 index_generator:
   path: ""
