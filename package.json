@@ -9,7 +9,7 @@
     "server": "hexo server",
     "do": "hexo clean && hexo g && hexo s",
     "git": "git add -A && git commit -m 'Building' && git push",
-    "push": "npm run git && npm run deploy"
+    "push": "npm run deploy && npm run git"
   },
   "hexo": {
     "version": "7.3.0"
@@ -20,7 +20,6 @@
     "hexo-all-minifier": "^0.5.7",
     "hexo-analytics": "^0.1.1",
     "hexo-deployer-git": "^4.0.0",
-    "hexo-external-link": "^1.0.9",
     "hexo-feed": "^1.1.2",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
@@ -33,6 +32,7 @@
     "hexo-renderer-marked": "^7.0.0",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-robots": "^1.0.1",
+    "hexo-safego-thun888": "^2.3.5",
     "hexo-seo": "^2.0.1",
     "hexo-server": "^3.0.0",
     "hexo-tag-embed": "^1.0.0"
