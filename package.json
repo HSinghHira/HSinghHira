@@ -35,7 +35,7 @@
     "hexo-robots": "^1.0.1",
     "hexo-seo": "^2.0.1",
     "hexo-server": "^3.0.0",
-    "hexo-tag-embed": "^1.0.0",
+    "hexo-shiki-code": "^1.0.2",
     "install": "^0.13.0"
   },
   "devDependencies": {

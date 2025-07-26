@@ -17,7 +17,16 @@ layout: false
     console.error('Failed to decode URL:', e);
   }
 
-  document.getElementById('targetLink').textContent = targetUrl;
+  // Extract and show domain only
+  let displayText = targetUrl;
+  try {
+    const urlObj = new URL(targetUrl);
+    displayText = urlObj.hostname;
+  } catch (e) {
+    console.error('Invalid URL:', e);
+  }
+
+  document.getElementById('targetLink').textContent = displayText;
 
   let countdown = 5;
   const countdownElement = document.getElementById('countdown');
