@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "add": "^2.0.6",
+    "cheerio": "^1.1.2",
     "hexo": "^7.3.0",
     "hexo-all-minifier": "^0.5.7",
     "hexo-analytics": "^0.1.1",
@@ -32,10 +33,12 @@
     "hexo-renderer-marked": "^7.0.0",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-robots": "^1.0.1",
+    "hexo-safego": "^2.2.2",
     "hexo-safego-thun888": "^2.3.5",
     "hexo-seo": "^2.0.1",
     "hexo-server": "^3.0.0",
-    "hexo-tag-embed": "^1.0.0"
+    "hexo-tag-embed": "^1.0.0",
+    "install": "^0.13.0"
   },
   "devDependencies": {
     "hexo-server-live": "^0.2.12"
