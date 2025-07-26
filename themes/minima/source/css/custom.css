@@ -367,3 +367,12 @@ button.copy-to-clipboard-button {
 button.copy-to-clipboard-button:hover {
   opacity: 1;
 }
+
+/* Override the copy button text to say "Copy" */
+.shiki-copy-button::after {
+  content: "Copy" !important;
+}
+
+.shiki-copy-button .button-text {
+  display: none !important;
+}
