@@ -7,7 +7,7 @@
     "clean": "hexo clean",
     "deploy": "hexo clean && hexo generate && hexo deploy",
     "server": "hexo server",
-    "do": "hexo clean && hexo g && hexo s",
+    "do": "hexo clean && hexo generate && hexo server",
     "git": "git add -A && git commit -m 'Building' && git push",
     "push": "npm run deploy && npm run git"
   },
@@ -33,8 +33,6 @@
     "hexo-renderer-marked": "^7.0.0",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-robots": "^1.0.1",
-    "hexo-safego": "^2.2.2",
-    "hexo-safego-thun888": "^2.3.5",
     "hexo-seo": "^2.0.1",
     "hexo-server": "^3.0.0",
     "hexo-tag-embed": "^1.0.0",

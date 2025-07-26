@@ -161,46 +161,6 @@ generator_amp:
   templateDir: amp-template
   assetDistDir: amp-dist
 
-hexo_safego:
-  # 基本功能设置
-  general:
-    enable: true # 启用插件
-    enable_base64_encode: true # 使用 Base64 编码
-    enable_target_blank: true # 打开新窗口
-    auto_redirect: false # 自动重定向
-  # 安全设置
-  security:
-    url_param_name: "u" # URL 参数名
-    html_file_name: "go.html" # 重定向页面的文件名
-    ignore_attrs: # 忽略处理的 HTML 属性
-      - "data-fancybox"
-  # 容器与页面设置
-  scope:
-    apply_containers: # 应用的容器选择器
-      - ".md-text"
-    apply_pages: # 应用的页面路径
-      - "/2025/"
-    exclude_pages: # 排除的页面路径
-  # 域名白名单
-  whitelist:
-    domain_whitelist: # 允许的白名单域名
-      - "hzchu.top"
-      - "creativecommons.org"
-  # 页面外观设置
-  appearance:
-    avatar: /favicon.ico # 头像路径
-    title: "Thun888" # 页面标题
-    subtitle: "安全中心" # 页面副标题
-    darkmode: true # 是否启用深色模式
-    countdowntime: 10 # 倒计时秒数
-    theme_color: "#6bb418" # 主题色
-  # 调试设置
-  debug:
-    enable: false # 启用调试模式
-  siteinfo:
-    enable: true
-    api: https://siteinfo-api.hzchu.top/api/v1?url={href}
-
 robots:
   user_agent: "*"
   allow:
