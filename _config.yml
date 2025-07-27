@@ -56,7 +56,7 @@ shiki:
     - css
     - java
     - php
-    - PowerShell
+    - powershell
   copyButton: true
   lineNumbers: false
 
@@ -203,7 +203,7 @@ robots:
 cdn:
   server: https://images.weserv.nl
   use_webp: true
-  native: true
+  native: false
   max_width:
   exclude_domains:
 

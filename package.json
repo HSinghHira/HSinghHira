@@ -8,7 +8,7 @@
     "deploy": "hexo clean && hexo generate && hexo deploy",
     "server": "hexo server",
     "do": "hexo clean && hexo generate && hexo server",
-    "git": "git add -A && git commit -m 'Building' && git push",
+    "git": "hexo clean && git add -A && git commit -m 'Building' && git push",
     "push": "npm run deploy && npm run git"
   },
   "hexo": {
