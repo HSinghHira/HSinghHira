@@ -148,6 +148,16 @@ seo:
       enable: true
     homepage:
       enable: true
+  seo:
+  jsonLD:
+    enable: true
+    article: true
+    publisher:
+      name: Harman Singh Hira
+      logo:
+        url: https://avatars.githubusercontent.com/u/11346694
+        width: 125
+        height: 125
   img:
     enable: true
     broken: false

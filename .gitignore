@@ -19,3 +19,5 @@ bun.lockb
 data
 /data
 /tmp
+_yaml_templates
+/_yaml_templates

@@ -61,12 +61,8 @@
   <link rel="alternate" type="application/atom+xml" title="<%= config.title %>" href="<%= full_url_for(`/atom.xml`) %>" />
   <link rel="alternate" type="application/json" title="<%= config.title %>" href="<%= full_url_for(`/feed.json`) %>" />
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="/css/remixicon.css" />
-  <%- css('css/normalize.css') %>
   <%- css('css/skeleton.css') %>
   <%- css('css/custom.css') %>
-  <%- css('css/prism-dark.css') %>
-  <%- css('css/prism-line-numbers.css') %>
   <% if (theme.usercss) { %>
   <%- css(theme.usercss) %>
   <% } %>
@@ -90,18 +86,6 @@
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="<%- theme.nanobar %>"></script>
-  <script>
-    var options = {
-      classname: "nanobar",
-      id: "myNanobar",
-    };
-    var nanobar = new Nanobar(options);
-    nanobar.go(30);
-    nanobar.go(76);
-    nanobar.go(100);
-  </script>
   <script src="<%= url_for('/js/themetoggle.js') %>"></script>
 </body>
 
