@@ -56,6 +56,7 @@ shiki:
     - css
     - java
     - php
+    - PowerShell
   copyButton: true
   lineNumbers: false
 
