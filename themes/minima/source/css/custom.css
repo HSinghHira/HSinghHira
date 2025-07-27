@@ -305,19 +305,28 @@ body.darkmode {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.post {
+  display: flex;
+  align-items: flex-start; /* Align items at the start to prevent vertical overlap */
+  gap: 0.5em; /* Space between icon and title */
+}
+
+.post-icon {
+  flex-shrink: 0; /* Prevent the icon from shrinking */
+}
+
 .post-icon svg {
   width: 1.5em;
   height: 1.5em;
   vertical-align: text-bottom;
   stroke-width: 1.5;
 }
-/* Wrap long code lines */
-code[class*="language-"],
-pre[class*="language-"] {
-  white-space: pre-wrap !important;
-  word-break: break-word;
-  overflow-wrap: break-word;
+
+.post-title {
+  flex-grow: 1; /* Allow title to take remaining space */
+  overflow-wrap: break-word; /* Ensure long titles wrap correctly */
 }
+
 .code-collapsible {
   max-height: 200px;
   overflow: hidden;
@@ -338,14 +347,6 @@ pre[class*="language-"] {
   font-size: 14px;
   cursor: pointer;
   user-select: none;
-}
-/* Enable code wrap in PrismJS blocks */
-pre code {
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-pre {
-  position: relative;
 }
 
 button.copy-to-clipboard-button {
