@@ -119,15 +119,23 @@ feed:
     output: "feed.json"
 
 seo:
+  cache: true
   html:
     enable: true
     fix: true
     exclude:
       - "*.min.{htm,html}"
+    removeComments: true
+    removeEmptyAttributes: true
+    removeScriptTypeAttributes: true
+    removeStyleLinkTypeAttributes: true
+    minifyJS: true
+    minifyCSS: true
   css:
     enable: true
     exclude:
       - "**/*.min.css"
+      - "*.min.css"
   js:
     enable: true
     concat: false
@@ -148,7 +156,6 @@ seo:
       enable: true
     homepage:
       enable: true
-  seo:
   jsonLD:
     enable: true
     article: true

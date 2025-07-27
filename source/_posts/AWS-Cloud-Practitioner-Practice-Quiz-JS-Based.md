@@ -1,6 +1,10 @@
 ---
 title: AWS Cloud Practitioner Practice Quiz - JS Based
 date: 2024-05-20 17:47:07
+author:
+  name: Harman Singh Hira
+  link: http://github.com/HSinghHira
+  email: me@hsinghhira.me
 tags:
   - Works
 categories: [Works]

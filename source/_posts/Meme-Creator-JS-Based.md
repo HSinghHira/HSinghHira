@@ -1,5 +1,9 @@
 ---
 title: Meme Creator - JS Based
+author:
+  name: Harman Singh Hira
+  link: http://github.com/HSinghHira
+  email: me@hsinghhira.me
 tags:
   - Works
 categories: [Works]

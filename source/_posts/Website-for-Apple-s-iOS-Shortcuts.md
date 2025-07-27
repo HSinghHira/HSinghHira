@@ -1,5 +1,9 @@
 ---
 title: Website for Apple's iOS Shortcuts
+author:
+  name: Harman Singh Hira
+  link: http://github.com/HSinghHira
+  email: me@hsinghhira.me
 date: 2025-07-21 18:03:16
 tags:
   - Works
