@@ -1,10 +1,10 @@
 ---
 title: Pizza Dough Expiry Date Tagger - MS Excel VBA
+date: 2025-07-20 17:53:19
 tags:
   - Works
 categories:
   - Works
-date: 2025-07-20 17:53:19
 ---
 
 ![Pizza Dough Expiry Date Tagger - MS Excel VBA](assets/20250720_175658_dough-tagger.png)

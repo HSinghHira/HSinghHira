@@ -1,10 +1,9 @@
 ---
 title: Meme Creator - JS Based
-author: Harman Singh Hira
+date: 2025-07-20 13:59:47
 tags:
   - Works
 categories: [Works]
-date: 2025-07-20 13:59:47
 ---
 
 ![Meme Creator - JS Based](assets/20250720_144302_dekh-bhai.png)

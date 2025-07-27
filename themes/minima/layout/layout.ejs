@@ -63,6 +63,7 @@
   <!-- Stylesheets -->
   <%- css('css/skeleton.css') %>
   <%- css('css/custom.css') %>
+  <%- css('css/normalize.css') %>
   <% if (theme.usercss) { %>
   <%- css(theme.usercss) %>
   <% } %>
@@ -87,6 +88,18 @@
   </div>
 
   <script src="<%= url_for('/js/themetoggle.js') %>"></script>
+  <script src="<%- theme.nanobar %>"></script>
+
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
 </body>
 
 </html>

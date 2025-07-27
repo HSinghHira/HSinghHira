@@ -15,6 +15,7 @@
     "version": "7.3.0"
   },
   "dependencies": {
+    "@docs-site/hexo-tags-embed": "^1.0.5",
     "add": "^2.0.6",
     "cheerio": "^1.1.2",
     "hexo": "^7.3.0",
@@ -27,6 +28,7 @@
     "hexo-generator-index": "^4.0.0",
     "hexo-generator-tag": "^2.0.0",
     "hexo-image-cloudflare": "^0.3.2",
+    "hexo-image-opt": "^1.1.6",
     "hexo-lazyload-image": "^1.1.3",
     "hexo-pro": "^1.2.7",
     "hexo-renderer-ejs": "^2.0.0",

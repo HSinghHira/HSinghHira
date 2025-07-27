@@ -20,8 +20,11 @@ There’s no live demo for this one (RIP hosting 😅), but the code’s chillin
 
 But there are the Codes 🧑‍💻:
 
-- Simple PHP file Github Gist: [https://gist.github.com/HSinghHira/...](https://gist.github.com/HSinghHira/7094b6285aa017def77e664c75230975)
 - Full PHP Script: [https://github.com/HSinghHira/Dekh-Bhai-Meme-Creator/](https://github.com/HSinghHira/Dekh-Bhai-Meme-Creator/)
+
+{% ghcard HSinghHira/Dekh-Bhai-Meme-Creator, theme=onedark %}
+
+- Simple PHP file Github Gist: [https://gist.github.com/HSinghHira/...](https://gist.github.com/HSinghHira/7094b6285aa017def77e664c75230975)
 
 ```php
 <?php
