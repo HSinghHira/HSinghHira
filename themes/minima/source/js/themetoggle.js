@@ -3,7 +3,6 @@ function setDarkMode(isDark) {
   const darkBtn = document.getElementById("darkBtn");
   const lightBtn = document.getElementById("lightBtn");
 
-  // Check if elements exist to avoid null errors
   if (!darkBtn || !lightBtn || !body) {
     console.error("Theme toggle elements or body not found");
     return;
@@ -22,13 +21,23 @@ function setDarkMode(isDark) {
   }
 }
 
-// Set theme on initial load
+// Set theme on initial load and attach event listeners
 (function () {
   const storedTheme = localStorage.getItem("preferredTheme");
-  // Default to dark mode if no theme is stored
   const isDark = storedTheme === "dark" || !storedTheme;
-  // Ensure DOM is fully loaded before running
+
   document.addEventListener("DOMContentLoaded", () => {
     setDarkMode(isDark);
+
+    // Add event listeners for toggle buttons
+    const darkBtn = document.getElementById("darkBtn");
+    const lightBtn = document.getElementById("lightBtn");
+
+    if (darkBtn) {
+      darkBtn.addEventListener("click", () => setDarkMode(true));
+    }
+    if (lightBtn) {
+      lightBtn.addEventListener("click", () => setDarkMode(false));
+    }
   });
 })();

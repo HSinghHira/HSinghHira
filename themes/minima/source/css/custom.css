@@ -243,6 +243,8 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
   transition: all 0.3s ease-in-out;
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 
 body.darkmode {
@@ -267,7 +269,7 @@ body.darkmode {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 #comments {
