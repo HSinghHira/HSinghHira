@@ -1,13 +1,12 @@
 ---
 title: Muerte KOD - AIO PUBG Mobile Toolkit - Windows Software
-date: 2025-07-20 17:59:56
 tags:
   - Works
 categories:
   - Works
+date: 2025-07-20 17:59:56
 ---
-
-![Muerte KOD - AIO PUBG Mobile Toolkit - Windows Software](assets/20250720_180215_Muerte_KOD_FuPLOH4Lu9.png)
+![20250720_180215_Muerte_KOD_FuPLOH4Lu9.png](/images/Works/20250720_180215_Muerte_KOD_FuPLOH4Lu9.png)
 
 Download: [https://github.com/HSinghHira/MuerteKOD/releases](https://github.com/HSinghHira/MuerteKOD/releases)
 
@@ -26,3 +25,4 @@ Muerte KOD, with its name meaning "death" or "murder" in English, added an extra
 While Muerte KOD stands as my first and, for now, my last software endeavor using Microsoft Visual Studio, I cherish the experience and the knowledge gained along the way. It serves as a testament to the limitless possibilities that await us in the realm of game enhancement.
 
 So, fellow gamers, keep exploring, keep innovating, and let's continue to push the boundaries of what we can achieve in the world! Game on! 🎮🌟
+

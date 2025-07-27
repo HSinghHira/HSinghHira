@@ -1,12 +1,12 @@
 ---
 title: Meme Creator - PHP Based
-date: 2025-07-20 15:05:07
 tags:
   - Works
-categories: [Works]
+categories:
+  - Works
+date: 2025-07-20 15:05:07
 ---
-
-![Meme Creator - PHP Based](assets/20250720_172606_dekh-bhai-meme-creator.png)
+![20250720_172606_dekh-bhai-meme-creator.png](/images/Works/20250720_172606_dekh-bhai-meme-creator.png)
 
 Okay this is kinda funny... but yep, I actually made _another_ Dekh Bhai Meme Creator back in 2016 😂
 
@@ -240,3 +240,4 @@ input {
 <div class='fb_like_button_holder'>
 </div></div></div></div></div></body></html>
 ```
+

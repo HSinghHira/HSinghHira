@@ -1,13 +1,12 @@
 ---
 title: Pizza Dough Expiry Date Tagger - MS Excel VBA
-date: 2025-07-20 17:53:19
 tags:
   - Works
 categories:
   - Works
+date: 2025-07-20 17:53:19
 ---
-
-![Pizza Dough Expiry Date Tagger - MS Excel VBA](assets/20250720_175658_dough-tagger.png)
+![20250720_175658_dough-tagger.png](/images/Works/20250720_175658_dough-tagger.png)
 
 Download: [https://github.com/HSinghHira/Dominos-Pizza-Dough-Tagger/releases](https://github.com/HSinghHira/Dominos-Pizza-Dough-Tagger/releases)
 
@@ -30,3 +29,4 @@ So there you have it, my extraordinary Excel adventure at Domino's Pizza. Who wo
 Never underestimate the power of a curious mind and the vast capabilities of Microsoft Excel. Remember, with a little creativity and the right tools, you can build a whole new software-like system right within Excel itself. 🚀💻
 
 Stay curious, keep exploring, and who knows what other wonders await us in the world of spreadsheets! 🌈📊
+

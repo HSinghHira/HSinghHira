@@ -1,12 +1,12 @@
 ---
 title: Meme Creator - JS Based
-date: 2025-07-20 13:59:47
 tags:
   - Works
-categories: [Works]
+categories:
+  - Works
+date: 2025-07-20 13:59:47
 ---
-
-![Meme Creator - JS Based](assets/20250720_144302_dekh-bhai.png)
+![20250720_144302_dekh-bhai.png](/images/Works/20250720_144302_dekh-bhai.png)
 
 Back in 2016, before I moved to New Zealand 🇳🇿, I decided to challenge myself with a lil’ side project 💻.
 
@@ -49,3 +49,4 @@ Of course, holding all this together was good ol’ jQuery v2.1.0. A classic. Ca
 Moral of the story? I started small, learned a ton, and had a blast building something people could actually use (and laugh at 😄).
 
 Still one of my fav beginner projects to date 💯
+

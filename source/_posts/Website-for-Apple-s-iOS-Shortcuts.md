@@ -1,13 +1,12 @@
 ---
 title: Website for Apple's iOS Shortcuts
-date: 2025-07-21 18:03:16
 tags:
   - Works
 categories:
   - Works
+date: 2025-07-21 18:03:16
 ---
-
-![Website for Apple's iOS Shortcuts](assets/20250720_180559_iOS_Shortcuts.png)
+![20250720_180559_iOS_Shortcuts.png](/images/Works/20250720_180559_iOS_Shortcuts.png)
 
 Visit: [https://ios.hsinghhira.me/](https://ios.hsinghhira.me/) 📱
 
@@ -20,3 +19,4 @@ Creating this website turned out to be an incredibly easy project, thanks to the
 If you're curious to explore the website I created, you can click on the link below. Go ahead and give it a try! Who knows, you might discover some amazing iOS Shortcuts that will make your Apple device even more powerful and efficient. 🚀
 
 So, if you're in need of finding iOS Shortcuts or simply want to explore the world of Apple's shortcuts, feel free to check out the website. Happy searching, and may your Apple device become even more amazing with the power of iOS Shortcuts! 📱✨
+
