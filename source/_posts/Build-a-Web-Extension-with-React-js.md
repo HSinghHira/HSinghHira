@@ -1,8 +1,11 @@
 ---
 title: Build a Web Extension with React.js
 author: Harman Singh Hira
-date: 2025-07-27 18:53:54
 tags:
+  - Blog
+categories:
+  - Blog
+date: 2025-07-27 18:53:54
 ---
 Ready to craft a web extension that’ll dazzle Chrome and Firefox users? 🌐 Let’s dive into this step-by-step adventure with Vite, Tailwind CSS, and a sprinkle of zippy magic! 🚀 Buckle up and let’s make your browser shine! ✨
 
