@@ -57,6 +57,22 @@ shiki:
     - java
     - php
     - powershell
+    - bash
+    - csharp
+    - cpp
+    - css
+    - go
+    - javascript
+    - json
+    - lua
+    - markdown
+    - python
+    - ruby
+    - rust
+    - typescript
+    - yaml
+    - scss
+    - sql
   copyButton: true
   lineNumbers: false
 
