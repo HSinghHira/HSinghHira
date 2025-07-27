@@ -1,9 +1,5 @@
 ---
 title: Meme Creator - PHP Based
-author:
-  name: Harman Singh Hira
-  link: http://github.com/HSinghHira
-  email: me@hsinghhira.me
 date: 2025-07-20 15:05:07
 tags:
   - Works

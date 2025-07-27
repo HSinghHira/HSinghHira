@@ -1,9 +1,5 @@
 ---
 title: Muerte KOD - AIO PUBG Mobile Toolkit - Windows Software
-author:
-  name: Harman Singh Hira
-  link: http://github.com/HSinghHira
-  email: me@hsinghhira.me
 date: 2025-07-20 17:59:56
 tags:
   - Works
