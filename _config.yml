@@ -93,7 +93,7 @@ theme: minima
 deploy:
   type: git
   repo: https://github.com/HSinghHira/HSinghHira
-  branch: page
+  branch: gh-pages
   message: "Last Update: {{ now('MM-DD HH:mm:ss') }}"
   cname: me.hsinghhira.me
 
