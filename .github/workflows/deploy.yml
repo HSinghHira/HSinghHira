@@ -1,0 +1,49 @@
+name: Deploy Hexo to GitHub Pages
+
+on:
+  push:
+    branches:
+      - source
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20" # Node.js version compatible with Hexo
+
+      # Cache Node.js modules
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # Install Hexo and dependencies
+      - name: Install dependencies
+        run: |
+          npm install -g hexo-cli
+          npm install
+
+      # Generate static files
+      - name: Generate static files
+        run: hexo generate
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages # Deploy to gh-pages branch
+          force_orphan: true # Ensure a clean gh-pages branch

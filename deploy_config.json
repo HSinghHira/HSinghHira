@@ -1,0 +1,7 @@
+{
+  "repository": "HSinghHira/beta.hsinghhira.me",
+  "branch": "main",
+  "message": "Last Update: {{ now('MM-DD HH:mm:ss') }}",
+  "token": "",
+  "lastDeployTime": "2025-07-27T03:51:33.069Z"
+}
