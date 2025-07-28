@@ -232,12 +232,7 @@ analytics:
     project_id: skvnh9ncl9
 
 TagsEmbed:
-  enable: true # 插件开关
-  priority: 5 # 过滤器优先级
+  enable: true
+  priority: 5
   CDN:
     tags_embed: https://cdn.jsdelivr.net/gh/docs-site/hexo-tags-embed@latest/lib/tag_embed.css
-
-image_opt:
-  quality: 80
-  sizes: [400, 800, 1280, 1920]
-  skipExisting: true
