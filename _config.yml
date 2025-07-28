@@ -217,11 +217,10 @@ robots:
     - https://me.hsinghhira.me/feed.json
 
 cdn:
-  server: https://images.weserv.nl
-  use_webp: true
-  native: false
-  max_width:
-  exclude_domains:
+  server: https://images.weserv.nl # CDN server URL
+  use_webp: true # Enable WebP format conversion
+  native: false # Use native Cloudflare resize (if true, ignores most options below)
+  max_width: [1920, 1200, 800, 400] # Responsive breakpoints (can be single number or array)
 
 analytics:
   google_analytics:
