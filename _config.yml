@@ -217,6 +217,9 @@ robots:
     - https://me.hsinghhira.me/feed.json
 
 cdn:
+  cdn_server: //wsrv.nl
+  use_webp: true
+  filename: harman-singh-hira
   max_width: [1920, 1200, 800, 400]
   default_image: https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg
 
