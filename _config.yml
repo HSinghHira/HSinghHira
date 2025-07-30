@@ -218,10 +218,54 @@ robots:
 
 cdn:
   cdn_server: //wsrv.nl
-  use_webp: true
-  filename: harman-singh-hira
-  max_width: [1920, 1200, 800, 400]
-  default_image: https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg
+  native: false
+  cdn_use_webp: true
+  max_width: [1200, 800, 400]
+  exclude_domains: ["example.com", "cdn.example.org"]
+  height: 600
+  device_pixel_ratio: 2
+  fit: "cover"
+  alignment: "center"
+  focal_point_x: 0.5
+  focal_point_y: 0.3
+  crop: [100, 100, 200, 200]
+  precrop: [50, 50, 150, 150]
+  trim: true
+  mask: "circle"
+  mask_trim: 10
+  mask_background: "ffffff"
+  quality: 85
+  compression: 6
+  lossless: false
+  background: "000000"
+  rotation_background: "transparent"
+  blur: 5
+  sharpen: 3
+  sharpen_flat: 2
+  sharpen_jagged: 1
+  contrast: 1.2
+  brightness: 0.8
+  gamma: 1.5
+  saturation: 1.1
+  hue: 180
+  modulate: [1.2, 1.3, 1.4]
+  tint: "ff0000"
+  filter: "greyscale"
+  filter_start: "00ff00"
+  filter_stop: "0000ff"
+  rotation: 90
+  flip: true
+  flop: false
+  output_format: "webp"
+  encoding: "base64"
+  without_enlargement: true
+  adaptive_filter: true
+  interlace: true
+  max_age: 31536000
+  page: 1
+  n: -1
+  filename: "test-image"
+  default_image: "https://example.com/default.jpg"
 
 analytics:
   google_analytics:
