@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Harman Singh Hira • Posts by &#34;node.js&#34; tag</title>
+        <link>http://me.hsinghhira.me</link>
+        <description>Welcome to my personal blog where I share my thoughts on coding, technology, and life.</description>
+        <language>en</language>
+        <pubDate>Sun, 24 Aug 2025 07:16:39 +0000</pubDate>
+        <lastBuildDate>Sun, 24 Aug 2025 07:16:39 +0000</lastBuildDate>
+        <category>Portfolio</category>
+        <category>Blog</category>
+        <category>React.js</category>
+        <category>Hexo.js</category>
+        <category>Node.js</category>
+        <item>
+            <guid isPermalink="true">http://me.hsinghhira.me/Sick-of-Publishing-Node-Package-Headaches-Meet-build-a-npm-%F0%9F%93%A6%E2%9C%A8/</guid>
+            <title>Sick of Publishing Node Package Headaches? Meet &#34;build-a-npm&#34; 📦✨</title>
+            <link>http://me.hsinghhira.me/Sick-of-Publishing-Node-Package-Headaches-Meet-build-a-npm-%F0%9F%93%A6%E2%9C%A8/</link>
+            <category>Portfolio</category>
+            <category>Node.js</category>
+            <pubDate>Sun, 24 Aug 2025 07:16:39 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;img src=&#34;//wsrv.nl/?url=http://me.hsinghhira.me/images/portfolio/build-a-npm.jpg&amp;default=https://dynamic-og-image-generator.vercel.app/api/generate?title=Image+is+enjoying+vacation...&amp;author=Harman+Singh+Hira&amp;websiteUrl=%252F%252Fme.hsinghhira.me&amp;avatar=https%253A%252F%252Favatars.githubusercontent.com%252Fu%252F11346694&amp;theme=github&amp;filename=sick-of-publishing-node-package-headaches-meet-build-a-npm&#34; alt=&#34;build-a-npm.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Hey everyone! 👋 If you’ve ever tried to create a new Node.js package from scratch, you know it can be a bit of a maze. You start with a blank folder, and suddenly you’re lost in a sea of &lt;code&gt;package.json&lt;/code&gt; configurations, TypeScript setups, ESLint rules, and figuring out how to get a CI&amp;#x2F;CD pipeline running. It’s enough to make you just want to go back to writing a single script. 😫&lt;/p&gt;
+&lt;p&gt;I felt that same frustration, which is why I’m so excited to introduce &lt;code&gt;build-a-npm&lt;/code&gt;, the brand new command-line tool I built to solve this exact problem. Think of it as your personal assistant for creating, managing, and publishing Node.js packages. It handles all the tedious boilerplate and complicated setups, so you can spend your time on what really matters: writing awesome code. 💻🚀&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;What-Does-build-a-npm-Do&#34;&gt;&lt;a href=&#34;#What-Does-build-a-npm-Do&#34; class=&#34;headerlink&#34; title=&#34;What Does build-a-npm Do?&#34;&gt;&lt;/a&gt;What Does &lt;code&gt;build-a-npm&lt;/code&gt; Do?&lt;/h2&gt;&lt;p&gt;At its core, &lt;code&gt;build-a-npm&lt;/code&gt; is all about making your life easier. It’s a CLI tool that automates the entire package development workflow. Instead of manually creating files and scripts, you just run one simple command, and it builds a modern, ready-to-go project for you.&lt;/p&gt;
+&lt;p&gt;Here are some of the things it takes care of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;⚡️ Instant Project Setup:&lt;/strong&gt; Say goodbye to starting from a blank slate. &lt;code&gt;build-a-npm&lt;/code&gt; generates a clean project structure with all the necessary files and folders, following modern best practices.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;✍️ Built-in TypeScript Support:&lt;/strong&gt; For all you TypeScript lovers out there, this tool has you covered. It includes a pre-configured &lt;code&gt;tsconfig.json&lt;/code&gt; and a setup that’s ready for you to start typing.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;🤖 CI&amp;#x2F;CD with GitHub Actions:&lt;/strong&gt; No more guessing about how to set up continuous integration. The tool automatically creates a GitHub Actions workflow that runs your tests and prepares your package for publishing every time you push code.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;🚀 Seamless Publishing:&lt;/strong&gt;&lt;code&gt;build-a-npm&lt;/code&gt; integrates perfectly with both npmjs.com and GitHub Packages, allowing you to publish your package to both platforms with a single command. It even handles version bumping for you!&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;📖 Documentation Publishing:&lt;/strong&gt; Want to create documentation for your package? The tool generates a script that can automatically publish your docs to GitHub Pages, so your users always have up-to-date information.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;Getting-Started-is-a-Breeze&#34;&gt;&lt;a href=&#34;#Getting-Started-is-a-Breeze&#34; class=&#34;headerlink&#34; title=&#34;Getting Started is a Breeze&#34;&gt;&lt;/a&gt;Getting Started is a Breeze&lt;/h2&gt;&lt;p&gt;Ready to try it out? It’s as simple as installing it globally with npm:&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;bash &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;npm&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; i&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt; -g&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; build-a-npm&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;p&gt;Once installed, navigate to the folder where you want to create your new package and run the &lt;code&gt;init&lt;/code&gt; command:&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;bash &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;npx&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; build-a-npm&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; init&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;p&gt;The tool will then walk you through a series of questions, asking you for your package name, version, and other details. In a few moments, your new package will be ready to go! It’s that simple.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;Why-I-Built-This&#34;&gt;&lt;a href=&#34;#Why-I-Built-This&#34; class=&#34;headerlink&#34; title=&#34;Why I Built This&#34;&gt;&lt;/a&gt;Why I Built This&lt;/h2&gt;&lt;p&gt;I built &lt;code&gt;build-a-npm&lt;/code&gt; out of a personal need. I wanted a tool that would allow me to quickly scaffold new projects without getting bogged down in boilerplate. My goal was to create something that was not only powerful but also intuitive and fun to use. It’s an open-source tool, and I’m really excited to see what amazing things people build with it.&lt;/p&gt;
+&lt;p&gt;I hope you’ll find it as helpful as I do. Give it a try on your next project, and let me know what you think! You can find the full documentation and source code on my personal git page here:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://git.hsinghhira.me/build-a-npm/&#34;&gt;https://git.hsinghhira.me/build-a-npm/&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Happy coding! 🎉&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

@@ -1,0 +1,376 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Harman Singh Hira • Posts by &#34;react.js&#34; tag</title>
+        <link>http://me.hsinghhira.me</link>
+        <description>Welcome to my personal blog where I share my thoughts on coding, technology, and life.</description>
+        <language>en</language>
+        <pubDate>Sun, 27 Jul 2025 05:38:21 +0000</pubDate>
+        <lastBuildDate>Sun, 27 Jul 2025 05:38:21 +0000</lastBuildDate>
+        <category>Portfolio</category>
+        <category>Blog</category>
+        <category>React.js</category>
+        <category>Hexo.js</category>
+        <category>Node.js</category>
+        <item>
+            <guid isPermalink="true">http://me.hsinghhira.me/Deploy-React-js-App-to-GitHub-Pages/</guid>
+            <title>Deploy React.js App to GitHub Pages</title>
+            <link>http://me.hsinghhira.me/Deploy-React-js-App-to-GitHub-Pages/</link>
+            <category>Blog</category>
+            <category>React.js</category>
+            <pubDate>Sun, 27 Jul 2025 05:38:21 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;Ready to blast your React app into the GitHub galaxy? 🌌 This guide’s got all the witty steps to deploy your masterpiece with Vite, GitHub Pages, and a dash of React Router flair. Let’s roll! 😎&lt;/p&gt;
+&lt;h3 id=&#34;🛠️-Set-the-Stage-in-vite-config-js-🎬&#34;&gt;&lt;a href=&#34;#🛠️-Set-the-Stage-in-vite-config-js-🎬&#34; class=&#34;headerlink&#34; title=&#34;🛠️ Set the Stage in vite.config.js 🎬&#34;&gt;&lt;/a&gt;🛠️ Set the Stage in &lt;code&gt;vite.config.js&lt;/code&gt; 🎬&lt;/h3&gt;&lt;p&gt;First, tell Vite where your app will live in the GitHub universe. Update &lt;code&gt;vite.config.js&lt;/code&gt; with your repo name for that perfect URL path. 📍&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;javascript &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;base&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;&#34;/[REPO_NAME]/&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;🛠️-Craft-a-GitHub-Workflow-Like-a-Pro-🛠️&#34;&gt;&lt;a href=&#34;#🛠️-Craft-a-GitHub-Workflow-Like-a-Pro-🛠️&#34; class=&#34;headerlink&#34; title=&#34;🛠️ Craft a GitHub Workflow Like a Pro 🛠️&#34;&gt;&lt;/a&gt;🛠️ Craft a GitHub Workflow Like a Pro 🛠️&lt;/h3&gt;&lt;p&gt;Time to automate the deployment magic! Create a &lt;code&gt;.github/workflows/deploy.yml&lt;/code&gt; file and paste this YAML goodness to build and deploy like a boss. 💪&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;yaml &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;Deploy to Website&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;on&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;  push&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;    branches&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;      - &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;main&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;jobs&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;  build&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;    name&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;Build&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;    runs-on&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;ubuntu-latest&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;    steps&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;      - &lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;Checkout repo&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;        uses&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;actions/checkout@v4&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;      - &lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;Setup Node&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;        uses&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;actions/setup-node@v4&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;        with&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;          node-version&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;&#34;20&#34;&lt;/span&gt;&lt;span style=&#34;color:#6A737D;--shiki-dark:#6A737D&#34;&gt; # Adjust to your Node vibe&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;      - &lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;Install dependencies&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;        uses&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;bahmutov/npm-install@v1&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;      - &lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;Build project&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;        run&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;npm run build&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;      - &lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;Upload production-ready build files&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;        uses&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;actions/upload-artifact@v4&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;        with&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;          name&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;production-files&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;          path&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;./build&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;  deploy&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;    name&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;Deploy&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;    needs&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;build&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;    runs-on&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;ubuntu-latest&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;    if&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;github.ref == &#39;refs/heads/main&#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;    steps&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;      - &lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;Download artifact&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;        uses&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;actions/download-artifact@v4&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;        with&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;          name&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;production-files&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;          path&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;./build&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;      - &lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;Deploy to GitHub Pages&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;        uses&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;peaceiris/actions-gh-pages@v4&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;        with&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;          github_token&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;${{ secrets.GITHUB_TOKEN }}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;          publish_dir&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;./build&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;          cname&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;www.terminaltales.com&lt;/span&gt;&lt;span style=&#34;color:#6A737D;--shiki-dark:#6A737D&#34;&gt; # Swap with your custom domain&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;🌍-Create-a-GitHub-Repo-Push-It-Real-Good-📤&#34;&gt;&lt;a href=&#34;#🌍-Create-a-GitHub-Repo-Push-It-Real-Good-📤&#34; class=&#34;headerlink&#34; title=&#34;🌍 Create a GitHub Repo &amp;amp; Push It Real Good 📤&#34;&gt;&lt;/a&gt;🌍 Create a GitHub Repo &amp;amp; Push It Real Good 📤&lt;/h3&gt;&lt;p&gt;Head to GitHub, create a new repo, and initialize your project like a code ninja. 🥷 Run these commands to get your files up in the cloud:&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;bash &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;git&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; init&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; &amp;#x26;&amp;#x26; &lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;git&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; add&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; .&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; &amp;#x26;&amp;#x26; &lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;git&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; commit&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt; -m&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; &#34;add: initial files&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;git&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; branch&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt; -M&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; main&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;git&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; remote&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; add&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; origin&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; https://github.com/[USER]/[REPO_NAME]&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;git&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; push&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt; -u&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; origin&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; main&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;⚙️-Flip-the-GitHub-Workflow-Switch-🔧&#34;&gt;&lt;a href=&#34;#⚙️-Flip-the-GitHub-Workflow-Switch-🔧&#34; class=&#34;headerlink&#34; title=&#34;⚙️ Flip the GitHub Workflow Switch 🔧&#34;&gt;&lt;/a&gt;⚙️ Flip the GitHub Workflow Switch 🔧&lt;/h3&gt;&lt;p&gt;Activate those GitHub Actions like you’re flipping on a spaceship’s hyperdrive! 🚀&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Go to &lt;strong&gt;Repo &amp;gt; Settings &amp;gt; Actions &amp;gt; General &amp;gt; Workflow permissions&lt;/strong&gt; and grant &lt;strong&gt;Read and Write permissions&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;If a deploy fails, head to &lt;strong&gt;Actions &amp;gt; Failed Deploy &amp;gt; Re-run Failed Jobs&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Set up Pages: &lt;strong&gt;Settings &amp;gt; Pages &amp;gt; Source &amp;gt; gh-pages &amp;gt; Save&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;🛤️-Add-React-Router-for-Smooth-Navigation-🗺️&#34;&gt;&lt;a href=&#34;#🛤️-Add-React-Router-for-Smooth-Navigation-🗺️&#34; class=&#34;headerlink&#34; title=&#34;🛤️ Add React Router for Smooth Navigation 🗺️&#34;&gt;&lt;/a&gt;🛤️ Add React Router for Smooth Navigation 🗺️&lt;/h3&gt;&lt;p&gt;Make your app a multi-page marvel with React Router. Install it with Bun and keep the party going! 🎉&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;bash &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;bun&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; add&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; react-router-dom&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;🏠-Set-Your-Homepage-in-package-json-🏡&#34;&gt;&lt;a href=&#34;#🏠-Set-Your-Homepage-in-package-json-🏡&#34; class=&#34;headerlink&#34; title=&#34;🏠 Set Your Homepage in package.json 🏡&#34;&gt;&lt;/a&gt;🏠 Set Your Homepage in &lt;code&gt;package.json&lt;/code&gt; 🏡&lt;/h3&gt;&lt;p&gt;Let the world know where your app lives. Add this to your &lt;code&gt;package.json&lt;/code&gt; for that polished URL touch. 🌐&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;json &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;{&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;  &#34;homepage&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;&#34;[PROJECT_URL]&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;🛑-Handle-404s-Like-a-Champ-with-public-404-html-🚧&#34;&gt;&lt;a href=&#34;#🛑-Handle-404s-Like-a-Champ-with-public-404-html-🚧&#34; class=&#34;headerlink&#34; title=&#34;🛑 Handle 404s Like a Champ with public/404.html 🚧&#34;&gt;&lt;/a&gt;🛑 Handle 404s Like a Champ with &lt;code&gt;public/404.html&lt;/code&gt; 🚧&lt;/h3&gt;&lt;p&gt;Create a &lt;code&gt;public/404.html&lt;/code&gt; file to catch stray visitors and redirect them smoothly. This script’s got your back! 🦸‍♂️&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;html &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&amp;#x3C;!&lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;DOCTYPE&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt; html&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&amp;#x3C;&lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;html&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;  &amp;#x3C;&lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;head&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;    &amp;#x3C;&lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;meta&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt; charset&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;&#34;utf-8&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; /&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;    &amp;#x3C;&lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;title&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&gt;React Router&amp;#x3C;/&lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;title&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;    &amp;#x3C;&lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt; type&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;&#34;text/javascript&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;      var&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; pathSegmentsToKeep &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt; 1&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;      var&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; l &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; window.location;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;      l.&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;replace&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;(&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;        l.protocol &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;+&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;          &#34;//&#34;&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt; +&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;          l.hostname &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;+&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;          (l.port &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;?&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; &#34;:&#34;&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt; +&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; l.port &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; &#34;&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;) &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;+&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;          l.pathname&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;            .&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;split&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;&#34;/&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;            .&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;slice&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;, &lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt; +&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; pathSegmentsToKeep)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;            .&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;join&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;&#34;/&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;) &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;+&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;          &#34;/?/&#34;&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt; +&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;          l.pathname.&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;slice&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;split&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;&#34;/&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;slice&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;(pathSegmentsToKeep).&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;join&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;&#34;/&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;replace&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#DBEDFF&#34;&gt;&amp;#x26;&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;g&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;, &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;&#34;~and~&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;) &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;+&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;          (l.search &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;?&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; &#34;&amp;#x26;&#34;&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt; +&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; l.search.&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;slice&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;replace&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#DBEDFF&#34;&gt;&amp;#x26;&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;g&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;, &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;&#34;~and~&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;) &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; &#34;&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;) &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;+&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;          l.hash&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;      );&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;    &amp;#x3C;/&lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;  &amp;#x3C;/&lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;head&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;  &amp;#x3C;&lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;body&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&gt;&amp;#x3C;/&lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;body&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&amp;#x3C;/&lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;html&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;🧠-Add-a-Smart-Script-to-index-html-🧩&#34;&gt;&lt;a href=&#34;#🧠-Add-a-Smart-Script-to-index-html-🧩&#34; class=&#34;headerlink&#34; title=&#34;🧠 Add a Smart Script to index.html 🧩&#34;&gt;&lt;/a&gt;🧠 Add a Smart Script to &lt;code&gt;index.html&lt;/code&gt; 🧩&lt;/h3&gt;&lt;p&gt;Pop this script into the &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; of your &lt;code&gt;index.html&lt;/code&gt; to keep React Router’s URLs clean and tidy. It’s like a digital broom! 🧹&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;html &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&amp;#x3C;&lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt; type&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;&#34;text/javascript&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;  (&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;function&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; (&lt;/span&gt;&lt;span style=&#34;color:#E36209;--shiki-dark:#FFAB70&#34;&gt;l&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;) {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;    if&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; (l.search[&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;] &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;===&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; &#34;/&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;) {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;      var&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; decoded &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; l.search&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;        .&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;slice&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;        .&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;split&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;&#34;&amp;#x26;&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;        .&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;map&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;function&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; (&lt;/span&gt;&lt;span style=&#34;color:#E36209;--shiki-dark:#FFAB70&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;) {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;          return&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; s.&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;replace&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#DBEDFF&#34;&gt;~and~&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;g&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;, &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;&#34;&amp;#x26;&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;        })&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;        .&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;join&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;&#34;?&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;);&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;      window.history.&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;replaceState&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;, &lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;, l.pathname.&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;slice&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;, &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;) &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; decoded &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; l.hash);&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;    }&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;  })(window.location);&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&amp;#x3C;/&lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;script&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;📡-Beam-It-Up-to-GitHub-🚀&#34;&gt;&lt;a href=&#34;#📡-Beam-It-Up-to-GitHub-🚀&#34; class=&#34;headerlink&#34; title=&#34;📡 Beam It Up to GitHub! 🚀&#34;&gt;&lt;/a&gt;📡 Beam It Up to GitHub! 🚀&lt;/h3&gt;&lt;p&gt;One final push to send your changes into orbit. Run this to commit and deploy your masterpiece! 🌠&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;bash &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;git&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; add&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt; -A&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; &amp;#x26;&amp;#x26; &lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;git&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; commit&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt; -m&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; &#34;Building&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; &amp;#x26;&amp;#x26; &lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;git&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; push&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;🎉-Houston-We-Have-Liftoff-🪐&#34;&gt;&lt;a href=&#34;#🎉-Houston-We-Have-Liftoff-🪐&#34; class=&#34;headerlink&#34; title=&#34;🎉 Houston, We Have Liftoff! 🪐&#34;&gt;&lt;/a&gt;🎉 Houston, We Have Liftoff! 🪐&lt;/h3&gt;&lt;p&gt;Congrats, your React app is live on GitHub Pages! 🎊 Take a victory lap, tweak some styles, and keep building epic stuff. You’re officially a deployment dynamo! 😎💾&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://me.hsinghhira.me/Add-Dark-Mode-to-React-js-App/</guid>
+            <title>Add Dark Mode to React.js App</title>
+            <link>http://me.hsinghhira.me/Add-Dark-Mode-to-React-js-App/</link>
+            <category>Blog</category>
+            <category>React.js</category>
+            <pubDate>Sun, 27 Jul 2025 03:03:18 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;Wanna give your React app that sleek, moody dark mode vibe? 🌑 Let’s make it happen with some quick moves and a sprinkle of Tailwind magic. Buckle up, it’s toggle time! 🚀&lt;/p&gt;
+&lt;h3 id=&#34;🛠️-Snag-the-Dark-Mode-Package-📦&#34;&gt;&lt;a href=&#34;#🛠️-Snag-the-Dark-Mode-Package-📦&#34; class=&#34;headerlink&#34; title=&#34;🛠️ Snag the Dark Mode Package 📦&#34;&gt;&lt;/a&gt;🛠️ Snag the Dark Mode Package 📦&lt;/h3&gt;&lt;p&gt;First things first, let’s grab a nifty little package to handle the light-to-dark sorcery. Pop this command into your terminal and let &lt;em&gt;Bun&lt;/em&gt; do the heavy lifting! 🥐&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;powershell &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;bun add &lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;use-react&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;dark&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;mode&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;🎨-Tweak-Your-Tailwind-Config-🖌️&#34;&gt;&lt;a href=&#34;#🎨-Tweak-Your-Tailwind-Config-🖌️&#34; class=&#34;headerlink&#34; title=&#34;🎨 Tweak Your Tailwind Config 🖌️&#34;&gt;&lt;/a&gt;🎨 Tweak Your Tailwind Config 🖌️&lt;/h3&gt;&lt;p&gt;Time to tell Tailwind we’re ready to go dark. Crack open your &lt;strong&gt;tailwind.config.js&lt;/strong&gt; and add this one-liner to make dark mode toggle like a champ. 💪&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;javascript &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;darkMode&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;&#34;class&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;,&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;💻-Drop-in-the-Code-Magic-✨&#34;&gt;&lt;a href=&#34;#💻-Drop-in-the-Code-Magic-✨&#34; class=&#34;headerlink&#34; title=&#34;💻 Drop in the Code Magic ✨&#34;&gt;&lt;/a&gt;💻 Drop in the Code Magic ✨&lt;/h3&gt;&lt;p&gt;Now, let’s weave some dark mode wizardry into your app. Import the &lt;strong&gt;&lt;code&gt;useDarkMode&lt;/code&gt;&lt;/strong&gt; hook and set up a toggle button that screams “cool coder alert!” 🔔 Here’s the code to make it pop:&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;jsx &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;import&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; useDarkMode &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;from&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; &#34;use-react-dark-mode&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;function&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt; App&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;() {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;  const&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; { &lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;isDark&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;, &lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;toggle&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; } &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt; useDarkMode&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;();&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;  return&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt; (&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;    &amp;#x3C;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;      &amp;#x3C;&lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;p&lt;/span&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt; className&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;{isDark &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;?&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; &#34;text-white&#34;&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt; :&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; &#34;text-black&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;}&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;        Hello, I’m a chameleon! Try toggling to see me in {isDark &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;?&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; &#34;light&#34;&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt; :&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; &#34;dark&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;} mode! 🦎&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;      &amp;#x3C;/&lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;p&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;      &amp;#x3C;&lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;button&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;        onClick&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;{toggle}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;        className&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;&#34;px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600&#34;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;      &gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;        {isDark &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;?&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; &#34;☀️ Light Mode&#34;&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt; :&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; &#34;🌙 Dark Mode&#34;&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;      &amp;#x3C;/&lt;/span&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;button&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;    &amp;#x3C;/&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;  );&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;🎉-Boom-You’re-a-Dark-Mode-Dynamo-🌟&#34;&gt;&lt;a href=&#34;#🎉-Boom-You’re-a-Dark-Mode-Dynamo-🌟&#34; class=&#34;headerlink&#34; title=&#34;🎉 Boom! You’re a Dark Mode Dynamo! 🌟&#34;&gt;&lt;/a&gt;🎉 Boom! You’re a Dark Mode Dynamo! 🌟&lt;/h3&gt;&lt;p&gt;That’s it — you’ve just leveled up your React app with a slick dark mode toggle! 😎 Flip that switch, admire the vibes, and maybe add some extra flair to make it &lt;em&gt;yours&lt;/em&gt;. Now go build something that shines (or glows in the dark)! 💾&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://me.hsinghhira.me/My-easiest-way-to-start-with-React-js-App/</guid>
+            <title>My easiest way to start with React.js App</title>
+            <link>http://me.hsinghhira.me/My-easiest-way-to-start-with-React-js-App/</link>
+            <category>Blog</category>
+            <category>React.js</category>
+            <pubDate>Sun, 27 Jul 2025 01:23:56 +0000</pubDate>
+            <description><![CDATA[ &lt;p&gt;So, you wanna build a slick React app with Tailwind and Vite? Good choice.&lt;br&gt;Here’s your &lt;em&gt;no-BS, step-by-step&lt;/em&gt; setup guide. Let’s goooo 🧑‍💻💨&lt;/p&gt;
+&lt;h3 id=&#34;🥖-Install-Bun-Only-Once&#34;&gt;&lt;a href=&#34;#🥖-Install-Bun-Only-Once&#34; class=&#34;headerlink&#34; title=&#34;🥖 Install Bun (Only Once)&#34;&gt;&lt;/a&gt;🥖 Install Bun &lt;em&gt;(Only Once)&lt;/em&gt;&lt;/h3&gt;&lt;p&gt;Because who doesn’t want to install something called “bun”? 🍞&lt;br&gt;Run this in PowerShell and &lt;em&gt;poof&lt;/em&gt; — Bun is yours.&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;powershell &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;powershell &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;c &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;&#34;irm bun.sh/install.ps1|iex&#34;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;🌍-Install-the-CLI-tool-globally-Also-Only-Once&#34;&gt;&lt;a href=&#34;#🌍-Install-the-CLI-tool-globally-Also-Only-Once&#34; class=&#34;headerlink&#34; title=&#34;🌍 Install the CLI tool globally (Also Only Once)&#34;&gt;&lt;/a&gt;🌍 Install the CLI tool globally &lt;em&gt;(Also Only Once)&lt;/em&gt;&lt;/h3&gt;&lt;p&gt;This little gem sets up the whole Vite + Tailwind + React magic.&lt;br&gt;Install it globally like the boss you are:&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;powershell &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;bun install &lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;g vite&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;tailwind&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;react&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;setup&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;🧙‍♂️-Setup-Your-App&#34;&gt;&lt;a href=&#34;#🧙‍♂️-Setup-Your-App&#34; class=&#34;headerlink&#34; title=&#34;🧙‍♂️ Setup Your App&#34;&gt;&lt;/a&gt;🧙‍♂️ Setup Your App&lt;/h3&gt;&lt;p&gt;Time to conjure your new React app out of thin air.&lt;br&gt;Just run this — no need for weird rituals.&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;powershell &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;new-react&lt;/span&gt;&lt;span style=&#34;color:#D73A49;--shiki-dark:#F97583&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;app&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;📦-Install-Dependencies&#34;&gt;&lt;a href=&#34;#📦-Install-Dependencies&#34; class=&#34;headerlink&#34; title=&#34;📦 Install Dependencies&#34;&gt;&lt;/a&gt;📦 Install Dependencies&lt;/h3&gt;&lt;p&gt;You’ve got the project. Now let’s feed it some packages.&lt;br&gt;(Think of it like a software Happy Meal 🍔)&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;powershell &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;bun install&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;💻-Run-the-App&#34;&gt;&lt;a href=&#34;#💻-Run-the-App&#34; class=&#34;headerlink&#34; title=&#34;💻 Run the App&#34;&gt;&lt;/a&gt;💻 Run the App&lt;/h3&gt;&lt;p&gt;Now launch that bad boy in dev mode and see the magic happen. ✨&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;powershell &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;bun run dev&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;🎉-Boom-You’re-Up-and-Running&#34;&gt;&lt;a href=&#34;#🎉-Boom-You’re-Up-and-Running&#34; class=&#34;headerlink&#34; title=&#34;🎉 Boom! You’re Up and Running&#34;&gt;&lt;/a&gt;🎉 Boom! You’re Up and Running&lt;/h3&gt;&lt;p&gt;That’s it. You’ve officially entered dev mode.&lt;br&gt;Time to break things, fix things, and maybe even build something cool. 😎&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

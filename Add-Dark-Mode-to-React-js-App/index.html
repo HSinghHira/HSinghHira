@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="en"><head><script type="text/javascript">!function(t,e,n,c,s,a,r){t[n]=t[n]||function(){(t[n].q=t[n].q||[]).push(arguments)},(a=e.createElement(c)).async=1,a.src="https://www.clarity.ms/tag/skvnh9ncl9",(r=e.getElementsByTagName(c)[0]).parentNode.insertBefore(a,r)}(window,document,"clarity","script")</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-GJF7D1TVGG"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-GJF7D1TVGG")</script><meta charset="utf-8"><title>Add Dark Mode to React.js App</title><link rel="canonical" href="http://me.hsinghhira.me/Add-Dark-Mode-to-React-js-App/"><meta name="description" content="Wanna give your React app that sleek, moody dark mode vibe? 🌑 Let’s make it happen with some quick moves and a sprinkle of Tailwind magic. Buckle up,"><meta name="keywords" content="Harman Singh Hira, hsinghhira, hsinghhira.me, blog, personal blog, hexo, hexo theme minima"><meta property="og:site_name" content="Harman Singh Hira"><meta property="og:type" content="article"><meta property="og:title" content="Add Dark Mode to React.js App"><meta property="og:description" content="Wanna give your React app that sleek, moody dark mode vibe? 🌑 Let’s make it happen with some quick moves and a sprinkle of Tailwind magic. Buckle up,"><meta property="og:url" content="http://me.hsinghhira.me/Add-Dark-Mode-to-React-js-App/"><meta property="og:image" content="https://dynamic-og-image-generator.vercel.app/api/generate?title=Add%20Dark%20Mode%20to%20React.js%20App&amp;author=Harman+Singh+Hira&amp;websiteUrl=https%3A%2F%2Fme.hsinghhira.me&amp;avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F11346694&amp;theme=github"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Add Dark Mode to React.js App"><meta name="twitter:description" content="Wanna give your React app that sleek, moody dark mode vibe? 🌑 Let’s make it happen with some quick moves and a sprinkle of Tailwind magic. Buckle up,"><meta name="twitter:url" content="http://me.hsinghhira.me/Add-Dark-Mode-to-React-js-App/"><meta name="twitter:image" content="https://dynamic-og-image-generator.vercel.app/api/generate?title=Add%20Dark%20Mode%20to%20React.js%20App&amp;author=Harman+Singh+Hira&amp;websiteUrl=https%3A%2F%2Fme.hsinghhira.me&amp;avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F11346694&amp;theme=github"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="alternate" type="application/rss+xml" title="Harman Singh Hira" href="http://me.hsinghhira.me/rss.xml"><link rel="alternate" type="application/atom+xml" title="Harman Singh Hira" href="http://me.hsinghhira.me/atom.xml"><link rel="alternate" type="application/json" title="Harman Singh Hira" href="http://me.hsinghhira.me/feed.json"><link rel="stylesheet" href="/css/skeleton.css"><link rel="stylesheet" href="/css/custom.css"><link rel="icon" type="image/png" href="/images/favicon.png"><style>a:not(.icon){text-decoration-color:#0fa0ce;background-image:linear-gradient(to bottom,rgba(0,0,0,0) 50%,#0fa0ce 50%)}blockquote{border-left:8px solid #0fa0ce}.nanobar .bar{background:#0fa0ce}.button.button-primary:focus,.button.button-primary:hover,button.button-primary:focus,button.button-primary:hover,input[type=button].button-primary:focus,input[type=button].button-primary:hover,input[type=reset].button-primary:focus,input[type=reset].button-primary:hover,input[type=submit].button-primary:focus,input[type=submit].button-primary:hover{background-color:#0fa0ce;border-color:#0fa0ce}input[type=email]:focus,input[type=number]:focus,input[type=password]:focus,input[type=search]:focus,input[type=tel]:focus,input[type=text]:focus,input[type=url]:focus,select:focus,textarea:focus{border:1px solid #0fa0ce}</style><link rel="preconnect" href="//wsrv.nl"><link rel="stylesheet" href="/css/shiki-code.css"><script>document.documentElement.dataset.lightShiki="light-shiki",document.documentElement.dataset.darkShiki="dark-shiki"</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/docs-site/hexo-tags-embed@latest/lib/tag_embed.css" media="defer" onload="this.media=&quot;all&quot;"><meta name="generator" content="Hexo 7.3.0">
+
+<script type="application/ld+json" id="hexo-seo-schema">[
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "http://me.hsinghhira.me",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "@id": "https://developers.google.com/search/docs/advanced/structured-data/sitelinks-searchbox",
+      "target": "/search{search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": "https://developers.google.com/search/docs/advanced/structured-data/breadcrumb",
+    "name": "breadcrumb",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": "http://me.hsinghhira.me/tags/Blog/",
+        "name": "Blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": "http://me.hsinghhira.me/tags/React-js/",
+        "name": "React.js"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": "http://me.hsinghhira.me/categories/Blog/",
+        "name": "Blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": "http://me.hsinghhira.me/Add-Dark-Mode-to-React-js-App/",
+        "name": "Add Dark Mode to React.js App"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http://me.hsinghhira.me/Add-Dark-Mode-to-React-js-App/"
+    },
+    "headline": "Add Dark Mode to React.js App",
+    "description": "Add Dark Mode to React.js App",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png",
+      "width": "250",
+      "height": "250"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Harman Singh Hira"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Harman Singh Hira",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.webmanajemen.com/2022/01/04/frp-redmi-go-tiare-fix/Bypass%20FRP%20Redmi%20Go%20Tiare%20M1903C3GG.jpg",
+        "width": "125",
+        "height": "125"
+      }
+    },
+    "datePublished": "2025-07-27T15:03:18+12:00",
+    "dateModified": "2025-08-24T19:38:52+12:00"
+  }
+]</script>
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml"></head><body><div class="container"><div class="row"><div><script>!function(){const e=localStorage.getItem("preferredTheme");"dark"!==e&&e||document.body.classList.add("darkmode")}()</script><script src="/js/code-toggle.js"></script><link rel="amphtml" href="http://me.hsinghhira.me/Add-Dark-Mode-to-React-js-App//amp/index.html"><div class="row"><div class="nine columns"><h1 class="mt-2">me@hsinghhira.me ~ $</h1></div><div class="twelve columns"><div class="row"><div class="left nine columns"><a href="/">/intro</a> <a href="/blog" class="ml">/blog</a> <a href="/portfolio" class="ml">/portfolio</a> <a href="/contact" class="ml">/contact</a></div></div><hr style="margin-bottom:2.6rem"></div></div><div class="trans"><h2>Add Dark Mode to React.js App</h2><p>Wanna give your React app that sleek, moody dark mode vibe? 🌑 Let’s make it happen with some quick moves and a sprinkle of Tailwind magic. Buckle up, it’s toggle time! 🚀</p><h3 id="🛠️-Snag-the-Dark-Mode-Package-📦"><a href="#🛠️-Snag-the-Dark-Mode-Package-📦" class="headerlink" title="🛠️ Snag the Dark Mode Package 📦"></a>🛠️ Snag the Dark Mode Package 📦</h3><p>First things first, let’s grab a nifty little package to handle the light-to-dark sorcery. Pop this command into your terminal and let <em>Bun</em> do the heavy lifting! 🥐</p><figure class="hexo-shiki-code lang"><figcaption class="title-bar"><span class="shiki-lang-label">powershell </span><button class="shiki-copy-button" onclick="copyShikiCode(this)"><span class="button-text">复制</span></button></figcaption><pre class="shiki shiki-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#24292e;--shiki-dark:#E1E4E8">bun add </span><span style="color:#005cc5;--shiki-dark:#79B8FF">use-react</span><span style="color:#d73a49;--shiki-dark:#F97583">-</span><span style="color:#24292e;--shiki-dark:#E1E4E8">dark</span><span style="color:#d73a49;--shiki-dark:#F97583">-</span><span style="color:#24292e;--shiki-dark:#E1E4E8">mode</span></span></code></pre></figure><h3 id="🎨-Tweak-Your-Tailwind-Config-🖌️"><a href="#🎨-Tweak-Your-Tailwind-Config-🖌️" class="headerlink" title="🎨 Tweak Your Tailwind Config 🖌️"></a>🎨 Tweak Your Tailwind Config 🖌️</h3><p>Time to tell Tailwind we’re ready to go dark. Crack open your <strong>tailwind.config.js</strong> and add this one-liner to make dark mode toggle like a champ. 💪</p><figure class="hexo-shiki-code lang"><figcaption class="title-bar"><span class="shiki-lang-label">javascript </span><button class="shiki-copy-button" onclick="copyShikiCode(this)"><span class="button-text">复制</span></button></figcaption><pre class="shiki shiki-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#6f42c1;--shiki-dark:#B392F0">darkMode</span><span style="color:#24292e;--shiki-dark:#E1E4E8">: </span><span style="color:#032f62;--shiki-dark:#9ECBFF">"class"</span><span style="color:#24292e;--shiki-dark:#E1E4E8">,</span></span></code></pre></figure><h3 id="💻-Drop-in-the-Code-Magic-✨"><a href="#💻-Drop-in-the-Code-Magic-✨" class="headerlink" title="💻 Drop in the Code Magic ✨"></a>💻 Drop in the Code Magic ✨</h3><p>Now, let’s weave some dark mode wizardry into your app. Import the <strong><code>useDarkMode</code></strong> hook and set up a toggle button that screams “cool coder alert!” 🔔 Here’s the code to make it pop:</p><figure class="hexo-shiki-code lang"><figcaption class="title-bar"><span class="shiki-lang-label">jsx </span><button class="shiki-copy-button" onclick="copyShikiCode(this)"><span class="button-text">复制</span></button></figcaption><pre class="shiki shiki-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#d73a49;--shiki-dark:#F97583">import</span><span style="color:#24292e;--shiki-dark:#E1E4E8"> useDarkMode </span><span style="color:#d73a49;--shiki-dark:#F97583">from</span><span style="color:#032f62;--shiki-dark:#9ECBFF"> "use-react-dark-mode"</span><span style="color:#24292e;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#d73a49;--shiki-dark:#F97583">function</span><span style="color:#6f42c1;--shiki-dark:#B392F0"> App</span><span style="color:#24292e;--shiki-dark:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#d73a49;--shiki-dark:#F97583">  const</span><span style="color:#24292e;--shiki-dark:#E1E4E8"> { </span><span style="color:#005cc5;--shiki-dark:#79B8FF">isDark</span><span style="color:#24292e;--shiki-dark:#E1E4E8">, </span><span style="color:#005cc5;--shiki-dark:#79B8FF">toggle</span><span style="color:#24292e;--shiki-dark:#E1E4E8"> } </span><span style="color:#d73a49;--shiki-dark:#F97583">=</span><span style="color:#6f42c1;--shiki-dark:#B392F0"> useDarkMode</span><span style="color:#24292e;--shiki-dark:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#d73a49;--shiki-dark:#F97583">  return</span><span style="color:#24292e;--shiki-dark:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#24292e;--shiki-dark:#E1E4E8">    &lt;&gt;</span></span>
+<span class="line"><span style="color:#24292e;--shiki-dark:#E1E4E8">      &lt;</span><span style="color:#22863a;--shiki-dark:#85E89D">p</span><span style="color:#6f42c1;--shiki-dark:#B392F0"> className</span><span style="color:#d73a49;--shiki-dark:#F97583">=</span><span style="color:#24292e;--shiki-dark:#E1E4E8">{isDark </span><span style="color:#d73a49;--shiki-dark:#F97583">?</span><span style="color:#032f62;--shiki-dark:#9ECBFF"> "text-white"</span><span style="color:#d73a49;--shiki-dark:#F97583"> :</span><span style="color:#032f62;--shiki-dark:#9ECBFF"> "text-black"</span><span style="color:#24292e;--shiki-dark:#E1E4E8">}&gt;</span></span>
+<span class="line"><span style="color:#24292e;--shiki-dark:#E1E4E8">        Hello, I’m a chameleon! Try toggling to see me in {isDark </span><span style="color:#d73a49;--shiki-dark:#F97583">?</span><span style="color:#032f62;--shiki-dark:#9ECBFF"> "light"</span><span style="color:#d73a49;--shiki-dark:#F97583"> :</span><span style="color:#032f62;--shiki-dark:#9ECBFF"> "dark"</span><span style="color:#24292e;--shiki-dark:#E1E4E8">} mode! 🦎</span></span>
+<span class="line"><span style="color:#24292e;--shiki-dark:#E1E4E8">      &lt;/</span><span style="color:#22863a;--shiki-dark:#85E89D">p</span><span style="color:#24292e;--shiki-dark:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#24292e;--shiki-dark:#E1E4E8">      &lt;</span><span style="color:#22863a;--shiki-dark:#85E89D">button</span></span>
+<span class="line"><span style="color:#6f42c1;--shiki-dark:#B392F0">        onClick</span><span style="color:#d73a49;--shiki-dark:#F97583">=</span><span style="color:#24292e;--shiki-dark:#E1E4E8">{toggle}</span></span>
+<span class="line"><span style="color:#6f42c1;--shiki-dark:#B392F0">        className</span><span style="color:#d73a49;--shiki-dark:#F97583">=</span><span style="color:#032f62;--shiki-dark:#9ECBFF">"px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600"</span></span>
+<span class="line"><span style="color:#24292e;--shiki-dark:#E1E4E8">      &gt;</span></span>
+<span class="line"><span style="color:#24292e;--shiki-dark:#E1E4E8">        {isDark </span><span style="color:#d73a49;--shiki-dark:#F97583">?</span><span style="color:#032f62;--shiki-dark:#9ECBFF"> "☀️ Light Mode"</span><span style="color:#d73a49;--shiki-dark:#F97583"> :</span><span style="color:#032f62;--shiki-dark:#9ECBFF"> "🌙 Dark Mode"</span><span style="color:#24292e;--shiki-dark:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#24292e;--shiki-dark:#E1E4E8">      &lt;/</span><span style="color:#22863a;--shiki-dark:#85E89D">button</span><span style="color:#24292e;--shiki-dark:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#24292e;--shiki-dark:#E1E4E8">    &lt;/&gt;</span></span>
+<span class="line"><span style="color:#24292e;--shiki-dark:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#24292e;--shiki-dark:#E1E4E8">}</span></span></code></pre></figure><h3 id="🎉-Boom-You’re-a-Dark-Mode-Dynamo-🌟"><a href="#🎉-Boom-You’re-a-Dark-Mode-Dynamo-🌟" class="headerlink" title="🎉 Boom! You’re a Dark Mode Dynamo! 🌟"></a>🎉 Boom! You’re a Dark Mode Dynamo! 🌟</h3><p>That’s it — you’ve just leveled up your React app with a slick dark mode toggle! 😎 Flip that switch, admire the vibes, and maybe add some extra flair to make it <em>yours</em>. Now go build something that shines (or glows in the dark)! 💾</p><hr><div class="mt-2 row"><div class="eight columns"><p id="madewith">Made with ❤️ in <a href="/go.html?u=aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQW90ZWFyb2E=" target="_blank" rel="nofollow noopener noreferer noreferrer external" hexo-seo="true" alt="Add Dark Mode to React.js App" title="Add Dark Mode to React.js App">Aotearoa</a>.</p></div><div class="four columns posisi footer-toggle-container"><div class="footer-toggle-wrapper"><div id="darkBtn" class="svg-hov dark-toggle">🌜</div><div id="lightBtn" class="hidden svg-hov light-toggle">☀️</div></div></div></div><style>@media (max-width:549px){.mt-2.row .eight.columns{width:70%!important;margin-left:0!important}.mt-2.row .four.columns{width:30%!important;margin-left:0!important}.footer-toggle-container.posisi{text-align:right!important;display:flex;justify-content:flex-end;align-items:center}#madewith{margin:0!important}}.footer-toggle-wrapper{display:inline-flex;align-items:center;gap:8px}#madewith{margin:0!important;word-wrap:break-word}@media (max-width:400px){.mt-2.row .eight.columns{width:65%!important}.mt-2.row .four.columns{width:35%!important}.footer-toggle-wrapper{gap:6px}.footer-toggle-wrapper .svg-hov{transform:scale(.9)}}</style></div></div></div></div><script src="/js/themetoggle.js"></script><script src="/js/nanobar.min.js"></script><script>var options={classname:"nanobar",id:"myNanobar"},nanobar=new Nanobar(options);nanobar.go(30),nanobar.go(76),nanobar.go(100)</script><script src="/js/shiki-code.js"></script>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 3,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body></html>

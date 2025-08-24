@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://me.hsinghhira.me</id>
+    <title>Harman Singh Hira • Posts by &#34;hexo.js&#34; tag</title>
+    <link href="http://me.hsinghhira.me" />
+    <updated>2025-07-30T07:18:18.000Z</updated>
+    <category term="Portfolio" />
+    <category term="Blog" />
+    <category term="React.js" />
+    <category term="Hexo.js" />
+    <category term="Node.js" />
+    <entry>
+        <id>http://me.hsinghhira.me/Hexo-Advanced-Image-Optimizer-Plugin/</id>
+        <title>Hexo Advanced Image Optimizer Plugin</title>
+        <link rel="alternate" href="http://me.hsinghhira.me/Hexo-Advanced-Image-Optimizer-Plugin/"/>
+        <content type="html">&lt;p&gt;The Hexo Advanced Image Optimizer Plugin enhances your Hexo site by leveraging the power of &lt;code&gt;wsrv.nl&lt;/code&gt;, a high-performance image cache and resize service. Powered by Cloudflare’s CDN, it delivers images from over 300 global datacenters, ensuring lightning-fast load times and optimal performance. With support for advanced image processing using technologies like nginx and libvips, this plugin transforms and optimizes images on-the-fly. It’s open-source, free to use, and seamlessly integrates with Hexo to process markdown images, cover images, CSS background images, and &lt;code&gt;&amp;lt;object&amp;gt;&lt;/code&gt; tags.&lt;/p&gt;
+&lt;h2 id=&#34;Installation&#34;&gt;&lt;a href=&#34;#Installation&#34; class=&#34;headerlink&#34; title=&#34;Installation&#34;&gt;&lt;/a&gt;Installation&lt;/h2&gt;&lt;p&gt;Run the (any) following command in your Hexo project directory to install the plugin:&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;bash &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;npm&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; install&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; hexo-adv-img-optimizer&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt; --save&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;bash &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;bun&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; add&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; hexo-adv-img-optimizer&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt; --save&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;bash &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;pnpm&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; install&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt; hexo-adv-img-optimizer&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt; --save&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h2 id=&#34;Usage&#34;&gt;&lt;a href=&#34;#Usage&#34; class=&#34;headerlink&#34; title=&#34;Usage&#34;&gt;&lt;/a&gt;Usage&lt;/h2&gt;&lt;p&gt;After installing the plugin, all image urls will be converted to CDN urls automatically. For example, the origin markdown file is&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;md &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;![&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline&#34;&gt;Image Caption&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;](&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-light-text-decoration:underline;--shiki-dark:#E1E4E8;--shiki-dark-text-decoration:underline&#34;&gt;//wsrv.nl/?url=https%3A%2F%2Fwsrv.nl%2Flichtenstein.jpg&amp;#x26;default=https%3A%2F%2Fdynamic-og-image-generator.vercel.app%2Fapi%2Fgenerate%3Ftitle%3DImage%2Bis%2Benjoying%2Bvacation...%26author%3DHarman%2BSingh%2BHira%26websiteUrl%3D%252F%252Fme.hsinghhira.me%26avatar%3Dhttps%253A%252F%252Favatars.githubusercontent.com%252Fu%252F11346694%26theme%3Dgithub&amp;#x26;filename=hexo-advanced-image-optimizer-plugin&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;p&gt;Then it will be converted to&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;md &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;![&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline&#34;&gt;Image Caption&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;](&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-light-text-decoration:underline;--shiki-dark:#E1E4E8;--shiki-dark-text-decoration:underline&#34;&gt;//wsrv.nl/?url=https%3A%2F%2Fimages.weserv.nl%2F%3Furl%3Dhttps%3A%2F%2Fwsrv.nl%2Flichtenstein.jpg&amp;#x26;default=https%3A%2F%2Fdynamic-og-image-generator.vercel.app%2Fapi%2Fgenerate%3Ftitle%3DImage%2Bis%2Benjoying%2Bvacation...%26author%3DHarman%2BSingh%2BHira%26websiteUrl%3D%252F%252Fme.hsinghhira.me%26avatar%3Dhttps%253A%252F%252Favatars.githubusercontent.com%252Fu%252F11346694%26theme%3Dgithub&amp;#x26;filename=hexo-advanced-image-optimizer-plugin&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;p&gt;The local image urls will be also converted. For example, the original file is&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;md &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;![&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline&#34;&gt;Image Caption&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;](&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-light-text-decoration:underline;--shiki-dark:#E1E4E8;--shiki-dark-text-decoration:underline&#34;&gt;//wsrv.nl/?url=http%3A%2F%2Fme.hsinghhira.me%2Fimg%2Fanti996.png&amp;#x26;default=https%3A%2F%2Fdynamic-og-image-generator.vercel.app%2Fapi%2Fgenerate%3Ftitle%3DImage%2Bis%2Benjoying%2Bvacation...%26author%3DHarman%2BSingh%2BHira%26websiteUrl%3D%252F%252Fme.hsinghhira.me%26avatar%3Dhttps%253A%252F%252Favatars.githubusercontent.com%252Fu%252F11346694%26theme%3Dgithub&amp;#x26;filename=hexo-advanced-image-optimizer-plugin&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;p&gt;It will be rendered as&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;md &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;![&lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline&#34;&gt;Image Caption&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;](&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-light-text-decoration:underline;--shiki-dark:#E1E4E8;--shiki-dark-text-decoration:underline&#34;&gt;//wsrv.nl/?url=https%3A%2F%2Fimages.weserv.nl%2F%3Furl%3Dhttps%3A%2F%2Fexample.com%2Fimg%2Fanti996.png&amp;#x26;default=https%3A%2F%2Fdynamic-og-image-generator.vercel.app%2Fapi%2Fgenerate%3Ftitle%3DImage%2Bis%2Benjoying%2Bvacation...%26author%3DHarman%2BSingh%2BHira%26websiteUrl%3D%252F%252Fme.hsinghhira.me%26avatar%3Dhttps%253A%252F%252Favatars.githubusercontent.com%252Fu%252F11346694%26theme%3Dgithub&amp;#x26;filename=hexo-advanced-image-optimizer-plugin&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;p&gt;where &lt;code&gt;https://example.com&lt;/code&gt; is the url of your blog that you set in &lt;code&gt;_config.yml&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;Configuration&#34;&gt;&lt;a href=&#34;#Configuration&#34; class=&#34;headerlink&#34; title=&#34;Configuration&#34;&gt;&lt;/a&gt;Configuration&lt;/h2&gt;&lt;p&gt;The plugin can be configured globally in Hexo’s &lt;code&gt;_config.yml&lt;/code&gt; file under the &lt;code&gt;cdn&lt;/code&gt; section or per post using front-matter in Markdown files. Front-matter settings override global settings for specific posts.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open your Hexo project’s &lt;code&gt;_config.yml&lt;/code&gt; file.&lt;/li&gt;
+&lt;li&gt;Add a &lt;code&gt;cdn&lt;/code&gt; section to configure global settings (see &lt;a href=&#34;#configuration&#34;&gt;Configuration&lt;/a&gt; below).&lt;br&gt;Example:&lt;/li&gt;
+&lt;/ol&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;yaml &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;cdn&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;  cdn_server&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;//wsrv.nl&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;  use_webp&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;true&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;  max_width&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: [&lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;1920&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;, &lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;1200&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;, &lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;800&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;, &lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;400&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;Global-Configuration-config-yml&#34;&gt;&lt;a href=&#34;#Global-Configuration-config-yml&#34; class=&#34;headerlink&#34; title=&#34;Global Configuration (_config.yml)&#34;&gt;&lt;/a&gt;Global Configuration (_config.yml)&lt;/h3&gt;&lt;p&gt;Add a &lt;code&gt;cdn&lt;/code&gt; section to &lt;code&gt;_config.yml&lt;/code&gt; to set default options for all images. All options are optional, and defaults are applied when not specified.&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;yaml &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;cdn&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;  cdn_server&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;//wsrv.nl&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;  native&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;false&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;  use_webp&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;true&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;  max_width&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;1200&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;  filename&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;default-image&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;  brightness&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;0&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;  quality&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;75&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;  fit&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;cover&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;  .&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;  .&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;  .&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;Per-Post-Configuration-Front-Matter&#34;&gt;&lt;a href=&#34;#Per-Post-Configuration-Front-Matter&#34; class=&#34;headerlink&#34; title=&#34;Per-Post Configuration (Front-Matter)&#34;&gt;&lt;/a&gt;Per-Post Configuration (Front-Matter)&lt;/h3&gt;&lt;p&gt;Add a &lt;code&gt;cdn&lt;/code&gt; section to a post’s front-matter to override global settings for that post’s images (e.g., cover image, markdown images, background images). For example:&lt;/p&gt;
+
+              &lt;figure class=&#34;hexo-shiki-code lang&#34; &gt;
+                  &lt;figcaption class=&#34;title-bar&#34;&gt;
+                    &lt;span class=&#34;shiki-lang-label&#34;&gt;yaml &lt;/span&gt;
+                    &lt;button class=&#34;shiki-copy-button&#34; onclick=&#34;copyShikiCode(this)&#34;&gt;
+                      &lt;span class=&#34;button-text&#34;&gt;复制&lt;/span&gt;
+                    &lt;/button&gt;
+                  &lt;/figcaption&gt;
+                  &lt;pre class=&#34;shiki shiki-themes github-light github-dark&#34; style=&#34;background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8&#34; tabindex=&#34;0&#34;&gt;&lt;code&gt;&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;---&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;title&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;My Post&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;cdn&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;  brightness&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;20&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;  filename&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;post-specific-image&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;  quality&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;80&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#22863A;--shiki-dark:#85E89D&#34;&gt;  fit&lt;/span&gt;&lt;span style=&#34;color:#24292E;--shiki-dark:#E1E4E8&#34;&gt;: &lt;/span&gt;&lt;span style=&#34;color:#032F62;--shiki-dark:#9ECBFF&#34;&gt;contain&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;  .&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;  .&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#005CC5;--shiki-dark:#79B8FF&#34;&gt;  .&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;line&#34;&gt;&lt;span style=&#34;color:#6F42C1;--shiki-dark:#B392F0&#34;&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+              &lt;/figure&gt;
+        
+
+&lt;h3 id=&#34;📀-Full-Available-Configuration-Options&#34;&gt;&lt;a href=&#34;#📀-Full-Available-Configuration-Options&#34; class=&#34;headerlink&#34; title=&#34;📀 Full Available Configuration Options&#34;&gt;&lt;/a&gt;📀 Full Available Configuration Options&lt;/h3&gt;&lt;p&gt;This page is getting way too longer so visit below link for full configration options.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Please Visit: &lt;a href=&#34;https://git.hsinghhira.me/hexo-adv-img-optimizer/&#34;&gt;https://git.hsinghhira.me/hexo-adv-img-optimizer/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;Notes&#34;&gt;&lt;a href=&#34;#Notes&#34; class=&#34;headerlink&#34; title=&#34;Notes&#34;&gt;&lt;/a&gt;Notes&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Priority&lt;/strong&gt;: Front-matter options (&lt;code&gt;cdn: ...&lt;/code&gt;) in a post override global settings in &lt;code&gt;_config.yml&lt;/code&gt;. If neither is set, defaults like the page-title-based filename (&lt;code&gt;hello-example&lt;/code&gt; for “Hello Example”) or &lt;code&gt;null&lt;/code&gt; are used.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Aliases&lt;/strong&gt;: Use either full names (e.g., &lt;code&gt;brightness&lt;/code&gt;) or aliases (e.g., &lt;code&gt;bri&lt;/code&gt;) in &lt;code&gt;_config.yml&lt;/code&gt; or front-matter.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Validation&lt;/strong&gt;: Ensure values match the expected format (e.g., &lt;code&gt;crop&lt;/code&gt; as &lt;code&gt;[10,20,100,100]&lt;/code&gt;, &lt;code&gt;brightness&lt;/code&gt; as a number between -100 and 100) to avoid errors.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SVG Exclusion&lt;/strong&gt;: SVG images are excluded from CDN processing to preserve their vector format.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CDN Support&lt;/strong&gt;: Verify that your CDN (e.g., &lt;code&gt;images.weserv.nl&lt;/code&gt;) supports the specified options. Invalid values may be ignored.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Testing&lt;/strong&gt;: After configuration, run &lt;code&gt;hexo generate&lt;/code&gt; and inspect the generated HTML to confirm CDN URLs include the desired parameters (e.g., &lt;code&gt;https://images.weserv.nl/?url=...&amp;amp;bri=20&amp;amp;filename=post-specific-image&lt;/code&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;Troubleshooting&#34;&gt;&lt;a href=&#34;#Troubleshooting&#34; class=&#34;headerlink&#34; title=&#34;Troubleshooting&#34;&gt;&lt;/a&gt;Troubleshooting&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Images Not Processed&lt;/strong&gt;: Ensure the plugin is installed correctly. Check for &lt;code&gt;exclude_domains&lt;/code&gt; that might skip certain images.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Incorrect Filenames&lt;/strong&gt;: Verify the &lt;code&gt;filename&lt;/code&gt; setting in &lt;code&gt;_config.yml&lt;/code&gt; or front-matter. If using the page-title default, ensure posts have a &lt;code&gt;title&lt;/code&gt; in their front-matter.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CDN Errors&lt;/strong&gt;: Confirm that the &lt;code&gt;cdn_server&lt;/code&gt; supports the configured options (e.g., &lt;code&gt;images.weserv.nl&lt;/code&gt; documentation: &lt;a href=&#34;https://images.weserv.nl/&#34;&gt;https://images.weserv.nl/&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;WebP Not Working&lt;/strong&gt;: Set &lt;code&gt;use_webp: true&lt;/code&gt; and ensure the browser supports WebP. Check if &lt;code&gt;output_format: webp&lt;/code&gt; is set correctly for specific images.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For additional help or feature requests, please open an issue on the plugin’s repository or contact the maintainer.&lt;/p&gt;
+&lt;h2 id=&#34;Special-Thanks&#34;&gt;&lt;a href=&#34;#Special-Thanks&#34; class=&#34;headerlink&#34; title=&#34;Special Thanks&#34;&gt;&lt;/a&gt;Special Thanks&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/njzjz/hexo-image-cloudflare&#34;&gt;Jinzhe Zeng&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/hexojs/hexo-util&#34;&gt;hexo-util&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jonschlinkert/html-tag&#34;&gt;html-tag&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        <category term="Portfolio" />
+        <category term="Hexo.js" />
+        <updated>2025-07-30T07:18:18.000Z</updated>
+    </entry>
+</feed>

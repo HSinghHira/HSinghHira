@@ -1,0 +1,38 @@
+<p>Redirecting to <span id="targetLink">external site</span> in <span id="countdown">5</span> seconds...</p>
+
+
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const encodedUrl = params.get('u') || '';
+  let targetUrl = '/';
+  try {
+    targetUrl = encodedUrl ? atob(encodedUrl) : '/';
+  } catch (e) {
+    console.error('Failed to decode URL:', e);
+  }
+
+  // Extract and show domain only
+  let displayText = targetUrl;
+  try {
+    const urlObj = new URL(targetUrl);
+    displayText = urlObj.hostname;
+  } catch (e) {
+    console.error('Invalid URL:', e);
+  }
+
+  document.getElementById('targetLink').textContent = displayText;
+
+  let countdown = 5;
+  const countdownElement = document.getElementById('countdown');
+  const interval = setInterval(() => {
+    countdown--;
+    countdownElement.textContent = countdown;
+    if (countdown <= 0) {
+      clearInterval(interval);
+      window.location.href = targetUrl;
+    }
+  }, 1000);
+</script>
+
+

@@ -1,0 +1,15 @@
+User-agent: *
+
+Allow: /
+Allow: /archives/
+Allow: /page/
+Allow: /tags/
+
+Disallow: /js/
+Disallow: /css/
+Disallow: /images/
+
+Sitemap: https://me.hsinghhira.me/sitemap.xml
+Sitemap: https://me.hsinghhira.me/atom.xml
+Sitemap: https://me.hsinghhira.me/rss.xml
+Sitemap: https://me.hsinghhira.me/feed.json
