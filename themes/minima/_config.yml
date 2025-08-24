@@ -37,7 +37,7 @@ desc: >
 
 menu:
   /blog: /blog
-  /works: /works
+  /portfolio: /portfolio
   /contact: /contact
 
 max_post: 4

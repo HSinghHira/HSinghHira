@@ -3,6 +3,7 @@ title: Deploy React.js App to GitHub Pages
 author: Harman Singh Hira
 tags:
   - Blog
+  - React.js
 categories:
   - Blog
 date: 2025-07-27 17:38:21

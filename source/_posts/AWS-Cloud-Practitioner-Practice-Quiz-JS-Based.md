@@ -1,17 +1,16 @@
 ---
 title: AWS Cloud Practitioner Practice Quiz - JS Based
 tags:
-  - Works
+  - Portfolio
 categories:
-  - Works
+  - Portfolio
 date: 2024-05-20 17:47:07
 ---
-
 Hey there, fellow learners! 🌟 Today, I want to share with you an awesome AWS Cloud Practitioner Practice Quiz that I created while I was learning AWS Cloud Engineering. 🚀 It's not super fancy, but I made sure to keep it simple and easy to understand. Let's dive in and have some fun while testing our knowledge!
 
-![20250720_174941_aws.png](/images/Works/20250720_174941_aws.png)
+![aws.jpg](/images/portfolio/aws.jpg)
 
-View Live Preview: [https://quiz.hsinghhira.me/AWS-Cloud-Practitioner/](https://quiz.hsinghhira.me/AWS-Cloud-Practitioner/)
+> View Live Preview: [https://quiz.hsinghhira.me/AWS-Cloud-Practitioner/](https://quiz.hsinghhira.me/AWS-Cloud-Practitioner/)
 
 This quiz may not have all the bells and whistles, but it has all the essential features you'd expect from any quiz website. 🎯 Here's what you can expect:
 
@@ -28,3 +27,4 @@ For the visual styling, I employed the popular CSS framework called Bootstrap v5
 I must admit, this quiz was a bit of a rush project. So, while I didn't spend a lot of time on its looks, I made sure it works perfectly and offers you plenty of options to enhance your learning experience. 📚
 
 I hope you find this quiz both educational and enjoyable. Give it a try, challenge yourself, and let's see how well you know your AWS Cloud Practitioner knowledge! Remember, learning can be fun too! 🌈📚💡
+

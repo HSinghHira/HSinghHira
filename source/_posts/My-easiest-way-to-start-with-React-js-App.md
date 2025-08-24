@@ -3,6 +3,7 @@ title: My easiest way to start with React.js App
 author: Harman Singh Hira
 tags:
   - Blog
+  - React.js
 categories:
   - Blog
 date: 2025-07-27 13:23:56

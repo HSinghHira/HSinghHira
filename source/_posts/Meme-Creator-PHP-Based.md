@@ -1,12 +1,12 @@
 ---
 title: Meme Creator - PHP Based
 tags:
-  - Works
+  - Portfolio
 categories:
-  - Works
+  - Portfolio
 date: 2025-07-20 15:05:07
 ---
-![20250720_172606_dekh-bhai-meme-creator.png](/images/Works/20250720_172606_dekh-bhai-meme-creator.png)
+![meme-creator-php.jpg](/images/portfolio/meme-creator-php.jpg)
 
 Okay this is kinda funny... but yep, I actually made _another_ Dekh Bhai Meme Creator back in 2016 😂
 

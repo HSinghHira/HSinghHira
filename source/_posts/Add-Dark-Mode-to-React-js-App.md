@@ -3,6 +3,7 @@ title: Add Dark Mode to React.js App
 author: Harman Singh Hira
 tags:
   - Blog
+  - React.js
 categories:
   - Blog
 date: 2025-07-27 15:03:18

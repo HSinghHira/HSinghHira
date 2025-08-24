@@ -1,14 +1,15 @@
 ---
 title: Website for Apple's iOS Shortcuts
 tags:
-  - Works
+  - Portfolio
 categories:
-  - Works
+  - Portfolio
+cover: /images/portfolio/iOS_Shortcuts.png
 date: 2025-07-21 18:03:16
 ---
-![20250720_180559_iOS_Shortcuts.png](/images/Works/20250720_180559_iOS_Shortcuts.png)
+![iOS_Shortcuts.png](/images/portfolio/iOS_Shortcuts.png)
 
-Visit: [https://ios.hsinghhira.me/](https://ios.hsinghhira.me/) 📱
+> Visit: [https://ios.hsinghhira.me/](https://ios.hsinghhira.me/) 📱
 
 Hey there, tech enthusiasts! 📱 Today, I want to share with you another exciting story from my journey as a developer. This time, it's all about creating a static website using the powerful Google Custom Search script for searching Apple's iOS Shortcuts. So, buckle up and get ready to dive into the world of web development!
 

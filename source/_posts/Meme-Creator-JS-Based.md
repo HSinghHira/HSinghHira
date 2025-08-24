@@ -1,12 +1,12 @@
 ---
 title: Meme Creator - JS Based
 tags:
-  - Works
+  - Portfolio
 categories:
-  - Works
+  - Portfolio
 date: 2025-07-20 13:59:47
 ---
-![20250720_144302_dekh-bhai.png](/images/Works/20250720_144302_dekh-bhai.png)
+![meme-creator-js.jpg](/images/portfolio/meme-creator-js.jpg)
 
 Back in 2016, before I moved to New Zealand 🇳🇿, I decided to challenge myself with a lil’ side project 💻.
 
@@ -20,7 +20,7 @@ Spoiler alert: it took me a whole month to build 😅 (yes, I was a total beginn
 
 The project was built entirely with HTML, CSS, and JavaScript — no fancy stacks, just good old basics 🔧🧱
 
-👉 Check it out here: [Git.hsinghhira.me/LookBro/](https://git.hsinghhira.me/LookBro/)
+> 👉 Check it out here: [Git.hsinghhira.me/LookBro/](https://git.hsinghhira.me/LookBro/)
 
 For styling, I used my comfort blanket — Bootstrap 🧶.
 

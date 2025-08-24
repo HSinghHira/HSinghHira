@@ -1,12 +1,12 @@
 ---
 title: Muerte KOD - AIO PUBG Mobile Toolkit - Windows Software
 tags:
-  - Works
+  - Portfolio
 categories:
-  - Works
+  - Portfolio
 date: 2025-07-20 17:59:56
 ---
-![20250720_180215_Muerte_KOD_FuPLOH4Lu9.png](/images/Works/20250720_180215_Muerte_KOD_FuPLOH4Lu9.png)
+![Muerte_KOD.png](/images/portfolio/Muerte_KOD.png)
 
 Download: [https://github.com/HSinghHira/MuerteKOD/releases](https://github.com/HSinghHira/MuerteKOD/releases)
 
