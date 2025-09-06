@@ -14,4 +14,4 @@
   | ------------- | ------------- |
 <img width="100%" src="https://github-readme-streak-stats.herokuapp.com?user=HSinghHira&theme=dark&hide_border=true&date_format=M%20j%5B%2C%20Y%5D" alt="GitHub Streak" />
 
-<img width="100%" src="https://github-readme-streak-stats.herokuapp.com?user=HSinghHira&theme=dark&hide_border=true&date_format=M%20j%5B%2C%20Y%5D](https://github-readme-activity-graph.vercel.app/graph?username=HSinghHira&bg_color=ffffff&color=757575&line=0d0d0d&point=403d3d&area=true&hide_border=true)" alt="GitHub Streak" />
+<img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=HSinghHira&bg_color=ffffff&color=757575&line=0d0d0d&point=403d3d&area=true&hide_border=true" alt="GitHub Streak" />
