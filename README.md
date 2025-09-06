@@ -1,4 +1,6 @@
-### Kia ora & Welcome 👋 My name is Harman Singh Hira
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&center=true&vCenter=true&width=435&lines=T%C4%93n%C4%81+Koe;Sat+Sri+Akal;Hello)](https://git.io/typing-svg)
+
+👋 My name is Harman Singh Hira
 
 [![Website](https://img.shields.io/badge/hsinghhira.me-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://me.hsinghhira.me)  ![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FHSinghHira&labelColor=%23d9e3f0&countColor=%23ff8a65)
 
