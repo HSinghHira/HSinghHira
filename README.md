@@ -2,7 +2,7 @@
 
 <div align="left">
   <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Clapping%20Hands.png" height="40" alt="javascript logo"  />
-  <img width="12" />
+  <img width="20" />
   <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=800&size=30&pause=1000&color=F7F7F7¢er=true&vCenter=true&width=500&height=40&lines=T%C4%93n%C4%81+Koe;Sat+Sri+Akal;Welcome" height="30" alt="typescript logo"  />
 </div>
 <br/>
@@ -61,7 +61,7 @@
 </div>
 
 ###
-
+<br/>
 [![trophy](https://github-profile-trophy.vercel.app/?username=hsinghhira&theme=darkhub&no-frame=true&row=1&column=6&margin-w=15&margin-h=15)](https://github.com/ryo-ma/github-profile-trophy)
 
 ![Snake animation](https://github.com/HSinghHira/HSinghHira/blob/output/github-contribution-grid-snake-dark.svg)
