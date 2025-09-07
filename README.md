@@ -1,4 +1,4 @@
-<img height="100" src="https://raw.githubusercontent.com/HSinghHira/HSinghHira/refs/heads/main/header.png"  />
+<img width="100%" src="https://raw.githubusercontent.com/HSinghHira/HSinghHira/refs/heads/main/header.png"  />
 
 <div align="left">
   <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Clapping%20Hands.png" height="40" alt="javascript logo"  />
