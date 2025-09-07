@@ -1,4 +1,4 @@
-![](assets/20250907_134223_github-header-banner.png)
+![](https://github.com/HSinghHira/HSinghHira/blob/main/header.png)
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=800&size=30&pause=1000&color=F7F7F7¢er=true&vCenter=true&width=500&height=40&lines=T%C4%93n%C4%81+Koe;Sat+Sri+Akal;Welcome)
 
@@ -65,13 +65,7 @@ height="30">
 
 ###
 
-
-| <img align="center" src="https://github-readme-stats.vercel.app/api?username=HSinghHira&show_icons=true&include_all_commits=true&theme=github_dark&hide_border=true&count_private=true&bg_color=0D1117&title_color=58A6FF&icon_color=1F6FEB&text_color=C3D1D9" alt="Wick's github stats" /> | <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=hsinghhira&layout=compact&theme=github_dark&hide_border=true&bg_color=0D1117&title_color=58A6FF&icon_color=1F6FEB&text_color=C3D1D9" /> |
-| ------------- | ------------- |
-
 [![trophy](https://github-profile-trophy.vercel.app/?username=hsinghhira&theme=darkhub&no-frame=true&row=1&column=6&margin-w=15&margin-h=15)](https://github.com/ryo-ma/github-profile-trophy)
 
-[![trophy](https://github-readme-activity-graph.vercel.app/graph?username=HSinghHira&bg_color=0000000&color=fff&line=fff&point=fff&area=true&hide_border=true)](https://github.com/ryo-ma/github-profile-trophy)
-
-![Snake animation](https://raw.githubusercontent.com/HSinghHira/HSinghHira/905815acfd2391a51cae30a56335f44b7ef9ffc1/github-contribution-grid-snake-dark.svg)
+![Snake animation](https://github.com/HSinghHira/HSinghHira/blob/output/github-contribution-grid-snake-dark.svg)
 
