@@ -7,7 +7,7 @@
 alt="Clapping Hands" 
 width="30" 
 height="30">
-<span>** My name is Harman Singh Hira **</span>
+<span>**My name is Harman Singh Hira**</span>
 </span>
 
 - 🔭 Currently obsessed with Minecraft — don’t judge me, it's digital therapy 🎮🧱
@@ -16,7 +16,7 @@ height="30">
 - 📫 Wanna reach out? Try your luck 👉 [me.hsinghhira.me](https://me.hsinghhira.me) 💌
 - ⚡ Fun fact: I’m kinda stupid... but like, _the entertaining kind_ 😅
 
-<img align="right" height="150" src="https://avatars.githubusercontent.com/u/11346694"  />
+<img align="right" height="100" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Gem%20Stone.png"  />
 
 ###
 
