@@ -1,14 +1,10 @@
 ![](https://github.com/HSinghHira/HSinghHira/blob/main/header.png)
 
-![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=800&size=30&pause=1000&color=F7F7F7¢er=true&vCenter=true&width=500&height=40&lines=T%C4%93n%C4%81+Koe;Sat+Sri+Akal;Welcome)
-
-<span style="display:inline-flex; align-items:center; gap:5px;">
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Clapping%20Hands.png" 
+| <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Clapping%20Hands.png" 
 alt="Clapping Hands" 
 width="30" 
-height="30">
-<span>**My name is Harman Singh Hira**</span>
-</span>
+height="30">‸ | ![](https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=800&size=30&pause=1000&color=F7F7F7¢er=true&vCenter=true&width=500&height=40&lines=T%C4%93n%C4%81+Koe;Sat+Sri+Akal;Welcome) |
+| ------------- | ------------- |
 
 - 🔭 Currently obsessed with Minecraft — don’t judge me, it's digital therapy 🎮🧱
 - 🌱 Learning yet another JavaScript sh!t: **Vue.js** (why is there always a new one? 😩)
