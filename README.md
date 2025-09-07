@@ -17,3 +17,5 @@
 <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=HSinghHira&bg_color=ffffff&color=757575&line=0d0d0d&point=403d3d&area=true&hide_border=true" alt="GitHub Streak" />
 
 [![trophy](https://github-profile-trophy.vercel.app/?username=hsinghhira&theme=darkhub&no-frame=true&row=1&column=6&margin-w=15&margin-h=15)](https://github.com/ryo-ma/github-profile-trophy)
+
+![Snake animation](https://github.com/HSinghHira/HSinghHira/blob/output/github-contribution-grid-snake.svg)
