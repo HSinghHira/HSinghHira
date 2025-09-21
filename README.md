@@ -13,7 +13,7 @@
 - 📫 Wanna reach out? Try your luck 👉 [me.hsinghhira.me](https://me.hsinghhira.me) 💌
 - ⚡ Fun fact: I’m kinda stupid... but like, _the entertaining kind_ 😅
 <br/>
-<img align="right" height="100" src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Gem%20Stone.png"  />
+<img align="right" width="80" src="[https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Gem%20Stone.png](https://github.githubassets.com/images/mona-loading-default.gif)"  />
 
 ###
 
