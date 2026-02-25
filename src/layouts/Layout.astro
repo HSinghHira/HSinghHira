@@ -4,6 +4,7 @@ interface Props {
 }
 
 const { title } = Astro.props;
+import 'remixicon/fonts/remixicon.css';
 ---
 
 <!doctype html>
@@ -29,7 +30,6 @@ const { title } = Astro.props;
 
 			gtag('config', 'G-D588K4KJ64');
 		</script>
-		<link rel="stylesheet" href="/node_modules/remixicon/fonts/remixicon.css" />
 		<title>{title}</title>
 		<style is:global>
 			/* ==========================================================================
