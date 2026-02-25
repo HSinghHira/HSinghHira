@@ -5,14 +5,41 @@ interface Props {
 
 const { title } = Astro.props;
 import 'remixicon/fonts/remixicon.css';
+
+const canonicalURL = new URL(Astro.url.pathname, 'https://find.hsinghhira.me/');
+const description = "Harman Singh Hira - Connect with me through my social links.";
+const siteName = "Harman Singh Hira | Social Links";
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="My Social Links" />
 		<meta name="viewport" content="width=device-width" />
+		<title>{title} | {siteName}</title>
+		
+		<!-- SEO Meta Tags -->
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+		<meta name="robots" content="index, follow" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="profile" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:site_name" content={siteName} />
+		<meta property="og:title" content={`${title} | ${siteName}`} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL('/og.webp', Astro.url)} />
+		<meta property="og:image:alt" content="Harman Singh Hira Social Links" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content={`${title} | ${siteName}`} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL('/og.webp', Astro.url)} />
+
+		<!-- Favicons -->
 		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
 		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
 		<link rel="shortcut icon" href="/favicon/favicon.ico" />
@@ -20,6 +47,39 @@ import 'remixicon/fonts/remixicon.css';
 		<meta name="apple-mobile-web-app-title" content="MySocial" />
 		<link rel="manifest" href="/favicon/site.webmanifest" />
 		<meta name="generator" content={Astro.generator} />
+
+		<!-- Structured Data (JSON-LD) -->
+		<script type="application/ld+json" is:inline>
+			{
+				"@context": "https://schema.org",
+				"@graph": [
+					{
+						"@type": "Person",
+						"@id": "https://find.hsinghhira.me/#person",
+						"name": "Harman Singh Hira",
+						"url": "https://find.hsinghhira.me/",
+						"image": "https://find.hsinghhira.me/og.webp",
+						"description": "Creator • Developer • Dreamer - Connect with me through my social links.",
+						"sameAs": [
+							"https://github.com/hsinghhira",
+							"https://twitter.com/hsinghhira",
+							"https://linkedin.com/in/hsinghhira"
+						],
+						"jobTitle": "Developer"
+					},
+					{
+						"@type": "WebSite",
+						"@id": "https://find.hsinghhira.me/#website",
+						"url": "https://find.hsinghhira.me/",
+						"name": "Harman Singh Hira | Social Links",
+						"description": "Personal Linktree for Harman Singh Hira",
+						"publisher": {
+							"@id": "https://find.hsinghhira.me/#person"
+						}
+					}
+				]
+			}
+		</script>
 
 		<!-- Google tag (gtag.js) -->
 		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-D588K4KJ64"></script>
@@ -30,75 +90,6 @@ import 'remixicon/fonts/remixicon.css';
 
 			gtag('config', 'G-D588K4KJ64');
 		</script>
-		<title>{title}</title>
-		<style is:global>
-			/* ==========================================================================
-			CSS CUSTOM PROPERTIES (GLOBAL VARIABLES)
-			========================================================================== */
-			:root {
-				--bg-color: #222226;
-				--text-color: #E6E6E6;
-				--input-bg: #333337;
-				--valid-color: #44ff44;
-				--invalid-color: #ff4444;
-				--focus-color: #66aaff;
-				--hover-bg: #CCCCCC;
-				--disabled-bg: #666;
-				--disabled-text: #999;
-				--link-highlight: #0fa0ce;
-				--warning-color: #ffaa44;
-				--border-color: #E6E6E6;
-				--hr-color: #e1e1e1;
-				--required-color: #ff6666;
-			}
-
-			/* ==========================================================================
-			FONT DEFINITIONS
-			========================================================================== */
-			@font-face {
-				font-family: Iosevka;
-				font-style: normal;
-				font-display: block;
-				src: url(https://cdn.jsdelivr.net/fontsource/fonts/iosevka@latest/latin-400-normal.woff2) format('woff2'),
-					url(https://cdn.jsdelivr.net/fontsource/fonts/iosevka@latest/latin-400-normal.woff) format('woff'),
-					url(https://cdn.jsdelivr.net/fontsource/fonts/iosevka@latest/latin-400-normal.ttf) format('truetype');
-			}
-
-			* {
-				margin: 0;
-				padding: 0;
-				box-sizing: border-box;
-			}
-
-			html {
-				font-family: Iosevka, monospace;
-				background: var(--bg-color);
-				color: var(--text-color);
-			}
-
-			body {
-				min-height: 100vh;
-				overflow-x: hidden;
-			}
-
-			/* Scrollbar Styling */
-			::-webkit-scrollbar {
-				width: 8px;
-			}
-
-			::-webkit-scrollbar-track {
-				background: var(--bg-color);
-			}
-
-			::-webkit-scrollbar-thumb {
-				background: var(--input-bg);
-				border-radius: 4px;
-			}
-
-			::-webkit-scrollbar-thumb:hover {
-				background: var(--border-color);
-			}
-		</style>
 	</head>
 	<body>
 		<slot />

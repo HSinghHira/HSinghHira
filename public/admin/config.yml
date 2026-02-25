@@ -4,7 +4,6 @@ backend:
   branch: findme
 
 media_folder: public/images
-public_folder: /images
 
 collections:
 - name: links

@@ -1,6 +1,6 @@
 ---
 title: GitHub
-link: https://github.com
+link: https://github.com/HSinghHira
 icon: ri-github-line
 textColor: "#E6E6E6"
 bgColor: "#24292e"

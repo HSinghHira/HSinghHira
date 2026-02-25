@@ -1,1 +1,100 @@
-<!DOCTYPE html><html><head><meta charset="utf-8" /><meta name="robots" content="noindex" /><title>Dashboard</title><style>.sui.button.primary.medium[data-label="Sign In with GitHub"]{ display: none !important;} .token-login-wrapper{ position: relative;} .fake-username-field{ margin-bottom: 12px;} .fake-username-field .sui.text-input{ width: 100%;} .fake-username-field input{ width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; font-family: inherit;} .fake-username-field input:focus{ outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);} @media (prefers-color-scheme: dark){ .fake-username-field input{ background: #1f2937; border-color: #374151; color: #f9fafb;} .fake-username-field input:focus{ border-color: #60a5fa; box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);}} .inline-login-form{ display: flex; flex-direction: column; gap: 12px; max-width: 400px; margin: 20px auto 0;} .inline-login-form input{ width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; font-family: inherit;} .inline-login-form input:focus{ outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);} @media (prefers-color-scheme: dark){ .inline-login-form input{ background: #1f2937; border-color: #374151; color: #f9fafb;} .inline-login-form input:focus{ border-color: #60a5fa; box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);}} button[data-label="Sign In with GitHub Using Token"]{ display: none !important;} </style></head><body><script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script><script>window.addEventListener('load', function (){ let inlineUsername=''; let inlinePassword=''; function customizeBranding(){ const logo=document.querySelector('img.logo'); if (logo){ logo.src='https://me.hsinghhira.me/favicon/favicon.svg';} const heading=document.querySelector('h1.svelte-7ua6x9'); if (heading && heading.textContent.trim()==='Sveltia CMS'){ heading.textContent='Harman Singh Hira';} let favicon=document.querySelector('link[rel="icon"]'); if (!favicon){ favicon=document.createElement('link'); favicon.rel='icon'; document.head.appendChild(favicon);} favicon.href='https://me.hsinghhira.me/favicon/favicon.svg'; favicon.type='image/svg+xml';} function addInlineLoginForm(){ const buttonsContainer=document.querySelector('.buttons.svelte-1ff54ya'); if (buttonsContainer && !document.querySelector('.inline-login-form')){ const loginForm=document.createElement('div'); loginForm.className='inline-login-form'; loginForm.innerHTML=` <input id="inline-username" type="text" placeholder="Username" autocomplete="username" /><input id="inline-password" type="password" placeholder="Password" autocomplete="current-password" />`; buttonsContainer.parentNode.insertBefore(loginForm, buttonsContainer); const usernameInput=loginForm.querySelector('#inline-username'); const passwordInput=loginForm.querySelector('#inline-password'); usernameInput.addEventListener('input', function (e){ inlineUsername=e.target.value;}); passwordInput.addEventListener('input', function (e){ inlinePassword=e.target.value;}); passwordInput.addEventListener('keypress', function (e){ if (e.key==='Enter' && inlineUsername && inlinePassword){ const tokenButton=document.querySelector('button[data-label="Sign In with GitHub Using Token"]'); if (tokenButton){ tokenButton.click();}}}); const tokenButton=document.querySelector('button[data-label="Sign In with GitHub Using Token"]'); if (tokenButton){ tokenButton.addEventListener('click', function (){ setTimeout(function (){ populateAndSubmitDialog();}, 100);});}}} function populateAndSubmitDialog(){ const tokenDialog=document.querySelector('[id$="-body"]'); if (tokenDialog && inlinePassword){ const tokenInput=tokenDialog.querySelector('input[aria-label="Personal Access Token"]'); if (tokenInput){ tokenInput.value=inlinePassword; const inputEvent=new Event('input',{ bubbles: true}); tokenInput.dispatchEvent(inputEvent); setTimeout(function (){ const signInButton=document.querySelector('button[data-label="Sign In"]:not([disabled])'); if (signInButton){ signInButton.click();}}, 100);}}} setTimeout(function (){ customizeBranding(); addInlineLoginForm();}, 100); const observer=new MutationObserver(function (mutations){ mutations.forEach(function (mutation){ if (mutation.addedNodes.length){ customizeBranding(); addInlineLoginForm();}});}); observer.observe(document.body,{ childList: true, subtree: true});}); </script></body></html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>Dashboard</title>
+    <style>
+        .sui.button.primary.medium[data-label="Sign In with GitHub"] {
+            display: none !important;
+        }
+
+        .token-login-wrapper {
+            position: relative;
+        }
+
+        .fake-username-field {
+            margin-bottom: 12px;
+        }
+
+        .fake-username-field .sui.text-input {
+            width: 100%;
+        }
+
+        .fake-username-field input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .fake-username-field input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .fake-username-field input {
+                background: #1f2937;
+                border-color: #374151;
+                color: #f9fafb;
+            }
+
+            .fake-username-field input:focus {
+                border-color: #60a5fa;
+                box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+            }
+        }
+
+        .inline-login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 400px;
+            margin: 20px auto 0;
+        }
+
+        .inline-login-form input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .inline-login-form input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .inline-login-form input {
+                background: #1f2937;
+                border-color: #374151;
+                color: #f9fafb;
+            }
+
+            .inline-login-form input:focus {
+                border-color: #60a5fa;
+                box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+            }
+        }
+
+        button[data-label="Sign In with GitHub Using Token"] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+    <script>window.addEventListener('load', function () { let inlineUsername = ''; let inlinePassword = ''; function customizeBranding() { const logo = document.querySelector('img.logo'); if (logo) { logo.src = 'https://me.hsinghhira.me/favicon/favicon.svg'; } const heading = document.querySelector('h1.svelte-7ua6x9'); if (heading && heading.textContent.trim() === 'Sveltia CMS') { heading.textContent = 'Harman Singh Hira'; } let favicon = document.querySelector('link[rel="icon"]'); if (!favicon) { favicon = document.createElement('link'); favicon.rel = 'icon'; document.head.appendChild(favicon); } favicon.href = 'https://me.hsinghhira.me/favicon/favicon.svg'; favicon.type = 'image/svg+xml'; } function addInlineLoginForm() { const buttonsContainer = document.querySelector('.buttons.svelte-1ff54ya'); if (buttonsContainer && !document.querySelector('.inline-login-form')) { const loginForm = document.createElement('div'); loginForm.className = 'inline-login-form'; loginForm.innerHTML = ` <input id="inline-username" type="text" placeholder="Username" autocomplete="username" /><input id="inline-password" type="password" placeholder="Password" autocomplete="current-password" />`; buttonsContainer.parentNode.insertBefore(loginForm, buttonsContainer); const usernameInput = loginForm.querySelector('#inline-username'); const passwordInput = loginForm.querySelector('#inline-password'); usernameInput.addEventListener('input', function (e) { inlineUsername = e.target.value; }); passwordInput.addEventListener('input', function (e) { inlinePassword = e.target.value; }); passwordInput.addEventListener('keypress', function (e) { if (e.key === 'Enter' && inlineUsername && inlinePassword) { const tokenButton = document.querySelector('button[data-label="Sign In with GitHub Using Token"]'); if (tokenButton) { tokenButton.click(); } } }); const tokenButton = document.querySelector('button[data-label="Sign In with GitHub Using Token"]'); if (tokenButton) { tokenButton.addEventListener('click', function () { setTimeout(function () { populateAndSubmitDialog(); }, 100); }); } } } function populateAndSubmitDialog() { const tokenDialog = document.querySelector('[id$="-body"]'); if (tokenDialog && inlinePassword) { const tokenInput = tokenDialog.querySelector('input[aria-label="Personal Access Token"]'); if (tokenInput) { tokenInput.value = inlinePassword; const inputEvent = new Event('input', { bubbles: true }); tokenInput.dispatchEvent(inputEvent); setTimeout(function () { const signInButton = document.querySelector('button[data-label="Sign In"]:not([disabled])'); if (signInButton) { signInButton.click(); } }, 100); } } } setTimeout(function () { customizeBranding(); addInlineLoginForm(); }, 100); const observer = new MutationObserver(function (mutations) { mutations.forEach(function (mutation) { if (mutation.addedNodes.length) { customizeBranding(); addInlineLoginForm(); } }); }); observer.observe(document.body, { childList: true, subtree: true }); }); </script>
+</body>
+
+</html>
