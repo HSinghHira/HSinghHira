@@ -19,9 +19,6 @@ const profile = {
   <main class="linktree-container">
     <!-- Animated Background Elements -->
     <div class="background-effects">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-      <div class="orb orb-3"></div>
       <div class="grid-pattern"></div>
       <div class="mouse-glow" id="mouseGlow"></div>
     </div>
@@ -63,6 +60,8 @@ const profile = {
             rel="noopener noreferrer"
             class="link-card"
             style={`animation-delay: ${index * 0.05}s`}
+            data-title={link.data.title}
+            data-url={link.data.link}
           >
             <div class="link-glow"></div>
             <div class="link-content">
@@ -446,5 +445,50 @@ const profile = {
       requestAnimationFrame(animateGlow);
     }
     animateGlow();
+  }
+
+  // Analytics Event Tracking
+  declare var gtag: Function;
+
+  // Track Link Card Clicks
+  const linkCards = document.querySelectorAll('.link-card');
+  linkCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const title = card.getAttribute('data-title');
+      const url = card.getAttribute('data-url');
+      if (typeof gtag === 'function') {
+        gtag('event', 'select_content', {
+          content_type: 'link_card',
+          item_id: title,
+          link_url: url
+        });
+      }
+    });
+  });
+
+  // Track Button Clicks
+  const shareBtn = document.getElementById('shareBtn');
+  const copyBtn = document.getElementById('copyBtn');
+
+  if (shareBtn) {
+    shareBtn.addEventListener('click', () => {
+      if (typeof gtag === 'function') {
+        gtag('event', 'share', {
+          method: 'personal_blog_click',
+          content_type: 'button'
+        });
+      }
+    });
+  }
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      if (typeof gtag === 'function') {
+        gtag('event', 'select_content', {
+          content_type: 'button',
+          item_id: 'tech_blog_click'
+        });
+      }
+    });
   }
 </script>
