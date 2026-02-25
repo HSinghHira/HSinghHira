@@ -16,7 +16,7 @@ const siteName = "Social Links";
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<title>{title} | {siteName}</title>
+		<title>{title} • {siteName}</title>
 		
 		<!-- SEO Meta Tags -->
 		<meta name="description" content={description} />
@@ -27,7 +27,7 @@ const siteName = "Social Links";
 		<meta property="og:type" content="profile" />
 		<meta property="og:url" content={Astro.url} />
 		<meta property="og:site_name" content={siteName} />
-		<meta property="og:title" content={`${title} | ${siteName}`} />
+		<meta property="og:title" content={`${title} • ${siteName}`} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={new URL('/og.webp', Astro.url)} />
 		<meta property="og:image:alt" content="Harman Singh Hira Social Links" />
@@ -35,7 +35,7 @@ const siteName = "Social Links";
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={Astro.url} />
-		<meta property="twitter:title" content={`${title} | ${siteName}`} />
+		<meta property="twitter:title" content={`${title} • ${siteName}`} />
 		<meta property="twitter:description" content={description} />
 		<meta property="twitter:image" content={new URL('/og.webp', Astro.url)} />
 
@@ -71,7 +71,7 @@ const siteName = "Social Links";
 						"@type": "WebSite",
 						"@id": "https://find.hsinghhira.me/#website",
 						"url": "https://find.hsinghhira.me/",
-						"name": "Harman Singh Hira | Social Links",
+						"name": "Harman Singh Hira • Social Links",
 						"description": "Personal Linktree for Harman Singh Hira",
 						"publisher": {
 							"@id": "https://find.hsinghhira.me/#person"
