@@ -1,0 +1,5 @@
+.astro
+dist
+bun.lock
+node_modules
+.history

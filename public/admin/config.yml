@@ -1,0 +1,49 @@
+backend:
+  name: github
+  repo: HSinghHira/HSinghHira
+  branch: findme
+
+media_folder: public/images
+public_folder: /images
+
+collections:
+- name: links
+  label: Links
+  label_singular: Link
+  folder: src/content/links
+  create: true
+  slug: '{{slug}}'
+  format: frontmatter
+  fields:
+  - label: Title
+    name: title
+    widget: string
+
+  - label: Link
+    name: link
+    widget: string
+    hint: Full URL including https://
+
+  - label: Icon
+    name: icon
+    widget: string
+    hint: Remix Icon class name (e.g. ri-tiktok-fill). Get it at https://remixicon.com/
+
+  - label: Text Color
+    name: textColor
+    widget: string
+    default: '#E6E6E6'
+    hint: CSS hex color for the text (e.g. #E6E6E6)
+
+  - label: Background Color
+    name: bgColor
+    widget: string
+    default: '#333337'
+    hint: CSS hex color for the background (e.g. #333337)
+
+  - label: Order
+    name: order
+    widget: number
+    default: 0
+    value_type: int
+    hint: Display order (lower numbers appear first)
