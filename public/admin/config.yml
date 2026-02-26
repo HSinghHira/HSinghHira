@@ -30,15 +30,15 @@ collections:
 
   - label: Text Color
     name: textColor
-    widget: string
+    widget: color
     default: '#E6E6E6'
-    hint: CSS hex color for the text (e.g. #E6E6E6)
+    allowInput: true
 
   - label: Background Color
     name: bgColor
     widget: string
     default: '#333337'
-    hint: CSS hex color for the background (e.g. #333337)
+    hint: Get it at https://cssgenerator.pl/en/gradient-generator/, https://cssgradient.io/, https://mycolor.space/gradient,
 
   - label: Order
     name: order
@@ -46,3 +46,4 @@ collections:
     default: 0
     value_type: int
     hint: Display order (lower numbers appear first)
+    required: false
