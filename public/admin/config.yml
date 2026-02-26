@@ -26,7 +26,7 @@ collections:
   - label: Icon
     name: icon
     widget: string
-    hint: Remix Icon class name (e.g. ri-tiktok-fill). Get it at https://remixicon.com/
+    hint: Icon SVG code. Get it at https://composables.com/icons
 
   - label: Text Color
     name: textColor
