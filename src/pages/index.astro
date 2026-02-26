@@ -1,17 +1,17 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
-import '../styles/root.css';
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import "../styles/root.css";
 // Get all links and sort by order
-const links = await getCollection('links');
+const links = await getCollection("links");
 const sortedLinks = links.sort((a, b) => a.data.order - b.data.order);
 
 // Profile configuration
 const profile = {
   name: "Harman Singh Hira",
-  bio: "Creator • Developer • Dreamer",
-  location: "Based in Aotearoa (New Zealand)",
-  avatar: "https://avatars.githubusercontent.com/u/11346694"
+  bio: "Developer • Dreamer • Dad",
+  location: "📍 Aotearoa (New Zealand)",
+  avatar: "https://avatars.githubusercontent.com/u/11346694",
 };
 ---
 
@@ -31,7 +31,14 @@ const profile = {
           <div class="avatar-glow"></div>
           <img src={profile.avatar} alt="Profile" class="avatar" />
           <div class="status-badge">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 18.26l-7.053 3.948 1.575-7.928-5.887-5.529 8.014-1.02L12 1.27l3.351 6.469 8.014 1.02-5.887 5.529 1.575 7.928L12 18.26z"/></svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              ><path
+                d="M12 18.26l-7.053 3.948 1.575-7.928-5.887-5.529 8.014-1.02L12 1.27l3.351 6.469 8.014 1.02-5.887 5.529 1.575 7.928L12 18.26z"
+              ></path></svg
+            >
           </div>
         </div>
         <h1 class="profile-name">{profile.name}</h1>
@@ -41,84 +48,86 @@ const profile = {
 
       <!-- Action Buttons -->
       <div class="action-buttons">
-        <a href="https://me.hsinghhira.me/" target="_blank" rel="noopener noreferrer" class="btn-outline btn" data-title="Personal Blog" data-url="https://me.hsinghhira.me/">
-          <!--
-MIT License
-
-Copyright (c) 2020-2025 Paweł Kuna
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
--->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+        <a
+          href="https://me.hsinghhira.me/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-outline btn"
+          data-title="Personal Blog"
+          data-url="https://me.hsinghhira.me/"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M9 15l6 -6"></path><path
+              d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464"></path><path
+              d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463"
+            ></path></svg
+          >
           Personal Blog
         </a>
-        <a href="https://ultimatetech.org/" target="_blank" rel="noopener noreferrer" class="btn-outline btn" data-title="My Tech Blog" data-url="https://ultimatetech.org/">
-          <!--
-The MIT License (MIT)
-
-Copyright (c) 2013-2023 Cole Bemis
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
--->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <a
+          href="https://ultimatetech.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-outline btn"
+          data-title="My Tech Blog"
+          data-url="https://ultimatetech.org/"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path
+              d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"
+            ></path><line x1="8" y1="12" x2="16" y2="12"></line></svg
+          >
           <span class="btn-text">My Tech Blog</span>
         </a>
       </div>
 
       <!-- Links Section -->
       <div class="links-container">
-        {sortedLinks.map((link, index) => (
-          <a 
-            href={link.data.link} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="link-card"
-            style={`animation-delay: ${index * 0.05}s`}
-            data-title={link.data.title}
-            data-url={link.data.link}
-          >
-            <div class="link-glow"></div>
-            <div class="link-content">
-              <div class="link-icon" style={`background: ${link.data.bgColor}`} set:html={link.data.icon} />
-              <span class="link-title">{link.data.title}</span>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="link-arrow"><path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z"/></svg>
-            </div>
-          </a>
-        ))}
+        {
+          sortedLinks.map((link, index) => (
+            <a
+              href={link.data.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="link-card"
+              style={`animation-delay: ${index * 0.05}s`}
+              data-title={link.data.title}
+              data-url={link.data.link}
+            >
+              <div class="link-glow" />
+              <div class="link-content">
+                <div
+                  class="link-icon"
+                  style={`background: ${link.data.bgColor}`}
+                  set:html={link.data.icon}
+                />
+                <span class="link-title">{link.data.title}</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="link-arrow"
+                >
+                  <path d="M13.172 12l-4.95-4.95 1.414-1.414L16 12l-6.364 6.364-1.414-1.414z" />
+                </svg>
+              </div>
+            </a>
+          ))
+        }
       </div>
     </div>
   </main>
@@ -126,26 +135,28 @@ SOFTWARE.
 
 <script>
   // Mouse follow glow effect
-  const mouseGlow = document.getElementById('mouseGlow') as HTMLElement | null;
-  let mouseX = 0, mouseY = 0;
-  let glowX = 0, glowY = 0;
+  const mouseGlow = document.getElementById("mouseGlow") as HTMLElement | null;
+  let mouseX = 0,
+    mouseY = 0;
+  let glowX = 0,
+    glowY = 0;
 
   if (mouseGlow) {
-    document.addEventListener('mousemove', (e) => {
+    document.addEventListener("mousemove", (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      mouseGlow.style.opacity = '1';
+      mouseGlow.style.opacity = "1";
     });
 
-    document.addEventListener('mouseleave', () => {
-      mouseGlow.style.opacity = '0';
+    document.addEventListener("mouseleave", () => {
+      mouseGlow.style.opacity = "0";
     });
 
     function animateGlow() {
       glowX += (mouseX - glowX) * 0.1;
       glowY += (mouseY - glowY) * 0.1;
-      mouseGlow!.style.left = glowX + 'px';
-      mouseGlow!.style.top = glowY + 'px';
+      mouseGlow!.style.left = glowX + "px";
+      mouseGlow!.style.top = glowY + "px";
       requestAnimationFrame(animateGlow);
     }
     animateGlow();
@@ -155,42 +166,42 @@ SOFTWARE.
   declare var gtag: Function;
 
   // Track Link Card Clicks
-  const linkCards = document.querySelectorAll('.link-card');
-  linkCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const title = card.getAttribute('data-title');
-      const url = card.getAttribute('data-url');
-      if (typeof gtag === 'function') {
-        gtag('event', 'select_content', {
-          content_type: 'link_card',
+  const linkCards = document.querySelectorAll(".link-card");
+  linkCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const title = card.getAttribute("data-title");
+      const url = card.getAttribute("data-url");
+      if (typeof gtag === "function") {
+        gtag("event", "select_content", {
+          content_type: "link_card",
           item_id: title,
-          link_url: url
+          link_url: url,
         });
       }
     });
   });
 
   // Track Button Clicks
-  const shareBtn = document.getElementById('shareBtn');
-  const copyBtn = document.getElementById('copyBtn');
+  const shareBtn = document.getElementById("shareBtn");
+  const copyBtn = document.getElementById("copyBtn");
 
   if (shareBtn) {
-    shareBtn.addEventListener('click', () => {
-      if (typeof gtag === 'function') {
-        gtag('event', 'share', {
-          method: 'personal_blog_click',
-          content_type: 'button'
+    shareBtn.addEventListener("click", () => {
+      if (typeof gtag === "function") {
+        gtag("event", "share", {
+          method: "personal_blog_click",
+          content_type: "button",
         });
       }
     });
   }
 
   if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
-      if (typeof gtag === 'function') {
-        gtag('event', 'select_content', {
-          content_type: 'button',
-          item_id: 'tech_blog_click'
+    copyBtn.addEventListener("click", () => {
+      if (typeof gtag === "function") {
+        gtag("event", "select_content", {
+          content_type: "button",
+          item_id: "tech_blog_click",
         });
       }
     });
