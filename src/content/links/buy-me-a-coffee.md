@@ -2,7 +2,7 @@
 title: Buy me a Coffee
 link: https://buymeacoffee.com/HSinghHira
 icon: |-
-  <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.0">
+  <svg width="230" height="330" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.0">
 
 
 
