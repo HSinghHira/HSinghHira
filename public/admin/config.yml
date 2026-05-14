@@ -1,0 +1,138 @@
+backend:
+  name: github
+  repo: HSinghHira/HSinghHira
+  branch: astro-site
+
+# Media files
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+# Collections
+collections:
+  # Blog Posts Collection
+  - name: blog
+    label: Blog Posts
+    label_singular: Blog Post
+    folder: src/content/blog
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: frontmatter
+    fields:
+      - {label: Title, name: title, widget: string, required: true}
+      - {label: Body, name: body, widget: markdown, required: true}
+      - {label: Description, name: description, widget: text, required: true}
+      - {label: Author, name: author, widget: string, required: false}
+      - {label: Category, name: category, widget: string, required: false}
+      - {label: Read Time, name: readTime, widget: string, required: false}
+      - label: Tags
+        name: tags
+        widget: list
+        required: false
+        default: []
+      - {label: Draft, name: draft, widget: boolean, default: false, required: false}
+      - {label: Featured, name: featured, widget: boolean, default: false, required: false}
+      - {label: Published Date, name: pubDatetime, widget: datetime, required: true}
+      - {label: Modified Date, name: modDatetime, widget: datetime, required: false}
+      - {label: OG Image URL, name: ogImage, widget: string, required: false}
+      - {label: Canonical URL, name: canonicalURL, widget: string, required: false}
+      - {label: Hide Edit Post, name: hideEditPost, widget: boolean, default: false, required: false}
+      - {label: Timezone, name: timezone, widget: string, required: false}
+    sortable_fields: [title, pubDatetime]
+    view_filters:
+      - label: Drafts
+        field: draft
+        pattern: true
+
+  # Portfolio Collection
+  - name: portfolio
+    label: Portfolio
+    label_singular: Portfolio Item
+    folder: src/content/portfolio
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: frontmatter
+    fields:
+      - {label: Title, name: title, widget: string, required: false}
+      - {label: Name, name: name, widget: string, required: false, hint: Alternative to Title}
+      - {label: Description, name: description, widget: text, required: false}
+      - {label: Desc, name: desc, widget: text, required: false, hint: Alternative to Description}
+      - {label: Body, name: body, widget: markdown, required: true}
+      - {label: Category, name: category, widget: select, options: ["web", "tool", "blog"], required: false}
+      - {label: Icon, name: icon, widget: string, required: false}
+      - label: Tags
+        name: tags
+        widget: list
+        required: false
+        default: []
+      - {label: Image URL, name: image, widget: string, required: false, hint: Full URL to project image}
+      - {label: Image Alt Text, name: imageAlt, widget: string, required: false}
+      - {label: OG Image URL, name: ogImage, widget: string, required: false}
+      - {label: GitHub URL, name: github, widget: string, required: false}
+      - {label: Demo URL, name: demo, widget: string, required: false}
+      - label: Technologies
+        name: technologies
+        widget: list
+        required: false
+        default: []
+      - label: Links
+        name: links
+        widget: list
+        required: false
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: URL, name: url, widget: string}
+          - {label: Icon, name: icon, widget: string, hint: 'Icon name (e.g., external, github)'}
+      - {label: Order, name: order, widget: number, required: false}
+      - {label: Is Software, name: isSoftware, widget: boolean, default: false, required: false}
+      - {label: Published Date, name: pubDatetime, widget: datetime, required: false}
+      - {label: Modified Date, name: modDatetime, widget: datetime, required: false}
+      - {label: Timezone, name: timezone, widget: string, required: false}
+      - {label: Featured, name: featured, widget: boolean, default: false, required: false}
+      - {label: Draft, name: draft, widget: boolean, default: false, required: false}
+    sortable_fields: [title, pubDatetime]
+    view_filters:
+      - label: Drafts
+        field: draft
+        pattern: true
+
+  # Stories Collection
+  - name: stories
+    label: Life Stories
+    label_singular: Story
+    folder: src/content/stories
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: frontmatter
+    fields:
+      - {label: Title, name: title, widget: string, required: true}
+      - {label: Excerpt, name: excerpt, widget: text, required: true}
+      - {label: Body, name: body, widget: markdown, required: true}
+      - {label: Category, name: category, widget: select, options: ["nz", "family", "immigrant"], required: true}
+      - {label: Read Time, name: readTime, widget: string, required: false}
+      - {label: Legacy Date, name: date, widget: datetime, required: false}
+      - {label: Published Date, name: pubDatetime, widget: datetime, required: false}
+      - {label: Modified Date, name: modDatetime, widget: datetime, required: false}
+      - {label: Featured, name: featured, widget: boolean, default: false, required: false}
+    sortable_fields: [title, date, pubDatetime]
+
+  # Pages Collection
+  - name: pages
+    label: Pages
+    files:
+      - label: Home Page
+        name: index
+        file: src/content/pages/index.md
+        fields:
+          - {label: Title, name: title, widget: string, required: true}
+          - {label: Description, name: description, widget: string, required: false}
+          - {label: Content, name: body, widget: markdown, required: true}
+      - label: Contact Page
+        name: contact
+        file: src/content/pages/contact.mdx
+        fields:
+          - {label: Title, name: title, widget: string, required: true}
+          - {label: Description, name: description, widget: string, required: false}
+          - {label: Content, name: body, widget: markdown, required: true}

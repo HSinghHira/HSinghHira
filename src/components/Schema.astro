@@ -1,0 +1,247 @@
+---
+import { SITE } from "@/config";
+
+export interface Props {
+  type: "home" | "post" | "posts" | "portfolio" | "work" | "search" | "contact";
+  title?: string;
+  description?: string;
+  image?: string;
+  publishedTime?: Date;
+  modifiedTime?: Date | null;
+  category?: string;
+  tags?: string[];
+  canonicalUrl?: string;
+  isSoftware?: boolean;
+}
+
+const {
+  type,
+  title,
+  description,
+  image,
+  publishedTime,
+  modifiedTime,
+  category,
+  tags,
+  canonicalUrl = Astro.url.href,
+  isSoftware = false,
+} = Astro.props;
+
+// Canonical IDs
+const personId = `${SITE.website}/#person`;
+const websiteId = `${SITE.website}/#website`;
+
+let graph: Record<string, unknown>[] = [];
+
+/**
+ * GLOBAL ENTITIES
+ */
+const personEntity = {
+  "@type": "Person",
+  "@id": personId,
+  name: SITE.author,
+  url: `${SITE.website}/`,
+  image: `${SITE.website}/profile.jpg`,
+  jobTitle: "Technical Blogger and Developer",
+  description:
+    "Harman Singh Hira is a developer and technical blogger focused on Windows, PowerShell, privacy, open-source tools, and ethical technology.",
+  knowsAbout: [
+    "Windows 11",
+    "PowerShell",
+    "Privacy",
+    "Open Source Software",
+    "Cybersecurity",
+    "Web Development",
+    "JavaScript",
+    "Astro JS",
+  ],
+  sameAs: [
+    "https://git.hsinghhira.me/",
+    "https://www.linkedin.com/in/hsinghhira/",
+    "https://instagram.com/hsinghhira/",
+    "https://x.com/hsinghhira/",
+    "https://codepen.io/hsinghhira/",
+    "https://facebook.com/hsinghhira/",
+  ],
+};
+
+const websiteEntity = {
+  "@type": "WebSite",
+  "@id": websiteId,
+  url: `${SITE.website}/`,
+  name: SITE.author,
+  alternateName: "Hira",
+  description:
+    "Personal website of Harman Singh Hira featuring technical tutorials, PowerShell scripts, Windows privacy guides, and open-source projects.",
+  publisher: { "@id": personId },
+  inLanguage: "en",
+};
+
+/**
+ * BREADCRUMB HELPER
+ */
+function getBreadcrumbList(items: { name: string; item: string }[]) {
+  return {
+    "@type": "BreadcrumbList",
+    "@id": `${canonicalUrl}#breadcrumb`,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.item,
+    })),
+  };
+}
+
+/**
+ * SCHEMA LOGIC BY TYPE
+ */
+
+const cleanTitle = title?.replace(" | Harman Singh Hira", "");
+
+if (type === "home") {
+  graph.push(personEntity, websiteEntity);
+} else if (type === "post") {
+  graph.push(
+    {
+      "@type": "BlogPosting",
+      "@id": `${canonicalUrl}#article`,
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": canonicalUrl,
+      },
+      headline: cleanTitle,
+      description: description,
+      image: image,
+      datePublished: publishedTime?.toISOString(),
+      dateModified: modifiedTime?.toISOString() || publishedTime?.toISOString(),
+      author: { "@id": personId },
+      publisher: { "@id": personId },
+      articleSection: category,
+      keywords: tags,
+      inLanguage: "en",
+      isPartOf: { "@id": websiteId },
+    },
+    getBreadcrumbList([
+      { name: "Home", item: `${SITE.website}/` },
+      { name: "Posts", item: `${SITE.website}/posts/` },
+      { name: cleanTitle || "Post", item: canonicalUrl },
+    ])
+  );
+} else if (type === "posts") {
+  graph.push(
+    {
+      "@type": "CollectionPage",
+      "@id": `${canonicalUrl}#page`,
+      url: canonicalUrl,
+      name: "Posts",
+      description:
+        "All technical blog posts by Harman Singh Hira covering PowerShell, Windows, privacy, and open-source tools.",
+      isPartOf: { "@id": websiteId },
+    },
+    getBreadcrumbList([
+      { name: "Home", item: `${SITE.website}/` },
+      { name: "Posts", item: canonicalUrl },
+    ])
+  );
+} else if (type === "portfolio") {
+  graph.push(
+    {
+      "@type": "CollectionPage",
+      "@id": `${canonicalUrl}#page`,
+      url: canonicalUrl,
+      name: "Portfolio",
+      description: "A collection of projects and work by Harman Singh Hira.",
+      isPartOf: { "@id": websiteId },
+    },
+    getBreadcrumbList([
+      { name: "Home", item: `${SITE.website}/` },
+      { name: "Portfolio", item: canonicalUrl },
+    ])
+  );
+} else if (type === "work") {
+  graph.push(
+    {
+      "@type": isSoftware ? "SoftwareApplication" : "CreativeWork",
+      "@id": `${canonicalUrl}#work`,
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": canonicalUrl,
+      },
+      name: cleanTitle,
+      description: description,
+      image: image,
+      datePublished: publishedTime?.toISOString(),
+      dateModified: modifiedTime?.toISOString() || publishedTime?.toISOString(),
+      author: { "@id": personId },
+      publisher: { "@id": personId },
+      inLanguage: "en",
+      isPartOf: { "@id": websiteId },
+      ...(isSoftware ? { applicationCategory: "DeveloperApplication" } : {}),
+    },
+    getBreadcrumbList([
+      { name: "Home", item: `${SITE.website}/` },
+      { name: "Portfolio", item: `${SITE.website}/portfolio/` },
+      { name: cleanTitle || "Work", item: canonicalUrl },
+    ])
+  );
+} else if (type === "search") {
+  graph.push(
+    {
+      "@type": "SearchResultsPage",
+      "@id": `${canonicalUrl}#page`,
+      url: canonicalUrl,
+      name: "Search",
+      description:
+        "Search posts and projects on Harman Singh Hira's personal website.",
+      isPartOf: { "@id": websiteId },
+    },
+    getBreadcrumbList([
+      { name: "Home", item: `${SITE.website}/` },
+      { name: "Search", item: canonicalUrl },
+    ])
+  );
+} else if (type === "contact") {
+  graph.push(
+    {
+      "@type": "ContactPage",
+      "@id": `${canonicalUrl}#page`,
+      url: canonicalUrl,
+      name: "Contact",
+      description: "Get in touch with Harman Singh Hira.",
+      isPartOf: { "@id": websiteId },
+    },
+    getBreadcrumbList([
+      { name: "Home", item: `${SITE.website}/` },
+      { name: "Contact", item: canonicalUrl },
+    ])
+  );
+}
+
+// Helper to clean up the objects
+function clean(obj: unknown): unknown {
+  if (Array.isArray(obj)) {
+    return obj.map(clean).filter(v => v != null);
+  } else if (obj !== null && typeof obj === "object") {
+    const newObj = Object.fromEntries(
+      Object.entries(obj)
+        .map(([k, v]) => [k, clean(v)])
+        .filter(
+          ([, v]) =>
+            v != null && v !== "" && (Array.isArray(v) ? v.length > 0 : true)
+        )
+    );
+    return Object.keys(newObj).length > 0 ? newObj : null;
+  }
+  return obj;
+}
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": clean(graph),
+};
+
+const jsonLd = JSON.stringify(schema);
+---
+
+<script type="application/ld+json" set:html={jsonLd} />

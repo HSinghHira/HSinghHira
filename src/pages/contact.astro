@@ -1,0 +1,28 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getEntry, render } from "astro:content";
+
+const contactPage = await getEntry("pages", "contact");
+let Content;
+if (contactPage) {
+  const rendered = await render(contactPage);
+  Content = rendered.Content;
+}
+---
+
+<Layout title="Contact | Harman Singh Hira" schemaType="contact">
+  <section style="padding-top:clamp(6rem,12vw,9rem); min-height:80vh;">
+    <div class="container" style="max-width:800px; margin:0 auto;">
+      <div class="section-header" style="margin-bottom:3rem;">
+        <div class="code-comment">// ping_me.js</div>
+        <div class="label">Contact</div>
+        <h2 class="section-title">Let's Chat</h2>
+        <p class="section-subtitle">Got an interesting idea, want to collaborate, or just want to say hi? Drop me a message below.</p>
+      </div>
+
+      <div class="article-body" style="max-width: 100%;">
+        {Content && <Content />}
+      </div>
+    </div>
+  </section>
+</Layout>

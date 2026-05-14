@@ -1,0 +1,368 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - astro-site
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  # Job 1: Fix markdown frontmatter dates
+  fix-dates:
+    name: Fix Markdown Dates
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history for Git dates
+      - name: Configure Git
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - name: Add missing dates to markdown files
+        run: |
+          node << 'EOF'
+          const fs = require('fs');
+          const path = require('path');
+          const { execSync } = require('child_process');
+
+          function processMarkdownFiles(dir) {
+            if (!fs.existsSync(dir)) {
+              console.log(`Directory does not exist: ${dir}`);
+              return;
+            }
+            
+            const files = fs.readdirSync(dir, { withFileTypes: true });
+            
+            for (const file of files) {
+              const fullPath = path.join(dir, file.name);
+              
+              if (file.isDirectory()) {
+                processMarkdownFiles(fullPath);
+              } else if (file.name.endsWith('.md')) {
+                processFile(fullPath);
+              }
+            }
+          }
+
+          function processFile(filePath) {
+            console.log(`\nProcessing: ${filePath}`);
+            let content = fs.readFileSync(filePath, 'utf8');
+            
+            // Check if file has frontmatter
+            if (!content.startsWith('---')) {
+              console.log(`  ⏭️  No frontmatter found, skipping`);
+              return;
+            }
+
+            const frontmatterEnd = content.indexOf('---', 3);
+            if (frontmatterEnd === -1) {
+              console.log(`  ⏭️  Malformed frontmatter, skipping`);
+              return;
+            }
+
+            const frontmatter = content.substring(3, frontmatterEnd);
+            const body = content.substring(frontmatterEnd + 3);
+
+            // Get Git creation date (first commit) in ISO 8601 format
+            let creationDate;
+            try {
+              const gitDate = execSync(
+                `git log --follow --format=%aI --reverse "${filePath}" | head -1`,
+                { encoding: 'utf8' }
+              ).trim();
+              creationDate = gitDate || new Date().toISOString();
+            } catch (e) {
+              creationDate = new Date().toISOString();
+            }
+
+            console.log(`  📅 Git creation date: ${creationDate}`);
+
+            // Parse frontmatter into lines and build a clean version
+            const lines = frontmatter.split('\n');
+            const cleanedLines = [];
+            let hasPublished = false;
+            let hasAuthor = false;
+            let needsFix = false;
+
+            for (const line of lines) {
+              const trimmedLine = line.trim();
+              
+              // Skip empty lines at the start
+              if (!trimmedLine && cleanedLines.length === 0) {
+                continue;
+              }
+
+              // Check if this is a 'pubDatetime' field
+              const pubMatch = trimmedLine.match(/^pubDatetime:\s*(.+)$/);
+              
+              // Check if this is an 'author' field
+              const authorMatch = trimmedLine.match(/^author:\s*(.+)$/);
+              
+              if (pubMatch) {
+                console.log(`  🔍 Found 'pubDatetime' field`);
+                
+                if (hasPublished) {
+                  // Skip duplicate pubDatetime field
+                  console.log(`  ❌ Removing duplicate 'pubDatetime' field`);
+                  needsFix = true;
+                  continue;
+                }
+                
+                const rawValue = pubMatch[1].trim();
+                const existingDate = rawValue.replace(/^['"]|['"]$/g, '');
+                
+                // Check if date format is correct
+                if (!existingDate.includes('T') || rawValue.startsWith("'") || rawValue.startsWith('"')) {
+                  console.log(`  🔧 Fixing pubDatetime date format: ${rawValue} -> ${creationDate}`);
+                  cleanedLines.push(`pubDatetime: ${creationDate}`);
+                  needsFix = true;
+                } else {
+                  console.log(`  ✅ Date format is correct`);
+                  cleanedLines.push(line);
+                }
+                
+                hasPublished = true;
+              } else if (authorMatch) {
+                console.log(`  👤 Found 'author' field`);
+                cleanedLines.push(line);
+                hasAuthor = true;
+              } else {
+                // Keep other fields as-is
+                cleanedLines.push(line);
+              }
+            }
+
+            // Add 'pubDatetime' if it doesn't exist
+            if (!hasPublished) {
+              console.log(`  ➕ Adding missing 'pubDatetime' field`);
+              cleanedLines.push(`pubDatetime: ${creationDate}`);
+              needsFix = true;
+            }
+
+            // Add 'author' if it doesn't exist
+            if (!hasAuthor) {
+              console.log(`  ➕ Adding missing 'author' field`);
+              cleanedLines.push(`author: Harman Singh Hira`);
+              needsFix = true;
+            }
+
+            if (needsFix) {
+              console.log(`  💾 Writing fixes to file...`);
+              // Rebuild frontmatter ensuring no extra blank lines at start
+              let newFrontmatter = cleanedLines.join('\n').trim();
+              const newContent = `---\n${newFrontmatter}\n---${body}`;
+              fs.writeFileSync(filePath, newContent, 'utf8');
+              console.log(`  ✅ File updated successfully`);
+            } else {
+              console.log(`  ✅ No changes needed`);
+            }
+          }
+
+          // Process content directory
+          const contentDirs = ['src/content/portfolio', 'src/content/blog', 'src/content/stories'];
+          console.log('🔍 Starting to scan for markdown files...\n');
+          for (const dir of contentDirs) {
+            console.log(`\n📁 Checking directory: ${dir}`);
+            if (fs.existsSync(dir)) {
+              processMarkdownFiles(dir);
+            }
+          }
+
+          console.log('\n✨ Date adding process complete!');
+          EOF
+
+      - name: Fix date formats (timezone to UTC)
+        run: |
+          node << 'EOF'
+          const fs = require('fs');
+          const path = require('path');
+
+          function processMarkdownFiles(dir) {
+            if (!fs.existsSync(dir)) {
+              console.log(`Directory does not exist: ${dir}`);
+              return;
+            }
+            
+            const files = fs.readdirSync(dir, { withFileTypes: true });
+            
+            for (const file of files) {
+              const fullPath = path.join(dir, file.name);
+              
+              if (file.isDirectory()) {
+                processMarkdownFiles(fullPath);
+              } else if (file.name.endsWith('.md')) {
+                processFile(fullPath);
+              }
+            }
+          }
+
+          function processFile(filePath) {
+            console.log(`\nProcessing: ${filePath}`);
+            let content = fs.readFileSync(filePath, 'utf8');
+            
+            // Check if file has frontmatter
+            if (!content.startsWith('---')) {
+              console.log(`  ⏭️  No frontmatter found, skipping`);
+              return;
+            }
+
+            const frontmatterEnd = content.indexOf('---', 3);
+            if (frontmatterEnd === -1) {
+              console.log(`  ⏭️  Malformed frontmatter, skipping`);
+              return;
+            }
+
+            const frontmatter = content.substring(3, frontmatterEnd);
+            const body = content.substring(frontmatterEnd + 3);
+
+            // Process frontmatter line by line
+            const lines = frontmatter.split('\n');
+            const cleanedLines = [];
+            let needsFix = false;
+
+            for (const line of lines) {
+              const trimmedLine = line.trim();
+              
+              // Skip empty lines at the start
+              if (!trimmedLine && cleanedLines.length === 0) {
+                continue;
+              }
+
+              // Check for pubDatetime, modDatetime, or published fields
+              const dateMatch = trimmedLine.match(/^(pubDatetime|modDatetime|published):\s*(.+)$/);
+              
+              if (dateMatch) {
+                const fieldName = dateMatch[1];
+                const rawValue = dateMatch[2].trim();
+                
+                // Remove quotes if present
+                const dateValue = rawValue.replace(/^['"]|['"]$/g, '');
+                
+                // Skip empty date values
+                if (!dateValue || dateValue === '') {
+                  console.log(`  🗑️  Removing empty ${fieldName} field`);
+                  needsFix = true;
+                  continue;
+                }
+                
+                // Check if date has timezone offset (e.g., +13:00, -05:00)
+                if (dateValue.match(/[+-]\d{2}:\d{2}$/)) {
+                  console.log(`  🔧 Converting ${fieldName} from timezone format to UTC`);
+                  console.log(`     Old: ${dateValue}`);
+                  
+                  try {
+                    // Parse the date and convert to UTC
+                    const date = new Date(dateValue);
+                    const utcDate = date.toISOString();
+                    
+                    console.log(`     New: ${utcDate}`);
+                    cleanedLines.push(`${fieldName}: ${utcDate}`);
+                    needsFix = true;
+                  } catch (e) {
+                    console.log(`     ⚠️  Error parsing date, keeping original`);
+                    cleanedLines.push(line);
+                  }
+                } else {
+                  // Date is already in correct format or doesn't need conversion
+                  cleanedLines.push(line);
+                }
+              } else {
+                // Keep other fields as-is
+                cleanedLines.push(line);
+              }
+            }
+
+            if (needsFix) {
+              console.log(`  💾 Writing date format fixes to file...`);
+              let newFrontmatter = cleanedLines.join('\n').trim();
+              const newContent = `---\n${newFrontmatter}\n---${body}`;
+              fs.writeFileSync(filePath, newContent, 'utf8');
+              console.log(`  ✅ File updated successfully`);
+            } else {
+              console.log(`  ✅ No date format changes needed`);
+            }
+          }
+
+          // Process content directories
+          const contentDirs = ['src/content/portfolio', 'src/content/blog', 'src/content/stories'];
+          console.log('🔍 Starting date format check...\n');
+          for (const dir of contentDirs) {
+            console.log(`\n📂 Checking directory: ${dir}`);
+            if (fs.existsSync(dir)) {
+              processMarkdownFiles(dir);
+            }
+          }
+
+          console.log('\n✨ Date format fixing complete!');
+          EOF
+
+      - name: Commit and push changes
+        run: |
+          echo "📋 Checking for changes..."
+          git status
+          git add -A
+          if git diff --staged --quiet; then
+            echo "✅ No changes to commit"
+          else
+            echo "💾 Committing changes..."
+            git commit -m "🤖 Auto-fix: Update markdown frontmatter dates" --no-verify
+            echo "🚀 Pushing changes..."
+            git push
+            echo "✅ Changes pushed successfully"
+          fi
+
+  # Job 2: Build the Astro site
+  build:
+    name: Build Site
+    needs: fix-dates
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository with fixed dates
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Cache Bun dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.bun/install/cache
+            ~/.bun/_registry
+          key: bun-${{ runner.os }}-${{ hashFiles('bun.lockb') }}
+          restore-keys: |
+            bun-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build site
+        run: bun run build
+
+      - name: Upload build artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  # Job 3: Deploy to GitHub Pages
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

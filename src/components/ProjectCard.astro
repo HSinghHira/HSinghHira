@@ -1,0 +1,39 @@
+---
+// src/components/ProjectCard.astro
+export interface Props {
+  name: string;
+  desc: string;
+  tags: string[];
+  icon?: string;
+  image?: string;
+  featured?: boolean;
+  category?: string;
+  slug: string;
+}
+
+const { name, desc, tags, icon, image, featured, category, slug } = Astro.props;
+---
+
+<a href={`/portfolio/${slug}`} class={`project-card ${featured ? 'project-featured' : ''}`} data-category={category || 'tool'}>
+  {featured && <div class="project-featured-badge">Featured</div>}
+  <div class={`project-hero-img ${image ? 'has-image' : ''}`}>
+    {image ? (
+      <img src={image} alt={name} loading="lazy" />
+    ) : (
+      icon || '🛠️'
+    )}
+  </div>
+  <div class="project-card-body">
+    {icon && image && <div class="project-icon">{icon}</div>}
+    <h3 class="project-name">{name}</h3>
+    <p class="project-desc">{desc}</p>
+    {tags && tags.length > 0 && (
+      <div class="project-tags">
+        {tags.map((tag) => (
+          <span class="project-tag">{tag}</span>
+        ))}
+      </div>
+    )}
+    <div class="project-cta">View project →</div>
+  </div>
+</a>

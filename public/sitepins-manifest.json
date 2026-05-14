@@ -1,0 +1,10 @@
+{
+  "name": "HSinghHira",
+  "description": "Welcome to my personal blog where I share my thoughts on coding, technology, and life.",
+  "cms": "HSinghHira",
+  "generator": "astro",
+  "html": "<meta name=\"generator\" content=\"HSinghHira\" />",
+  "headers": {
+    "x-powered-by": "HSinghHira"
+  }
+}

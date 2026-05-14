@@ -1,0 +1,54 @@
+---
+// src/components/PostCard.astro
+export interface Props {
+  title: string;
+  excerpt: string;
+  date: Date | string;
+  readTime?: string;
+  category?: string;
+  slug: string;
+  featured?: boolean;
+  index: number;
+  basePath?: string;
+}
+
+const { title, excerpt, date, readTime, category, slug, featured, index, basePath = '/posts' } = Astro.props;
+
+// Format date nicely
+const formattedDate = new Date(date).toLocaleDateString('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric'
+});
+
+// Pad number to 2 digits
+const displayNum = String(index).padStart(2, '0');
+
+// Category to CSS class
+const catClassMap: Record<string, string> = {
+  tech: 'cat-tech',
+  life: 'cat-life',
+  build: 'cat-build',
+  story: 'cat-story',
+  nz: 'cat-story', // map 'nz', 'family', 'immigrant' to story pill styles if needed
+  family: 'cat-life',
+  immigrant: 'cat-build'
+};
+const catClass = catClassMap[category?.toLowerCase() || ''] || 'cat-tech';
+---
+
+<a href={`${basePath}/${slug}`} class={`post-card ${featured ? 'featured' : ''}`} data-category={category || 'tech'}>
+  <div class="post-card-inner">
+    <div class="post-card-num">{displayNum}</div>
+    <div class="post-card-text">
+      <div class="post-meta">
+        {category && <span class={`post-category ${catClass}`}>{category}</span>}
+        <span class="post-date">{formattedDate}</span>
+        {readTime && <span class="post-read">{readTime}</span>}
+      </div>
+      {featured && <div class="post-featured-flag">★ Featured</div>}
+      <h3 class="post-title">{title}</h3>
+      <p class="post-excerpt">{excerpt}</p>
+    </div>
+  </div>
+</a>

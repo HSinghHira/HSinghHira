@@ -1,0 +1,51 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PostCard from "@/components/PostCard.astro";
+import FilterBar from "@/components/FilterBar.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog", ({ data }) => {
+  return data.draft !== true;
+});
+
+const sortedPosts = posts.sort(
+  (a, b) => new Date(b.data.pubDatetime || 0).valueOf() - new Date(a.data.pubDatetime || 0).valueOf()
+);
+
+const filters = [
+  { label: 'Tech', value: 'tech' },
+  { label: 'Life', value: 'life' },
+  { label: 'Building', value: 'build' },
+];
+---
+
+<Layout title="Blog | Harman Singh Hira" schemaType="posts">
+  <section style="padding-top:clamp(6rem,12vw,9rem);">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="code-comment">// blog.txt — writing down what I learn</div>
+        <div class="label">Blog</div>
+        <h2 class="section-title">Latest posts</h2>
+        <p class="section-subtitle">If I can't explain it simply, I don't understand it well enough. This is my attempt at understanding.</p>
+      </div>
+
+      <FilterBar filters={filters} targetSelector=".post-card" />
+
+      <div class="blog-grid">
+        {sortedPosts.map((post, i) => (
+          <PostCard 
+            title={post.data.title}
+            excerpt={post.data.description}
+            date={post.data.pubDatetime || new Date()}
+            readTime={post.data.readTime}
+            category={post.data.category}
+            featured={post.data.featured}
+            slug={post.id}
+            index={i + 1}
+            basePath="/posts"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

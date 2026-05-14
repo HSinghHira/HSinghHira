@@ -1,0 +1,72 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("portfolio");
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { title, tags, image, icon, github, demo, pubDatetime, modDatetime, technologies, links } = project.data;
+const { Content } = await render(project);
+
+const formatDate = (date: Date | undefined | null) => {
+  if (!date) return "";
+  return new Date(date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+};
+---
+
+<Layout title={`${title} | Portfolio`} schemaType="portfolio">
+  <div id="project-view">
+    <div class="container">
+      <a href="/portfolio" class="project-back">← Back to portfolio</a>
+      <div class="project-page-hero">
+        {image ? (
+          <img src={image} alt={title} />
+        ) : (
+          <div class="project-page-hero-emoji">{icon || '🛠️'}</div>
+        )}
+      </div>
+      <h1 class="project-page-title">{title}</h1>
+      {(pubDatetime || modDatetime) && (
+        <div class="post-date" style="margin-bottom: 1.5rem;">
+          {pubDatetime && <span>Published: {formatDate(pubDatetime)}</span>}
+          {modDatetime && <span style="margin-left: 1rem; color: var(--text-3);">Updated: {formatDate(modDatetime)}</span>}
+        </div>
+      )}
+      <div class="project-page-meta" style="justify-content: space-between;">
+        <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
+          {(github || demo || (links && links.length > 0)) && (
+            <div class="project-page-links">
+              {demo && <a href={demo} target="_blank" class="btn btn-primary">Live Demo ↗</a>}
+              {github && <a href={github} target="_blank" class="btn btn-ghost">View on GitHub ↗</a>}
+              {links && links.map((link: any) => (
+                <a href={link.url} target="_blank" class="btn btn-ghost">
+                  {link.icon ? <span>{link.icon} </span> : null}{link.title} ↗
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+        
+        {((tags && tags.length > 0) || (technologies && technologies.length > 0)) && (
+          <div class="project-page-tags">
+            {technologies && technologies.map((tech: string) => (
+              <span class="project-tag" style="border-color: var(--accent); color: var(--accent);">{tech}</span>
+            ))}
+            {tags && tags.map((tag: string) => (
+              <span class="project-tag">{tag}</span>
+            ))}
+          </div>
+        )}
+      </div>
+      <div class="project-page-body">
+        <Content />
+      </div>
+    </div>
+  </div>
+</Layout>

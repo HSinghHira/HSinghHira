@@ -1,0 +1,485 @@
+---
+import { ClientRouter } from "astro:transitions";
+import { PUBLIC_GOOGLE_SITE_VERIFICATION } from "astro:env/client";
+import { SITE } from "@/config";
+import "@/styles/global.css";
+import { Particles } from "@/components/ui/particles";
+import GithubCard from '@/components/Widgets/GithubCard.astro'
+import MediaEmbed from '@/components/Widgets/MediaEmbed.astro'
+import Schema from "@/components/Schema.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
+
+export interface Props {
+  title?: string;
+  author?: string;
+  profile?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalURL?: string;
+  pubDatetime?: Date;
+  modDatetime?: Date | null;
+  scrollSmooth?: boolean;
+  keywords?: string;
+  classification?: string;
+  category?: string;
+  articleSection?: string;
+  articleTags?: string[];
+  heroImageURL?: string;
+  prefetchLinks?: string[];
+  schemaType?: "home" | "post" | "posts" | "portfolio" | "work" | "search" | "contact";
+  isSoftware?: boolean;
+}
+
+const {
+  title = SITE.title,
+  author = SITE.author,
+  description = SITE.desc,
+  ogImage,
+  canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url),
+  pubDatetime,
+  modDatetime,
+  scrollSmooth = false,
+  keywords = "",
+  classification = "Technology",
+  category = "Blog",
+  articleSection,
+  articleTags = [],
+  heroImageURL,
+  prefetchLinks = [],
+  schemaType: initialSchemaType,
+  isSoftware = false,
+} = Astro.props;
+
+let finalOgImageURL: string;
+
+if (ogImage) {
+  finalOgImageURL = ogImage.startsWith("http")
+    ? ogImage
+    : new URL(ogImage, Astro.url).href;
+} else {
+  // Determine local dynamic OG image based on pathname
+  const path = Astro.url.pathname.replace(/\/$/, ""); // Remove trailing slash
+  
+  if (path === "" || path === "/index.html") {
+    finalOgImageURL = new URL("/og.png", Astro.url).href;
+  } else if (path === "/portfolio" || path === "/posts" || path === "/stories" || path === "/contact") {
+    finalOgImageURL = new URL(`/og${path}.png`, Astro.url).href;
+  } else if (path.startsWith("/portfolio/") || path.startsWith("/posts/") || path.startsWith("/stories/")) {
+    finalOgImageURL = new URL(`${path}.png`, Astro.url).href;
+  } else {
+    // Fallback to home OG image
+    finalOgImageURL = new URL("/og.png", Astro.url).href;
+  }
+}
+
+const socialImageURL = new URL(finalOgImageURL);
+
+const canonicalURLObj = typeof canonicalURL === "string" ? new URL(canonicalURL, Astro.site ?? Astro.url) : canonicalURL;
+
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "/index.html";
+
+let schemaType = initialSchemaType;
+if (!schemaType) {
+  if (isHome) {
+    schemaType = "home";
+  } else if (pubDatetime) {
+    schemaType = "post";
+  } else {
+    // Basic heuristics for other pages if not explicitly provided
+    const path = Astro.url.pathname;
+    if (path.startsWith("/posts")) schemaType = "posts";
+    else if (path.startsWith("/portfolio")) schemaType = "portfolio";
+    else if (path.startsWith("/search")) schemaType = "search";
+    else if (path.startsWith("/contact")) schemaType = "contact";
+    else schemaType = "posts"; // Default fallback
+  }
+}
+---
+
+<!doctype html>
+<html
+  dir={SITE.dir}
+  lang=`${SITE.lang ?? "en"}`
+  class={`${scrollSmooth && "scroll-smooth"}`}
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+    <!-- Favicons -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <meta name="apple-mobile-web-app-title" content="Hira" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+
+    <!-- Safari Pinned Tab -->
+    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#000000" />
+
+    <!-- Windows Tiles -->
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="msapplication-TileImage" content="/favicon/mstile-144x144.png" />
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
+
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- General Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <meta name="classification" content={classification} />
+    <meta name="category" content={category} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:type" content={pubDatetime ? "article" : "website"} />
+    <meta property="og:locale" content={SITE.lang ?? "en_US"} />
+    <meta property="og:site_name" content={SITE.title} />
+    <meta property="og:image:alt" content={title} />
+
+    <!-- Article Published/Modified time -->
+    {
+      pubDatetime && (
+        <meta
+          property="article:published_time"
+          content={pubDatetime.toISOString()}
+        />
+      )
+    }
+    {
+      modDatetime && (
+        <meta
+          property="article:modified_time"
+          content={modDatetime.toISOString()}
+        />
+      )
+    }
+
+    <!-- Article Metadata -->
+    {pubDatetime && <meta property="article:author" content={author} />}
+    {articleSection && <meta property="article:section" content={articleSection} />}
+    {
+      articleTags && articleTags.length > 0 && articleTags.map((tag: string) => (
+        <meta property="article:tag" content={tag} />
+      ))
+    }
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:site" content="@HSinghHira" />
+    <meta name="twitter:creator" content="@HSinghHira" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={socialImageURL} />
+    <meta property="twitter:image:alt" content={title} />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="theme-color"
+      content="#000000"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+
+    <!-- Preload Critical Resources -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap"
+      as="style"
+    />
+    {heroImageURL && (
+      <link
+        rel="preload"
+        href={heroImageURL}
+        as="image"
+      />
+    )}
+
+    <!-- Prefetch Likely Navigation -->
+    {
+      prefetchLinks && prefetchLinks.length > 0 && prefetchLinks.map((link: string) => (
+        <link rel="prefetch" href={link} />
+      ))
+    }
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <Schema
+      type={schemaType}
+      title={title}
+      description={description}
+      image={socialImageURL.href}
+      publishedTime={pubDatetime}
+      modifiedTime={modDatetime}
+      category={articleSection}
+      tags={articleTags}
+      canonicalUrl={canonicalURLObj.href}
+      isSoftware={isSoftware}
+    />
+
+    <!-- Enable RSS feed auto-discovery  -->
+    <!-- https://docs.astro.build/en/recipes/rss/#enabling-rss-feed-auto-discovery -->
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={SITE.title}
+      href={new URL("rss.xml", Astro.site)}
+    />
+
+    {
+      PUBLIC_GOOGLE_SITE_VERIFICATION && (
+        <meta
+          name="google-site-verification"
+          content={PUBLIC_GOOGLE_SITE_VERIFICATION}
+        />
+      )
+    }
+
+    {
+      SITE.googleTagManagerId && (
+        <>
+          <script
+            is:inline
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${SITE.googleTagManagerId}`}
+          />
+          <script is:inline define:vars={{ gtmId: SITE.googleTagManagerId }}>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(...args) {
+              dataLayer.push(args);
+            }
+            gtag("js", new Date());
+            gtag("config", gtmId, { anonymize_ip: true });
+          </script>
+        </>
+      )
+    }
+
+    <ClientRouter />
+
+    <script is:inline>
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    </script>
+  </head>
+  <body>
+    <Nav />
+    <Particles client:load className="-z-10 fixed inset-0" quantity={100} />
+    <slot />
+    <Footer />
+    <GithubCard />
+    <MediaEmbed />
+    <script>
+      import { initCodeExpander } from "@/utils/code-expander.ts";
+      import { trackOutboundClicks } from "@/utils/analytics";
+      
+      initCodeExpander();
+      trackOutboundClicks();
+    </script>
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+/* ============================================
+   GitHub Repository Card Styles
+   ============================================ */
+
+/* Container */
+.gc-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border: 1px solid var(--color-border, #d0d7de);
+  border-radius: 0.5rem;
+  background-color: var(--color-bg-card, #ffffff);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+.gc-container:hover {
+  border-color: var(--color-border-hover, #8c959f);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .gc-container {
+    border-color: var(--color-border-dark, #30363d);
+    background-color: var(--color-bg-card-dark, #0d1117);
+  }
+  
+  .gc-container:hover {
+    border-color: var(--color-border-hover-dark, #6e7681);
+  }
+}
+
+/* Title Bar */
+.gc-title-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gc-owner-avatar {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: var(--color-avatar-bg, #e1e4e8);
+}
+
+.gc-repo-title {
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary, #0969da);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (prefers-color-scheme: dark) {
+  .gc-repo-title {
+    color: var(--color-primary-dark, #58a6ff);
+  }
+}
+
+.gc-slash {
+  color: var(--color-text-muted, #656d76);
+  margin: 0 0.125rem;
+}
+
+.gc-github-icon {
+  flex-shrink: 0;
+  color: var(--color-icon, #656d76);
+}
+
+/* Description */
+.gc-repo-description {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary, #656d76);
+  margin: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Info Bar */
+.gc-info-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted, #656d76);
+}
+
+.gc-info-icon {
+  flex-shrink: 0;
+}
+
+.gc-stars-count,
+.gc-forks-count,
+.gc-license-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .gc-container {
+    padding: 0.875rem;
+  }
+  
+  .gc-repo-title {
+    font-size: 0.8125rem;
+  }
+  
+  .gc-repo-description {
+    font-size: 0.6875rem;
+  }
+  
+  .gc-info-bar {
+    font-size: 0.6875rem;
+    gap: 0.5rem;
+  }
+}
+
+/* Loading state */
+.gc-container[data-loading="true"] .gc-repo-description {
+  color: var(--color-text-disabled, #8c959f);
+  font-style: italic;
+}
+
+/* Error state */
+.gc-container[data-error="true"] {
+  border-color: var(--color-danger, #d1242f);
+  opacity: 0.8;
+}
+
+.gc-container[data-error="true"] .gc-repo-description {
+  color: var(--color-danger, #d1242f);
+}
+
+/* Focus styles for accessibility */
+.gc-container:focus-visible {
+  outline: 2px solid var(--color-primary, #0969da);
+  outline-offset: 2px;
+}
+</style>

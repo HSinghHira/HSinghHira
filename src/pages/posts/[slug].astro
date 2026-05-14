@@ -1,0 +1,98 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { title, description, pubDatetime, modDatetime, readTime, category } = post.data;
+const { Content } = await render(post);
+
+const formattedDate = new Date(pubDatetime || new Date()).toLocaleDateString('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric'
+});
+---
+
+<Layout title={`${title} | Blog`} schemaType="post">
+  <article class="post-article" style="padding-top:clamp(6rem,12vw,9rem); padding-bottom:5rem;">
+    <div class="container" style="max-width:800px; margin: 0 auto;">
+      <a href="/posts" class="project-back">← Back to blog</a>
+      <div class="post-header" style="margin-bottom:3rem; border-bottom:1px solid var(--border); padding-bottom:2rem;">
+        <div class="post-meta" style="margin-bottom:1.5rem; font-family:var(--font-mono); font-size:0.875rem; color:var(--text-muted); display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+          {category && <span class="post-category" style="background:var(--bg-2); padding:0.2rem 0.6rem; border-radius:100px;">{category}</span>}
+          <span>Published: {formattedDate}</span>
+          {modDatetime && <span style="color:var(--text-3);">Updated: {new Date(modDatetime).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>}
+          {readTime && <span>{readTime}</span>}
+        </div>
+        <h1 style="font-family:var(--font-display); font-size:clamp(2rem,4vw,3.5rem); font-weight:800; line-height:1.1; letter-spacing:-0.03em; margin-bottom:1.5rem;">{title}</h1>
+        {description && <p style="font-size:1.2rem; color:var(--text-2); line-height:1.6; max-width:600px;">{description}</p>}
+      </div>
+      <div class="post-content" style="font-size:1.125rem; line-height:1.8; color:var(--text); font-family:var(--font-sans);">
+        <Content />
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style is:global>
+.post-content h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+.post-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.post-content p {
+  margin-bottom: 1.5rem;
+}
+.post-content ul, .post-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+.post-content li {
+  margin-bottom: 0.5rem;
+}
+.post-content img {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin: 2rem 0;
+}
+.post-content blockquote {
+  border-left: 3px solid var(--primary);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--text-2);
+}
+.post-content code:not(pre code) {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--bg-2);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+.post-content pre {
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin: 2rem 0;
+  overflow-x: auto;
+}
+</style>

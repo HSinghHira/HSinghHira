@@ -1,0 +1,51 @@
+---
+// src/components/FilterBar.astro
+export interface Props {
+  filters: { label: string; value: string }[];
+  targetSelector: string; // The CSS selector for items to filter, e.g., '.project-card'
+}
+
+const { filters, targetSelector } = Astro.props;
+// Generate a unique ID to avoid conflicts if multiple filters exist on page
+const uniqueId = Math.random().toString(36).substring(7);
+---
+
+<div class="blog-filters-bar filter-bar-wrapper" id={`filter-bar-${uniqueId}`}>
+  <span class="blog-filters-label">filter:</span>
+  <button class="tag-pill active" data-filter="all">All</button>
+  {filters.map((filter) => (
+    <button class="tag-pill" data-filter={filter.value}>{filter.label}</button>
+  ))}
+</div>
+
+<script is:inline define:vars={{ targetSelector, uniqueId }}>
+  function setupFilter() {
+    const filterBar = document.getElementById(`filter-bar-${uniqueId}`);
+    if (!filterBar) return;
+    
+    const buttons = filterBar.querySelectorAll('[data-filter]');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+        
+        // Update active state
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // Filter items
+        const items = document.querySelectorAll(targetSelector);
+        items.forEach(item => {
+          const cat = item.getAttribute('data-category');
+          if (filter === 'all' || cat === filter) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  setupFilter();
+  document.addEventListener('astro:page-load', setupFilter);
+</script>

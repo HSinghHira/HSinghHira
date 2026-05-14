@@ -1,0 +1,51 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PostCard from "@/components/PostCard.astro";
+import FilterBar from "@/components/FilterBar.astro";
+import { getCollection } from "astro:content";
+
+const stories = await getCollection("stories");
+
+const sortedStories = stories.sort((a, b) => {
+  const dateA = a.data.pubDatetime || a.data.date || new Date();
+  const dateB = b.data.pubDatetime || b.data.date || new Date();
+  return dateB.valueOf() - dateA.valueOf();
+});
+
+const filters = [
+  { label: 'NZ 🇳🇿', value: 'nz' },
+  { label: 'Family 👶', value: 'family' },
+  { label: 'Immigrant 🌍', value: 'immigrant' },
+];
+---
+
+<Layout title="Life Stories | Harman Singh Hira" schemaType="posts">
+  <section style="padding-top:clamp(6rem,12vw,9rem);">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="code-comment">// life.log — things that actually matter</div>
+        <div class="label">Life Stories</div>
+        <h2 class="section-title">Beyond the code</h2>
+        <p class="section-subtitle">Because there's more to life than the terminal. Being an immigrant, a dad, and figuring things out in Aotearoa.</p>
+      </div>
+
+      <FilterBar filters={filters} targetSelector=".post-card" />
+
+      <div class="blog-grid">
+        {sortedStories.map((story, i) => (
+          <PostCard 
+            title={story.data.title}
+            excerpt={story.data.excerpt}
+            date={story.data.pubDatetime || story.data.date || new Date()}
+            readTime={story.data.readTime}
+            category={story.data.category}
+            featured={story.data.featured}
+            slug={story.id}
+            index={i + 1}
+            basePath="/stories"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
