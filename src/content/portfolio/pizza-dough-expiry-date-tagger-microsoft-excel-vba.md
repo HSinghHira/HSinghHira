@@ -6,11 +6,11 @@ description: >-
 featured: false
 draft: false
 pubDatetime: 2025-12-16T04:50:07.000Z
-modDatetime: '2025-12-16'
+modDatetime: "2025-12-16"
 tags:
   - Microsoft Excel VBA
 image: >-
-  https://me.hsinghhira.me/images/pizza-dough-expiry-date-tagger-microsoft-excel-vba.png
+  /images/pizza-dough-expiry-date-tagger-microsoft-excel-vba.png
 imageAlt: Pizza Dough Expiry Date Tagger - Microsoft Excel VBA
 technologies:
   - Microsoft Excel VBA
@@ -21,6 +21,7 @@ links:
 
 author: Harman Singh Hira
 ---
+
 Hey there, folks! 🍕 Today, I want to share with you an incredible story from my time working at Domino's Pizza. It all started with a simple task: putting dough tags on newly made dough batches. It was a crucial health and safety requirement, and I hope they still follow it. But little did I know that this experience would lead me down a rabbit hole of Excel wonders. 🎩💻
 
 One day, during a not-so-busy shift, I couldn't help but notice that the dough tags we were using weren't exactly visually appealing. You know, they lacked that wow factor. 🤔 So, when I got home, I decided to fire up Excel on my laptop to see if I could create better-looking tags. A quick Google search for inspiration, and voila! I had some good-looking tags ready to go. 🏷️🌟

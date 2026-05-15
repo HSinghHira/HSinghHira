@@ -1,5 +1,6 @@
 ---
-// src/components/ProjectCard.astro
+import { Icon } from "astro-icon/components";
+
 export interface Props {
   name: string;
   desc: string;
@@ -20,7 +21,7 @@ const { name, desc, tags, icon, image, featured, category, slug } = Astro.props;
     {image ? (
       <img src={image} alt={name} loading="lazy" />
     ) : (
-      icon || '🛠️'
+      icon && icon.includes(':') ? <Icon name={icon} style="width: 2.5rem; height: 2.5rem;" /> : (icon || '🛠️')
     )}
   </div>
   <div class="project-card-body">

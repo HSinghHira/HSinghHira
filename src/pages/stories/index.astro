@@ -12,11 +12,12 @@ const sortedStories = stories.sort((a, b) => {
   return dateB.valueOf() - dateA.valueOf();
 });
 
-const filters = [
-  { label: 'NZ 🇳🇿', value: 'nz' },
-  { label: 'Family 👶', value: 'family' },
-  { label: 'Immigrant 🌍', value: 'immigrant' },
-];
+// Automatically get categories for filters
+const categories = [...new Set(stories.map(s => s.data.category).filter(Boolean))];
+const filters = categories.map(cat => ({
+  label: cat.charAt(0).toUpperCase() + cat.slice(1),
+  value: cat.toLowerCase()
+}));
 ---
 
 <Layout title="Life Stories | Harman Singh Hira" schemaType="posts">
@@ -35,7 +36,7 @@ const filters = [
         {sortedStories.map((story, i) => (
           <PostCard 
             title={story.data.title}
-            excerpt={story.data.excerpt}
+            excerpt={story.data.excerpt || ""}
             date={story.data.pubDatetime || story.data.date || new Date()}
             readTime={story.data.readTime}
             category={story.data.category}
@@ -43,6 +44,7 @@ const filters = [
             slug={story.id}
             index={i + 1}
             basePath="/stories"
+            tags={story.data.tags}
           />
         ))}
       </div>

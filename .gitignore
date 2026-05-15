@@ -86,3 +86,5 @@ jspm_packages/
 .vscode/
 *.pem
 .codeboarding
+package-lock.json
+.reference/

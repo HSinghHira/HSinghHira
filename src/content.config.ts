@@ -88,13 +88,14 @@ const stories = defineCollection({
   schema: () =>
     z.object({
       title: z.string(),
-      excerpt: z.string(),
+      excerpt: z.string().optional(),
       date: dateSchema.optional(),
       pubDatetime: dateSchema.optional(),
       modDatetime: dateSchema.optional().nullable(),
       readTime: z.string().optional(),
-      category: z.enum(['nz', 'family', 'immigrant']),
+      category: z.string(),
       featured: z.boolean().default(false),
+      tags: z.array(z.string()).default([]),
     }),
 });
 

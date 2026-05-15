@@ -12,11 +12,12 @@ const sortedPosts = posts.sort(
   (a, b) => new Date(b.data.pubDatetime || 0).valueOf() - new Date(a.data.pubDatetime || 0).valueOf()
 );
 
-const filters = [
-  { label: 'Tech', value: 'tech' },
-  { label: 'Life', value: 'life' },
-  { label: 'Building', value: 'build' },
-];
+// Automatically get categories for filters
+const categories = [...new Set(posts.map(p => p.data.category).filter((cat): cat is string => !!cat))];
+const filters = categories.map(cat => ({
+  label: cat.charAt(0).toUpperCase() + cat.slice(1),
+  value: cat.toLowerCase()
+}));
 ---
 
 <Layout title="Blog | Harman Singh Hira" schemaType="posts">
@@ -43,6 +44,7 @@ const filters = [
             slug={post.id}
             index={i + 1}
             basePath="/posts"
+            tags={post.data.tags}
           />
         ))}
       </div>

@@ -1,6 +1,15 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getEntry } from "astro:content";
+import { Map, MapArc } from "@/components/ui/map";
+
+const arcData = [
+  {
+    id: "chandigarh-to-auckland",
+    from: [76.7794, 30.7333] as [number, number],
+    to: [174.7633, -36.8485] as [number, number],
+  }
+];
 ---
 
 <Layout>
@@ -12,18 +21,18 @@ import { getEntry } from "astro:content";
       <div class="hero-inner">
         <div class="hero-status reveal">
           <span class="status-dot"></span>
-          Based in Aotearoa, New Zealand
+          Based in Aotearoa (New Zealand)
         </div>
-        <h1 class="hero-name reveal reveal-delay-1">Harman<br><span class="accent">Singh Hira</span></h1>
-        <p class="hero-tagline reveal reveal-delay-2">Creator, Tech Enthusiast, and Problem Solver.<br>Building things that matter — one weird idea at a time.</p>
-        <div class="hero-actions reveal reveal-delay-3">
+        <h1 class="reveal-delay-1 hero-name reveal">Harman<br><span class="accent">Singh Hira</span></h1>
+        <p class="reveal-delay-2 hero-tagline reveal">Creator, Tech Enthusiast, and Problem Solver.<br>Building things that matter — one weird idea at a time.</p>
+        <div class="reveal-delay-3 hero-actions reveal">
           <a class="btn btn-primary" href="/portfolio">View Portfolio <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
           <a class="btn btn-ghost" href="/posts">Read Blog</a>
           <a class="btn btn-ghost" href="/stories">Life Stories</a>
           <a class="btn btn-ghost" href="/contact">Contact Me</a>
         </div>
       </div>
-      <div class="hero-scroll reveal reveal-delay-3" onclick="document.getElementById('home-about').scrollIntoView({behavior:'smooth'})">
+      <div class="reveal-delay-3 hero-scroll reveal" onclick="document.getElementById('home-about').scrollIntoView({behavior:'smooth'})">
         <span>scroll</span><div class="scroll-line"></div>
       </div>
     </section>
@@ -37,14 +46,14 @@ import { getEntry } from "astro:content";
           <div class="about-text">
             <div class="code-comment reveal">// about_me.js — the honest version</div>
             <div class="label reveal">About Me</div>
-            <h2 class="reveal reveal-delay-1" style="font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:1.5rem; color:var(--text);">
+            <h2 class="reveal-delay-1 reveal" style="font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:1.5rem; color:var(--text);">
               Chandigarh kid who chose<br>HTML over FIFA
             </h2>
-            <p class="reveal reveal-delay-1">Born in Chandigarh, India 🇮🇳. Moved to Aotearoa New Zealand in my early 20s — packed my whole life into two suitcases and called it a main character move.</p>
-            <p class="reveal reveal-delay-2">At 15, while most friends were yelling into headsets, I was building websites and selling templates. By 16, a tech blog running AdSense was making real money — all self-taught through YouTube, forums, and a lot of trial and error. No school. No courses. Just curiosity carrying heavy.</p>
-            <p class="reveal reveal-delay-2">Coding is my therapy. Just me, the screen, late-night silence, and a random idea turning into something real. I keep it as my playground — the moment it feels forced, the magic fades. So I never let it become a job.</p>
-            <p class="reveal reveal-delay-3">These days I'm a happily married dad living in NZ, still chasing ideas at odd hours, still building random tools, still curious, still vibing. 🥂</p>
-            <div class="skills-list reveal reveal-delay-3">
+            <p class="reveal-delay-1 reveal">Born in Chandigarh, India 🇮🇳. Moved to Aotearoa New Zealand in my early 20s — packed my whole life into two suitcases and called it a main character move.</p>
+            <p class="reveal-delay-2 reveal">At 15, while most friends were yelling into headsets, I was building websites and selling templates. By 16, a tech blog running AdSense was making real money — all self-taught through YouTube, forums, and a lot of trial and error. No school. No courses. Just curiosity carrying heavy.</p>
+            <p class="reveal-delay-2 reveal">Coding is my therapy. Just me, the screen, late-night silence, and a random idea turning into something real. I keep it as my playground — the moment it feels forced, the magic fades. So I never let it become a job.</p>
+            <p class="reveal-delay-3 reveal">These days I'm a happily married dad living in NZ, still chasing ideas at odd hours, still building random tools, still curious, still vibing. 🥂</p>
+            <div class="reveal-delay-3 skills-list reveal">
               <span class="skill-tag">HTML/CSS</span>
               <span class="skill-tag">JavaScript</span>
               <span class="skill-tag">Web Dev</span>
@@ -55,6 +64,20 @@ import { getEntry } from "astro:content";
           </div>
 
           <div>
+            <div class="reveal-delay-2 reveal" style="margin-bottom:1.5rem; height: 280px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
+              <Map 
+                client:load 
+                viewport={{ center: [125, 0], zoom: 1 }} 
+                className="h-full w-full"
+                interactive={false}
+              >
+                <MapArc 
+                  data={arcData} 
+                  curvature={0.4} 
+                  paint={{ "line-color": "var(--accent)", "line-width": 2, "line-opacity": 0.8 }}
+                />
+              </Map>
+            </div>
             <div class="dev-card reveal" style="margin-bottom:1rem;">
               <span class="dc-cmt">// harman_singh_hira.js</span><br>
               <span class="dc-kw">const</span> <span class="dc-fn">hira</span> <span class="dc-br">= {</span><br>
@@ -73,13 +96,14 @@ import { getEntry } from "astro:content";
               &nbsp;&nbsp;<span class="dc-str">"the dad thing 👶"</span><br>
               <span class="dc-br">];</span>
             </div>
-            <div class="about-stats">
-              <div class="stat-card reveal"><div class="stat-num">10+</div><div class="stat-label">Years coding</div></div>
-              <div class="stat-card reveal reveal-delay-1"><div class="stat-num">15</div><div class="stat-label">Age of first sale</div></div>
-              <div class="stat-card reveal reveal-delay-2"><div class="stat-num">2</div><div class="stat-label">Countries lived</div></div>
-              <div class="stat-card reveal reveal-delay-3"><div class="stat-num">∞</div><div class="stat-label">Curiosity level</div></div>
-            </div>
           </div>
+        </div>
+        
+        <div class="about-stats" style="margin-top: 3rem;">
+          <div class="stat-card reveal"><div class="stat-num">10+</div><div class="stat-label">Years coding</div></div>
+          <div class="reveal-delay-1 stat-card reveal"><div class="stat-num">15</div><div class="stat-label">Age of first sale</div></div>
+          <div class="reveal-delay-2 stat-card reveal"><div class="stat-num">2</div><div class="stat-label">Countries lived</div></div>
+          <div class="reveal-delay-3 stat-card reveal"><div class="stat-num">∞</div><div class="stat-label">Curiosity level</div></div>
         </div>
       </div>
     </section>
@@ -93,7 +117,7 @@ import { getEntry } from "astro:content";
           <div>
             <div class="code-comment reveal">// journey.log — how I got here</div>
             <div class="label reveal">The Journey</div>
-            <h2 class="reveal reveal-delay-1" style="font-size:clamp(1.5rem,3vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:2rem;color:var(--text);">How it all started</h2>
+            <h2 class="reveal-delay-1 reveal" style="font-size:clamp(1.5rem,3vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:2rem;color:var(--text);">How it all started</h2>
             <div class="timeline">
               <div class="tl-item reveal">
                 <div class="tl-dot"></div>
@@ -101,19 +125,19 @@ import { getEntry } from "astro:content";
                 <div class="tl-title">First website sold 💸</div>
                 <div class="tl-desc">While friends played FIFA, I was building HTML templates and actually making money. Entirely self-taught — no school, no courses.</div>
               </div>
-              <div class="tl-item reveal reveal-delay-1">
+              <div class="reveal-delay-1 tl-item reveal">
                 <div class="tl-dot"></div>
                 <div class="tl-year">// age_16 → 2013</div>
                 <div class="tl-title">Tech blog + AdSense 📝</div>
                 <div class="tl-desc">Launched a self-hosted tech blog running Google AdSense. Felt like a startup founder in a bedroom. Made real money.</div>
               </div>
-              <div class="tl-item reveal reveal-delay-2">
+              <div class="reveal-delay-2 tl-item reveal">
                 <div class="tl-dot"></div>
                 <div class="tl-year">// early_20s</div>
                 <div class="tl-title">Moved to Aotearoa 🇳🇿</div>
                 <div class="tl-desc">Two suitcases, one-way ticket. Studied Business & Leadership. Delivered pizzas. Kept building on the side whenever life got quiet.</div>
               </div>
-              <div class="tl-item reveal reveal-delay-3">
+              <div class="reveal-delay-3 tl-item reveal">
                 <div class="tl-dot"></div>
                 <div class="tl-year">// present → 2025</div>
                 <div class="tl-title">Married dad, still vibing 🥹</div>
@@ -122,7 +146,7 @@ import { getEntry } from "astro:content";
             </div>
           </div>
 
-          <div class="reveal reveal-delay-1" style="margin-top:3.5rem;">
+          <div class="reveal-delay-1 reveal" style="margin-top:3.5rem;">
             <div class="dev-card">
               <span class="dc-cmt">// fun_facts.json</span><br>
               <span class="dc-br">{</span><br>

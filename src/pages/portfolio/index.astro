@@ -16,11 +16,12 @@ const sortedProjects = projects.sort((a, b) => {
   return orderA - orderB;
 });
 
-const filters = [
-  { label: 'Web', value: 'web' },
-  { label: 'Tools', value: 'tool' },
-  { label: 'Blog / Content', value: 'blog' },
-];
+// Automatically get categories for filters
+const categories = [...new Set(projects.map(p => p.data.category).filter((cat): cat is string => !!cat))];
+const filters = categories.map(cat => ({
+  label: cat.charAt(0).toUpperCase() + cat.slice(1),
+  value: cat.toLowerCase()
+}));
 ---
 
 <Layout title="Portfolio | Harman Singh Hira" schemaType="portfolio">
