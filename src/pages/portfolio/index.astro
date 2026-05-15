@@ -16,11 +16,12 @@ const sortedProjects = projects.sort((a, b) => {
   return orderA - orderB;
 });
 
-// Automatically get categories for filters
-const categories = [...new Set(projects.map(p => p.data.category).filter((cat): cat is string => !!cat))];
-const filters = categories.map(cat => ({
-  label: cat.charAt(0).toUpperCase() + cat.slice(1),
-  value: cat.toLowerCase()
+// Automatically get tags for filters
+const allTags = projects.flatMap(p => p.data.tags || []);
+const uniqueTags = [...new Set(allTags)].filter(tag => tag !== "project"); // Filter out generic "project" tag if any
+const filters = uniqueTags.sort().map(tag => ({
+  label: tag,
+  value: tag.toLowerCase()
 }));
 ---
 
@@ -29,7 +30,7 @@ const filters = categories.map(cat => ({
     <div class="container">
       <div class="section-header reveal">
         <div class="code-comment">// portfolio.js — things I actually shipped</div>
-        <div class="label">Portfolio</div>
+        <h1 class="label">Portfolio</h1>
         <h2 class="section-title">What I've built</h2>
         <p class="section-subtitle">Projects born from curiosity, necessity, or just because it seemed fun at 2am.</p>
       </div>

@@ -8,13 +8,8 @@ modDatetime: 2022-09-23T15:22:00.000Z
 tags: ["JavaScript", "AWS"]
 icon: "🌐"
 technologies: ["JavaScript", "CSS"]
-links:
-  - title: "View Live"
-    url: "https://quiz.hsinghhira.me/AWS-Cloud-Practitioner/"
-    icon: "external"
-  - title: "GitHub"
-    url: "https://github.com/HSinghHira/Quiz"
-    icon: "github"
+github: "https://github.com/HSinghHira/Quiz"
+demo: "https://quiz.hsinghhira.me/AWS-Cloud-Practitioner/"
 
 author: Harman Singh Hira
 ---

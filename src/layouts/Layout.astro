@@ -16,6 +16,7 @@ export interface Props {
   profile?: string;
   description?: string;
   ogImage?: string;
+  domain?: string;
   canonicalURL?: string;
   pubDatetime?: Date;
   modDatetime?: Date | null;
@@ -36,6 +37,7 @@ const {
   author = SITE.author,
   description = SITE.desc,
   ogImage,
+  domain = Astro.url.hostname,
   canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url),
   pubDatetime,
   modDatetime,
@@ -204,6 +206,7 @@ if (!schemaType) {
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={socialImageURL} />
     <meta property="twitter:image:alt" content={title} />
+    <meta property="twitter:domain" content={domain} />
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#000000" />

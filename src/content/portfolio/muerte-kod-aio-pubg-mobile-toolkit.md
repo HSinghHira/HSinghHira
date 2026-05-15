@@ -15,7 +15,7 @@ technologies:
   - VB.NET
 links:
   - url: https://github.com/HSinghHira/MuerteKOD/releases
-    icon: download
+    icon: mdi:download
     title: Download
 
 author: Harman Singh Hira

@@ -16,7 +16,7 @@ if (contactPage) {
     <div class="container" style="max-width:800px; margin:0 auto;">
       <div class="section-header" style="margin-bottom:3rem;">
         <div class="code-comment">// ping_me.js</div>
-        <div class="label">Contact</div>
+        <h1 class="label">Contact</h1>
         <h2 class="section-title">Let's Chat</h2>
         <p class="section-subtitle">Got an interesting idea, want to collaborate, or just want to say hi? Drop me a message below.</p>
       </div>
@@ -25,14 +25,14 @@ if (contactPage) {
         <Map 
           client:load 
           viewport={{ center: [174.7633, -36.8485], zoom: 11 }} 
-          className="h-full w-full"
+          className="w-full h-full"
         >
           <MapMarker longitude={174.7633} latitude={-36.8485}>
             <MarkerContent />
             <MarkerPopup closeButton>
               <div class="p-1">
                 <h3 class="font-bold text-sm">Auckland, NZ</h3>
-                <p class="text-xs text-muted-foreground">The City of Sails ⛵</p>
+                <p class="text-muted-foreground text-xs">The City of Sails ⛵</p>
               </div>
             </MarkerPopup>
           </MapMarker>

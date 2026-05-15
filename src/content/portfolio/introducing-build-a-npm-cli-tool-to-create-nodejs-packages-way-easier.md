@@ -16,16 +16,16 @@ image: /images/build-a-npm.jpg
 imageAlt: "Introducing build-a-npm: CLI Tool to Create Node.js Packages Way Easier"
 technologies:
   - Node JS
+
+github: "https://github.com/HSinghHira/build-a-npm/pkgs/npm/build-a-npm"
 links:
-  - url: https://git.hsinghhira.me/build-a-npm/
-    icon: file-document-outline
-    title: Documentation
-  - title: GitHub
-    url: https://github.com/HSinghHira/build-a-npm/pkgs/npm/build-a-npm
-    icon: github
   - title: NPM JS
     url: https://www.npmjs.com/package/build-a-npm
-    icon: npm
+    icon: simple-icons:npm
+  - url: https://git.hsinghhira.me/build-a-npm/
+    icon: mdi:external-link
+    title: Documentation
+
 
 author: Harman Singh Hira
 ---

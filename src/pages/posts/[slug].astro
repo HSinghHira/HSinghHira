@@ -28,8 +28,6 @@ const formatDate = (date: Date) => {
     minute: '2-digit'
   });
 };
-
-const formattedDate = formatDate(pubDatetime || new Date());
 ---
 
 <Layout title={`${title} | Blog`} schemaType="post">
@@ -39,22 +37,24 @@ const formattedDate = formatDate(pubDatetime || new Date());
       <div class="post-header" style="margin-bottom:1rem; border-bottom:1px solid var(--border); padding-bottom:2rem;">
         <div class="post-meta" style="margin-bottom:1.5rem; font-family:var(--font-mono); font-size:0.875rem; color:var(--text-muted); display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
           {category && <span class="post-category" style="background:var(--accent-dim); color:var(--accent); padding:0.2rem 0.6rem; border-radius:100px;">{category}</span>}
-          <span>{formattedDate}</span>
-          {readTime && <span>• {readTime}</span>}
-        </div>
-        
-        <h1 style="font-family:var(--font-display); font-size:clamp(2rem,4vw,3.5rem); font-weight:800; line-height:1.1; letter-spacing:-0.03em; margin-bottom:1.5rem;">{title}</h1>
-        
-        <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.5rem;">
           {tags && (tags as string[]).map((tag: string) => (
             <span style="font-size:0.75rem; color:var(--text-3); background:var(--bg-2); padding:0.1rem 0.5rem; border-radius:4px; border:1px solid var(--border);">#{tag}</span>
           ))}
         </div>
+        
+        <h1 style="font-family:var(--font-display); font-size:clamp(2rem,4vw,3.5rem); font-weight:800; line-height:1.1; letter-spacing:-0.03em; margin-bottom:1.5rem;">{title}</h1>
 
         {description && <p style="font-size:1.2rem; color:var(--text-2); line-height:1.6;">{description}</p>}
-        {modDatetime && <div style="margin-top:1rem; font-size:0.75rem; color:var(--text-3); font-style:italic;">Last updated: {formatDate(modDatetime)}</div>}
+        {(pubDatetime || modDatetime) && (
+          <div class="post-date" style="margin-top: 1.5rem; display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+            {readTime && <span style="color: var(--text-3);">Read Time: {readTime}</span>}
+            {pubDatetime && <span style="color: var(--text-3);">Published: {formatDate(pubDatetime)}</span>}
+            {modDatetime && <span style="margin-left: 1rem; color: var(--text-3);">Updated: {formatDate(modDatetime)}</span>}
+            
+          </div>
+        )}
       </div>
-
+      
       {toc.length > 0 && (
         <div class="post-toc reveal" style="background:var(--bg-2); border:1px solid var(--border); border-radius:12px; padding:1.5rem; margin-bottom:3rem;">
           <h2 style="font-size:0.9rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">

@@ -17,13 +17,8 @@ technologies:
   - Bun
   - Vite
   - TipTap
-links:
-  - title: Preview
-    url: 'https://simplecms.hira.im/'
-    icon: external
-  - title: GitHub
-    url: 'https://github.com/HSinghHira/SimpleCMS'
-    icon: github
+demo: "https://simplecms.hira.im/"
+github: "https://github.com/HSinghHira/SimpleCMS"
 slug: simple-cms
 
 author: Harman Singh Hira

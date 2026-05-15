@@ -16,10 +16,7 @@ imageAlt: Meme Creator - JS Based
 technologies:
   - Bootstrap
   - JavaScript
-links:
-  - url: https://git.hsinghhira.me/LookBro/
-    icon: external
-    title: Check it out here
+demo: "https://git.hsinghhira.me/LookBro/"
 
 author: Harman Singh Hira
 ---

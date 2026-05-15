@@ -8,8 +8,9 @@ category: Opinion
 draft: false
 
 published: 2026-02-04T07:10:02.000Z
-
 pubDatetime: 2026-02-04T07:10:02.000Z
+modDatetime: 2026-05-16T07:10:02.000Z
+readTime: 5 mins
 ---
 
 I’m on TikTok a lot. Like, a lot a lot. It’s basically my chill zone between work, cooking experiments, and doomscrolling with snacks 😌📱

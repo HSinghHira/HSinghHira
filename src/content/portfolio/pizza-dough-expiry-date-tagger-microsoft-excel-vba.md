@@ -16,7 +16,7 @@ technologies:
   - Microsoft Excel VBA
 links:
   - url: https://github.com/HSinghHira/Dominos-Pizza-Dough-Tagger/releases
-    icon: download
+    icon: mdi:download
     title: Download
 
 author: Harman Singh Hira

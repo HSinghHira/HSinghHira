@@ -11,6 +11,8 @@ export interface Props {
   crop?: "center" | "top" | "bottom" | "left" | "right" | "entropy" | "attention";
 }
 
+import { SITE } from "@/config";
+
 const {
   src,
   alt,
@@ -24,7 +26,7 @@ const {
 
 const absoluteSrc = src.startsWith("http")
   ? src
-  : new URL(src, Astro.site!).href;
+  : new URL(src, SITE.website).href;
 
 // weserv.nl parameters
 const params = new URLSearchParams({

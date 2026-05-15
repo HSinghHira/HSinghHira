@@ -9,16 +9,18 @@ const isBlog = pathname.startsWith('/blog') || pathname.startsWith('/posts');
 const isStories = pathname.startsWith('/stories');
 const isJourney = pathname.startsWith('/journey');
 const isContact = pathname.startsWith('/contact');
+const isAbout = pathname.startsWith('/about');
 ---
 
 <nav>
   <a href="/" class="nav-logo">H<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="/" class={isHome ? 'active' : ''}><Icon name="mdi:home-variant-outline" /><span>Home</span></a></li>
-    <li><a href="/portfolio" class={isPortfolio ? 'active' : ''}><Icon name="mdi:briefcase-outline" /><span>Portfolio</span></a></li>
-    <li><a href="/journey" class={isJourney ? 'active' : ''}><Icon name="mdi:map-marker-path" /><span>Journey</span></a></li>
-    <li><a href="/posts" class={isBlog ? 'active' : ''}><Icon name="mdi:post-outline" /><span>Blog</span></a></li>
-    <li><a href="/stories" class={isStories ? 'active' : ''}><Icon name="mdi:book-open-variant" /><span>Life Stories</span></a></li>
+    <li><a href="/" class={isHome ? 'active' : ''}><Icon name="mdi:home-variant-outline" /> <span>Home</span></a></li>
+    <li><a href="/about" class={isAbout ? 'active' : ''}><Icon name="mdi:account-outline" /> <span>About me</span></a></li>
+    <li><a href="/portfolio" class={isPortfolio ? 'active' : ''}><Icon name="mdi:briefcase-outline" /> <span>Portfolio</span></a></li>
+    <li><a href="/journey" class={isJourney ? 'active' : ''}><Icon name="mdi:map-marker-path" /> <span>Journey</span></a></li>
+    <li><a href="/posts" class={isBlog ? 'active' : ''}><Icon name="mdi:post-outline" /> <span>Blog</span></a></li>
+    <li><a href="/stories" class={isStories ? 'active' : ''}><Icon name="mdi:book-open-variant" /> <span>Life Stories</span></a></li>
     <li><a href="/contact" class={`nav-cta ${isContact ? 'active' : ''}`}><Icon name="mdi:email-outline" /><span>Contact</span></a></li>
   </ul>
   <div class="nav-right">
@@ -32,6 +34,7 @@ const isContact = pathname.startsWith('/contact');
 
 <div class="mobile-menu" id="mobile-menu">
   <a href="/"><Icon name="mdi:home-variant-outline" /> Home</a>
+  <a href="/about"><Icon name="mdi:account-outline" /> About</a>
   <a href="/portfolio"><Icon name="mdi:briefcase-outline" /> Portfolio</a>
   <a href="/journey"><Icon name="mdi:map-marker-path" /> Journey</a>
   <a href="/posts"><Icon name="mdi:post-outline" /> Blog</a>

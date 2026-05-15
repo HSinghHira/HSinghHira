@@ -5,8 +5,8 @@ icon: "🌐"
 category: "web"
 tags: ["HTML", "CSS", "First Project"]
 featured: true
-github: "https://github.com/HSinghHira"
-demo: "https://me.hsinghhira.me"
+github: ""
+demo: ""
 ---
 
 This was where everything started. I was 15, had just discovered that you could build things for the internet, and I wanted to show the world what I could do.

@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import OptimizedImage from "./OptimizedImage.astro";
 
 export interface Props {
   name: string;
@@ -15,11 +16,11 @@ export interface Props {
 const { name, desc, tags, icon, image, featured, category, slug } = Astro.props;
 ---
 
-<a href={`/portfolio/${slug}`} class={`project-card ${featured ? 'project-featured' : ''}`} data-category={category?.toLowerCase() || 'tool'}>
+<a href={`/portfolio/${slug}`} class={`project-card ${featured ? 'project-featured' : ''}`} data-category={category?.toLowerCase() || 'tool'} data-tags={tags?.join(' ').toLowerCase()}>
   {featured && <div class="project-featured-badge">Featured</div>}
   <div class={`project-hero-img ${image ? 'has-image' : ''}`}>
     {image ? (
-      <img src={image} alt={name} loading="lazy" />
+      <OptimizedImage src={image} alt={name} width={640} height={360} class="project-card-image" />
     ) : (
       icon && icon.includes(':') ? <Icon name={icon} style="width: 2.5rem; height: 2.5rem;" /> : (icon || '🛠️')
     )}

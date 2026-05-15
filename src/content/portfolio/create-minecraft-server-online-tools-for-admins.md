@@ -10,13 +10,8 @@ tags:
 technologies:
   - HTML & CSS
   - JavaScript
-links:
-  - url: https://createminecraftserver.hira.im/
-    icon: external
-    title: Check now!!
-  - title: GitHub
-    url: https://github.com/HSinghHira/Create-Minecraft-Server
-    icon: github
+github: "https://github.com/HSinghHira/Create-Minecraft-Server"
+demo: "https://createminecraftserver.hira.im/"
 draft: false
 modDatetime: '2025-12-17'
 pubDatetime: 2025-12-17T04:57:58.000Z

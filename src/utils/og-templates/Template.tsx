@@ -84,12 +84,14 @@ const OGTemplate = ({ title, description, category }: Props) => {
         {/* Title */}
         <div
           style={{
-            fontSize: "90px",
+            fontSize: title.length > 80 ? "60px" : title.length > 50 ? "75px" : "90px",
             fontWeight: 800,
             fontFamily: "Syne",
             color: "#f0ede8",
             lineHeight: 1.1,
-            marginBottom: "30px",
+            marginBottom: "20px",
+            display: "flex",
+            flexDirection: "column",
           }}
         >
           {title}
@@ -99,11 +101,16 @@ const OGTemplate = ({ title, description, category }: Props) => {
         {description && (
           <div
             style={{
-              fontSize: "36px",
+              fontSize: title.length > 80 ? "28px" : "32px",
               color: "#9a9590",
               fontFamily: "DM Sans",
               lineHeight: 1.4,
               maxWidth: "900px",
+              display: "-webkit-box",
+              // @ts-ignore
+              webkitLineClamp: title.length > 80 ? 2 : 3,
+              webkitBoxOrient: "vertical",
+              overflow: "hidden",
             }}
           >
             {description}

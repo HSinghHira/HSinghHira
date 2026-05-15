@@ -10,7 +10,7 @@ const { filters, targetSelector } = Astro.props;
 const uniqueId = Math.random().toString(36).substring(7);
 ---
 
-<div class="blog-filters-bar filter-bar-wrapper" id={`filter-bar-${uniqueId}`}>
+<div class="filter-bar-wrapper blog-filters-bar" id={`filter-bar-${uniqueId}`}>
   <span class="blog-filters-label">filter:</span>
   <button class="tag-pill active" data-filter="all">All</button>
   {filters.map((filter) => (
@@ -35,10 +35,17 @@ const uniqueId = Math.random().toString(36).substring(7);
         // Filter items
         const items = document.querySelectorAll(targetSelector);
         items.forEach(item => {
-          const cat = item.getAttribute('data-category')?.toLowerCase();
           const filterVal = filter?.toLowerCase();
           
-          if (filterVal === 'all' || cat === filterVal) {
+          if (filterVal === 'all') {
+            item.style.display = '';
+            return;
+          }
+
+          const cat = item.getAttribute('data-category')?.toLowerCase();
+          const tags = item.getAttribute('data-tags')?.toLowerCase().split(' ') || [];
+          
+          if (cat === filterVal || tags.includes(filterVal)) {
             item.style.display = '';
           } else {
             item.style.display = 'none';

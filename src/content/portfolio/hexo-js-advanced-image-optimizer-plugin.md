@@ -16,16 +16,15 @@ image: >-
 imageAlt: Hexo JS Advanced Image Optimizer Plugin
 technologies:
   - Hexo JS
+
+github: "https://github.com/HSinghHira/hexo-adv-img-optimizer"
 links:
   - url: https://www.npmjs.com/package/hexo-adv-img-optimizer
-    icon: external
+    icon: simple-icons:npm
     title: NPM JS
   - url: https://git.hsinghhira.me/hexo-adv-img-optimizer/
-    icon: external
+    icon: mdi:external-link
     title: Documentation
-  - url: https://github.com/HSinghHira/hexo-adv-img-optimizer
-    icon: external
-    title: GitHub
 
 author: Harman Singh Hira
 isSoftware: true

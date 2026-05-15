@@ -15,13 +15,8 @@ image: /images/meme-creator-php-based.png
 imageAlt: Meme Creator - PHP Based
 technologies:
   - PHP
-links:
-  - url: https://github.com/HSinghHira/Dekh-Bhai-Meme-Creator/
-    icon: external
-    title: Full Source Code - GitHub
-  - title: Single File - GitHub Gist
-    url: https://gist.github.com/HSinghHira/7094b6285aa017def77e664c75230975
-    icon: external
+demo: "https://github.com/HSinghHira/Dekh-Bhai-Meme-Creator/"
+github: "https://gist.github.com/HSinghHira/7094b6285aa017def77e664c75230975"
 
 author: Harman Singh Hira
 ---

@@ -12,10 +12,7 @@ tags:
   - JavaScript
 imageAlt: Search Engine for Apple's iOS Shortcuts
 draft: false
-links:
-  - title: "View Live"
-    url: "https://ios.hsinghhira.me/"
-    icon: "external"
+demo: "https://ios.hsinghhira.me/"
 
 author: Harman Singh Hira
 ---
