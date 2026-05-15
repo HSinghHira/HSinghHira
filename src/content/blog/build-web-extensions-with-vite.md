@@ -19,8 +19,6 @@ published: 2025-12-08T04:48:58.000Z
 
 no cap fr fr, we're about to build the most bussin' browser extension using Vite, Tailwind CSS, and some zip magic ✨ this gonna hit different i promise 💯
 
-## Table of contents
-
 ## 🌐 Download Chrome & Firefox (duh) 🦊💙
 
 bestie you literally NEED Chrome and Firefox installed for testing. like... how else are you gonna test it??? 😭 no browsers = no vibes = L 📉

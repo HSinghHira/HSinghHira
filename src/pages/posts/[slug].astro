@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
+import SocialShare from "@/components/SocialShare.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -12,7 +13,11 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { title, description, pubDatetime, modDatetime, readTime, category, tags } = post.data;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
+const currentUrl = Astro.url.href;
+
+// Filter headings for TOC (H2 and H3)
+const toc = headings.filter(h => h.depth <= 3);
 
 const formatDate = (date: Date) => {
   return new Date(date).toLocaleString('en-US', {
@@ -31,7 +36,7 @@ const formattedDate = formatDate(pubDatetime || new Date());
   <article class="post-article" style="padding-top:clamp(6rem,12vw,9rem); padding-bottom:5rem;">
     <div class="container" style="max-width:800px; margin: 0 auto;">
       <a href="/posts" class="project-back">← Back to blog</a>
-      <div class="post-header" style="margin-bottom:3rem; border-bottom:1px solid var(--border); padding-bottom:2rem;">
+      <div class="post-header" style="margin-bottom:1rem; border-bottom:1px solid var(--border); padding-bottom:2rem;">
         <div class="post-meta" style="margin-bottom:1.5rem; font-family:var(--font-mono); font-size:0.875rem; color:var(--text-muted); display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
           {category && <span class="post-category" style="background:var(--accent-dim); color:var(--accent); padding:0.2rem 0.6rem; border-radius:100px;">{category}</span>}
           <span>{formattedDate}</span>
@@ -49,9 +54,30 @@ const formattedDate = formatDate(pubDatetime || new Date());
         {description && <p style="font-size:1.2rem; color:var(--text-2); line-height:1.6;">{description}</p>}
         {modDatetime && <div style="margin-top:1rem; font-size:0.75rem; color:var(--text-3); font-style:italic;">Last updated: {formatDate(modDatetime)}</div>}
       </div>
+
+      {toc.length > 0 && (
+        <div class="post-toc reveal" style="background:var(--bg-2); border:1px solid var(--border); border-radius:12px; padding:1.5rem; margin-bottom:3rem;">
+          <h2 style="font-size:0.9rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+            Table of Contents
+          </h2>
+          <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:0.5rem;">
+            {toc.map(heading => (
+              <li style={`padding-left: ${ (heading.depth - 2) * 1.5 }rem;`}>
+                <a href={`#${heading.slug}`} style="font-size:0.9rem; color:var(--text-2); text-decoration:none; transition:0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-2)'">
+                  {heading.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <div class="post-content" style="font-size:1.125rem; line-height:1.8; color:var(--text); font-family:var(--font-sans);">
         <Content />
       </div>
+
+      <SocialShare title={title} url={currentUrl} />
     </div>
   </article>
 </Layout>

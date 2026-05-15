@@ -6,6 +6,7 @@ export const BLOG_PATH = "src/content/blog";
 export const PORTFOLIO_PATH = "src/content/portfolio";
 export const PAGES_PATH = "src/content/pages";
 export const STORIES_PATH = "src/content/stories";
+export const JOURNEY_PATH = "src/content/journey";
 
 // Helper schema for dates that accepts both string and Date, then transforms to Date
 const dateSchema = z
@@ -99,4 +100,15 @@ const stories = defineCollection({
     }),
 });
 
-export const collections = { blog, portfolio, pages, stories };
+const journey = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.md", base: `./${JOURNEY_PATH}` }),
+  schema: () =>
+    z.object({
+      year: z.string(),
+      title: z.string(),
+      description: z.string(),
+      order: z.number().optional(),
+    }),
+});
+
+export const collections = { blog, portfolio, pages, stories, journey };

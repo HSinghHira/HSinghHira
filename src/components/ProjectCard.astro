@@ -15,7 +15,7 @@ export interface Props {
 const { name, desc, tags, icon, image, featured, category, slug } = Astro.props;
 ---
 
-<a href={`/portfolio/${slug}`} class={`project-card ${featured ? 'project-featured' : ''}`} data-category={category || 'tool'}>
+<a href={`/portfolio/${slug}`} class={`project-card ${featured ? 'project-featured' : ''}`} data-category={category?.toLowerCase() || 'tool'}>
   {featured && <div class="project-featured-badge">Featured</div>}
   <div class={`project-hero-img ${image ? 'has-image' : ''}`}>
     {image ? (
@@ -35,6 +35,6 @@ const { name, desc, tags, icon, image, featured, category, slug } = Astro.props;
         ))}
       </div>
     )}
-    <div class="project-cta">View project →</div>
+    <div class="project-cta">View project <Icon name="mdi:arrow-right" style="width: 1rem; height: 1rem;" /></div>
   </div>
 </a>

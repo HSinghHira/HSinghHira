@@ -75,7 +75,6 @@ const OGTemplate = ({ title, description, category }: Props) => {
               color: "#c8a97a",
               fontSize: "24px",
               fontFamily: "DM Sans",
-              textTransform: "uppercase",
             }}
           >
             {category || "Harman Singh Hira"}

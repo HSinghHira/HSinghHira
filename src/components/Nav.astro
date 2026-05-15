@@ -7,17 +7,19 @@ const isHome = pathname === '/';
 const isPortfolio = pathname.startsWith('/portfolio');
 const isBlog = pathname.startsWith('/blog') || pathname.startsWith('/posts');
 const isStories = pathname.startsWith('/stories');
+const isJourney = pathname.startsWith('/journey');
 const isContact = pathname.startsWith('/contact');
 ---
 
 <nav>
   <a href="/" class="nav-logo">H<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="/" class={isHome ? 'active' : ''}>Home</a></li>
-    <li><a href="/portfolio" class={isPortfolio ? 'active' : ''}>Portfolio</a></li>
-    <li><a href="/posts" class={isBlog ? 'active' : ''}>Blog</a></li>
-    <li><a href="/stories" class={isStories ? 'active' : ''}>Life Stories</a></li>
-    <li><a href="/contact" class={`nav-cta ${isContact ? 'active' : ''}`}>Contact</a></li>
+    <li><a href="/" class={isHome ? 'active' : ''}><Icon name="mdi:home-variant-outline" /><span>Home</span></a></li>
+    <li><a href="/portfolio" class={isPortfolio ? 'active' : ''}><Icon name="mdi:briefcase-outline" /><span>Portfolio</span></a></li>
+    <li><a href="/journey" class={isJourney ? 'active' : ''}><Icon name="mdi:map-marker-path" /><span>Journey</span></a></li>
+    <li><a href="/posts" class={isBlog ? 'active' : ''}><Icon name="mdi:post-outline" /><span>Blog</span></a></li>
+    <li><a href="/stories" class={isStories ? 'active' : ''}><Icon name="mdi:book-open-variant" /><span>Life Stories</span></a></li>
+    <li><a href="/contact" class={`nav-cta ${isContact ? 'active' : ''}`}><Icon name="mdi:email-outline" /><span>Contact</span></a></li>
   </ul>
   <div class="nav-right">
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
@@ -29,17 +31,30 @@ const isContact = pathname.startsWith('/contact');
 </nav>
 
 <div class="mobile-menu" id="mobile-menu">
-  <a href="/">Home</a>
-  <a href="/portfolio">Portfolio</a>
-  <a href="/posts">Blog</a>
-  <a href="/stories">Life Stories</a>
-  <a href="/contact">Contact</a>
+  <a href="/"><Icon name="mdi:home-variant-outline" /> Home</a>
+  <a href="/portfolio"><Icon name="mdi:briefcase-outline" /> Portfolio</a>
+  <a href="/journey"><Icon name="mdi:map-marker-path" /> Journey</a>
+  <a href="/posts"><Icon name="mdi:post-outline" /> Blog</a>
+  <a href="/stories"><Icon name="mdi:book-open-variant" /> Life Stories</a>
+  <a href="/contact"><Icon name="mdi:email-outline" /> Contact</a>
   <div class="mobile-menu-sep">
     <a href="#" id="mobile-theme-label">☀️ Switch to Light Mode</a>
   </div>
 </div>
 
 <script is:inline>
+  function applyTheme() {
+    const saved = localStorage.getItem('theme');
+    const html = document.documentElement;
+    if (saved) {
+      html.setAttribute('data-theme', saved);
+    } else {
+      // Default to dark if no preference saved
+      html.setAttribute('data-theme', 'dark');
+    }
+    updateThemeLabel();
+  }
+
   function toggleTheme() {
     const html = document.documentElement;
     const current = html.getAttribute('data-theme') || 'dark';
@@ -60,32 +75,44 @@ const isContact = pathname.startsWith('/contact');
 
   function toggleMobile() {
     const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('open');
+    const hamburger = document.getElementById('hamburger');
+    if (menu && hamburger) {
+      menu.classList.toggle('open');
+      hamburger.classList.toggle('active');
+    }
   }
 
   function setupNav() {
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
+      themeToggle.removeEventListener('click', toggleTheme);
       themeToggle.addEventListener('click', toggleTheme);
     }
     
     const hamburger = document.getElementById('hamburger');
     if (hamburger) {
+      hamburger.removeEventListener('click', toggleMobile);
       hamburger.addEventListener('click', toggleMobile);
     }
     
     const mobileThemeLabel = document.getElementById('mobile-theme-label');
     if (mobileThemeLabel) {
-      mobileThemeLabel.addEventListener('click', (e) => {
-        e.preventDefault();
-        toggleTheme();
-      });
+      mobileThemeLabel.removeEventListener('click', handleMobileThemeClick);
+      mobileThemeLabel.addEventListener('click', handleMobileThemeClick);
     }
 
-    updateThemeLabel();
+    applyTheme();
   }
 
-  // Setup on initial load and after Astro page transitions (if using ViewTransitions)
+  function handleMobileThemeClick(e) {
+    e.preventDefault();
+    toggleTheme();
+  }
+
+  // Initial load
   setupNav();
+
+  // Handle View Transitions
+  document.addEventListener('astro:after-swap', applyTheme);
   document.addEventListener('astro:page-load', setupNav);
 </script>

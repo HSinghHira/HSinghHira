@@ -14,8 +14,6 @@ published: 2025-11-29T02:15:05.000Z
 
 So, you wanna build a slick React app with Tailwind and Vite? Good choice. Here’s your *no-BS, step-by-step* setup guide. Let’s goooo 🧑‍💻💨
 
-## Table of contents
-
 ## 🥖 Install Bun *(Only Once)*
 
 Because who doesn't want to install something called "bun"? 🍞 Run this in PowerShell and *poof* — Bun is yours.

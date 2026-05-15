@@ -17,8 +17,6 @@ published: 2025-12-08T07:28:13.000Z
 ---
 sit down because i need to tell you about WXT and why it's literally about to revolutionize how we build browser extensions 🤯 like, if you've ever tried making a Chrome or Firefox extension the old way, you KNOW the struggle was real fr fr 😭
 
-## Table of contents
-
 ## What Even IS WXT? 🤔💭
 
 WXT is described as a next-generation web extension framework that's open source and designed to make development faster than before. basically, it's giving "i'm tired of writing the same boilerplate code 500 times" energy and i'm HERE for it 💅

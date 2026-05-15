@@ -118,6 +118,22 @@ collections:
       - {label: Featured, name: featured, widget: boolean, default: false, required: false}
     sortable_fields: [title, date, pubDatetime]
 
+  # Journey Collection
+  - name: journey
+    label: Journey Timeline
+    label_singular: Journey Entry
+    folder: src/content/journey
+    create: true
+    slug: '{{year}}-{{slug}}'
+    extension: md
+    format: frontmatter
+    fields:
+      - {label: Year, name: year, widget: string, required: true, hint: "e.g. // age_15 → 2012"}
+      - {label: Title, name: title, widget: string, required: true}
+      - {label: Description, name: description, widget: text, required: true}
+      - {label: Order, name: order, widget: number, default: 0, required: false}
+    sortable_fields: [order, year]
+
   # Pages Collection
   - name: pages
     label: Pages

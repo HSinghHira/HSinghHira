@@ -35,8 +35,10 @@ const uniqueId = Math.random().toString(36).substring(7);
         // Filter items
         const items = document.querySelectorAll(targetSelector);
         items.forEach(item => {
-          const cat = item.getAttribute('data-category');
-          if (filter === 'all' || cat === filter) {
+          const cat = item.getAttribute('data-category')?.toLowerCase();
+          const filterVal = filter?.toLowerCase();
+          
+          if (filterVal === 'all' || cat === filterVal) {
             item.style.display = '';
           } else {
             item.style.display = 'none';

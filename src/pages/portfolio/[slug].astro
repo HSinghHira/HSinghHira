@@ -1,6 +1,8 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
+import { Icon } from "astro-icon/components";
+import SocialShare from "@/components/SocialShare.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("portfolio");
@@ -11,8 +13,9 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const { title, tags, image, icon, github, demo, pubDatetime, modDatetime, technologies, links } = project.data;
+const { title, tags, image, icon, github, demo, pubDatetime, modDatetime, technologies, links} = project.data;
 const { Content } = await render(project);
+const currentUrl = Astro.url.href;
 
 const formatDate = (date: Date | undefined | null) => {
   if (!date) return "";
@@ -42,11 +45,11 @@ const formatDate = (date: Date | undefined | null) => {
         <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
           {(github || demo || (links && links.length > 0)) && (
             <div class="project-page-links">
-              {demo && <a href={demo} target="_blank" class="btn btn-primary">Live Demo ↗</a>}
-              {github && <a href={github} target="_blank" class="btn btn-ghost">View on GitHub ↗</a>}
+              {demo && <a href={demo} target="_blank" class="btn btn-primary"><Icon name="mdi:open-in-new" />Live Demo</a>}
+              {github && <a href={github} target="_blank" class="btn btn-ghost"><Icon name="simple-icons:github" />GitHub</a>}
               {links && links.map((link: any) => (
                 <a href={link.url} target="_blank" class="btn btn-ghost">
-                  {link.icon ? <span>{link.icon} </span> : null}{link.title} ↗
+                  {link.icon && link.icon.includes(':') ? <Icon name={link.icon} /> : link.icon} {link.title}
                 </a>
               ))}
             </div>
@@ -67,6 +70,8 @@ const formatDate = (date: Date | undefined | null) => {
       <div class="project-page-body">
         <Content />
       </div>
+
+      <SocialShare title={title} url={currentUrl} />
     </div>
   </div>
 </Layout>

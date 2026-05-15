@@ -6,6 +6,8 @@ const pages = {
   posts: { title: "Blog", description: "Thoughts, tutorials, and tech exploration.", category: "Writing" },
   stories: { title: "Stories", description: "Personal stories and experiences from my journey.", category: "Personal" },
   contact: { title: "Contact", description: "Let's connect and build something together.", category: "Connect" },
+  journey: { title: "Journey", description: "My life timeline from Chandigarh to Auckland.", category: "Personal" },
+  about: { title: "About", description: "The honest version of my story.", category: "Personal" },
 };
 
 export async function getStaticPaths() {

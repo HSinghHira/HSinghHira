@@ -27,7 +27,7 @@ export interface Props {
   articleTags?: string[];
   heroImageURL?: string;
   prefetchLinks?: string[];
-  schemaType?: "home" | "post" | "posts" | "portfolio" | "work" | "search" | "contact";
+  schemaType?: "home" | "post" | "posts" | "portfolio" | "work" | "search" | "contact" | "profile";
   isSoftware?: boolean;
 }
 
@@ -317,8 +317,93 @@ if (!schemaType) {
       import { initCodeExpander } from "@/utils/code-expander.ts";
       import { trackOutboundClicks } from "@/utils/analytics";
       
+      // Code block enhancements
+      function setupCodeBlocks() {
+        const codeBlocks = document.querySelectorAll('pre');
+        
+        codeBlocks.forEach((pre) => {
+          if (pre.querySelector('.copy-code-btn')) return;
+
+          const code = pre.querySelector('code');
+          // Some renderers might not have a code tag inside pre
+          const target = code || pre;
+          
+          let lang = pre.getAttribute('data-language') || '';
+          
+          if (!lang && code) {
+            const langClass = Array.from(code.classList).find(c => c.startsWith('language-'));
+            if (langClass) {
+              lang = langClass.replace('language-', '');
+            }
+          }
+          
+          // Fallback check for common classes on pre
+          if (!lang) {
+            const preLangClass = Array.from(pre.classList).find(c => c.startsWith('language-'));
+            if (preLangClass) {
+              lang = preLangClass.replace('language-', '');
+            }
+          }
+
+          if (lang) {
+            pre.setAttribute('data-language', lang);
+          }
+
+          // Create copy button
+          const btn = document.createElement('button');
+          btn.className = 'copy-code-btn';
+          btn.innerHTML = 'Copy';
+          btn.type = 'button';
+          
+          btn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const text = target.innerText;
+            try {
+              await navigator.clipboard.writeText(text);
+              btn.innerHTML = 'Copied!';
+              btn.classList.add('copied');
+              setTimeout(() => {
+                btn.innerHTML = 'Copy';
+                btn.classList.remove('copied');
+              }, 2000);
+            } catch (err) {
+              console.error('Failed to copy!', err);
+              btn.innerHTML = 'Error';
+            }
+          });
+
+          // Ensure pre is positioned for absolute button
+          pre.style.position = 'relative';
+          pre.appendChild(btn);
+
+          // Add language label if exists
+          if (lang && lang !== 'text') {
+            const label = document.createElement('div');
+            label.className = 'code-lang-label';
+            label.innerHTML = lang;
+            
+            // Wrap pre in a container to position label correctly
+            const wrapper = document.createElement('div');
+            wrapper.className = 'code-block-wrapper';
+            
+            if (pre.parentNode) {
+              pre.parentNode.insertBefore(wrapper, pre);
+              wrapper.appendChild(pre);
+              wrapper.appendChild(label);
+            }
+          }
+        });
+      }
+
+      setupCodeBlocks();
       initCodeExpander();
       trackOutboundClicks();
+
+      document.addEventListener('astro:page-load', () => {
+        setupCodeBlocks();
+        initCodeExpander();
+      });
     </script>
   </body>
 </html>

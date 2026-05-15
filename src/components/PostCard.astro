@@ -1,5 +1,6 @@
 ---
 // src/components/PostCard.astro
+import { Icon } from "astro-icon/components";
 export interface Props {
   title: string;
   excerpt: string;
@@ -38,14 +39,14 @@ const catClassMap: Record<string, string> = {
 const catClass = catClassMap[category?.toLowerCase() || ''] || 'cat-tech';
 ---
 
-<a href={`${basePath}/${slug}`} class={`post-card ${featured ? 'featured' : ''}`} data-category={category || 'tech'}>
+<a href={`${basePath}/${slug}`} class={`post-card ${featured ? 'featured' : ''}`} data-category={category?.toLowerCase() || 'tech'}>
   <div class="post-card-inner">
     <div class="post-card-num">{displayNum}</div>
     <div class="post-card-text">
       <div class="post-meta">
         {category && <span class={`post-category ${catClass}`}>{category}</span>}
         <span class="post-date">{formattedDate}</span>
-        {readTime && <span class="post-read">{readTime}</span>}
+        {readTime && <span class="post-read"><Icon name="mdi:clock-outline" style="width: 0.9rem; height: 0.9rem; display: inline; vertical-align: middle; margin-right: 0.2rem; opacity: 0.6;" />{readTime}</span>}
       </div>
       {featured && <div class="post-featured-flag">★ Featured</div>}
       <h3 class="post-title">{title}</h3>

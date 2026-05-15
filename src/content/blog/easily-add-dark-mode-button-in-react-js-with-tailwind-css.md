@@ -18,8 +18,6 @@ published: 2025-12-09T07:20:56.000Z
 ---
 Wanna give your React app that sleek, moody dark mode vibe? 🌑 Let’s make it happen with some quick moves and a sprinkle of Tailwind magic. Buckle up, it’s toggle time! 🚀
 
-## Table of contents
-
 ## 🛠️ Snag the Dark Mode Package 📦
 
 First things first, let’s grab a nifty little package to handle the light-to-dark sorcery. Pop this command into your terminal and let *Bun* do the heavy lifting! 🥐
