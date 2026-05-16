@@ -7,6 +7,9 @@ tags: ["HTML", "CSS", "First Project"]
 featured: true
 github: ""
 demo: ""
+
+pubDatetime: 2026-05-14T07:56:39.000Z
+author: Harman Singh Hira
 ---
 
 This was where everything started. I was 15, had just discovered that you could build things for the internet, and I wanted to show the world what I could do.
