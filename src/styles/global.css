@@ -975,7 +975,7 @@ h4 {
 }
 
 .project-page-title {
-  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-size: clamp(2rem, 5vw, 2.5rem);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.04em;
