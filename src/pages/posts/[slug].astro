@@ -42,9 +42,9 @@ const formatDate = (date: Date) => {
           ))}
         </div>
         
-        <h1 style="font-family:var(--font-display); font-size:clamp(2rem,4vw,3.5rem); font-weight:800; line-height:1.1; letter-spacing:-0.03em; margin-bottom:1.5rem;">{title}</h1>
+        <h1 class="post-hero-title">{title}</h1>
 
-        {description && <p style="font-size:1.2rem; color:var(--text-2); line-height:1.6;">{description}</p>}
+        {description && <p class="post-hero-description">{description}</p>}
         {(pubDatetime || modDatetime) && (
           <div class="post-date" style="margin-top: 1.5rem; display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
             {readTime && <span style="color: var(--text-3);">Read Time: {readTime}</span>}
@@ -73,7 +73,7 @@ const formatDate = (date: Date) => {
         </div>
       )}
 
-      <div class="post-content" style="font-size:1.125rem; line-height:1.8; color:var(--text); font-family:var(--font-sans);">
+      <div class="post-content">
         <Content />
       </div>
 
@@ -82,57 +82,3 @@ const formatDate = (date: Date) => {
   </article>
 </Layout>
 
-<style is:global>
-.post-content h2 {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
-}
-.post-content h3 {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-}
-.post-content p {
-  margin-bottom: 1.5rem;
-}
-.post-content ul, .post-content ol {
-  margin-bottom: 1.5rem;
-  padding-left: 1.5rem;
-}
-.post-content li {
-  margin-bottom: 0.5rem;
-}
-.post-content img {
-  max-width: 100%;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  margin: 2rem 0;
-}
-.post-content blockquote {
-  border-left: 3px solid var(--primary);
-  padding-left: 1.5rem;
-  margin: 2rem 0;
-  font-style: italic;
-  color: var(--text-2);
-}
-.post-content code:not(pre code) {
-  font-family: var(--font-mono);
-  font-size: 0.9em;
-  background: var(--bg-2);
-  padding: 0.2em 0.4em;
-  border-radius: 4px;
-}
-.post-content pre {
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  margin: 2rem 0;
-  overflow-x: auto;
-}
-</style>

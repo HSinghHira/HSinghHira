@@ -46,7 +46,8 @@ if (width && height) {
   params.set("crop", crop); // ← forces center crop (or entropy, attention, etc.)
 }
 
-const weservUrl = `https://images.weserv.nl/?${params.toString()}`;
+const isDev = import.meta.env.DEV;
+const weservUrl = isDev ? src : `https://images.weserv.nl/?${params.toString()}`;
 ---
 
 <img

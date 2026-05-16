@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typography — Harman Singh Hira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root, [data-theme="dark"] {
+      --bg: #080808; --bg-2: #0f0f0f; --bg-3: #161616; --bg-4: #1e1e1e;
+      --border: rgba(255,255,255,0.07); --border-hover: rgba(255,255,255,0.14);
+      --text: #f0ede8; --text-2: #9a9590; --text-3: #4e4b47;
+      --accent: #c8a97a; --accent-dim: rgba(200,169,122,0.12); --accent-dim2: rgba(200,169,122,0.05);
+      --green: #4dbd74; --green-dim: rgba(77,189,116,0.1);
+      --blue: #6b9fff; --blue-dim: rgba(107,159,255,0.1);
+      --purple: #a78bfa; --purple-dim: rgba(167,139,250,0.1);
+      --code-bg: #0c0c0c;
+      --shadow: 0 4px 24px rgba(0,0,0,0.4); --comment: #4a4743;
+    }
+
+    [data-theme="light"] {
+      --bg: #faf9f7; --bg-2: #f3f1ed; --bg-3: #eae7e1; --bg-4: #dedad3;
+      --border: rgba(0,0,0,0.08); --border-hover: rgba(0,0,0,0.15);
+      --text: #1a1816; --text-2: #6b6560; --text-3: #a09b95;
+      --accent: #9e7440; --accent-dim: rgba(158,116,64,0.1); --accent-dim2: rgba(158,116,64,0.05);
+      --green: #2d7a4a; --green-dim: rgba(45,122,74,0.1);
+      --blue: #3464b8; --blue-dim: rgba(52,100,184,0.1);
+      --purple: #6d28d9; --purple-dim: rgba(109,40,217,0.08);
+      --code-bg: #eae7e1;
+      --shadow: 0 4px 24px rgba(0,0,0,0.07); --comment: #a8a19a;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7;
+      min-height: 100vh; overflow-x: hidden;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--bg-4); border-radius: 99px; }
+
+    /* ── THEME TOGGLE ── */
+    .theme-toggle-wrap {
+      position: fixed; top: 1.5rem; right: 1.5rem; z-index: 100;
+    }
+    .theme-toggle {
+      width: 40px; height: 40px; background: var(--bg-3); border: 1px solid var(--border);
+      border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: 0.25s;
+    }
+    .theme-toggle:hover { background: var(--bg-4); border-color: var(--border-hover); }
+    .theme-toggle svg { width: 17px; height: 17px; stroke: var(--text-2); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .icon-moon { display: block; } .icon-sun { display: none; }
+    [data-theme="light"] .icon-moon { display: none; } [data-theme="light"] .icon-sun { display: block; }
+
+    /* ── LAYOUT ── */
+    .page-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 3rem) clamp(5rem, 10vw, 8rem);
+    }
+
+    /* ── SECTION LABEL ── */
+    .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; font-weight: 500; color: var(--accent);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--accent); }
+
+    /* ── CODE COMMENT ── */
+    .code-comment {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; color: var(--comment);
+      margin-bottom: 0.5rem; display: block; letter-spacing: 0.01em;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none; border-top: 1px solid var(--border);
+      margin: clamp(3rem, 6vw, 5rem) 0;
+    }
+
+    /* ── PAGE TITLE ── */
+    .page-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+      animation: fadeUp 0.7s ease 0.05s both;
+    }
+    .page-title .accent { color: var(--accent); }
+
+    .page-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-2);
+      font-weight: 300;
+      max-width: 520px;
+      margin-bottom: 3.5rem;
+      animation: fadeUp 0.7s ease 0.15s both;
+    }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+    /* ── SECTION ── */
+    .typ-section { margin-bottom: clamp(3rem, 6vw, 5rem); animation: fadeUp 0.7s ease both; }
+    .typ-section:nth-child(2) { animation-delay: 0.1s; }
+    .typ-section:nth-child(3) { animation-delay: 0.15s; }
+    .typ-section:nth-child(4) { animation-delay: 0.2s; }
+    .typ-section:nth-child(5) { animation-delay: 0.25s; }
+    .typ-section:nth-child(6) { animation-delay: 0.3s; }
+    .typ-section:nth-child(7) { animation-delay: 0.35s; }
+    .typ-section:nth-child(8) { animation-delay: 0.4s; }
+    .typ-section:nth-child(9) { animation-delay: 0.45s; }
+
+    /* ── HEADINGS ── */
+    .heading-showcase { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .h1-display {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(2.8rem, 8vw, 6rem);
+      letter-spacing: -0.04em; line-height: 0.95; color: var(--text);
+    }
+    .h2-display {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: -0.03em; line-height: 1.05; color: var(--text);
+    }
+    .h3-display {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      letter-spacing: -0.03em; line-height: 1.15; color: var(--text);
+    }
+    .h4-display {
+      font-family: 'Syne', sans-serif; font-weight: 600;
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      letter-spacing: -0.02em; line-height: 1.25; color: var(--text);
+    }
+    .h5-display {
+      font-family: 'Syne', sans-serif; font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: -0.01em; line-height: 1.3; color: var(--text);
+    }
+    .h6-display {
+      font-family: 'Syne', sans-serif; font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0; line-height: 1.4; color: var(--text-2);
+    }
+
+    /* tag indicator */
+    .tag-indicator {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; color: var(--comment); margin-right: 0.6rem;
+      vertical-align: middle; letter-spacing: 0.04em;
+    }
+
+    /* ── BODY TEXT ── */
+    .body-showcase { display: flex; flex-direction: column; gap: 1.75rem; }
+
+    .body-lg { font-size: 1.2rem; font-weight: 300; color: var(--text); line-height: 1.7; }
+    .body-base { font-size: 1rem; font-weight: 300; color: var(--text); line-height: 1.75; }
+    .body-sm { font-size: 0.875rem; font-weight: 400; color: var(--text-2); line-height: 1.75; }
+    .body-xs { font-size: 0.78rem; font-weight: 400; color: var(--text-3); line-height: 1.7; }
+    .body-medium { font-size: 1rem; font-weight: 500; color: var(--text); line-height: 1.7; }
+
+    /* ── LEAD / INTRO ── */
+    .lead {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      font-weight: 300; color: var(--text-2); line-height: 1.65; max-width: 640px;
+    }
+
+    /* ── INLINE STYLES ── */
+    .inline-showcase {
+      font-size: 1rem; color: var(--text); line-height: 2.2;
+      font-weight: 300;
+    }
+    .inline-showcase strong { font-weight: 500; }
+    .inline-showcase em { font-style: italic; color: var(--text-2); }
+    .inline-showcase u { text-decoration: underline; text-underline-offset: 3px; }
+    .inline-showcase s { text-decoration: line-through; color: var(--text-3); }
+    mark.highlight {
+      background: var(--accent-dim); color: var(--accent);
+      border-radius: 3px; padding: 0 0.3em;
+    }
+    .inline-kbd {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; background: var(--bg-3);
+      border: 1px solid var(--border-hover); border-bottom-width: 2px;
+      border-radius: 5px; padding: 0.1em 0.45em; color: var(--text-2);
+    }
+    sup, sub { font-size: 0.7em; }
+
+    /* ── MONO / CODE ── */
+    .mono-showcase { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .inline-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82em; background: var(--accent-dim2);
+      color: var(--accent); border-radius: 4px;
+      padding: 0.1em 0.45em;
+    }
+    .code-block {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem; line-height: 1.85;
+      background: var(--code-bg); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.5rem 1.75rem;
+      color: var(--text-2); overflow-x: auto;
+    }
+    .code-block .kw  { color: var(--purple); }
+    .code-block .fn  { color: var(--blue); }
+    .code-block .str { color: var(--green); }
+    .code-block .cmt { color: var(--comment); }
+    .code-block .acc { color: var(--accent); }
+
+    /* ── BLOCKQUOTE ── */
+    blockquote.bq {
+      border-left: 2px solid var(--accent);
+      padding: 0.75rem 0 0.75rem 1.5rem;
+      margin: 0;
+    }
+    blockquote.bq p {
+      font-size: 1.1rem; font-weight: 300;
+      color: var(--text-2); font-style: italic; line-height: 1.7;
+    }
+    blockquote.bq cite {
+      display: block; margin-top: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; color: var(--comment); font-style: normal;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── LISTS ── */
+    .list-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    @media (max-width: 600px) { .list-showcase { grid-template-columns: 1fr; } }
+
+    ul.custom-ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.65rem; }
+    ul.custom-ul li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.93rem; color: var(--text-2); line-height: 1.6; }
+    ul.custom-ul li::before {
+      content: '✦'; color: var(--accent); font-size: 0.6rem; flex-shrink: 0; margin-top: 0.38em;
+    }
+
+    ol.custom-ol { list-style: none; padding: 0; counter-reset: ol-count; display: flex; flex-direction: column; gap: 0.65rem; }
+    ol.custom-ol li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.93rem; color: var(--text-2); counter-increment: ol-count; line-height: 1.6; }
+    ol.custom-ol li::before {
+      content: counter(ol-count, decimal-leading-zero);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; color: var(--accent); min-width: 20px; flex-shrink: 0; margin-top: 0.25em;
+    }
+
+    /* ── LINKS ── */
+    .link-showcase { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; align-items: center; }
+
+    a.link-base {
+      color: var(--accent); text-decoration: underline; text-underline-offset: 3px;
+      text-decoration-color: rgba(200,169,122,0.3); transition: 0.2s;
+      font-size: 0.95rem;
+    }
+    a.link-base:hover { text-decoration-color: var(--accent); }
+
+    a.link-subtle {
+      color: var(--text-2); text-decoration: none;
+      border-bottom: 1px solid var(--border-hover); padding-bottom: 1px;
+      font-size: 0.95rem; transition: 0.2s;
+    }
+    a.link-subtle:hover { color: var(--text); border-bottom-color: var(--text); }
+
+    a.link-arrow {
+      color: var(--text-2); text-decoration: none; font-size: 0.95rem;
+      display: inline-flex; align-items: center; gap: 0.35rem; transition: 0.2s;
+    }
+    a.link-arrow:hover { color: var(--accent); gap: 0.55rem; }
+    a.link-arrow svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: 0.2s; }
+
+    a.link-ghost {
+      color: var(--text-2); text-decoration: none; font-size: 0.95rem;
+      background: var(--bg-3); border: 1px solid var(--border);
+      padding: 0.35rem 0.8rem; border-radius: 6px; transition: 0.25s;
+    }
+    a.link-ghost:hover { background: var(--bg-4); color: var(--text); border-color: var(--border-hover); }
+
+    /* ── SCALE ── */
+    .scale-grid {
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .scale-row {
+      display: flex; align-items: baseline; gap: 1.5rem;
+      padding: 0.85rem 0; border-bottom: 1px solid var(--border);
+    }
+    .scale-row:last-child { border-bottom: none; }
+    .scale-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; color: var(--comment); width: 130px; flex-shrink: 0; letter-spacing: 0.04em;
+    }
+    .scale-sample { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--text); letter-spacing: -0.03em; }
+
+    /* ── COLOR CHIPS ── */
+    .color-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; padding: 0.3rem 0.75rem; border-radius: 99px; border: 1px solid transparent;
+      letter-spacing: 0.04em;
+    }
+    .chip-text    { background: var(--accent-dim); color: var(--accent); border-color: rgba(200,169,122,0.2); }
+    .chip-muted   { background: var(--bg-3); color: var(--text-2); border-color: var(--border-hover); }
+    .chip-dim     { background: transparent; color: var(--text-3); border-color: var(--border); }
+    .chip-green   { background: var(--green-dim); color: var(--green); border-color: rgba(77,189,116,0.2); }
+    .chip-blue    { background: var(--blue-dim); color: var(--blue); border-color: rgba(107,159,255,0.2); }
+    .chip-purple  { background: var(--purple-dim); color: var(--purple); border-color: rgba(167,139,250,0.2); }
+
+    /* ── FONT FAMILIES ── */
+    .font-families { display: flex; flex-direction: column; gap: 2rem; }
+    .font-card {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.75rem 2rem;
+    }
+    .font-card-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem; color: var(--comment); letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .font-syne-sample {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(1.8rem, 5vw, 3rem); letter-spacing: -0.04em; line-height: 1;
+      color: var(--text);
+    }
+    .font-dm-sample {
+      font-family: 'DM Sans', sans-serif; font-weight: 300;
+      font-size: 1.05rem; line-height: 1.75; color: var(--text-2); max-width: 540px;
+    }
+    .font-mono-sample {
+      font-family: 'JetBrains Mono', monospace; font-weight: 400;
+      font-size: 0.85rem; line-height: 1.9; color: var(--text-2);
+    }
+
+    /* weights row */
+    .weights-row {
+      display: flex; flex-wrap: wrap; gap: 1rem 2rem;
+      margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);
+    }
+    .weight-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .weight-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--comment); letter-spacing: 0.08em; }
+    .weight-sample { font-size: 1.1rem; color: var(--text); line-height: 1.2; }
+
+    /* ── BUTTONS ── */
+    .btn-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.7rem 1.4rem; border-radius: 8px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 500;
+      cursor: pointer; text-decoration: none; transition: 0.25s;
+      border: 1px solid transparent; background: none;
+    }
+    .btn-primary { background: var(--accent); color: #1a1209; border-color: var(--accent); }
+    .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-ghost { background: transparent; color: var(--text-2); border-color: var(--border-hover); }
+    .btn-ghost:hover { background: var(--bg-3); color: var(--text); transform: translateY(-1px); }
+    .btn-accent-outline { background: var(--accent-dim); color: var(--accent); border-color: rgba(200,169,122,0.25); }
+    .btn-accent-outline:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-green { background: var(--green-dim); color: var(--green); border-color: rgba(77,189,116,0.2); }
+    .btn-green:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-danger { background: rgba(239,68,68,0.1); color: #f87171; border-color: rgba(239,68,68,0.2); }
+    .btn-danger:hover { background: rgba(239,68,68,0.18); transform: translateY(-1px); }
+    .btn-sm { padding: 0.45rem 0.9rem; font-size: 0.8rem; }
+    .btn-lg { padding: 0.9rem 1.8rem; font-size: 1rem; }
+    .btn:disabled, .btn[disabled] { opacity: 0.38; cursor: not-allowed; transform: none !important; filter: none !important; }
+    .btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── FORMS ── */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
+      color: var(--text-2); letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .form-input, .form-textarea, .form-select {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.65rem 0.9rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      font-weight: 300; color: var(--text);
+      transition: 0.2s; outline: none; width: 100%;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-3); }
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim);
+    }
+    .form-input.error { border-color: #f87171; box-shadow: 0 0 0 3px rgba(248,113,113,0.12); }
+    .form-input.success { border-color: var(--green); box-shadow: 0 0 0 3px var(--green-dim); }
+    .form-textarea { resize: vertical; min-height: 100px; line-height: 1.65; }
+    .form-select { appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239a9590' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 0.85rem center; padding-right: 2.2rem;
+    }
+    .form-select option { background: var(--bg-3); }
+    .form-helper { font-size: 0.75rem; color: var(--text-3); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.02em; }
+    .form-error-text { font-size: 0.75rem; color: #f87171; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.02em; }
+    .form-success-text { font-size: 0.75rem; color: var(--green); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.02em; }
+
+    /* checkbox & radio */
+    .check-group { display: flex; flex-direction: column; gap: 0.75rem; }
+    .check-item { display: flex; align-items: center; gap: 0.7rem; cursor: pointer; }
+    .check-item input[type="checkbox"], .check-item input[type="radio"] { display: none; }
+    .check-box {
+      width: 18px; height: 18px; border-radius: 5px; flex-shrink: 0;
+      background: var(--bg-2); border: 1px solid var(--border-hover);
+      display: flex; align-items: center; justify-content: center; transition: 0.2s;
+    }
+    .check-item input[type="checkbox"]:checked ~ .check-box {
+      background: var(--accent); border-color: var(--accent);
+    }
+    .check-box svg { width: 11px; height: 11px; stroke: #1a1209; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0; transition: 0.15s; }
+    .check-item input[type="checkbox"]:checked ~ .check-box svg { opacity: 1; }
+    .radio-box {
+      width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
+      background: var(--bg-2); border: 1px solid var(--border-hover);
+      display: flex; align-items: center; justify-content: center; transition: 0.2s;
+    }
+    .check-item input[type="radio"]:checked ~ .radio-box { border-color: var(--accent); }
+    .radio-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); opacity: 0; transition: 0.15s; }
+    .check-item input[type="radio"]:checked ~ .radio-box .radio-dot { opacity: 1; }
+    .check-label { font-size: 0.9rem; color: var(--text-2); }
+
+    /* toggle */
+    .toggle-row { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+    .toggle-wrap { display: flex; align-items: center; gap: 0.6rem; cursor: pointer; }
+    .toggle-track {
+      width: 40px; height: 22px; border-radius: 99px;
+      background: var(--bg-4); border: 1px solid var(--border-hover);
+      position: relative; transition: 0.25s; flex-shrink: 0;
+    }
+    .toggle-thumb {
+      position: absolute; top: 3px; left: 3px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--text-3); transition: 0.25s;
+    }
+    input.toggle-input { display: none; }
+    input.toggle-input:checked ~ .toggle-track { background: var(--accent); border-color: var(--accent); }
+    input.toggle-input:checked ~ .toggle-track .toggle-thumb { left: 21px; background: #1a1209; }
+    .toggle-label { font-size: 0.875rem; color: var(--text-2); }
+
+    /* ── ALERTS ── */
+    .alert-stack { display: flex; flex-direction: column; gap: 0.85rem; }
+    .alert {
+      display: flex; align-items: flex-start; gap: 0.85rem;
+      padding: 0.9rem 1.1rem; border-radius: 10px; border: 1px solid transparent;
+    }
+    .alert svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 0.12rem; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .alert-content { flex: 1; }
+    .alert-title { font-family: 'Syne', sans-serif; font-size: 0.875rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .alert-body  { font-size: 0.82rem; font-weight: 300; line-height: 1.55; }
+    .alert-info    { background: var(--blue-dim);   border-color: rgba(107,159,255,0.2);  color: var(--blue);   }
+    .alert-success { background: var(--green-dim);  border-color: rgba(77,189,116,0.2);   color: var(--green);  }
+    .alert-warning { background: rgba(251,191,36,0.08); border-color: rgba(251,191,36,0.2); color: #fbbf24; }
+    .alert-danger  { background: rgba(239,68,68,0.08);  border-color: rgba(239,68,68,0.2);  color: #f87171; }
+    .alert-info .alert-body, .alert-success .alert-body,
+    .alert-warning .alert-body, .alert-danger .alert-body { color: var(--text-2); }
+
+    /* ── TABLE ── */
+    .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); }
+    table.ds-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    table.ds-table caption {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
+      color: var(--comment); letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.75rem 1.25rem; text-align: left; border-bottom: 1px solid var(--border);
+    }
+    table.ds-table thead tr { background: var(--bg-3); }
+    table.ds-table th {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
+      font-weight: 500; color: var(--text-2); letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.75rem 1.25rem; text-align: left; border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    table.ds-table td {
+      padding: 0.8rem 1.25rem; color: var(--text-2); font-weight: 300;
+      border-bottom: 1px solid var(--border); line-height: 1.5;
+    }
+    table.ds-table tr:last-child td { border-bottom: none; }
+    table.ds-table tbody tr { transition: background 0.15s; }
+    table.ds-table tbody tr:hover { background: var(--bg-2); }
+    table.ds-table td.td-accent { color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
+    table.ds-table td.td-strong { color: var(--text); font-weight: 500; }
+
+    /* ── DEFINITION LIST ── */
+    dl.ds-dl { display: grid; grid-template-columns: auto 1fr; gap: 0; }
+    dl.ds-dl dt {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+      color: var(--accent); font-weight: 500; letter-spacing: 0.04em;
+      padding: 0.7rem 1.5rem 0.7rem 0; border-bottom: 1px solid var(--border);
+      white-space: nowrap; align-self: center;
+    }
+    dl.ds-dl dd {
+      font-size: 0.9rem; color: var(--text-2); font-weight: 300;
+      padding: 0.7rem 0; border-bottom: 1px solid var(--border); line-height: 1.55;
+    }
+    dl.ds-dl dt:last-of-type, dl.ds-dl dd:last-of-type { border-bottom: none; }
+
+    /* ── NESTED LIST ── */
+    ul.nested-ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+    ul.nested-ul li { font-size: 0.9rem; color: var(--text-2); line-height: 1.6; }
+    ul.nested-ul > li { display: flex; align-items: flex-start; gap: 0.6rem; }
+    ul.nested-ul > li::before { content: '✦'; color: var(--accent); font-size: 0.55rem; flex-shrink: 0; margin-top: 0.42em; }
+    ul.nested-ul ul { padding-left: 1.25rem; margin-top: 0.4rem; display: flex; flex-direction: column; gap: 0.35rem; list-style: none; }
+    ul.nested-ul ul li { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.85rem; }
+    ul.nested-ul ul li::before { content: '–'; color: var(--text-3); flex-shrink: 0; }
+    ul.nested-ul ul ul { padding-left: 1rem; }
+    ul.nested-ul ul ul li::before { content: '·'; color: var(--text-3); }
+
+    /* ── NAVIGATION PATTERNS ── */
+    /* breadcrumbs */
+    .breadcrumb { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+    .breadcrumb-item { font-size: 0.82rem; color: var(--text-3); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.02em; }
+    .breadcrumb-item a { color: var(--text-2); text-decoration: none; transition: 0.2s; }
+    .breadcrumb-item a:hover { color: var(--accent); }
+    .breadcrumb-item.active { color: var(--accent); }
+    .breadcrumb-sep { color: var(--text-3); font-size: 0.75rem; }
+
+    /* pagination */
+    .pagination { display: flex; align-items: center; gap: 0.35rem; }
+    .page-btn {
+      width: 34px; height: 34px; border-radius: 7px; border: 1px solid var(--border);
+      background: transparent; color: var(--text-2); font-size: 0.82rem;
+      font-family: 'JetBrains Mono', monospace; cursor: pointer; transition: 0.2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .page-btn:hover { background: var(--bg-3); color: var(--text); border-color: var(--border-hover); }
+    .page-btn.active { background: var(--accent-dim); color: var(--accent); border-color: rgba(200,169,122,0.25); }
+    .page-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* tabs */
+    .tab-bar { display: flex; gap: 0; border-bottom: 1px solid var(--border); }
+    .tab-item {
+      padding: 0.6rem 1.1rem; font-size: 0.82rem; font-weight: 400;
+      color: var(--text-3); cursor: pointer; transition: 0.2s; border: none;
+      background: none; border-bottom: 2px solid transparent; margin-bottom: -1px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .tab-item:hover { color: var(--text-2); }
+    .tab-item.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* tag pills */
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag-pill {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+      padding: 0.35rem 0.85rem; border-radius: 99px;
+      border: 1px solid var(--border); background: var(--bg-3);
+      color: var(--text-2); cursor: pointer; transition: 0.2s; letter-spacing: 0.04em;
+    }
+    .tag-pill:hover { border-color: var(--border-hover); color: var(--text); }
+    .tag-pill.active { background: var(--accent-dim); color: var(--accent); border-color: rgba(200,169,122,0.25); }
+
+    /* ── STATS / NUMBERS ── */
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: var(--border); border-radius: 12px; overflow: hidden; }
+    .stat-card { background: var(--bg-2); padding: 1.5rem; }
+    .stat-number {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -0.04em;
+      line-height: 1; color: var(--text); margin-bottom: 0.35rem;
+    }
+    .stat-number .stat-accent { color: var(--accent); }
+    .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--comment); letter-spacing: 0.08em; text-transform: uppercase; }
+    .stat-sub { font-size: 0.8rem; color: var(--text-3); margin-top: 0.25rem; }
+
+    /* ── ABBR / TOOLTIP ── */
+    abbr.ds-abbr {
+      text-decoration: underline dotted; text-underline-offset: 3px;
+      text-decoration-color: var(--accent); color: inherit; cursor: help;
+      position: relative;
+    }
+    .tooltip-wrap { position: relative; display: inline-block; }
+    .tooltip-trigger {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+      background: var(--bg-3); border: 1px solid var(--border-hover);
+      border-radius: 6px; padding: 0.3rem 0.7rem; color: var(--text-2);
+      cursor: default; transition: 0.2s;
+    }
+    .tooltip-trigger:hover { color: var(--text); }
+    .tooltip-box {
+      position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+      background: var(--bg-4); border: 1px solid var(--border-hover);
+      border-radius: 7px; padding: 0.5rem 0.85rem;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+      color: var(--text-2); white-space: nowrap; pointer-events: none;
+      opacity: 0; transition: 0.2s; z-index: 10;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+    .tooltip-wrap:hover .tooltip-box { opacity: 1; bottom: calc(100% + 10px); }
+    .tooltip-box::after {
+      content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+      border: 5px solid transparent; border-top-color: var(--border-hover);
+    }
+
+    /* ── LETTER SPACING ── */
+    .tracking-grid { display: flex; flex-direction: column; gap: 0; }
+    .tracking-row {
+      display: flex; align-items: baseline; gap: 1.5rem;
+      padding: 0.8rem 0; border-bottom: 1px solid var(--border);
+    }
+    .tracking-row:last-child { border-bottom: none; }
+    .tracking-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--comment); width: 150px; flex-shrink: 0; letter-spacing: 0.04em; }
+    .tracking-sample { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 1.1rem; color: var(--text); }
+
+    /* ── SPECIAL: hero-style name ── */
+    .hero-name-example {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3rem, 10vw, 6rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      color: var(--text);
+    }
+    .hero-name-example .accent { color: var(--accent); }
+
+    /* ── STATUS BADGE ── */
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--bg-3); border: 1px solid var(--border); border-radius: 99px;
+      padding: 0.35rem 0.9rem; font-size: 0.78rem; color: var(--text-2);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
+
+    /* ── HORIZONTAL RULE STYLES ── */
+    .hr-showcase { display: flex; flex-direction: column; gap: 1.25rem; }
+    .hr-solid { border: none; border-top: 1px solid var(--border); }
+    .hr-accent { border: none; border-top: 1px solid var(--accent); opacity: 0.3; }
+    .hr-gradient { border: none; height: 1px; background: linear-gradient(to right, transparent, var(--accent), transparent); }
+    .hr-thick { border: none; border-top: 2px solid var(--bg-4); }
+    .hr-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--comment); margin-bottom: 0.3rem; display: block; letter-spacing: 0.08em; }
+
+  </style>
+</head>
+<body>
+
+  <div class="theme-toggle-wrap">
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </div>
+
+  <div class="page-wrap">
+
+    <!-- PAGE HEADER -->
+    <div style="margin-bottom: 3.5rem;">
+      <div class="label">Design System</div>
+      <h1 class="page-title">Type<span class="accent">graphy</span></h1>
+      <p class="page-subtitle">A complete reference of every typographic element — headings, body text, code, lists, links, and more — all drawn from the core design system.</p>
+    </div>
+
+    <!-- 01 TYPEFACES -->
+    <div class="typ-section">
+      <div class="label">01 — Typefaces</div>
+      <span class="code-comment">// three font families · display · body · mono</span>
+
+      <div class="font-families">
+
+        <div class="font-card">
+          <div class="font-card-name">Syne — Display / Headings</div>
+          <div class="font-syne-sample">The Quick<br>Brown Fox</div>
+          <div class="weights-row">
+            <div class="weight-item">
+              <span class="weight-label">400 Regular</span>
+              <span class="weight-sample" style="font-family:'Syne';font-weight:400;">Syne Regular</span>
+            </div>
+            <div class="weight-item">
+              <span class="weight-label">600 SemiBold</span>
+              <span class="weight-sample" style="font-family:'Syne';font-weight:600;">Syne SemiBold</span>
+            </div>
+            <div class="weight-item">
+              <span class="weight-label">700 Bold</span>
+              <span class="weight-sample" style="font-family:'Syne';font-weight:700;">Syne Bold</span>
+            </div>
+            <div class="weight-item">
+              <span class="weight-label">800 ExtraBold</span>
+              <span class="weight-sample" style="font-family:'Syne';font-weight:800;">Syne ExtraBold</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="font-card">
+          <div class="font-card-name">DM Sans — Body / UI</div>
+          <div class="font-dm-sample">
+            Designed for digital interfaces, DM Sans brings warmth and clarity to long-form reading. Its generous x-height and clean strokes make it highly legible at any size.
+          </div>
+          <div class="weights-row">
+            <div class="weight-item">
+              <span class="weight-label">300 Light</span>
+              <span class="weight-sample" style="font-family:'DM Sans';font-weight:300;">DM Sans Light</span>
+            </div>
+            <div class="weight-item">
+              <span class="weight-label">400 Regular</span>
+              <span class="weight-sample" style="font-family:'DM Sans';font-weight:400;">DM Sans Regular</span>
+            </div>
+            <div class="weight-item">
+              <span class="weight-label">500 Medium</span>
+              <span class="weight-sample" style="font-family:'DM Sans';font-weight:500;">DM Sans Medium</span>
+            </div>
+            <div class="weight-item">
+              <span class="weight-label">300 Italic</span>
+              <span class="weight-sample" style="font-family:'DM Sans';font-weight:300;font-style:italic;">DM Sans Italic</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="font-card">
+          <div class="font-card-name">JetBrains Mono — Monospace / Code / Labels</div>
+          <div class="font-mono-sample">
+            const design = { font: 'JetBrains Mono', use: ['code', 'labels', 'meta'] };<br>
+            // 0123456789  ← clear digit rendering<br>
+            abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLM
+          </div>
+          <div class="weights-row">
+            <div class="weight-item">
+              <span class="weight-label">400 Regular</span>
+              <span class="weight-sample" style="font-family:'JetBrains Mono';font-weight:400;">Mono Regular</span>
+            </div>
+            <div class="weight-item">
+              <span class="weight-label">500 Medium</span>
+              <span class="weight-sample" style="font-family:'JetBrains Mono';font-weight:500;">Mono Medium</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 02 HEADING SCALE -->
+    <div class="typ-section">
+      <div class="label">02 — Heading Scale</div>
+      <span class="code-comment">// Syne · letter-spacing -0.03em to -0.04em · weights 600–800</span>
+
+      <div class="heading-showcase">
+        <div>
+          <span class="code-comment">// h1 · clamp(2.8rem–6rem) · weight 800 · tracking -0.04em</span>
+          <div class="h1-display"><span class="tag-indicator">&lt;h1&gt;</span>Harman Singh Hira</div>
+        </div>
+        <div>
+          <span class="code-comment">// h2 · clamp(2rem–3.5rem) · weight 700 · tracking -0.03em</span>
+          <div class="h2-display"><span class="tag-indicator">&lt;h2&gt;</span>Selected Projects</div>
+        </div>
+        <div>
+          <span class="code-comment">// h3 · clamp(1.4rem–2rem) · weight 700 · tracking -0.03em</span>
+          <div class="h3-display"><span class="tag-indicator">&lt;h3&gt;</span>About This Work</div>
+        </div>
+        <div>
+          <span class="code-comment">// h4 · clamp(1.1rem–1.35rem) · weight 600 · tracking -0.02em</span>
+          <div class="h4-display"><span class="tag-indicator">&lt;h4&gt;</span>Creative Direction</div>
+        </div>
+        <div>
+          <span class="code-comment">// h5 · 1rem · weight 600 · tracking -0.01em</span>
+          <div class="h5-display"><span class="tag-indicator">&lt;h5&gt;</span>Section Heading Five</div>
+        </div>
+        <div>
+          <span class="code-comment">// h6 · 0.875rem · weight 600 · color text-2</span>
+          <div class="h6-display"><span class="tag-indicator">&lt;h6&gt;</span>Smallest Heading Level</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 03 TYPE SCALE -->
+    <div class="typ-section">
+      <div class="label">03 — Size Scale</div>
+      <span class="code-comment">// visual scale reference · Syne display font</span>
+
+      <div class="scale-grid">
+        <div class="scale-row">
+          <span class="scale-meta">9xl · ~7.5rem · hero</span>
+          <span class="scale-sample" style="font-size:clamp(3rem,9vw,5.5rem);line-height:1;">Aa</span>
+        </div>
+        <div class="scale-row">
+          <span class="scale-meta">6xl · ~5rem · display</span>
+          <span class="scale-sample" style="font-size:clamp(2.5rem,6vw,4.5rem);line-height:1;">Type Scale</span>
+        </div>
+        <div class="scale-row">
+          <span class="scale-meta">4xl · ~3.5rem · h2</span>
+          <span class="scale-sample" style="font-size:clamp(2rem,4vw,3.25rem);line-height:1.05;">Heading Two</span>
+        </div>
+        <div class="scale-row">
+          <span class="scale-meta">3xl · ~2.25rem · h3</span>
+          <span class="scale-sample" style="font-size:clamp(1.5rem,3vw,2.25rem);line-height:1.1;">Section Title</span>
+        </div>
+        <div class="scale-row">
+          <span class="scale-meta">2xl · ~1.5rem · h4</span>
+          <span class="scale-sample" style="font-size:1.5rem;line-height:1.2;">Sub-Heading</span>
+        </div>
+        <div class="scale-row">
+          <span class="scale-meta">xl · ~1.25rem · lead</span>
+          <span class="scale-sample" style="font-size:1.25rem;line-height:1.3;">Lead Paragraph</span>
+        </div>
+        <div class="scale-row">
+          <span class="scale-meta">base · 1rem · body</span>
+          <span class="scale-sample" style="font-size:1rem;line-height:1.4;">Body Copy</span>
+        </div>
+        <div class="scale-row">
+          <span class="scale-meta">sm · 0.875rem · small</span>
+          <span class="scale-sample" style="font-size:0.875rem;line-height:1.4;">Small Text</span>
+        </div>
+        <div class="scale-row">
+          <span class="scale-meta">xs · 0.75rem · caption</span>
+          <span class="scale-sample" style="font-size:0.75rem;line-height:1.4;">Caption / Label</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 04 BODY TEXT -->
+    <div class="typ-section">
+      <div class="label">04 — Body Text</div>
+      <span class="code-comment">// DM Sans · weight 300 base · line-height 1.7–1.75</span>
+
+      <div class="body-showcase">
+        <div>
+          <span class="code-comment">// lead · 1.35rem · weight 300 · color text-2</span>
+          <p class="lead">Creator, tech enthusiast, and problem solver — building things that matter at the intersection of design and engineering.</p>
+        </div>
+        <div>
+          <span class="code-comment">// body-lg · 1.2rem · weight 300</span>
+          <p class="body-lg">Large body text for introductory paragraphs or content that needs extra presence. It balances well against display headings and provides breathing room for the reader.</p>
+        </div>
+        <div>
+          <span class="code-comment">// body-base · 1rem · weight 300 · standard reading copy</span>
+          <p class="body-base">Standard body copy at base size. This is the workhorse of the type system — used for descriptions, blog posts, and general interface content. The light weight keeps things elegant without feeling thin.</p>
+        </div>
+        <div>
+          <span class="code-comment">// body-medium · 1rem · weight 500 · emphasis</span>
+          <p class="body-medium">Medium weight body for labels, card descriptions, or content that needs to stand out slightly without reaching for bold. Works well in UI contexts.</p>
+        </div>
+        <div>
+          <span class="code-comment">// body-sm · 0.875rem · weight 400 · color text-2</span>
+          <p class="body-sm">Small body text in muted colour for secondary information, captions, dates, and metadata. Remains highly legible even at this reduced scale.</p>
+        </div>
+        <div>
+          <span class="code-comment">// body-xs · 0.78rem · weight 400 · color text-3</span>
+          <p class="body-xs">Extra small text in the dimmest tone — used for fine print, timestamps, or deeply nested metadata. Approach sparingly.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 05 INLINE STYLES -->
+    <div class="typ-section">
+      <div class="label">05 — Inline Styles</div>
+      <span class="code-comment">// emphasis, marks, and inline utilities</span>
+
+      <p class="inline-showcase">
+        This sentence uses <strong>medium weight (500)</strong> for emphasis within body copy.
+        Italics use <em>DM Sans Italic 300</em> with a muted colour shift.
+        You can <u>underline with an offset</u> for a cleaner look.
+        <s>Strikethrough</s> renders in <code style="font-family:'JetBrains Mono',monospace;font-size:0.8em;color:var(--comment)">--text-3</code>.
+        Use <mark class="highlight">highlighted text</mark> to call attention to a key phrase.
+        Press <kbd class="inline-kbd">⌘</kbd> <kbd class="inline-kbd">K</kbd> to open command palette.
+        Superscript<sup>1</sup> and subscript<sub>note</sub> are supported too.
+        And of course <code class="inline-code">inline-code</code> in accent gold monospace.
+      </p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 06 CODE -->
+    <div class="typ-section">
+      <div class="label">06 — Code & Monospace</div>
+      <span class="code-comment">// JetBrains Mono · 0.82rem · line-height 1.85</span>
+
+      <div class="mono-showcase">
+        <div>
+          <span class="code-comment">// inline code</span>
+          <p class="body-base">
+            Use <code class="inline-code">font-family: 'JetBrains Mono'</code> with
+            <code class="inline-code">var(--accent)</code> colour and
+            <code class="inline-code">var(--accent-dim2)</code> background for inline tokens.
+          </p>
+        </div>
+
+        <div>
+          <span class="code-comment">// code block with syntax highlighting</span>
+          <pre class="code-block"><span class="cmt">// design system config</span>
+<span class="kw">const</span> <span class="acc">typography</span> = {
+  display:  <span class="str">'Syne'</span>,
+  body:     <span class="str">'DM Sans'</span>,
+  mono:     <span class="str">'JetBrains Mono'</span>,
+};
+
+<span class="kw">function</span> <span class="fn">applyTheme</span>(theme) {
+  document.documentElement.dataset.theme = theme;
+  <span class="kw">return</span> <span class="str">`Applied ${theme} theme`</span>;
+}
+
+<span class="cmt">// usage</span>
+<span class="fn">applyTheme</span>(<span class="str">'dark'</span>);   <span class="cmt">// → 'Applied dark theme'</span></pre>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 07 BLOCKQUOTE -->
+    <div class="typ-section">
+      <div class="label">07 — Blockquote</div>
+      <span class="code-comment">// 2px left border · accent colour · italic body · mono cite</span>
+
+      <blockquote class="bq">
+        <p>Great design is not just what it looks like and feels like — it's how it communicates, how it moves, and whether it earns the attention of the person reading it.</p>
+        <cite>— Typography Principle, Design System v1.0</cite>
+      </blockquote>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 08 LISTS -->
+    <div class="typ-section">
+      <div class="label">08 — Lists</div>
+      <span class="code-comment">// custom bullets (✦ accent) · leading-zero ordered</span>
+
+      <div class="list-showcase">
+        <div>
+          <span class="code-comment">// unordered · ✦ accent bullet</span>
+          <ul class="custom-ul">
+            <li>Syne for all display headings</li>
+            <li>DM Sans for body and UI text</li>
+            <li>JetBrains Mono for code and labels</li>
+            <li>Accent gold (#c8a97a) as primary highlight</li>
+            <li>Dark-first with full light theme support</li>
+          </ul>
+        </div>
+        <div>
+          <span class="code-comment">// ordered · leading-zero mono counter</span>
+          <ol class="custom-ol">
+            <li>Define the visual hierarchy</li>
+            <li>Choose a distinctive type pairing</li>
+            <li>Set a consistent spacing scale</li>
+            <li>Apply colour purposefully</li>
+            <li>Test across both themes</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 09 LINKS -->
+    <div class="typ-section">
+      <div class="label">09 — Links & Navigation Text</div>
+      <span class="code-comment">// four link variants · all interactive</span>
+
+      <div class="link-showcase">
+        <div>
+          <span class="code-comment">// link-base · underline · accent</span><br>
+          <a href="#" class="link-base">Underline Link</a>
+        </div>
+        <div>
+          <span class="code-comment">// link-subtle · border-bottom</span><br>
+          <a href="#" class="link-subtle">Subtle Border Link</a>
+        </div>
+        <div>
+          <span class="code-comment">// link-arrow · animated gap</span><br>
+          <a href="#" class="link-arrow">
+            Arrow Link
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+        <div>
+          <span class="code-comment">// link-ghost · pill button</span><br>
+          <a href="#" class="link-ghost">Ghost Pill</a>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 10 LABELS & CHIPS -->
+    <div class="typ-section">
+      <div class="label">10 — Labels, Badges & Chips</div>
+      <span class="code-comment">// JetBrains Mono · uppercase · letter-spacing 0.12em</span>
+
+      <div style="display:flex;flex-direction:column;gap:1.75rem;">
+
+        <div>
+          <span class="code-comment">// section label · with decorative dash</span>
+          <div class="label" style="margin-bottom:0;">Section Label</div>
+        </div>
+
+        <div>
+          <span class="code-comment">// status badge · animated green dot</span>
+          <div class="status-badge">
+            <div class="status-dot"></div>
+            Available for work
+          </div>
+        </div>
+
+        <div>
+          <span class="code-comment">// colour chips · six semantic variants</span>
+          <div class="color-chips">
+            <span class="chip chip-text">accent</span>
+            <span class="chip chip-muted">muted</span>
+            <span class="chip chip-dim">dim</span>
+            <span class="chip chip-green">green</span>
+            <span class="chip chip-blue">blue</span>
+            <span class="chip chip-purple">purple</span>
+          </div>
+        </div>
+
+        <div>
+          <span class="code-comment">// code-comment · the system's quiet voice</span>
+          <span class="code-comment" style="margin-bottom:0;">// this is a code comment used as a decorative label or annotation</span>
+        </div>
+
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 11 SPECIAL PATTERNS -->
+    <div class="typ-section">
+      <div class="label">11 — Special Patterns</div>
+      <span class="code-comment">// hero name · mixed accent colour</span>
+
+      <div style="display:flex;flex-direction:column;gap:2.5rem;">
+        <div>
+          <span class="code-comment">// hero name · weight 800 · accent on last name</span>
+          <div class="hero-name-example">Harman<br><span class="accent">Hira</span></div>
+        </div>
+
+        <div>
+          <span class="code-comment">// horizontal rules · four variants</span>
+          <div class="hr-showcase">
+            <div>
+              <span class="hr-label">solid · 1px · border</span>
+              <hr class="hr-solid">
+            </div>
+            <div>
+              <span class="hr-label">accent · 1px · 30% opacity</span>
+              <hr class="hr-accent">
+            </div>
+            <div>
+              <span class="hr-label">gradient · transparent → accent → transparent</span>
+              <hr class="hr-gradient">
+            </div>
+            <div>
+              <span class="hr-label">thick · 2px · bg-4</span>
+              <hr class="hr-thick">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 12 BUTTONS -->
+    <div class="typ-section">
+      <div class="label">12 — Buttons</div>
+      <span class="code-comment">// DM Sans 500 · border-radius 8px · transition 0.25s</span>
+
+      <div style="display:flex;flex-direction:column;gap:1.5rem;">
+        <div>
+          <span class="code-comment">// semantic variants</span>
+          <div class="btn-row">
+            <button class="btn btn-primary">Primary</button>
+            <button class="btn btn-ghost">Ghost</button>
+            <button class="btn btn-accent-outline">Accent Outline</button>
+            <button class="btn btn-green">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Success
+            </button>
+            <button class="btn btn-danger">Danger</button>
+          </div>
+        </div>
+        <div>
+          <span class="code-comment">// sizes</span>
+          <div class="btn-row">
+            <button class="btn btn-primary btn-sm">Small</button>
+            <button class="btn btn-primary">Default</button>
+            <button class="btn btn-primary btn-lg">Large</button>
+          </div>
+        </div>
+        <div>
+          <span class="code-comment">// with icons</span>
+          <div class="btn-row">
+            <button class="btn btn-primary">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              New Project
+            </button>
+            <button class="btn btn-ghost">
+              View All
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+            <button class="btn btn-accent-outline">
+              <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download
+            </button>
+          </div>
+        </div>
+        <div>
+          <span class="code-comment">// disabled state</span>
+          <div class="btn-row">
+            <button class="btn btn-primary" disabled>Primary</button>
+            <button class="btn btn-ghost" disabled>Ghost</button>
+            <button class="btn btn-accent-outline" disabled>Outline</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 13 FORM ELEMENTS -->
+    <div class="typ-section">
+      <div class="label">13 — Form Elements</div>
+      <span class="code-comment">// inputs · textarea · select · checkbox · radio · toggle</span>
+
+      <div style="display:flex;flex-direction:column;gap:2.5rem;">
+
+        <div>
+          <span class="code-comment">// text inputs · default · error · success states</span>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input class="form-input" type="text" placeholder="Harman Singh Hira">
+              <span class="form-helper">// default · focus shows accent ring</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input class="form-input success" type="email" value="harman@example.com">
+              <span class="form-success-text">// success · green border + ring</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Password</label>
+              <input class="form-input error" type="password" value="wrong">
+              <span class="form-error-text">// error · red border + ring</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Role</label>
+              <select class="form-select">
+                <option>Creator</option>
+                <option>Developer</option>
+                <option>Designer</option>
+              </select>
+              <span class="form-helper">// select · custom chevron</span>
+            </div>
+            <div class="form-group full">
+              <label class="form-label">Message</label>
+              <textarea class="form-textarea" placeholder="Write something thoughtful…"></textarea>
+              <span class="form-helper">// textarea · resizable · same focus ring</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <span class="code-comment">// checkboxes</span>
+          <div class="check-group">
+            <label class="check-item">
+              <input type="checkbox" checked>
+              <span class="check-box">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span class="check-label">Checked — accent gold fill</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox">
+              <span class="check-box">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span class="check-label">Unchecked — default border</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <span class="code-comment">// radio buttons</span>
+          <div class="check-group">
+            <label class="check-item">
+              <input type="radio" name="role" checked>
+              <span class="radio-box"><div class="radio-dot"></div></span>
+              <span class="check-label">Selected option</span>
+            </label>
+            <label class="check-item">
+              <input type="radio" name="role">
+              <span class="radio-box"><div class="radio-dot"></div></span>
+              <span class="check-label">Unselected option</span>
+            </label>
+            <label class="check-item">
+              <input type="radio" name="role">
+              <span class="radio-box"><div class="radio-dot"></div></span>
+              <span class="check-label">Another option</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <span class="code-comment">// toggles / switches</span>
+          <div class="toggle-row">
+            <label class="toggle-wrap">
+              <input type="checkbox" class="toggle-input" checked>
+              <div class="toggle-track"><div class="toggle-thumb"></div></div>
+              <span class="toggle-label">Enabled</span>
+            </label>
+            <label class="toggle-wrap">
+              <input type="checkbox" class="toggle-input">
+              <div class="toggle-track"><div class="toggle-thumb"></div></div>
+              <span class="toggle-label">Disabled</span>
+            </label>
+            <label class="toggle-wrap">
+              <input type="checkbox" class="toggle-input" checked>
+              <div class="toggle-track"><div class="toggle-thumb"></div></div>
+              <span class="toggle-label">Dark mode</span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 14 ALERTS -->
+    <div class="typ-section">
+      <div class="label">14 — Alert Banners</div>
+      <span class="code-comment">// four semantic states · icon · title · body</span>
+
+      <div class="alert-stack">
+        <div class="alert alert-info">
+          <svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <div class="alert-content">
+            <div class="alert-title">Information</div>
+            <p class="alert-body">This is an informational banner used to surface neutral updates, hints, or contextual notes to the reader.</p>
+          </div>
+        </div>
+        <div class="alert alert-success">
+          <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <div class="alert-content">
+            <div class="alert-title">Success</div>
+            <p class="alert-body">Your changes have been saved successfully. The action completed without errors.</p>
+          </div>
+        </div>
+        <div class="alert alert-warning">
+          <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div class="alert-content">
+            <div class="alert-title">Warning</div>
+            <p class="alert-body">Proceeding with this action may have unintended side-effects. Please review before continuing.</p>
+          </div>
+        </div>
+        <div class="alert alert-danger">
+          <svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          <div class="alert-content">
+            <div class="alert-title">Error</div>
+            <p class="alert-body">Something went wrong. The request could not be completed — please try again or contact support.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 15 TABLE -->
+    <div class="typ-section">
+      <div class="label">15 — Table</div>
+      <span class="code-comment">// mono headers · hover rows · leading-zero accents</span>
+
+      <div class="table-wrap">
+        <table class="ds-table">
+          <caption>// font-stack reference</caption>
+          <thead>
+            <tr>
+              <th>Family</th>
+              <th>Role</th>
+              <th>Weights</th>
+              <th>Base Size</th>
+              <th>Tracking</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-strong">Syne</td>
+              <td>Display / Headings</td>
+              <td class="td-accent">400 600 700 800</td>
+              <td>clamp(2.8–6rem)</td>
+              <td>−0.04em</td>
+            </tr>
+            <tr>
+              <td class="td-strong">DM Sans</td>
+              <td>Body / UI</td>
+              <td class="td-accent">300 400 500</td>
+              <td>1rem</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td class="td-strong">JetBrains Mono</td>
+              <td>Code / Labels</td>
+              <td class="td-accent">400 500</td>
+              <td>0.72–0.85rem</td>
+              <td>+0.04–0.12em</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 16 DEFINITION LIST -->
+    <div class="typ-section">
+      <div class="label">16 — Definition List</div>
+      <span class="code-comment">// dt mono accent · dd body weight 300</span>
+
+      <dl class="ds-dl">
+        <dt>--accent</dt>
+        <dd>Primary accent colour. Gold tone used for highlights, labels, borders, and interactive states.</dd>
+        <dt>--text-2</dt>
+        <dd>Secondary text colour for body copy, descriptions, and muted UI elements.</dd>
+        <dt>--bg-3</dt>
+        <dd>Third background layer used for cards, nav elements, and hover surfaces.</dd>
+        <dt>--border</dt>
+        <dd>Default border colour — a subtle white or black transparency overlay.</dd>
+        <dt>letter-spacing</dt>
+        <dd>Negative tracking (−0.03em to −0.04em) on display text; positive tracking (+0.08em to +0.12em) on mono labels.</dd>
+      </dl>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 17 NESTED LIST -->
+    <div class="typ-section">
+      <div class="label">17 — Nested Lists</div>
+      <span class="code-comment">// three levels · ✦ → – → ·</span>
+
+      <ul class="nested-ul">
+        <li>
+          <div>
+            Typography
+            <ul>
+              <li>
+                Display fonts
+                <ul>
+                  <li>Syne ExtraBold for hero names</li>
+                  <li>Syne Bold for section headings</li>
+                </ul>
+              </li>
+              <li>Body fonts — DM Sans light and regular</li>
+              <li>Mono — JetBrains Mono for code</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div>
+            Colour System
+            <ul>
+              <li>Accent gold — primary highlight</li>
+              <li>
+                Semantic colours
+                <ul>
+                  <li>Green for success states</li>
+                  <li>Blue for informational UI</li>
+                  <li>Purple for stories / creative</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div>
+            Themes
+            <ul>
+              <li>Dark — default on load</li>
+              <li>Light — toggled via data-theme attribute</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 18 NAVIGATION PATTERNS -->
+    <div class="typ-section">
+      <div class="label">18 — Navigation Patterns</div>
+      <span class="code-comment">// breadcrumbs · pagination · tabs · filter pills</span>
+
+      <div style="display:flex;flex-direction:column;gap:2rem;">
+
+        <div>
+          <span class="code-comment">// breadcrumbs · mono · muted → active</span>
+          <nav class="breadcrumb" aria-label="breadcrumb">
+            <span class="breadcrumb-item"><a href="#">Home</a></span>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-item"><a href="#">Portfolio</a></span>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-item active">Project Title</span>
+          </nav>
+        </div>
+
+        <div>
+          <span class="code-comment">// tabs · underline active indicator</span>
+          <div class="tab-bar">
+            <button class="tab-item active">All</button>
+            <button class="tab-item">Tech</button>
+            <button class="tab-item">Build</button>
+            <button class="tab-item">Life</button>
+          </div>
+        </div>
+
+        <div>
+          <span class="code-comment">// pagination · mono numbers · arrow controls</span>
+          <div class="pagination">
+            <button class="page-btn">
+              <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="page-btn">01</button>
+            <button class="page-btn active">02</button>
+            <button class="page-btn">03</button>
+            <button class="page-btn">04</button>
+            <button class="page-btn">
+              <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <span class="code-comment">// filter tag pills · mono · active accent state</span>
+          <div class="pill-row">
+            <button class="tag-pill active">All</button>
+            <button class="tag-pill">Tech</button>
+            <button class="tag-pill">Build</button>
+            <button class="tag-pill">Life</button>
+            <button class="tag-pill">Open Source</button>
+            <button class="tag-pill">Design</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 19 STATS / NUMBERS -->
+    <div class="typ-section">
+      <div class="label">19 — Stats & Numbers</div>
+      <span class="code-comment">// Syne 800 · clamp large · accent suffix · mono label</span>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">12<span class="stat-accent">+</span></div>
+          <div class="stat-label">Projects Shipped</div>
+          <div class="stat-sub">across web & mobile</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">4<span class="stat-accent">k</span></div>
+          <div class="stat-label">Lines Written</div>
+          <div class="stat-sub">this month alone</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">98<span class="stat-accent">%</span></div>
+          <div class="stat-label">Lighthouse Score</div>
+          <div class="stat-sub">performance</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">3<span class="stat-accent">yr</span></div>
+          <div class="stat-label">Experience</div>
+          <div class="stat-sub">building products</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 20 ABBR & TOOLTIPS -->
+    <div class="typ-section">
+      <div class="label">20 — Abbreviations & Tooltips</div>
+      <span class="code-comment">// abbr dotted underline · tooltip on hover</span>
+
+      <div style="display:flex;flex-direction:column;gap:1.75rem;">
+
+        <div>
+          <span class="code-comment">// abbr · dotted accent underline · cursor help</span>
+          <p class="body-base">
+            This design system uses <abbr class="ds-abbr" title="Cascading Style Sheets">CSS</abbr> custom properties, follows
+            <abbr class="ds-abbr" title="Web Content Accessibility Guidelines">WCAG</abbr> 2.1 contrast ratios,
+            and ships with <abbr class="ds-abbr" title="Dark Mode by default">DMBD</abbr> enabled.
+            The <abbr class="ds-abbr" title="User Interface">UI</abbr> is built on a
+            <abbr class="ds-abbr" title="Design System">DS</abbr> shared across all pages.
+          </p>
+        </div>
+
+        <div>
+          <span class="code-comment">// tooltips · hover to reveal · arrow pointer</span>
+          <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;">
+            <div class="tooltip-wrap">
+              <span class="tooltip-trigger">Hover me</span>
+              <div class="tooltip-box">This is a tooltip</div>
+            </div>
+            <div class="tooltip-wrap">
+              <span class="tooltip-trigger">Font stack</span>
+              <div class="tooltip-box">Syne · DM Sans · JetBrains Mono</div>
+            </div>
+            <div class="tooltip-wrap">
+              <span class="tooltip-trigger">Accent colour</span>
+              <div class="tooltip-box">#c8a97a — warm gold</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 21 LETTER SPACING -->
+    <div class="typ-section">
+      <div class="label">21 — Letter Spacing</div>
+      <span class="code-comment">// tight display → loose mono labels</span>
+
+      <div class="tracking-grid">
+        <div class="tracking-row">
+          <span class="tracking-meta">−0.04em · hero h1</span>
+          <span class="tracking-sample" style="letter-spacing:-0.04em;">Harman Singh Hira</span>
+        </div>
+        <div class="tracking-row">
+          <span class="tracking-meta">−0.03em · h2 h3</span>
+          <span class="tracking-sample" style="letter-spacing:-0.03em;">Selected Projects</span>
+        </div>
+        <div class="tracking-row">
+          <span class="tracking-meta">−0.02em · h4</span>
+          <span class="tracking-sample" style="letter-spacing:-0.02em;">Creative Direction</span>
+        </div>
+        <div class="tracking-row">
+          <span class="tracking-meta">0em · body default</span>
+          <span class="tracking-sample" style="letter-spacing:0;font-weight:400;font-family:'DM Sans';font-size:1rem;">Standard body copy tracking</span>
+        </div>
+        <div class="tracking-row">
+          <span class="tracking-meta">+0.04em · mono base</span>
+          <span class="tracking-sample" style="letter-spacing:0.04em;font-family:'JetBrains Mono';font-size:0.82rem;">mono · code · inline</span>
+        </div>
+        <div class="tracking-row">
+          <span class="tracking-meta">+0.08em · dl terms</span>
+          <span class="tracking-sample" style="letter-spacing:0.08em;font-family:'JetBrains Mono';font-size:0.75rem;">definition terms</span>
+        </div>
+        <div class="tracking-row">
+          <span class="tracking-meta">+0.12em · section labels</span>
+          <span class="tracking-sample" style="letter-spacing:0.12em;font-family:'JetBrains Mono';font-size:0.72rem;text-transform:uppercase;">Section Label</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /page-wrap -->
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+    }
+    document.querySelectorAll('.tab-item').forEach(tab => {
+      tab.addEventListener('click', () => {
+        tab.closest('.tab-bar').querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+    document.querySelectorAll('.pill-row .tag-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        pill.closest('.pill-row').querySelectorAll('.tag-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

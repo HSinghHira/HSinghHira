@@ -15,8 +15,6 @@ slug: deploy-react-js-app-to-github-pages
 
 Ready to blast your React app into the GitHub galaxy? 🌌 This guide’s got all the witty steps to deploy your masterpiece with Vite, GitHub Pages, and a dash of React Router flair. Let’s roll! 😎
 
-## Table of contents
-
 ## 🛠️ Set the Stage in `vite.config.js` 🎬
 
 First, tell Vite where your app will live in the GitHub universe. Update vite.config.js with your repo name for that perfect URL path. 📍

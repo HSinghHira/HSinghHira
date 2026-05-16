@@ -40,7 +40,7 @@ const homeJourney = journeyEntries.sort((a, b) => (a.data.order || 0) - (b.data.
           <div class="about-text">
             <div class="code-comment reveal">// about_me.txt — the honest version</div>
             <div class="label reveal">About Me</div>
-            <h2 class="reveal-delay-1 reveal" style="font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:1.5rem; color:var(--text);">
+            <h2 class="reveal-delay-1 reveal h2-display">
               Chandigarh kid who chose<br>HTML over FIFA
             </h2>
             <p class="reveal-delay-1 reveal">Born in Chandigarh, India 🇮🇳. Proper North Indian vibes. Moved to Aotearoa New Zealand in my early 20s — packed my whole life into two suitcases and called it a main character move.</p>
@@ -94,7 +94,7 @@ const homeJourney = journeyEntries.sort((a, b) => (a.data.order || 0) - (b.data.
           <div>
             <div class="code-comment reveal">// journey.log — how I got here</div>
             <div class="label reveal">The Journey</div>
-            <h2 class="reveal-delay-1 reveal" style="font-size:clamp(1.5rem,3vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:2rem;color:var(--text);">How it all started</h2>
+            <h2 class="reveal-delay-1 reveal h3-display">How it all started</h2>
             <div class="timeline">
               {homeJourney.map((entry, i) => (
                 <div class={`tl-item reveal ${i > 0 ? `reveal-delay-${i}` : ''}`}>

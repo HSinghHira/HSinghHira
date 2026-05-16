@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Harman Singh Hira — Creator, Tech Enthusiast, and Problem Solver." />
+  <meta name="author" content="Harman Singh Hira" />
+  <meta property="og:title" content="Harman Singh Hira" />
+  <meta property="og:description" content="Creator, Tech Enthusiast, and Problem Solver." />
+  <meta property="og:type" content="website" />
+  <title>Harman Singh Hira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root, [data-theme="dark"] {
+      --bg: #080808; --bg-2: #0f0f0f; --bg-3: #161616; --bg-4: #1e1e1e;
+      --border: rgba(255,255,255,0.07); --border-hover: rgba(255,255,255,0.14);
+      --text: #f0ede8; --text-2: #9a9590; --text-3: #4e4b47;
+      --accent: #c8a97a; --accent-dim: rgba(200,169,122,0.12); --accent-dim2: rgba(200,169,122,0.05);
+      --green: #4dbd74; --green-dim: rgba(77,189,116,0.1);
+      --blue: #6b9fff; --blue-dim: rgba(107,159,255,0.1);
+      --purple: #a78bfa; --purple-dim: rgba(167,139,250,0.1);
+      --nav-bg: rgba(8,8,8,0.85); --code-bg: #0c0c0c;
+      --shadow: 0 4px 24px rgba(0,0,0,0.4); --comment: #4a4743;
+    }
+
+    [data-theme="light"] {
+      --bg: #faf9f7; --bg-2: #f3f1ed; --bg-3: #eae7e1; --bg-4: #dedad3;
+      --border: rgba(0,0,0,0.08); --border-hover: rgba(0,0,0,0.15);
+      --text: #1a1816; --text-2: #6b6560; --text-3: #a09b95;
+      --accent: #9e7440; --accent-dim: rgba(158,116,64,0.1); --accent-dim2: rgba(158,116,64,0.05);
+      --green: #2d7a4a; --green-dim: rgba(45,122,74,0.1);
+      --blue: #3464b8; --blue-dim: rgba(52,100,184,0.1);
+      --purple: #6d28d9; --purple-dim: rgba(109,40,217,0.08);
+      --nav-bg: rgba(250,249,247,0.9); --code-bg: #eae7e1;
+      --shadow: 0 4px 24px rgba(0,0,0,0.07); --comment: #a8a19a;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7;
+      min-height: 100vh; overflow-x: hidden;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    ::selection { background: var(--accent-dim); color: var(--accent); }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--bg-4); border-radius: 99px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 64px;
+      padding: 0 clamp(1.5rem,5vw,4rem);
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--nav-bg); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .nav-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:1.2rem; color:var(--text); text-decoration:none; letter-spacing:-0.02em; cursor:pointer; }
+    .nav-logo span { color:var(--accent); }
+    .nav-right { display:flex; align-items:center; gap:0.5rem; }
+    .nav-links { display:flex; align-items:center; gap:0.25rem; list-style:none; }
+    .nav-links a { color:var(--text-2); text-decoration:none; font-size:0.85rem; font-weight:400; padding:0.45rem 0.9rem; border-radius:8px; transition:0.25s; cursor:pointer; letter-spacing:0.01em; }
+    .nav-links a:hover, .nav-links a.active { color:var(--text); background:var(--bg-3); }
+    .nav-cta { background:var(--accent-dim)!important; color:var(--accent)!important; border:1px solid rgba(200,169,122,0.2)!important; }
+    [data-theme="light"] .nav-cta { border-color:rgba(158,116,64,0.2)!important; }
+    .nav-cta:hover { filter:brightness(1.12); }
+
+    /* ── THEME TOGGLE ── */
+    .theme-toggle {
+      width:36px; height:36px; background:var(--bg-3); border:1px solid var(--border);
+      border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+      transition:0.25s; flex-shrink:0;
+    }
+    .theme-toggle:hover { background:var(--bg-4); border-color:var(--border-hover); }
+    .theme-toggle svg { width:16px; height:16px; stroke:var(--text-2); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+    .icon-moon { display:block; } .icon-sun { display:none; }
+    [data-theme="light"] .icon-moon { display:none; } [data-theme="light"] .icon-sun { display:block; }
+
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--text-2); border-radius:99px; transition:0.25s; }
+
+    /* ── CODE COMMENT UTILITY ── */
+    .code-comment { font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--comment); margin-bottom:0.6rem; display:block; letter-spacing:0.01em; }
+
+    /* ── PAGES ── */
+    .page { display:none; min-height:100vh; }
+    .page.active { display:block; }
+    section { padding: clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem); }
+    .container { max-width:1100px; margin:0 auto; }
+    .container-sm { max-width:720px; margin:0 auto; }
+    h1,h2,h3,h4 { font-family:'Syne',sans-serif; letter-spacing:-0.03em; }
+
+    .label { font-family:'JetBrains Mono',monospace; font-size:0.72rem; font-weight:500; color:var(--accent); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem; }
+    .label::before { content:''; display:inline-block; width:24px; height:1px; background:var(--accent); }
+
+    /* ── BUTTONS ── */
+    .btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.7rem 1.4rem; border-radius:8px; font-family:'DM Sans',sans-serif; font-size:0.875rem; font-weight:500; cursor:pointer; text-decoration:none; transition:0.25s; border:1px solid transparent; }
+    .btn-primary { background:var(--accent); color:#1a1209; border-color:var(--accent); }
+    .btn-primary:hover { filter:brightness(1.1); transform:translateY(-1px); }
+    .btn-ghost { background:transparent; color:var(--text-2); border-color:var(--border-hover); }
+    .btn-ghost:hover { background:var(--bg-3); color:var(--text); transform:translateY(-1px); }
+    .btn-sm { padding:0.5rem 1rem; font-size:0.8rem; }
+
+    /* ── HERO ── */
+    #home { padding-top:0; }
+    .hero { min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:0 clamp(1.5rem,5vw,4rem); position:relative; overflow:hidden; }
+    .hero-grid { position:absolute; inset:0; opacity:0.022; background-image:linear-gradient(rgba(200,169,122,0.6) 1px,transparent 1px),linear-gradient(90deg,rgba(200,169,122,0.6) 1px,transparent 1px); background-size:60px 60px; pointer-events:none; }
+    [data-theme="light"] .hero-grid { opacity:0.055; }
+    .hero-glow  { position:absolute; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,var(--accent-dim) 0%,transparent 70%); top:-100px; right:-100px; pointer-events:none; }
+    .hero-glow2 { position:absolute; width:400px; height:400px; border-radius:50%; background:radial-gradient(circle,var(--blue-dim) 0%,transparent 70%); bottom:0; left:-100px; pointer-events:none; }
+    .hero-inner { max-width:1100px; margin:0 auto; width:100%; position:relative; z-index:1; }
+    .hero-status { display:inline-flex; align-items:center; gap:0.5rem; background:var(--bg-3); border:1px solid var(--border); border-radius:99px; padding:0.35rem 0.9rem; font-size:0.78rem; color:var(--text-2); margin-bottom:2rem; font-family:'JetBrains Mono',monospace; }
+    .status-dot { width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 8px var(--green); animation:pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
+    .hero-name { font-size:clamp(3rem,9vw,7.5rem); font-weight:800; line-height:0.95; letter-spacing:-0.04em; color:var(--text); margin-bottom:1.25rem; animation:fadeUp 0.8s ease 0.1s both; }
+    .hero-name .accent { color:var(--accent); }
+    .hero-tagline { font-size:clamp(1rem,2.5vw,1.35rem); color:var(--text-2); font-weight:300; margin-bottom:2.5rem; max-width:520px; animation:fadeUp 0.8s ease 0.25s both; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:0.75rem; animation:fadeUp 0.8s ease 0.4s both; }
+    .hero-scroll { position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:0.5rem; color:var(--text-3); font-size:0.72rem; font-family:'JetBrains Mono',monospace; animation:fadeUp 0.8s ease 0.6s both; cursor:pointer; }
+    .scroll-line { width:1px; height:40px; background:linear-gradient(to bottom,var(--text-3),transparent); animation:scrollAnim 1.5s ease-in-out infinite; }
+    @keyframes scrollAnim { 0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none} }
+
+    /* ── ABOUT ── */
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+    .about-text p { color:var(--text-2); margin-bottom:1.25rem; font-size:1rem; }
+    .about-text p:last-child { margin-bottom:0; }
+
+    /* ── DEV CARD ── */
+    .dev-card { background:var(--code-bg); border:1px solid var(--border); border-radius:12px; padding:1.5rem; font-family:'JetBrains Mono',monospace; font-size:0.78rem; line-height:1.95; transition:0.3s; }
+    .dev-card:hover { border-color:var(--border-hover); }
+    .dc-kw  { color:var(--blue); }
+    .dc-fn  { color:var(--accent); }
+    .dc-str { color:var(--green); }
+    .dc-num { color:#e07b6a; }
+    [data-theme="light"] .dc-num { color:#b8442a; }
+    .dc-cmt { color:var(--comment); }
+    .dc-br  { color:var(--text-2); }
+    .dc-key { color:var(--text); }
+
+    .about-stats { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .stat-card { background:var(--bg-3); border:1px solid var(--border); border-radius:12px; padding:1.5rem; transition:0.25s; }
+    .stat-card:hover { border-color:var(--border-hover); background:var(--bg-4); }
+    .stat-num { font-family:'Syne',sans-serif; font-size:2.2rem; font-weight:700; color:var(--accent); letter-spacing:-0.04em; line-height:1; margin-bottom:0.35rem; }
+    .stat-label { font-size:0.8rem; color:var(--text-3); }
+
+    .skills-list { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:2rem; }
+    .skill-tag { background:var(--bg-3); border:1px solid var(--border); border-radius:8px; padding:0.35rem 0.75rem; font-size:0.78rem; color:var(--text-2); font-family:'JetBrains Mono',monospace; transition:0.25s; }
+    .skill-tag:hover { border-color:var(--accent); color:var(--accent); background:var(--accent-dim2); }
+
+    /* ── TIMELINE ── */
+    .timeline { position:relative; padding-left:1.75rem; }
+    .timeline::before { content:''; position:absolute; left:0; top:0.5rem; bottom:0.5rem; width:1px; background:var(--border); }
+    .tl-item { position:relative; padding-bottom:2rem; }
+    .tl-item:last-child { padding-bottom:0; }
+    .tl-dot { position:absolute; left:-1.875rem; top:0.45rem; width:10px; height:10px; border-radius:50%; background:var(--bg-4); border:1.5px solid var(--border-hover); transition:0.25s; }
+    .tl-item:hover .tl-dot { background:var(--accent); border-color:var(--accent); }
+    .tl-year { font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--text-3); margin-bottom:0.25rem; }
+    .tl-title { font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; color:var(--text); margin-bottom:0.3rem; }
+    .tl-desc { font-size:0.875rem; color:var(--text-2); }
+
+    /* ── PORTFOLIO LIST ── */
+    .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.25rem; }
+    .project-card {
+      background:var(--bg-2); border:1px solid var(--border); border-radius:20px; padding:0; transition:0.25s;
+      display:flex; flex-direction:column; position:relative; overflow:hidden; cursor:pointer;
+    }
+    .project-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,var(--accent-dim2) 0%,transparent 60%); opacity:0; transition:0.25s; pointer-events:none; }
+    .project-card:hover { border-color:rgba(200,169,122,0.2); transform:translateY(-4px); box-shadow:var(--shadow); }
+    .project-card:hover::before { opacity:1; }
+
+    /* Featured image area */
+    .project-hero-img {
+      width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:16px 16px 0 0;
+      background:linear-gradient(135deg, var(--bg-3) 0%, var(--bg-4) 100%);
+      display:flex; align-items:center; justify-content:center; font-size:2.5rem;
+      border-bottom: 1px solid var(--border); flex-shrink:0;
+    }
+    .project-hero-img.has-image { font-size:0; }
+    .project-hero-img img { width:100%; height:100%; object-fit:cover; border-radius:16px 16px 0 0; display:block; }
+    .project-card-body { padding:1.75rem; display:flex; flex-direction:column; flex:1; }
+
+    .project-icon { width:42px; height:42px; background:var(--accent-dim); border:1px solid rgba(200,169,122,0.15); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; margin-bottom:1rem; }
+    .project-name { font-family:'Syne',sans-serif; font-size:1.15rem; font-weight:700; color:var(--text); margin-bottom:0.5rem; letter-spacing:-0.02em; }
+    .project-desc { font-size:0.875rem; color:var(--text-2); line-height:1.65; flex:1; margin-bottom:1.25rem; }
+    .project-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0; }
+    .project-tag { background:var(--bg-3); border:1px solid var(--border); border-radius:99px; padding:0.2rem 0.65rem; font-size:0.72rem; color:var(--text-3); font-family:'JetBrains Mono',monospace; }
+    .project-links { display:flex; gap:0.5rem; }
+    .project-featured { border-color:rgba(200,169,122,0.15); }
+    .project-featured-badge { position:absolute; top:1.25rem; right:1.25rem; background:var(--accent-dim); border:1px solid rgba(200,169,122,0.25); border-radius:99px; padding:0.2rem 0.65rem; font-size:0.68rem; color:var(--accent); font-family:'JetBrains Mono',monospace; font-weight:500; text-transform:uppercase; letter-spacing:0.08em; z-index:2; }
+
+    /* view project label */
+    .project-cta { margin-top:1.25rem; font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--text-3); display:flex; align-items:center; gap:0.4rem; transition:color 0.2s; }
+    .project-card:hover .project-cta { color:var(--accent); }
+
+    /* ── PROJECT PAGE ── */
+    #project-view { display:none; min-height:100vh; padding:clamp(5rem,10vw,8rem) clamp(1.5rem,5vw,4rem) clamp(3rem,6vw,5rem); }
+    .project-back { display:inline-flex; align-items:center; gap:0.4rem; color:var(--text-2); font-size:0.85rem; cursor:pointer; margin-bottom:2rem; transition:color 0.25s; }
+    .project-back:hover { color:var(--accent); }
+    .project-page-hero { width:100%; max-height:420px; border-radius:16px; overflow:hidden; margin-bottom:2.5rem; border:1px solid var(--border); background:var(--bg-3); display:flex; align-items:center; justify-content:center; }
+    .project-page-hero-emoji { font-size:4rem; padding:3rem; }
+    .project-page-hero img { width:100%; height:100%; object-fit:cover; display:block; }
+    .project-page-title { font-size:clamp(1.8rem,5vw,3rem); font-weight:800; line-height:1.1; letter-spacing:-0.04em; margin-bottom:1rem; }
+    .project-page-meta { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border); }
+    .project-page-body { max-width:720px; font-size:1.05rem; line-height:1.85; color:var(--text-2); }
+    .project-page-body h2 { font-size:1.5rem; color:var(--text); margin:2.5rem 0 1rem; font-family:'Syne',sans-serif; }
+    .project-page-body p { margin-bottom:1.4rem; }
+    .project-page-body ul { margin:0 0 1.4rem 1.5rem; }
+    .project-page-body li { margin-bottom:0.5rem; }
+    .project-page-links { display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:2.5rem; padding-top:2rem; border-top:1px solid var(--border); }
+    .project-page-tags { display:flex; flex-wrap:wrap; gap:0.4rem; }
+
+    /* ── BLOG ── */
+    .posts-list { display:flex; flex-direction:column; gap:0; }
+
+    /* New improved post card — full-width, magazine-style */
+    .post-card {
+      padding:1.75rem 0; cursor:pointer; transition:0.25s;
+      border-bottom:1px solid var(--border); text-decoration:none; display:block;
+      position:relative;
+    }
+    .post-card:first-child { border-top:1px solid var(--border); }
+    .post-card:hover { }
+    .post-card.featured { }
+
+    .post-card-inner { display:flex; gap:2rem; align-items:flex-start; }
+    .post-card-text { flex:1; min-width:0; }
+    .post-card-num {
+      font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:var(--text-3);
+      flex-shrink:0; width:2rem; padding-top:0.25rem; text-align:right;
+    }
+
+    .post-meta { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.65rem; flex-wrap:wrap; }
+    .post-category { font-family:'JetBrains Mono',monospace; font-size:0.68rem; font-weight:500; text-transform:uppercase; letter-spacing:0.1em; padding:0.2rem 0.6rem; border-radius:99px; }
+    .cat-tech  { background:var(--blue-dim); color:var(--blue); }
+    .cat-life  { background:var(--green-dim); color:var(--green); }
+    .cat-build { background:var(--accent-dim); color:var(--accent); }
+    .cat-story { background:var(--purple-dim); color:var(--purple); }
+    .post-date { font-size:0.78rem; color:var(--text-3); font-family:'JetBrains Mono',monospace; }
+    .post-read { font-size:0.78rem; color:var(--text-3); margin-left:auto; font-family:'JetBrains Mono',monospace; }
+    .post-title {
+      font-family:'Syne',sans-serif; font-size:1.25rem; font-weight:700; color:var(--text);
+      margin-bottom:0.5rem; letter-spacing:-0.025em; transition:color 0.25s; line-height:1.25;
+    }
+    .post-card:hover .post-title { color:var(--accent); }
+    .post-excerpt { font-size:0.875rem; color:var(--text-2); line-height:1.65; }
+
+    /* Featured post — bigger, highlighted */
+    .post-card.featured .post-title { font-size:1.5rem; }
+    .post-featured-flag {
+      display:inline-flex; align-items:center; gap:0.35rem;
+      font-family:'JetBrains Mono',monospace; font-size:0.65rem; color:var(--accent);
+      background:var(--accent-dim2); border:1px solid rgba(200,169,122,0.15);
+      border-radius:99px; padding:0.15rem 0.55rem; margin-bottom:0.65rem;
+    }
+
+    /* Blog filters inline */
+    .blog-filters-bar {
+      display:flex; align-items:center; gap:0.4rem; margin-bottom:2rem;
+      padding-bottom:1.25rem; border-bottom:1px solid var(--border); flex-wrap:wrap;
+    }
+    .blog-filters-label { font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--text-3); margin-right:0.25rem; }
+    .tag-pill { background:var(--bg-3); border:1px solid var(--border); border-radius:99px; padding:0.3rem 0.75rem; font-size:0.75rem; color:var(--text-2); cursor:pointer; transition:0.25s; font-family:'DM Sans',sans-serif; }
+    .tag-pill:hover,.tag-pill.active { border-color:var(--accent); color:var(--accent); background:var(--accent-dim2); }
+
+    /* ── ARTICLE ── */
+    #article-view { display:none; min-height:100vh; padding:clamp(5rem,10vw,8rem) clamp(1.5rem,5vw,4rem) clamp(3rem,6vw,5rem); }
+    #story-article-view { display:none; min-height:100vh; padding:clamp(5rem,10vw,8rem) clamp(1.5rem,5vw,4rem) clamp(3rem,6vw,5rem); }
+    .article-back { display:inline-flex; align-items:center; gap:0.4rem; color:var(--text-2); font-size:0.85rem; cursor:pointer; margin-bottom:2rem; transition:color 0.25s; }
+    .article-back:hover { color:var(--accent); }
+    .article-title { font-size:clamp(1.8rem,5vw,3rem); font-weight:800; line-height:1.1; letter-spacing:-0.04em; margin-bottom:1.25rem; }
+    .article-body { max-width:720px; margin:0 auto; font-size:1.05rem; line-height:1.85; color:var(--text-2); }
+    .article-body h2 { font-size:1.5rem; color:var(--text); margin:2.5rem 0 1rem; }
+    .article-body p { margin-bottom:1.4rem; }
+    .article-body code { font-family:'JetBrains Mono',monospace; font-size:0.85em; background:var(--bg-3); border:1px solid var(--border); padding:0.1em 0.4em; border-radius:4px; color:var(--accent); }
+    .article-body pre { background:var(--code-bg); border:1px solid var(--border); border-radius:12px; padding:1.5rem; margin:1.75rem 0; overflow-x:auto; }
+    .article-body pre code { background:none; border:none; padding:0; font-size:0.875rem; color:var(--text-2); }
+    .article-body blockquote { border-left:2px solid var(--accent); padding:0.75rem 1.5rem; margin:1.75rem 0; background:var(--accent-dim2); border-radius:0 8px 8px 0; color:var(--text); }
+
+    /* ── LIFE STORIES specific ── */
+    .story-body blockquote { border-left:2px solid var(--purple); background:var(--purple-dim); }
+    .story-dropcap::first-letter {
+      font-family:'Syne',sans-serif; font-size:4rem; font-weight:800; line-height:0.8;
+      float:left; margin:0.1em 0.15em 0 0; color:var(--accent);
+    }
+
+    /* ── CONTACT ── */
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+    .contact-info h2 { font-size:clamp(2rem,5vw,3.5rem); font-weight:800; line-height:1.1; margin-bottom:1.25rem; }
+    .contact-info p { color:var(--text-2); margin-bottom:2rem; }
+    .social-links { display:flex; flex-direction:column; gap:0.5rem; }
+    .social-link { display:flex; align-items:center; gap:1rem; padding:0.75rem 1rem; background:var(--bg-3); border:1px solid var(--border); border-radius:12px; text-decoration:none; color:var(--text-2); font-size:0.875rem; transition:0.25s; }
+    .social-link:hover { border-color:var(--border-hover); color:var(--text); background:var(--bg-4); transform:translateX(4px); }
+    .social-icon { width:34px; height:34px; background:var(--bg-4); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+    .contact-form-wrap { background:var(--bg-2); border:1px solid var(--border); border-radius:20px; padding:2rem; }
+    .contact-form { display:flex; flex-direction:column; gap:1rem; }
+    .form-group { display:flex; flex-direction:column; gap:0.4rem; }
+    .form-label { font-size:0.75rem; color:var(--comment); font-family:'JetBrains Mono',monospace; }
+    .form-input,.form-textarea { background:var(--bg-3); border:1px solid var(--border); border-radius:8px; padding:0.8rem 1rem; color:var(--text); font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:300; width:100%; transition:0.25s; outline:none; -webkit-appearance:none; }
+    .form-input:focus,.form-textarea:focus { border-color:rgba(200,169,122,0.35); background:var(--bg-4); }
+    [data-theme="light"] .form-input:focus,[data-theme="light"] .form-textarea:focus { border-color:rgba(158,116,64,0.35); }
+    .form-input::placeholder,.form-textarea::placeholder { color:var(--text-3); font-family:'JetBrains Mono',monospace; font-size:0.78rem; }
+    .form-textarea { resize:vertical; min-height:140px; }
+    .form-submit { margin-top:0.5rem; width:100%; padding:0.9rem; font-size:0.9rem; justify-content:center; }
+    .form-success { display:none; background:var(--green-dim); border:1px solid rgba(77,189,116,0.2); border-radius:8px; padding:1rem 1.25rem; color:var(--green); font-size:0.875rem; margin-top:0.5rem; }
+
+    /* ── MISC ── */
+    .divider { border:none; border-top:1px solid var(--border); margin:0 clamp(1.5rem,5vw,4rem); }
+    .section-header { margin-bottom:3rem; }
+    .section-title { font-size:clamp(2rem,5vw,3.5rem); font-weight:800; line-height:1.05; letter-spacing:-0.04em; }
+    .section-subtitle { color:var(--text-2); margin-top:0.75rem; max-width:480px; }
+
+    footer { padding:2.5rem clamp(1.5rem,5vw,4rem); border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+    .footer-text { font-size:0.8rem; color:var(--text-3); }
+    .footer-text a { color:var(--text-2); text-decoration:none; transition:color 0.25s; }
+    .footer-text a:hover { color:var(--accent); }
+    .footer-links { display:flex; gap:1.5rem; }
+    .footer-links a { font-size:0.8rem; color:var(--text-3); text-decoration:none; transition:color 0.25s; cursor:pointer; }
+    .footer-links a:hover { color:var(--accent); }
+
+    .mobile-menu { display:none; position:fixed; top:64px; left:0; right:0; background:var(--nav-bg); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); z-index:99; padding:1rem; flex-direction:column; gap:0.25rem; }
+    .mobile-menu.open { display:flex; }
+    .mobile-menu a { display:block; padding:0.75rem 1rem; color:var(--text-2); text-decoration:none; border-radius:8px; font-size:0.9rem; cursor:pointer; transition:0.25s; }
+    .mobile-menu a:hover { color:var(--text); background:var(--bg-3); }
+    .mobile-menu-sep { border-top:1px solid var(--border); padding-top:0.75rem; margin-top:0.25rem; }
+
+    @media(max-width:900px) {
+      .about-grid{grid-template-columns:1fr;gap:2.5rem;}
+      .about-stats{grid-template-columns:repeat(4,1fr);}
+      .contact-grid{grid-template-columns:1fr;gap:2.5rem;}
+      .journey-grid{grid-template-columns:1fr!important;}
+    }
+    @media(max-width:600px) {
+      .nav-links{display:none;}
+      .hamburger{display:flex;}
+      .about-stats{grid-template-columns:1fr 1fr;}
+      .projects-grid{grid-template-columns:1fr;}
+      .hero-name{font-size:3rem;}
+      .post-card-num{display:none;}
+    }
+
+    .reveal { opacity:0; transform:translateY(16px); transition:opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+    .reveal-delay-1{transition-delay:0.1s;} .reveal-delay-2{transition-delay:0.2s;} .reveal-delay-3{transition-delay:0.3s;}
+
+    /* Stories accent overrides */
+    .stories-label::before { background:var(--purple); }
+    .stories-label { color:var(--purple); }
+
+    /* Post count summary */
+    .posts-summary {
+      font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--text-3);
+      margin-bottom:0.5rem; display:block;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" onclick="showPage('home')">H<span>.</span></a>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" data-page="home" class="active">Home</a></li>
+    <li><a onclick="showPage('portfolio')" data-page="portfolio">Portfolio</a></li>
+    <li><a onclick="showPage('blog')" data-page="blog">Blog</a></li>
+    <li><a onclick="showPage('stories')" data-page="stories">Life Stories</a></li>
+    <li><a onclick="showPage('contact')" data-page="contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun"  viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a onclick="showPage('home');closeMobile()">Home</a>
+  <a onclick="showPage('portfolio');closeMobile()">Portfolio</a>
+  <a onclick="showPage('blog');closeMobile()">Blog</a>
+  <a onclick="showPage('stories');closeMobile()">Life Stories</a>
+  <a onclick="showPage('contact');closeMobile()">Contact</a>
+  <div class="mobile-menu-sep">
+    <a onclick="toggleTheme();closeMobile()" id="mobile-theme-label">☀️ Switch to Light Mode</a>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════
+     PAGE: HOME
+════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner" style="display:flex; align-items:center; justify-content:space-between; gap:3rem;">
+
+    <!-- LEFT: Main text -->
+    <div style="flex:1; min-width:0;">
+      <div class="hero-status">
+        <span class="status-dot"></span>
+        Based in Aotearoa, New Zealand
+      </div>
+      <h1 class="hero-name">Harman<br><span class="accent">Singh Hira</span></h1>
+      <p class="hero-tagline">Creator, Tech Enthusiast, and Problem Solver.<br>Building things that matter — one weird idea at a time.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="showPage('portfolio')">View Portfolio <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></button>
+        <button class="btn btn-ghost" onclick="showPage('blog')">Read Blog</button>
+        <button class="btn btn-ghost" onclick="showPage('stories')">Life Stories</button>
+        <button class="btn btn-ghost" onclick="showPage('contact')">Contact Me</button>
+      </div>
+    </div>
+
+    <!-- RIGHT: ASCII Art -->
+    <div style="flex-shrink:0; display:flex; flex-direction:column; align-items:flex-end; animation:fadeUp 0.8s ease 0.5s both;">
+      <span class="code-comment" style="margin-bottom:0.5rem; align-self:flex-start;">// harman.ascii</span>
+      <pre style="
+        font-family:'JetBrains Mono', monospace;
+        font-size:clamp(0.45rem, 0.7vw, 0.65rem);
+        line-height:1.25;
+        color:var(--accent);
+        opacity:0.75;
+        white-space:pre;
+        background:var(--accent-dim2);
+        border:1px solid var(--border);
+        border-radius:12px;
+        padding:1.25rem 1.5rem;
+        user-select:none;
+        filter:drop-shadow(0 0 18px var(--accent-dim));
+        transition:opacity 0.3s, filter 0.3s;
+      " onmouseenter="this.style.opacity='1';this.style.filter='drop-shadow(0 0 28px var(--accent-dim))'"
+         onmouseleave="this.style.opacity='0.75';this.style.filter='drop-shadow(0 0 18px var(--accent-dim))'"
+      >                                                       
+                   %%*                                 
+                 #%%%#*%##                             
+              %%*%%@@@@@@%@                            
+             @@@@@%%%%%@@@@%                           
+             %@@@=::::::-*%@                           
+              @%-:::::::::=*%                          
+               *---:*#**=:-=+=                         
+               ***%:-=+=:::==--                        
+               ===-:-:::::-==-                         
+                ::-#%%++==+*+-                         
+                ==##+*****%%#                          
+                 **+**+*%%%*+=                         
+                   %%%%@%%*+=:.:                       
+                    =*%%#*+==-=:. :::.                 
+                  ::+*++*+==:.::=::.:=::...            
+             .:   :::===--:..:=:-.  ::     .           
+          :-::==*..:.:---:..::=:---:-=--=:..-          
+          :::+-=:....-:::.:=: ::===:+==:=.:::          
+         :. .:..... .::: .::. ::=:  =::+::....         
+        ==-:.==+:  ...:.::  .      .. :++..:.:*        
+        :-==.-:+:..:..::.         .-:::....:::-        
+       ...:=:....... .=:::+==::-:::=-=:.:::::..:       
+       :...::::.     .-:::+==:.:::.:::::::.... :-      
+      -::::::==:===.::. .:-.  ::::. .:*=--..--:.:*     
+      ..:-:-==::+==.:...      .::::-:==+::..:=:.::     
+     :..::::=:..=. .::=.==.: .:=*==-#+=*:-:.... ...    
+     :::::::::.:.    :*=*=:: ::=*==:*==**=::::=**      </pre>
+    </div>
+
+  </div>
+  <div class="hero-scroll" onclick="document.getElementById('home-about').scrollIntoView({behavior:'smooth'})">
+    <span>scroll</span><div class="scroll-line"></div>
+  </div>
+</section>
+
+  <hr class="divider" />
+
+  <!-- ABOUT -->
+  <section id="home-about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <div class="code-comment reveal">// about_me.js — the honest version</div>
+          <div class="label reveal">About Me</div>
+          <h2 class="reveal-delay-1 reveal" style="font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:1.5rem;">
+            Chandigarh kid who chose<br>HTML over FIFA
+          </h2>
+          <p class="reveal-delay-1 reveal">Born in Chandigarh, India 🇮🇳. Moved to Aotearoa New Zealand in my early 20s — packed my whole life into two suitcases and called it a main character move.</p>
+          <p class="reveal-delay-2 reveal">At 15, while most friends were yelling into headsets, I was building websites and selling templates. By 16, a tech blog running AdSense was making real money — all self-taught through YouTube, forums, and a lot of trial and error. No school. No courses. Just curiosity carrying heavy.</p>
+          <p class="reveal-delay-2 reveal">Coding is my therapy. Just me, the screen, late-night silence, and a random idea turning into something real. I keep it as my playground — the moment it feels forced, the magic fades. So I never let it become a job.</p>
+          <p class="reveal-delay-3 reveal">These days I'm a happily married dad living in NZ, still chasing ideas at odd hours, still building random tools, still curious, still vibing. 🥂</p>
+          <div class="reveal-delay-3 skills-list reveal">
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Web Dev</span>
+            <span class="skill-tag">Self-Taught</span>
+            <span class="skill-tag">Problem Solving</span>
+            <span class="skill-tag">NZ 🇳🇿</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="dev-card reveal" style="margin-bottom:1rem;">
+            <span class="dc-cmt">// harman_singh_hira.js</span><br>
+            <span class="dc-kw">const</span> <span class="dc-fn">hira</span> <span class="dc-br">= {</span><br>
+            &nbsp;&nbsp;<span class="dc-key">location</span><span class="dc-br">:</span> <span class="dc-str">"Auckland, NZ 🇳🇿"</span><span class="dc-br">,</span><br>
+            &nbsp;&nbsp;<span class="dc-key">origin</span><span class="dc-br">:</span> <span class="dc-str">"Chandigarh, India 🇮🇳"</span><span class="dc-br">,</span><br>
+            &nbsp;&nbsp;<span class="dc-key">codingSince</span><span class="dc-br">:</span> <span class="dc-num">2012</span><span class="dc-br">,</span><br>
+            &nbsp;&nbsp;<span class="dc-key">role</span><span class="dc-br">:</span> <span class="dc-str">"Creator / Problem Solver"</span><span class="dc-br">,</span><br>
+            &nbsp;&nbsp;<span class="dc-key">stack</span><span class="dc-br">: [</span><span class="dc-str">"HTML"</span><span class="dc-br">,</span> <span class="dc-str">"CSS"</span><span class="dc-br">,</span> <span class="dc-str">"JS"</span><span class="dc-br">],</span><br>
+            &nbsp;&nbsp;<span class="dc-key">status</span><span class="dc-br">:</span> <span class="dc-str">"building for fun ✦"</span><span class="dc-br">,</span><br>
+            &nbsp;&nbsp;<span class="dc-key">firstSale</span><span class="dc-br">:</span> <span class="dc-str">"age 15 💸"</span><br>
+            <span class="dc-br">};</span><br><br>
+            <span class="dc-cmt">// currently exploring</span><br>
+            <span class="dc-fn">hira</span><span class="dc-br">.</span><span class="dc-key">interests</span> <span class="dc-br">= [</span><br>
+            &nbsp;&nbsp;<span class="dc-str">"useful tools"</span><span class="dc-br">,</span><br>
+            &nbsp;&nbsp;<span class="dc-str">"honest writing"</span><span class="dc-br">,</span><br>
+            &nbsp;&nbsp;<span class="dc-str">"the dad thing 👶"</span><br>
+            <span class="dc-br">];</span>
+          </div>
+          <div class="about-stats">
+            <div class="stat-card reveal"><div class="stat-num">10+</div><div class="stat-label">Years coding</div></div>
+            <div class="reveal-delay-1 stat-card reveal"><div class="stat-num">15</div><div class="stat-label">Age of first sale</div></div>
+            <div class="reveal-delay-2 stat-card reveal"><div class="stat-num">2</div><div class="stat-label">Countries lived</div></div>
+            <div class="reveal-delay-3 stat-card reveal"><div class="stat-num">∞</div><div class="stat-label">Curiosity level</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- JOURNEY -->
+  <section>
+    <div class="container">
+      <div class="journey-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
+        <div>
+          <div class="code-comment reveal">// journey.log — how I got here</div>
+          <div class="label reveal">The Journey</div>
+          <h2 class="reveal-delay-1 reveal" style="font-size:clamp(1.5rem,3vw,2.4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:2rem;">How it all started</h2>
+          <div class="timeline">
+            <div class="tl-item reveal">
+              <div class="tl-dot"></div>
+              <div class="tl-year">// age_15 → 2012</div>
+              <div class="tl-title">First website sold 💸</div>
+              <div class="tl-desc">While friends played FIFA, I was building HTML templates and actually making money. Entirely self-taught — no school, no courses.</div>
+            </div>
+            <div class="reveal-delay-1 tl-item reveal">
+              <div class="tl-dot"></div>
+              <div class="tl-year">// age_16 → 2013</div>
+              <div class="tl-title">Tech blog + AdSense 📝</div>
+              <div class="tl-desc">Launched a self-hosted tech blog running Google AdSense. Felt like a startup founder in a bedroom. Made real money.</div>
+            </div>
+            <div class="reveal-delay-2 tl-item reveal">
+              <div class="tl-dot"></div>
+              <div class="tl-year">// early_20s</div>
+              <div class="tl-title">Moved to Aotearoa 🇳🇿</div>
+              <div class="tl-desc">Two suitcases, one-way ticket. Studied Business & Leadership. Delivered pizzas. Kept building on the side whenever life got quiet.</div>
+            </div>
+            <div class="reveal-delay-3 tl-item reveal">
+              <div class="tl-dot"></div>
+              <div class="tl-year">// present → 2025</div>
+              <div class="tl-title">Married dad, still vibing 🥹</div>
+              <div class="tl-desc">Husband, father, and still chasing weird ideas at odd hours. Building for fun, writing honestly, figuring out legacy.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal-delay-1 reveal" style="margin-top:3.5rem;">
+          <div class="dev-card">
+            <span class="dc-cmt">// fun_facts.json</span><br>
+            <span class="dc-br">{</span><br>
+            &nbsp;&nbsp;<span class="dc-str">"loves"</span><span class="dc-br">: [</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="dc-str">"cooking Indian food 🍛"</span><span class="dc-br">,</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="dc-str">"binge-watching movies 🎬"</span><span class="dc-br">,</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="dc-str">"2am deep dives 🧠"</span><span class="dc-br">,</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="dc-str">"exploring new places ✈️"</span><br>
+            &nbsp;&nbsp;<span class="dc-br">],</span><br>
+            &nbsp;&nbsp;<span class="dc-str">"philosophy"</span><span class="dc-br">:</span> <span class="dc-str">"build when it's fun"</span><span class="dc-br">,</span><br>
+            &nbsp;&nbsp;<span class="dc-str">"superpower"</span><span class="dc-br">:</span> <span class="dc-str">"learning from YouTube"</span><span class="dc-br">,</span><br>
+            &nbsp;&nbsp;<span class="dc-str">"kryptonite"</span><span class="dc-br">:</span> <span class="dc-str">"just circling back emails 😅"</span><span class="dc-br">,</span><br>
+            &nbsp;&nbsp;<span class="dc-str">"origin_story"</span><span class="dc-br">:</span> <span class="dc-str">"broke things, fixed them"</span><br>
+            <span class="dc-br">}</span>
+          </div>
+          <div style="margin-top:1rem;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
+            <div class="code-comment">// open_to_chat</div>
+            <p style="font-size:0.875rem;color:var(--text-2);line-height:1.7;margin:0;">Interesting conversations, collab ideas, feedback on things I've built, or just a friendly hello. No pitch needed.</p>
+            <div style="margin-top:1rem;"><button class="btn btn-ghost btn-sm" onclick="showPage('contact')">Say hi →</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-text">Made with ❤️ in Aotearoa — <a href="https://me.hsinghhira.me">Harman Singh Hira</a></span>
+    <div class="footer-links">
+      <a onclick="showPage('portfolio')">Portfolio</a>
+      <a onclick="showPage('blog')">Blog</a>
+      <a onclick="showPage('stories')">Life Stories</a>
+      <a onclick="showPage('contact')">Contact</a>
+    </div>
+  </footer>
+</div>
+
+
+<!-- ════════════════════════════════════
+     PAGE: PORTFOLIO
+════════════════════════════════════ -->
+<div id="page-portfolio" class="page">
+
+  <!-- PROJECT DETAIL VIEW -->
+  <div id="project-view">
+    <div class="container">
+      <div class="project-back" onclick="closeProject()">← Back to portfolio</div>
+      <div class="project-page-hero" id="project-page-hero"></div>
+      <h1 class="project-page-title" id="project-page-title"></h1>
+      <div class="project-page-meta" id="project-page-meta"></div>
+      <div class="project-page-body" id="project-page-body"></div>
+      <div class="project-page-links" id="project-page-links"></div>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO LISTING -->
+  <section id="portfolio-listing" style="padding-top:clamp(6rem,12vw,9rem);">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="code-comment">// portfolio.js — things I actually shipped</div>
+        <div class="label">Portfolio</div>
+        <h2 class="section-title">What I've built</h2>
+        <p class="section-subtitle">Projects born from curiosity, necessity, or just because it seemed fun at 2am.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2rem;" id="portfolio-filters">
+        <button class="tag-pill active" data-filter="all"  onclick="filterProjects('all')">All</button>
+        <button class="tag-pill" data-filter="web"  onclick="filterProjects('web')">Web</button>
+        <button class="tag-pill" data-filter="tool" onclick="filterProjects('tool')">Tools</button>
+        <button class="tag-pill" data-filter="blog" onclick="filterProjects('blog')">Blog / Content</button>
+      </div>
+      <div class="projects-grid" id="portfolio-grid"></div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-text">Made with ❤️ in Aotearoa — <a href="https://me.hsinghhira.me">Harman Singh Hira</a></span>
+    <div class="footer-links"><a onclick="showPage('home')">Home</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('contact')">Contact</a></div>
+  </footer>
+</div>
+
+
+<!-- ════════════════════════════════════
+     PAGE: BLOG
+════════════════════════════════════ -->
+<div id="page-blog" class="page">
+  <div id="article-view">
+    <div class="container-sm">
+      <div style="max-width:720px;margin:0 auto 3rem;">
+        <div class="article-back" onclick="closeArticle()">← Back to blog</div>
+        <div class="post-meta" id="article-meta"></div>
+        <h1 class="article-title" id="article-title"></h1>
+        <p style="color:var(--text-2);font-size:0.875rem;margin-top:0.5rem;" id="article-excerpt"></p>
+      </div>
+      <div class="article-body" id="article-body"></div>
+    </div>
+  </div>
+
+  <section id="blog-listing" style="padding-top:clamp(6rem,12vw,9rem);">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="code-comment">// blog.md — thoughts dumped at odd hours</div>
+        <div class="label">Blog</div>
+        <h2 class="section-title">Thoughts &amp; writings</h2>
+        <p class="section-subtitle">Coding, life, New Zealand, and whatever's on my mind at 2am.</p>
+      </div>
+
+      <div class="blog-filters-bar" id="blog-filters">
+        <span class="blog-filters-label">filter:</span>
+        <span class="tag-pill active" onclick="filterPosts('all')">All</span>
+        <span class="tag-pill" onclick="filterPosts('tech')">Tech</span>
+        <span class="tag-pill" onclick="filterPosts('life')">Life</span>
+        <span class="tag-pill" onclick="filterPosts('build')">Building</span>
+      </div>
+
+      <span class="posts-summary" id="blog-summary"></span>
+      <div class="posts-list" id="posts-list"></div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-text">Made with ❤️ in Aotearoa — <a href="https://me.hsinghhira.me">Harman Singh Hira</a></span>
+    <div class="footer-links"><a onclick="showPage('home')">Home</a><a onclick="showPage('portfolio')">Portfolio</a><a onclick="showPage('stories')">Life Stories</a><a onclick="showPage('contact')">Contact</a></div>
+  </footer>
+</div>
+
+
+<!-- ════════════════════════════════════
+     PAGE: LIFE STORIES
+════════════════════════════════════ -->
+<div id="page-stories" class="page">
+
+  <!-- STORY ARTICLE VIEW -->
+  <div id="story-article-view">
+    <div class="container-sm">
+      <div style="max-width:720px;margin:0 auto 3rem;">
+        <div class="article-back" onclick="closeStory()">← Back to life stories</div>
+        <div class="post-meta" id="story-article-meta"></div>
+        <h1 class="article-title" id="story-article-title"></h1>
+        <p style="color:var(--text-2);font-size:0.875rem;margin-top:0.5rem;" id="story-article-excerpt"></p>
+      </div>
+      <div class="article-body story-body" id="story-article-body"></div>
+    </div>
+  </div>
+
+  <!-- STORIES LISTING -->
+  <section id="stories-listing" style="padding-top:clamp(6rem,12vw,9rem);">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="code-comment">// life_stories.log — the unfiltered chapters</div>
+        <div class="label stories-label">Life Stories</div>
+        <h2 class="section-title">Real life,<br><span style="color:var(--purple)">unfiltered.</span></h2>
+        <p class="section-subtitle">Not blog posts. Not tutorials. Just stories — the funny, the frustrating, the surprisingly beautiful bits of living life in Aotearoa.</p>
+      </div>
+
+      <div class="blog-filters-bar" id="stories-filters">
+        <span class="blog-filters-label">filter:</span>
+        <span class="tag-pill active" onclick="filterStories('all')">All</span>
+        <span class="tag-pill" onclick="filterStories('nz')">NZ Life</span>
+        <span class="tag-pill" onclick="filterStories('family')">Family</span>
+        <span class="tag-pill" onclick="filterStories('immigrant')">Immigrant Diaries</span>
+      </div>
+
+      <span class="posts-summary" id="stories-summary"></span>
+      <div class="posts-list" id="stories-list"></div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-text">Made with ❤️ in Aotearoa — <a href="https://me.hsinghhira.me">Harman Singh Hira</a></span>
+    <div class="footer-links"><a onclick="showPage('home')">Home</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('contact')">Contact</a></div>
+  </footer>
+</div>
+
+
+<!-- ════════════════════════════════════
+     PAGE: CONTACT
+════════════════════════════════════ -->
+<div id="page-contact" class="page">
+  <section style="padding-top:clamp(6rem,12vw,9rem);">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="code-comment reveal">// reach_out.js — don't be a stranger</div>
+          <div class="label reveal">Get in touch</div>
+          <h2 class="reveal-delay-1 reveal">Let's talk<br><span style="color:var(--accent)">about anything.</span></h2>
+          <p class="reveal-delay-2 reveal">Whether it's a project idea, a collab, feedback on something I built, or just saying hi — my inbox is open. I try to reply to everyone.</p>
+          <div class="reveal-delay-2 social-links reveal">
+            <a href="https://twitter.com/HSinghHira" target="_blank" class="social-link">
+              <span class="social-icon">𝕏</span><span>@HSinghHira on X (Twitter)</span>
+            </a>
+            <a href="https://github.com" target="_blank" class="social-link">
+              <span class="social-icon" style="font-size:0.85rem;font-family:'Syne',sans-serif;font-weight:700;">GH</span><span>GitHub — see what I'm building</span>
+            </a>
+            <a href="https://me.hsinghhira.me" target="_blank" class="social-link">
+              <span class="social-icon" style="font-size:0.6rem;font-family:'JetBrains Mono',monospace;font-weight:500;">HSH</span><span>me.hsinghhira.me — personal blog</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal-delay-1 reveal">
+          <div class="contact-form-wrap">
+            <div class="code-comment">// send_message.js</div>
+            <div class="contact-form">
+              <div class="form-group">
+                <label class="form-label">const name =</label>
+                <input type="text" class="form-input" placeholder='"Your name"' id="form-name" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">const email =</label>
+                <input type="email" class="form-input" placeholder='"your@email.com"' id="form-email" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">const message =</label>
+                <textarea class="form-textarea" id="form-message" placeholder='"What&apos;s on your mind?"'></textarea>
+              </div>
+              <button class="btn btn-primary form-submit" onclick="submitForm()">sendMessage() →</button>
+              <div class="form-success" id="form-success">✓ Message sent! I'll get back to you soon. Cheers 🥂</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <span class="footer-text">Made with ❤️ in Aotearoa — <a href="https://me.hsinghhira.me">Harman Singh Hira</a></span>
+    <div class="footer-links"><a onclick="showPage('home')">Home</a><a onclick="showPage('portfolio')">Portfolio</a><a onclick="showPage('blog')">Blog</a></div>
+  </footer>
+</div>
+
+
+<script>
+/* ── DATA ── */
+const projects = [
+  {
+    id:1, featured:true, category:'web', icon:'🌐', name:'Personal Website v1',
+    desc:'My first personal portfolio — built at 15, figuring out HTML/CSS from YouTube tutorials and forums. The project that started everything.',
+    tags:['HTML','CSS','First Project'],
+    github:'https://github.com', demo:'https://me.hsinghhira.me',
+    image: null, // no featured image — will show icon
+    longDesc:`<p>This was where everything started. I was 15, had just discovered that you could build things for the internet, and I wanted to show the world what I could do.</p>
+<h2>The Beginning</h2>
+<p>I learned entirely from YouTube tutorials and late-night forum dives. No formal training, no bootcamp — just a browser, a text editor, and a burning curiosity. I still remember the first time a layout I built actually looked the way I imagined it. That feeling was everything.</p>
+<h2>What I built</h2>
+<p>A simple but clean personal portfolio showcasing my skills and projects. It wasn't fancy — but it was mine. Hand-coded from scratch, every line of HTML and CSS written by a teenager who had no idea this would become a lifelong craft.</p>
+<h2>What it taught me</h2>
+<p>That shipping is better than perfect. That real projects teach you more than any tutorial. And that building something on the internet is one of the most powerful things a person can do.</p>`
+  },
+  {
+    id:2, featured:true, category:'tool', icon:'🛠️', name:'Random Utility Tool',
+    desc:'One of those useful/questionable tools I built at 2am. Does something surprisingly useful that I never expected to matter.',
+    tags:['JavaScript','Node.js','CLI'],
+    github:'https://github.com', demo: null,
+    image: null,
+    longDesc:`<p>Every developer has a folder full of scripts they wrote at 2am to solve a problem that annoyed them once. This is one of mine that actually became useful.</p>
+<h2>The Problem</h2>
+<p>I kept doing the same repetitive task manually. It was boring. It was slow. It was the kind of thing a computer should do. So I built a tool to automate it.</p>
+<h2>The Solution</h2>
+<p>A CLI utility built with Node.js that handles the boring bits automatically. What started as a quick hack turned into something I actually use regularly. Sometimes the best tools are the ones you build for yourself.</p>
+<h2>Lessons learned</h2>
+<ul>
+<li>Build for your own frustrations first — the result is always more genuine.</li>
+<li>CLI tools have a surprisingly low barrier to entry with Node.js.</li>
+<li>2am ideas are not always bad ideas.</li>
+</ul>`
+  },
+  {
+    id:3, featured:true, category:'blog', icon:'✍️', name:'Tech Blog @ 16',
+    desc:'A self-hosted tech blog running Google AdSense that made real money. First validation that building online things actually works.',
+    tags:['WordPress','AdSense','Content'],
+    github:null, demo:'https://me.hsinghhira.me',
+    image: null,
+    longDesc:`<p>At 16, I launched a self-hosted tech blog. It wasn't just a hobby — it made real money through Google AdSense. That was my first proof that building on the internet could actually work.</p>
+<h2>Why I built it</h2>
+<p>I was already consuming tech content obsessively. At some point I thought — why not create it? I had opinions, I had knowledge from my own tinkering, and I wanted to share it.</p>
+<h2>What I learned about content</h2>
+<p>Writing teaches you to think clearly. If you can't explain something simply, you don't understand it well enough. Every post I wrote forced me to actually understand what I was talking about — not just copy-paste a tutorial.</p>
+<h2>The AdSense milestone</h2>
+<p>The first time I got a payout from Google AdSense, I was a teenager sitting in my bedroom. That moment — seeing that the internet would literally pay you for creating value — changed how I saw the world entirely.</p>`
+  },
+  {
+    id:4, featured:false, category:'web', icon:'🎨', name:'Template Pack',
+    desc:'HTML/CSS templates I designed and sold online as a teenager. Real money, real clients. Wild to think about now.',
+    tags:['HTML','CSS','Design'],
+    github:'https://github.com', demo:null,
+    image: null,
+    longDesc:`<p>Before Figma, before Tailwind, before design systems — I was designing and selling HTML/CSS templates online. As a teenager. From my bedroom.</p>
+<h2>How it happened</h2>
+<p>I discovered online marketplaces where developers sold website templates. I thought: I can do that. So I did. I designed clean, minimal templates and listed them for sale.</p>
+<h2>The experience</h2>
+<p>Having real clients — even if they were just purchasing a template — taught me about quality, documentation, and standing behind your work. If someone bought my template and it had a bug, that was on me to fix.</p>
+<h2>Legacy</h2>
+<p>This project taught me that design and code aren't separate things. The best front-end work is where both blend seamlessly. A lesson I still carry today.</p>`
+  },
+  {
+    id:5, featured:false, category:'tool', icon:'⚡', name:'Automation Script',
+    desc:'A small automation tool to solve a repetitive problem. The kind of thing that saves 20 minutes every single day.',
+    tags:['Python','Automation'],
+    github:'https://github.com', demo:null,
+    image: null,
+    longDesc:`<p>There's a particular kind of satisfaction in automating something you've been doing manually. This script saves me about 20 minutes every single day — which adds up to roughly 120 hours a year.</p>
+<h2>The problem it solves</h2>
+<p>A repetitive workflow that I kept doing the same way, every day, for weeks. The kind of task where your brain goes on autopilot and you think "a computer should be doing this."</p>
+<h2>Why Python</h2>
+<p>Python is my go-to for automation because it gets out of the way. The code reads almost like English, the ecosystem for file handling and scheduling is excellent, and scripts like this don't need to be fast — they need to be reliable.</p>
+<h2>The bigger lesson</h2>
+<p>Automation isn't about being lazy. It's about respecting your own time. Every minute you save from boring work is a minute you can spend on interesting work.</p>`
+  },
+  {
+    id:6, featured:false, category:'web', icon:'🔮', name:'Side Project X',
+    desc:'Experimental. Messy. Should probably never see daylight again. But I learned a ton building it.',
+    tags:['React','Experiment','WIP'],
+    github:'https://github.com', demo:null,
+    image: null,
+    longDesc:`<p>Not every project ships. Not every idea deserves to ship. This one sits in that particular category of "wildly educational failures" that I wouldn't trade for anything.</p>
+<h2>What it was</h2>
+<p>An experimental React app built around an idea that seemed brilliant at midnight and questionable by noon. I won't go into specifics — partly for mystery, partly because the code is objectively chaotic.</p>
+<h2>What went wrong</h2>
+<p>Scope creep. Feature bloat. Architecture decisions made at 2am that made complete sense then and zero sense later. The classic self-taught developer trap of building the interesting parts before the important parts.</p>
+<h2>What I actually learned</h2>
+<p>React's component model. State management patterns. Why you should plan before you build. Why you should ship before you perfect. And that unfinished projects are still valuable — they're just valuable differently.</p>`
+  },
+];
+
+const posts = [
+  {id:1, featured:true, category:'life', title:"From Chandigarh to Aotearoa: What I Learned Moving Countries",
+   excerpt:"Packing your whole life into two suitcases teaches you more than any business degree.", date:'Mar 2025', readTime:'6 min',
+   body:`<p>There's a particular kind of freedom in making a decision that scares you.</p><p>I was in my early 20s when I packed everything into a couple of suitcases and bought a one-way ticket to New Zealand. Proper main character move, honestly.</p><h2>The thing nobody tells you</h2><p>Everyone talks about the excitement of moving abroad. The adventure. The fresh start. Nobody really talks about the months where you're just... figuring things out.</p><blockquote>The cold water is actually cold. You just have to get used to the temperature, not pretend it's warm.</blockquote><p>Pizza delivery taught me more about people than any lecture ever did. You see every kind of household. Every kind of human.</p><h2>What coding had to do with it</h2><p>During those early years, coding drifted into the background. Life was loud. But the itch never fully went away. Missing something teaches you why you love it.</p>`},
+  {id:2, featured:false, category:'tech', title:"Self-Taught at 15: What Actually Works (and What Doesn't)",
+   excerpt:"Nobody handed me a roadmap. YouTube, forums, breaking things, fixing things. Here's the honest breakdown.", date:'Feb 2025', readTime:'8 min',
+   body:`<p>At 15, I didn't know what a "learning path" was. I just had a browser and a curiosity that wouldn't let me sit still.</p><h2>The YouTube era</h2><p>Everything I know about code started with watching someone else's screen.</p><pre><code>/* My first CSS, circa age 15 */\nbody {\n  background: black;\n  color: lime;\n  font-family: "Comic Sans MS";\n}</code></pre><p>Was it good? Absolutely not. Did it work? Yeah. And that's the thing — the dopamine hit kept me going.</p><h2>What actually works</h2><p>Build something. Break it. Fix it. Google the error. Break it again. This isn't motivational poster stuff — it's genuinely the most effective way to learn.</p>`},
+  {id:3, featured:false, category:'build', title:"Why I Don't Code for Money (And Why That's Okay)",
+   excerpt:"Keeping your passion as a passion. The moment coding feels forced, my brain switches off.", date:'Jan 2025', readTime:'4 min',
+   body:`<p>People ask me why I don't work in tech full-time. The answer is simpler than they expect.</p><p>The moment coding feels forced — deadlines, "just circling back" emails — something turns off. The magic fades.</p><h2>The playground theory</h2><p>There's a reason children learn faster than adults. Playgrounds have no deliverables.</p><blockquote>Late-night silence, a random idea, and nowhere it needs to be by morning. That's when I do my best work.</blockquote><p>So yeah, I still build things. And it doesn't need to explain itself to anyone.</p>`},
+  {id:4, featured:false, category:'life', title:"Being a Dad Changed How I Build Things",
+   excerpt:"A tiny human who doesn't care about your side projects has a funny way of clarifying what matters.", date:'Dec 2024', readTime:'5 min',
+   body:`<p>Nothing in life prepares you for a tiny human looking at you like you're the whole world.</p><p>I became a dad and my priorities got rewritten in about 72 hours. Sleep schedule? Gone. Sense of what matters? Recalibrated entirely.</p><h2>Building differently</h2><p>I still code. I still stay up late with weird ideas. But there's something different now. I'm thinking about legacy. About things that actually work, not just things that are clever.</p><p>Fatherhood is the best code review you'll ever have. Brutal. Honest. No ego.</p>`},
+];
+
+const stories = [
+  {
+    id:1, featured:true, category:'nz',
+    title:"Auckland Transport Gave Me a $70 Fine for Existing",
+    excerpt:"I tagged on. I tagged off. I had credit. They fined me anyway. Welcome to AT.",
+    date:'Apr 2025', readTime:'5 min',
+    url:'https://me.hsinghhira.me/posts/auckland-transport-gave-me-a-dollar-70-fine-for-existing/',
+    body:`<p class="story-dropcap">The fine arrived on a Tuesday. $70. Infringement notice. Auckland Transport.</p>
+<p>I stared at it for a full minute trying to figure out what I'd done wrong. I tag on. I tag off. I keep credit on my AT HOP card. I am, by all measurable standards, a model public transport user. And yet.</p>
+<h2>What actually happened</h2>
+<p>I'd taken the bus on a Thursday morning. Routine trip. Tagged on at the start, tagged off at the end — I remember it clearly because I always make a point of it after reading a thread on Reddit about people getting stung by forgetting to tag off.</p>
+<p>According to Auckland Transport's system, however, I had not tagged off. Their reader said so. Their reader was, apparently, more reliable than my memory, my bank statement showing the correct fare deduction, and basic common sense.</p>
+<blockquote>The irony of getting fined for using public transport correctly is not lost on me.</blockquote>
+<h2>The appeals process</h2>
+<p>Filing an appeal involves a form. The form involves uploading "evidence." The evidence they want is — and I promise I'm not making this up — a screenshot of your AT HOP transaction history. Which shows the exact trip. Which shows the tag-on and tag-off. Which I provided.</p>
+<p>The appeal was declined. No reason given. Just a very polite email explaining that the fine stands and payment can be made via their website.</p>
+<h2>What this taught me</h2>
+<p>New Zealand is a beautiful country with excellent coffee and stunning scenery. Its public transport ticketing infrastructure is staffed by people who seem to genuinely believe that their system is infallible. These two things can be true simultaneously.</p>
+<p>I paid the fine. I still take the bus. I now photograph the card reader every single time I board, just in case.</p>
+<p>Welcome to Auckland.</p>`
+  },
+  {
+    id:2, featured:false, category:'immigrant',
+    title:"Things Nobody Told Me About Living in New Zealand",
+    excerpt:"The Weetbix. The BYO culture. The fact that everyone owns a barbecue. A field guide for fresh arrivals.",
+    date:'Mar 2025', readTime:'7 min',
+    url:'https://me.hsinghhira.me/posts/things-nobody-told-me-about-nz/',
+    body:`<p class="story-dropcap">No one gives you a manual. That's the thing about immigration — you rock up, and then you just have to figure it out.</p>
+<p>Three years in, I've compiled a list. Consider it the document I wish someone had handed me at the airport.</p>
+<h2>Weetbix is not optional</h2>
+<p>Every Kiwi household has Weetbix. I don't know if it's law but it feels like law. You will be offered Weetbix at some point. Just accept it.</p>
+<h2>BYO means something specific</h2>
+<p>In India, BYO would seem rude. Here, it's practically a cultural cornerstone. Restaurants are BYO. Gatherings are BYO. You show up with wine; they appreciate you for it. This took me an embarrassingly long time to figure out.</p>
+<blockquote>The social currency here isn't money. It's showing up, being decent, and occasionally bringing snacks.</blockquote>
+<h2>Everyone owns a barbecue</h2>
+<p>It's not a hobby. It's infrastructure. Plan accordingly.</p>
+<h2>The real stuff</h2>
+<p>People here are genuine. Not in the performative way. In the quiet, consistent, actually-show-up-when-you-need-them way. That surprised me most of all. I came for the scenery and stayed for the people.</p>`
+  },
+  {
+    id:3, featured:false, category:'family',
+    title:"What My Kid Taught Me About Slowing Down",
+    excerpt:"She doesn't care about my side projects. She just wants me to sit on the floor with her. Turns out that's the whole lesson.",
+    date:'Feb 2025', readTime:'4 min',
+    url:'https://me.hsinghhira.me/posts/what-my-kid-taught-me-about-slowing-down/',
+    body:`<p class="story-dropcap">She handed me a toy block and looked at me with complete seriousness, like the fate of the universe depended on what I did next.</p>
+<p>I put down my phone. I took the block. We stacked blocks for twenty minutes. No emails. No half-listening. Just blocks.</p>
+<h2>The productivity trap</h2>
+<p>Before parenthood, I measured my days in output. What did I build? What did I ship? What did I learn? Good days had accomplishments. Bad days felt wasted.</p>
+<p>Kids don't care about any of that. She doesn't know or care that I built something cool this week. She knows if I was present or not. That's the whole metric.</p>
+<blockquote>You can't half-presence a toddler. They notice immediately. They always notice.</blockquote>
+<h2>The slow lesson</h2>
+<p>Slowing down is hard when you're wired to move fast. But some things — most things that matter, actually — require you to just stop and be somewhere, fully, without an agenda.</p>
+<p>I'm still learning. But a kid with a toy block is a surprisingly good teacher.</p>`
+  },
+];
+
+let currentFilter='all', currentPostFilter='all', currentStoryFilter='all';
+
+/* ── THEME ── */
+function toggleTheme() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const next = isDark ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  const lbl = document.getElementById('mobile-theme-label');
+  if (lbl) lbl.textContent = next === 'light' ? '🌙 Switch to Dark Mode' : '☀️ Switch to Light Mode';
+}
+(function(){
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved);
+    const lbl = document.getElementById('mobile-theme-label');
+    if (lbl) lbl.textContent = saved === 'light' ? '🌙 Switch to Dark Mode' : '☀️ Switch to Light Mode';
+  }
+})();
+document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+
+/* ── PROJECTS ── */
+function renderProject(p) {
+  const slug = p.name.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'');
+  const heroHtml = p.image
+    ? `<div class="project-hero-img has-image"><img src="${p.image}" alt="${p.name}" loading="lazy" /></div>`
+    : ``;
+  return `<div class="project-card ${p.featured?'project-featured':''} reveal" data-category="${p.category}" onclick="openProject(${p.id})">
+    ${p.featured?'<div class="project-featured-badge">Featured</div>':''}
+    ${heroHtml}
+    <div class="project-card-body">
+      ${!p.image ? `<div class="project-icon">${p.icon}</div>` : ''}
+      <div class="code-comment">// ${p.category}/${slug}</div>
+      <div class="project-name">${p.name}</div>
+      <p class="project-desc">${p.desc}</p>
+      <div class="project-tags">${p.tags.map(t=>`<span class="project-tag">${t}</span>`).join('')}</div>
+      <div class="project-cta">View project →</div>
+    </div>
+  </div>`;
+}
+
+function openProject(id) {
+  const p = projects.find(x=>x.id===id); if(!p)return;
+  // Hero
+  const heroEl = document.getElementById('project-page-hero');
+  if(p.image) {
+    heroEl.style.display='block';
+    heroEl.innerHTML=`<img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;display:block;" />`;
+  } else {
+    heroEl.style.display='flex';
+    heroEl.innerHTML=`<div class="project-page-hero-emoji">${p.icon}</div>`;
+  }
+  // Title
+  document.getElementById('project-page-title').textContent=p.name;
+  // Meta
+  document.getElementById('project-page-meta').innerHTML=`
+    <div class="project-page-tags">${p.tags.map(t=>`<span class="project-tag">${t}</span>`).join('')}</div>
+  `;
+  // Body
+  document.getElementById('project-page-body').innerHTML=p.longDesc||p.desc;
+  // Links
+  const linksEl = document.getElementById('project-page-links');
+  let links='';
+  if(p.github) links+=`<a href="${p.github}" target="_blank" class="btn btn-ghost">GitHub ↗</a>`;
+  if(p.demo)   links+=`<a href="${p.demo}" target="_blank" class="btn btn-primary">Live Site ↗</a>`;
+  linksEl.innerHTML=links;
+  linksEl.style.display=links?'flex':'none';
+  // Toggle views
+  document.getElementById('portfolio-listing').style.display='none';
+  document.getElementById('project-view').style.display='block';
+  window.scrollTo(0,0);
+}
+
+function closeProject() {
+  document.getElementById('portfolio-listing').style.display='';
+  document.getElementById('project-view').style.display='none';
+  observeReveal();
+}
+
+function filterProjects(filter) {
+  currentFilter=filter;
+  document.querySelectorAll('#portfolio-filters .tag-pill').forEach(b=>b.classList.toggle('active',b.dataset.filter===filter));
+  const filtered=filter==='all'?projects:projects.filter(p=>p.category===filter);
+  document.getElementById('portfolio-grid').innerHTML=filtered.map(renderProject).join('');
+  observeReveal();
+}
+
+/* ── POSTS ── */
+function renderPost(p, idx) {
+  const c=p.category==='tech'?'cat-tech':p.category==='build'?'cat-build':'cat-life';
+  const num=String(idx+1).padStart(2,'0');
+  return `<div class="post-card ${p.featured?'featured':''} reveal" onclick="openArticle(${p.id})">
+    <div class="post-card-inner">
+      <div class="post-card-num">${num}</div>
+      <div class="post-card-text">
+        ${p.featured?'<div class="post-featured-flag">✦ Featured</div>':''}
+        <div class="post-meta">
+          <span class="post-category ${c}">${p.category}</span>
+          <span class="post-date">${p.date}</span>
+          <span class="post-read">${p.readTime} read</span>
+        </div>
+        <div class="post-title">${p.title}</div>
+        <p class="post-excerpt">${p.excerpt}</p>
+      </div>
+    </div>
+  </div>`;
+}
+
+function filterPosts(filter) {
+  currentPostFilter=filter;
+  document.querySelectorAll('#blog-filters .tag-pill').forEach(b=>{
+    const txt=b.textContent.trim().toLowerCase();
+    b.classList.toggle('active',(filter==='all'&&txt==='all')||txt===filter);
+  });
+  const filtered=filter==='all'?posts:posts.filter(p=>p.category===filter);
+  document.getElementById('posts-list').innerHTML=filtered.map((p,i)=>renderPost(p,i)).join('');
+  document.getElementById('blog-summary').textContent=`// ${filtered.length} post${filtered.length!==1?'s':''}`;
+  observeReveal();
+}
+
+/* ── ARTICLE ── */
+function openArticle(id) {
+  const post=posts.find(p=>p.id===id); if(!post)return;
+  const c=post.category==='tech'?'cat-tech':post.category==='build'?'cat-build':'cat-life';
+  document.getElementById('article-title').textContent=post.title;
+  document.getElementById('article-excerpt').textContent=post.excerpt;
+  document.getElementById('article-meta').innerHTML=`<span class="post-category ${c}">${post.category}</span><span class="post-date">${post.date}</span><span class="post-read" style="margin-left:0">${post.readTime} read</span>`;
+  document.getElementById('article-body').innerHTML=post.body;
+  document.getElementById('blog-listing').style.display='none';
+  document.getElementById('article-view').style.display='block';
+  window.scrollTo(0,0);
+}
+function closeArticle() {
+  document.getElementById('blog-listing').style.display='';
+  document.getElementById('article-view').style.display='none';
+}
+
+/* ── STORIES ── */
+function renderStory(s, idx) {
+  const num=String(idx+1).padStart(2,'0');
+  return `<div class="post-card ${s.featured?'featured':''} reveal" onclick="openStory(${s.id})">
+    <div class="post-card-inner">
+      <div class="post-card-num">${num}</div>
+      <div class="post-card-text">
+        ${s.featured?'<div class="post-featured-flag" style="color:var(--purple);background:var(--purple-dim);border-color:rgba(167,139,250,0.2);">✦ Featured Story</div>':''}
+        <div class="post-meta">
+          <span class="post-category cat-story">${s.category}</span>
+          <span class="post-date">${s.date}</span>
+          <span class="post-read">${s.readTime} read</span>
+        </div>
+        <div class="post-title">${s.title}</div>
+        <p class="post-excerpt">${s.excerpt}</p>
+      </div>
+    </div>
+  </div>`;
+}
+
+function filterStories(filter) {
+  currentStoryFilter=filter;
+  document.querySelectorAll('#stories-filters .tag-pill').forEach(b=>{
+    const txt=b.textContent.trim().toLowerCase();
+    b.classList.toggle('active',(filter==='all'&&txt==='all')||txt===filter||b.textContent.trim().toLowerCase().replace(/\s+/g,'')===filter);
+  });
+  const filtered=filter==='all'?stories:stories.filter(s=>s.category===filter);
+  document.getElementById('stories-list').innerHTML=filtered.map((s,i)=>renderStory(s,i)).join('');
+  document.getElementById('stories-summary').textContent=`// ${filtered.length} stor${filtered.length!==1?'ies':'y'}`;
+  observeReveal();
+}
+
+function openStory(id) {
+  const story=stories.find(s=>s.id===id); if(!story)return;
+  document.getElementById('story-article-title').textContent=story.title;
+  document.getElementById('story-article-excerpt').textContent=story.excerpt;
+  document.getElementById('story-article-meta').innerHTML=`<span class="post-category cat-story">${story.category}</span><span class="post-date">${story.date}</span><span class="post-read" style="margin-left:0">${story.readTime} read</span>`;
+  document.getElementById('story-article-body').innerHTML=story.body;
+  document.getElementById('stories-listing').style.display='none';
+  document.getElementById('story-article-view').style.display='block';
+  window.scrollTo(0,0);
+}
+function closeStory() {
+  document.getElementById('stories-listing').style.display='';
+  document.getElementById('story-article-view').style.display='none';
+}
+
+/* ── CONTACT ── */
+function submitForm() {
+  const n=document.getElementById('form-name').value.trim();
+  const e=document.getElementById('form-email').value.trim();
+  const m=document.getElementById('form-message').value.trim();
+  if(!n||!e||!m){alert('Please fill in all fields.');return;}
+  document.getElementById('form-success').style.display='block';
+  document.getElementById('form-name').value='';
+  document.getElementById('form-email').value='';
+  document.getElementById('form-message').value='';
+  setTimeout(()=>document.getElementById('form-success').style.display='none',5000);
+}
+
+/* ── PAGE NAV ── */
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.dataset.page===name));
+  window.scrollTo(0,0);
+  if(name==='portfolio'){filterProjects(currentFilter);closeProject();}
+  if(name==='blog'){filterPosts(currentPostFilter);closeArticle();}
+  if(name==='stories'){filterStories(currentStoryFilter);closeStory();}
+  observeReveal();
+}
+
+/* ── MOBILE ── */
+document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobile-menu').classList.toggle('open'));
+function closeMobile(){document.getElementById('mobile-menu').classList.remove('open');}
+
+/* ── REVEAL ── */
+function observeReveal(){
+  const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el=>obs.observe(el));
+}
+
+/* ── INIT ── */
+filterProjects('all');
+filterPosts('all');
+filterStories('all');
+observeReveal();
+</script>
+</body>
+</html>

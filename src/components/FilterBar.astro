@@ -43,7 +43,7 @@ const uniqueId = Math.random().toString(36).substring(7);
           }
 
           const cat = item.getAttribute('data-category')?.toLowerCase();
-          const tags = item.getAttribute('data-tags')?.toLowerCase().split(' ') || [];
+          const tags = item.getAttribute('data-tags')?.toLowerCase().split(',').map(t => t.trim()) || [];
           
           if (cat === filterVal || tags.includes(filterVal)) {
             item.style.display = '';

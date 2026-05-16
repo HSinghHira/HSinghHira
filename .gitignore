@@ -87,4 +87,3 @@ jspm_packages/
 *.pem
 .codeboarding
 package-lock.json
-.reference/

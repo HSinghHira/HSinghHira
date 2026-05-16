@@ -320,15 +320,7 @@ nav {
   font-weight: 500;
 }
 
-/* ── CODE COMMENT UTILITY ── */
-.code-comment {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-  color: var(--comment);
-  margin-bottom: 0.6rem;
-  display: block;
-  letter-spacing: 0.01em;
-}
+
 
 /* ── PAGES ── */
 section {
@@ -355,26 +347,7 @@ h4 {
   letter-spacing: -0.03em;
 }
 
-.label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--accent);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
 
-.label::before {
-  content: '';
-  display: inline-block;
-  width: 24px;
-  height: 1px;
-  background: var(--accent);
-}
 
 /* ── BUTTONS ── */
 .btn {
@@ -515,7 +488,7 @@ h4 {
 }
 
 .hero-name {
-  font-size: clamp(3rem, 9vw, 7.5rem);
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.04em;
@@ -1374,6 +1347,27 @@ pre:hover .copy-code-btn,
   border-color: var(--green);
 }
 
+.code-expand-btn {
+  display: block;
+  width: 100%;
+  margin-top: -1px;
+  padding: 0.5rem 1rem;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-3);
+  cursor: pointer;
+  transition: 0.2s;
+  letter-spacing: 0.04em;
+}
+.code-expand-btn:hover {
+  background: var(--bg-4);
+  color: var(--accent);
+}
+
 .article-body blockquote {
   border-left: 2px solid var(--accent);
   padding: 0.75rem 1.5rem;
@@ -1601,7 +1595,7 @@ footer {
   }
 }
 
-@media(max-width:1100px) and (min-width:601px) {
+@media(max-width:1280px) and (min-width:601px) {
   .nav-links a span {
     display: none;
   }
@@ -1693,31 +1687,10 @@ footer {
   z-index: 1;
 }
 
-.journey-title {
-  font-size: clamp(2.4rem, 6vw, 4.5rem);
-  font-weight: 800;
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-  margin-bottom: 1.25rem;
-}
 
-.journey-title span {
-  color: var(--accent);
-}
-
-.journey-inner .sub {
-  font-size: 1.1rem;
-  color: var(--text-2);
-  font-weight: 300;
-  line-height: 1.75;
-  max-width: 520px;
-  margin-bottom: 4rem;
-}
 
 @media (max-width: 600px) {
-  .journey-title {
-    font-size: 3rem;
-  }
+
 
   .timeline {
     padding-left: 1.5rem;

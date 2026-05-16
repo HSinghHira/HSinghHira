@@ -9,7 +9,6 @@ pubDatetime: 2026-01-28T00:00:00.000Z
 tags: [Apple]
 category: "Opinion"
 draft: false
-
 published: 2026-01-28T08:29:47.000Z
 ---
 I’m writing this as someone who reads security writeups, follows bug bounty drama, and actually cares about how this ecosystem works. And honestly, the way Apple treats ethical security researchers sometimes feels… off. Like “this ain’t sitting right” off 🤨

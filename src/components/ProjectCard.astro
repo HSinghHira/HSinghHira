@@ -16,7 +16,7 @@ export interface Props {
 const { name, desc, tags, icon, image, featured, category, slug } = Astro.props;
 ---
 
-<a href={`/portfolio/${slug}`} class={`project-card ${featured ? 'project-featured' : ''}`} data-category={category?.toLowerCase() || 'tool'} data-tags={tags?.join(' ').toLowerCase()}>
+<a href={`/portfolio/${slug}`} class={`project-card ${featured ? 'project-featured' : ''}`} data-category={category?.toLowerCase() || 'tool'} data-tags={tags?.join(',').toLowerCase()}>
   {featured && <div class="project-featured-badge">Featured</div>}
   <div class={`project-hero-img ${image ? 'has-image' : ''}`}>
     {image ? (
