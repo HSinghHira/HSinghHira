@@ -1,5 +1,3 @@
-import { SITE } from "../../config";
-
 interface Props {
   title: string;
   description?: string;
@@ -75,6 +73,7 @@ const OGTemplate = ({ title, description, category }: Props) => {
               color: "#c8a97a",
               fontSize: "24px",
               fontFamily: "DM Sans",
+              textTransform: "capitalize",
             }}
           >
             {category || "Harman Singh Hira"}
@@ -84,11 +83,11 @@ const OGTemplate = ({ title, description, category }: Props) => {
         {/* Title */}
         <div
           style={{
-            fontSize: title.length > 100 ? "48px" : title.length > 70 ? "60px" : title.length > 40 ? "72px" : "84px",
+            fontSize: title.length > 100 ? "28px" : title.length > 70 ? "28px" : title.length > 40 ? "32px" : "36px",
             fontWeight: 800,
             fontFamily: "Syne",
             color: "#f0ede8",
-            lineHeight: 1.1,
+            lineHeight: 1.4,
             marginBottom: "20px",
             display: "flex",
             flexDirection: "column",
@@ -147,7 +146,7 @@ const OGTemplate = ({ title, description, category }: Props) => {
             }}
           />
           <div style={{ color: "#9a9590", fontSize: "20px", fontFamily: "DM Sans" }}>
-            {new URL(SITE.website).hostname}
+            hsinghhira.me
           </div>
         </div>
       </div>
