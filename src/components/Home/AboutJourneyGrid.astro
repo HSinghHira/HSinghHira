@@ -1,0 +1,82 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { HomeMap } from "@/components/HomeMap";
+import AboutSection from "./AboutSection.astro";
+import JourneySection from "./JourneySection.astro";
+import DevCard from "./DevCard.astro";
+import ChatCard from "./ChatCard.astro";
+
+interface Props {
+  homeJourney: CollectionEntry<"journey">[];
+}
+
+const { homeJourney } = Astro.props;
+---
+
+<section id="about-journey">
+  <div class="container">
+    <div class="about-journey-grid">
+      <div class="content-left">
+        <AboutSection />
+        <hr class="left-divider reveal" />
+        <JourneySection homeJourney={homeJourney} />
+      </div>
+
+      <div class="content-right">
+        <div class="sticky-sidebar">
+          <div
+            class="reveal-delay-2 reveal"
+            style="margin-bottom:1rem; height: 280px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border);"
+          >
+            <HomeMap client:load />
+          </div>
+
+          <DevCard />
+          <ChatCard />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-journey-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    gap: 5rem;
+    align-items: start;
+    padding: 5rem 0;
+  }
+
+  .left-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 3rem 0;
+    width: 100%;
+  }
+
+  .sticky-sidebar {
+    position: sticky;
+    top: 100px;
+  }
+
+  @media (max-width: 1024px) {
+    .about-journey-grid {
+      gap: 3rem;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .about-journey-grid {
+      grid-template-columns: 1fr;
+      padding: 3rem 0;
+    }
+    .sticky-sidebar {
+      position: static;
+    }
+    .left-divider {
+      margin: 3rem 0;
+    }
+  }
+</style>

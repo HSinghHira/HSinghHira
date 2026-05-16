@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  homeJourney: CollectionEntry<"journey">[];
+}
+
+const { homeJourney } = Astro.props;
+---
+<div id="home-journey" class="section-part">
+  <div class="code-comment reveal">
+    // journey.log — how I got here
+  </div>
+  <div class="label reveal">The Journey</div>
+  <h2 class="reveal-delay-1 reveal h3-display">
+    How it all started
+  </h2>
+  <div class="timeline">
+    {
+      homeJourney.map((entry, i) => (
+        <div
+          class={`tl-item reveal ${i > 0 ? `reveal-delay-${i}` : ""}`}
+        >
+          <div class="tl-dot" />
+          <div class="tl-year">{entry.data.year}</div>
+          <div class="tl-title">{entry.data.title}</div>
+          <div class="tl-desc">{entry.data.description}</div>
+        </div>
+      ))
+    }
+  </div>
+  <div class="reveal-delay-3 reveal" style="margin-top: 2rem;">
+    <a href="/journey" class="btn btn-ghost btn-sm"
+      >View full journey →</a
+    >
+  </div>
+</div>

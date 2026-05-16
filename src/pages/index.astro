@@ -1,152 +1,41 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import { HomeMap } from "@/components/HomeMap";
+import HomeHero from "@/components/Home/Hero.astro";
+import AboutJourneyGrid from "@/components/Home/AboutJourneyGrid.astro";
 
 const journeyEntries = await getCollection("journey");
-const homeJourney = journeyEntries.sort((a, b) => (a.data.order || 0) - (b.data.order || 0)).slice(0, 3);
+const homeJourney = journeyEntries
+  .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
+  .slice(0, 4);
 ---
 
 <Layout>
   <main id="main-content" data-layout="index">
-    <section class="hero" id="home">
-      <div class="hero-grid"></div>
-      <div class="hero-glow"></div>
-      <div class="hero-glow2"></div>
-      <div class="hero-inner">
-        <div class="hero-status reveal">
-          <span class="status-dot"></span>
-          Based in Aotearoa (New Zealand)
-        </div>
-        <h1 class="reveal-delay-1 hero-name reveal">Harman<br><span class="accent">Singh Hira</span></h1>
-        <p class="reveal-delay-2 hero-tagline reveal">Creator, Tech Enthusiast, and Father.<br>Building things that may matter — one weird idea at a time.</p>
-        <div class="reveal-delay-3 hero-actions reveal">
-          <a class="btn btn-primary" href="/portfolio">See my Work <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
-          <a class="btn btn-ghost" href="/posts">Read Blog</a>
-          <a class="btn btn-ghost" href="/contact">Say Kia Ora!</a>
-        </div>
-      </div>
-      <div class="reveal-delay-3 hero-scroll reveal" onclick="document.getElementById('home-about').scrollIntoView({behavior:'smooth'})">
-        <span>scroll</span><div class="scroll-line"></div>
-      </div>
-    </section>
+    <HomeHero />
 
     <hr class="divider" />
 
-    <!-- ABOUT -->
-    <section id="home-about">
-      <div class="container">
-        <div class="about-grid">
-          <div class="about-text">
-            <div class="code-comment reveal">// about_me.txt — the honest version</div>
-            <div class="label reveal">About Me</div>
-            <h2 class="reveal-delay-1 reveal h2-display">
-              Chandigarh kid who chose<br>HTML over FIFA
-            </h2>
-            <p class="reveal-delay-1 reveal">Born in Chandigarh, India 🇮🇳. Proper North Indian vibes. Moved to Aotearoa New Zealand in my early 20s — packed my whole life into two suitcases and called it a main character move.</p>
-            <p class="reveal-delay-2 reveal">At 15, I was that kid who thought HTML was more fun than FIFA. By 16, a tech blog running AdSense was making real money — all self-taught through YouTube and curiosity.</p>
-            <p class="reveal-delay-3 reveal">These days I'm a happily married dad living in NZ, still chasing ideas at odd hours, still building random tools, still curious, still vibing. 🥂</p>
-            <div class="reveal-delay-3 reveal" style="margin-top: 1.5rem;">
-              <a href="/about" class="btn btn-ghost btn-sm">Read my full story →</a>
-            </div>
-          </div>
-
-          <div>
-            <div class="reveal-delay-2 reveal" style="margin-bottom:1rem; height: 280px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
-              <HomeMap client:load />
-            </div>
-            <div class="dev-card reveal" style="margin-bottom:1rem;">
-              <span class="dc-cmt">// harman_singh_hira.js</span><br>
-              <span class="dc-kw">const</span> <span class="dc-fn">hira</span> <span class="dc-br">= {</span><br>
-              &nbsp;&nbsp;<span class="dc-key">location</span><span class="dc-br">:</span> <span class="dc-str">"Auckland, NZ 🇳🇿"</span><span class="dc-br">,</span><br>
-              &nbsp;&nbsp;<span class="dc-key">origin</span><span class="dc-br">:</span> <span class="dc-str">"Chandigarh, India 🇮🇳"</span><span class="dc-br">,</span><br>
-              &nbsp;&nbsp;<span class="dc-key">role</span><span class="dc-br">:</span> <span class="dc-str">"Developer / Dad"</span><span class="dc-br">,</span><br>
-              <span class="dc-br">};</span><br><br>
-              <span class="dc-cmt">// currently exploring</span><br>
-              <span class="dc-fn">hira</span><span class="dc-br">.</span><span class="dc-key">interests</span> <span class="dc-br">= [</span><br>
-              &nbsp;&nbsp;<span class="dc-str">"useful tools"</span><span class="dc-br">,</span><br>
-              &nbsp;&nbsp;<span class="dc-str">"honest writing"</span><span class="dc-br">,</span><br>
-              &nbsp;&nbsp;<span class="dc-str">"the dad thing 👶"</span><br>
-              <span class="dc-br">];</span>
-            </div>
-          </div>
-        </div>
-        
-        {/* <div class="about-stats" style="margin-top: 3rem; grid-template-columns: repeat(4, 1fr);">
-          <div class="stat-card reveal"><div class="stat-num">10+</div><div class="stat-label">Years coding</div></div>
-          <div class="reveal-delay-1 stat-card reveal"><div class="stat-num">15</div><div class="stat-label">Age of first sale</div></div>
-          <div class="reveal-delay-2 stat-card reveal"><div class="stat-num">2</div><div class="stat-label">Countries lived</div></div>
-          <div class="reveal-delay-3 stat-card reveal"><div class="stat-num">∞</div><div class="stat-label">Curiosity level</div></div>
-        </div> */}
-      </div>
-    </section>
-
-    <hr class="divider" />
-
-    <!-- JOURNEY -->
-    <section>
-      <div class="container">
-        <div class="journey-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
-          <div>
-            <div class="code-comment reveal">// journey.log — how I got here</div>
-            <div class="label reveal">The Journey</div>
-            <h2 class="reveal-delay-1 reveal h3-display">How it all started</h2>
-            <div class="timeline">
-              {homeJourney.map((entry, i) => (
-                <div class={`tl-item reveal ${i > 0 ? `reveal-delay-${i}` : ''}`}>
-                  <div class="tl-dot"></div>
-                  <div class="tl-year">{entry.data.year}</div>
-                  <div class="tl-title">{entry.data.title}</div>
-                  <div class="tl-desc">{entry.data.description}</div>
-                </div>
-              ))}
-            </div>
-            <div class="reveal-delay-3 reveal" style="margin-top: 2rem;">
-              <a href="/journey" class="btn btn-ghost btn-sm">View full journey →</a>
-            </div>
-          </div>
-
-          <div class="reveal-delay-1 reveal" style="margin-top:3.5rem;">
-            <div class="dev-card">
-              <span class="dc-cmt">// fun_facts.json</span><br>
-              <span class="dc-br">{</span><br>
-              &nbsp;&nbsp;<span class="dc-str">"loves"</span><span class="dc-br">: [</span><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<span class="dc-str">"cooking food 🍛"</span><span class="dc-br">,</span><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<span class="dc-str">"binge-watching movies 🎬"</span><span class="dc-br">,</span><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<span class="dc-str">"2am deep dives 🧠"</span><span class="dc-br">,</span><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<span class="dc-str">"exploring new places ✈️"</span><br>
-              &nbsp;&nbsp;<span class="dc-br">],</span><br>
-              &nbsp;&nbsp;<span class="dc-str">"philosophy"</span><span class="dc-br">:</span> <span class="dc-str">"build when it's fun"</span><span class="dc-br">,</span><br>
-              &nbsp;&nbsp;<span class="dc-str">"superpower"</span><span class="dc-br">:</span> <span class="dc-str">"learning from YouTube"</span><span class="dc-br">,</span><br>
-              &nbsp;&nbsp;<span class="dc-str">"kryptonite"</span><span class="dc-br">:</span> <span class="dc-str">"just circling back emails 😅"</span><span class="dc-br">,</span><br>
-              &nbsp;&nbsp;<span class="dc-str">"origin_story"</span><span class="dc-br">:</span> <span class="dc-str">"broke things, fixed them"</span><br>
-              <span class="dc-br">}</span>
-            </div>
-            <div style="margin-top:1rem;background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
-              <div class="code-comment">// open_to_chat</div>
-              <p style="font-size:0.875rem;color:var(--text-2);line-height:1.7;margin:0;">Interesting conversations, collab ideas, feedback on things I've built, or just a friendly hello. No pitch needed.</p>
-              <div style="margin-top:1rem;"><a class="btn btn-ghost btn-sm" href="/contact">Say hi →</a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <AboutJourneyGrid homeJourney={homeJourney} />
   </main>
 </Layout>
 
 <script is:inline>
   function setupReveal() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
   }
-  
+
   setupReveal();
-  document.addEventListener('astro:page-load', setupReveal);
+  document.addEventListener("astro:page-load", setupReveal);
 </script>
