@@ -1,5 +1,25 @@
+/* ============================================================
+   tailwind.css — Tailwind Import & Component Overrides
+   Pulls in the Tailwind CSS framework and then patches any
+   third-party component styles that conflict with the design
+   system using Tailwind's @layer base mechanism.
+   ============================================================ */
+
+@import "tailwindcss";
+
+/* ── MAPLIBRE GL POPUP — Tailwind overrides ──────────────── */
+/* Strip all default MapLibre popup chrome so our custom
+   overlay styles are the single source of truth.          */
 @layer base {
   .maplibregl-popup-content {
-    @apply bg-transparent! shadow-none! p-0! rounded-none!; }
+    /* Remove background, shadow and padding so the popup
+       inherits our own card / tooltip styles */
+    @apply bg-transparent! shadow-none! p-0! rounded-none!;
+  }
+
   .maplibregl-popup-tip {
-    @apply hidden!; } }
+    /* Hide the default triangular caret; custom indicators
+       are rendered inside the popup content itself */
+    @apply hidden!;
+  }
+}

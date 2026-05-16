@@ -1,0 +1,109 @@
+/* ============================================================
+   root.css — Design Tokens (CSS Custom Properties)
+   All colour, surface, typography and effect variables live
+   here.  Consuming files reference tokens by name; swapping
+   a theme only requires changing values in this file.
+
+   Sections:
+     • Font families & line-height scale
+     • Dark theme  (default / [data-theme="dark"])
+     • Light theme ([data-theme="light"])
+   ============================================================ */
+
+
+/* ── TYPOGRAPHY TOKENS ──────────────────────────────────── */
+:root {
+  /* --- Font families ------------------------------------ */
+  --font-display : 'Syne', sans-serif;          /* Headings & display text     */
+  --font-sans    : 'DM Sans', sans-serif;        /* Body copy & UI labels       */
+  --font-mono    : 'JetBrains Mono', monospace;  /* Code, timestamps, meta text */
+
+  /* --- Line-height scale -------------------------------- */
+  --lh-tight  : 1.1;   /* Large display headings  */
+  --lh-base   : 1.7;   /* Standard body text      */
+  --lh-relaxed: 1.85;  /* Long-form prose / posts */
+}
+
+
+/* ── DARK THEME (default) ───────────────────────────────── */
+/* Applied when no [data-theme] attribute is set, or when
+   [data-theme="dark"] is explicitly present.              */
+:root,
+[data-theme="dark"] {
+  /* --- Background surfaces ------------------------------ */
+  --bg  : #080808;  /* Page background            */
+  --bg-2: #0f0f0f;  /* Cards, raised surfaces     */
+  --bg-3: #161616;  /* Inputs, muted fills        */
+  --bg-4: #1e1e1e;  /* Hover states, deepest fill */
+
+  /* --- Borders ------------------------------------------ */
+  --border      : rgba(255, 255, 255, 0.07);  /* Default border     */
+  --border-hover: rgba(255, 255, 255, 0.14);  /* Hover / focus ring */
+
+  /* --- Text colours ------------------------------------- */
+  --text  : #f0ede8;  /* Primary text   */
+  --text-2: #9a9590;  /* Secondary text */
+  --text-3: #4e4b47;  /* Disabled / dim */
+
+  /* --- Accent (warm gold) ------------------------------- */
+  --accent     : #c8a97a;
+  --accent-dim : rgba(200, 169, 122, 0.12);  /* Chip / badge fill    */
+  --accent-dim2: rgba(200, 169, 122, 0.05);  /* Very subtle tinting  */
+
+  /* --- Semantic colours --------------------------------- */
+  --green     : #4dbd74;
+  --green-dim : rgba(77, 189, 116, 0.1);
+
+  --blue      : #6b9fff;
+  --blue-dim  : rgba(107, 159, 255, 0.1);
+
+  --purple    : #a78bfa;
+  --purple-dim: rgba(167, 139, 250, 0.1);
+
+  /* --- Surfaces & effects ------------------------------- */
+  --nav-bg : rgba(8, 8, 8, 0.85);           /* Frosted-glass nav    */
+  --code-bg: #0c0c0c;                        /* Code block surface   */
+  --shadow : 0 4px 24px rgba(0, 0, 0, 0.4); /* Elevation shadow     */
+  --comment: #4a4743;                        /* Code comment colour  */
+}
+
+
+/* ── LIGHT THEME ────────────────────────────────────────── */
+/* Applied when [data-theme="light"] is set on <html>.     */
+[data-theme="light"] {
+  /* --- Background surfaces ------------------------------ */
+  --bg  : #faf9f7;
+  --bg-2: #f3f1ed;
+  --bg-3: #eae7e1;
+  --bg-4: #dedad3;
+
+  /* --- Borders ------------------------------------------ */
+  --border      : rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 0, 0, 0.15);
+
+  /* --- Text colours ------------------------------------- */
+  --text  : #1a1816;
+  --text-2: #6b6560;
+  --text-3: #a09b95;
+
+  /* --- Accent (muted amber for light backgrounds) ------- */
+  --accent     : #9e7440;
+  --accent-dim : rgba(158, 116, 64, 0.1);
+  --accent-dim2: rgba(158, 116, 64, 0.05);
+
+  /* --- Semantic colours --------------------------------- */
+  --green     : #2d7a4a;
+  --green-dim : rgba(45, 122, 74, 0.1);
+
+  --blue      : #3464b8;
+  --blue-dim  : rgba(52, 100, 184, 0.1);
+
+  --purple    : #6d28d9;
+  --purple-dim: rgba(109, 40, 217, 0.08);
+
+  /* --- Surfaces & effects ------------------------------- */
+  --nav-bg : rgba(250, 249, 247, 0.9);
+  --code-bg: #eae7e1;
+  --shadow : 0 4px 24px rgba(0, 0, 0, 0.07);
+  --comment: #a8a19a;
+}

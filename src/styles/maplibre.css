@@ -1,0 +1,13 @@
+/* ============================================================
+   maplibre.css — MapLibre GL JS Overrides
+   Hides or resets MapLibre's default UI chrome that conflicts
+   with the site's design system.  Keep this isolated so
+   library-specific hacks are easy to find and remove.
+   ============================================================ */
+
+/* Hide the MapLibre attribution control entirely.
+   If legal attribution is required by the tile provider,
+   add a custom attribution element in the page HTML instead. */
+.maplibregl-ctrl-attrib {
+  display: none;
+}

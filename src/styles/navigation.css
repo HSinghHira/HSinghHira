@@ -1,0 +1,267 @@
+/* ============================================================
+   navigation.css — Site Navigation
+   Styles the fixed top nav bar and all related interactive
+   controls: logo, nav links, CTA, theme toggle, hamburger
+   button, and the fullscreen mobile slide-down menu.
+
+   Sections:
+     1. Nav bar shell
+     2. Logo
+     3. Nav links
+     4. Nav CTA (accent call-to-action link)
+     5. Theme toggle button
+     6. Hamburger menu button
+     7. Mobile menu (full-screen overlay)
+     8. Responsive breakpoints
+   ============================================================ */
+
+
+/* ── 1. NAV BAR SHELL ───────────────────────────────────── */
+nav {
+  position      : fixed;
+  top           : 0;
+  left          : 0;
+  right         : 0;
+  z-index       : 100;
+  height        : 64px;
+  padding       : 0 clamp(1.5rem, 5vw, 4rem);
+  display       : flex;
+  align-items   : center;
+  justify-content: space-between;
+  background    : var(--nav-bg);
+  backdrop-filter: blur(20px);
+  border-bottom : 1px solid var(--border);
+  /* Animate background / border when theme toggles */
+  transition    : background 0.3s, border-color 0.3s;
+}
+
+
+/* ── 2. LOGO ─────────────────────────────────────────────── */
+.nav-logo {
+  font-family   : var(--font-display);
+  font-weight   : 800;
+  font-size     : 1.2rem;
+  color         : var(--text);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  cursor        : pointer;
+}
+
+/* Accent-coloured character inside the logo wordmark */
+.nav-logo span {
+  color: var(--accent);
+}
+
+/* Right-hand group (links + controls) */
+.nav-right {
+  display    : flex;
+  align-items: center;
+  gap        : 0.5rem;
+}
+
+
+/* ── 3. NAV LINKS ───────────────────────────────────────── */
+.nav-links {
+  display    : flex;
+  align-items: center;
+  gap        : 0.25rem;
+  list-style : none;
+  margin     : 0;
+  padding    : 0;
+}
+
+.nav-links a {
+  color          : var(--text-2);
+  text-decoration: none;
+  font-size      : 0.85rem;
+  font-weight    : 400;
+  padding        : 0.45rem 0.9rem;
+  border-radius  : 8px;
+  transition     : 0.25s;
+  cursor         : pointer;
+  letter-spacing : 0.01em;
+  display        : flex;
+  align-items    : center;
+  gap            : 0.5rem;
+}
+
+.nav-links a svg {
+  width     : 1.1rem;
+  height    : 1.1rem;
+  opacity   : 0.7;
+  transition: 0.2s;
+}
+
+/* Hover & active states */
+.nav-links a:hover,
+.nav-links a.active {
+  color     : var(--text);
+  background: var(--bg-3);
+}
+
+.nav-links a:hover svg,
+.nav-links a.active svg {
+  opacity: 1;
+  color  : var(--accent);
+}
+
+
+/* ── 4. NAV CTA ──────────────────────────────────────────── */
+/* Accent-tinted "hire me / contact" link in the nav */
+.nav-cta {
+  background  : var(--accent-dim) !important;
+  color       : var(--accent)    !important;
+  border      : 1px solid rgba(200, 169, 122, 0.2) !important;
+}
+
+.nav-cta svg {
+  color  : var(--accent);
+  opacity: 1 !important;
+}
+
+/* Light-theme border tweak (accent colour has different alpha) */
+[data-theme="light"] .nav-cta {
+  border-color: rgba(158, 116, 64, 0.2) !important;
+}
+
+.nav-cta:hover {
+  filter: brightness(1.12);
+}
+
+
+/* ── 5. THEME TOGGLE BUTTON ─────────────────────────────── */
+.theme-toggle {
+  width        : 36px;
+  height       : 36px;
+  background   : var(--bg-3);
+  border       : 1px solid var(--border);
+  border-radius: 8px;
+  cursor       : pointer;
+  display      : flex;
+  align-items  : center;
+  justify-content: center;
+  transition   : 0.25s;
+  flex-shrink  : 0;
+}
+
+.theme-toggle:hover {
+  background  : var(--bg-4);
+  border-color: var(--border-hover);
+}
+
+.theme-toggle svg {
+  width           : 16px;
+  height          : 16px;
+  stroke          : var(--text-2);
+  fill            : none;
+  stroke-width    : 1.6;
+  stroke-linecap  : round;
+  stroke-linejoin : round;
+}
+
+/* Show moon icon in dark mode (default), sun in light mode */
+.icon-moon { display: block; }
+.icon-sun  { display: none;  }
+
+[data-theme="light"] .icon-moon { display: none;  }
+[data-theme="light"] .icon-sun  { display: block; }
+
+
+/* ── 6. HAMBURGER BUTTON ────────────────────────────────── */
+/* Hidden by default; shown at ≤600 px via media query */
+.hamburger {
+  display        : none;
+  flex-direction : column;
+  gap            : 5px;
+  background     : none;
+  border         : none;
+  cursor         : pointer;
+  padding        : 4px;
+}
+
+.hamburger span {
+  display      : block;
+  width        : 22px;
+  height       : 1.5px;
+  background   : var(--text-2);
+  border-radius: 99px;
+  transition   : 0.25s;
+}
+
+/* Animate the three bars into an ✕ when active */
+.hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+
+/* ── 7. MOBILE MENU ─────────────────────────────────────── */
+/* Full-screen overlay that slides down from behind the nav */
+.mobile-menu {
+  position       : fixed;
+  top            : 64px;       /* start at nav bottom */
+  left           : 0;
+  right          : 0;
+  bottom         : 0;
+  background     : var(--bg);
+  z-index        : 90;
+  display        : flex;
+  flex-direction : column;
+  padding        : 2rem;
+  gap            : 1.5rem;
+  /* Hidden state — pushed off-screen upward */
+  transform      : translateY(-100%);
+  opacity        : 0;
+  pointer-events : none;
+  transition     : transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+}
+
+/* Open state — slides into view */
+.mobile-menu.open {
+  transform     : translateY(0);
+  opacity       : 1;
+  pointer-events: all;
+}
+
+/* Large, bold links inside the overlay */
+.mobile-menu a {
+  font-size      : 1.5rem;
+  font-weight    : 700;
+  color          : var(--text);
+  text-decoration: none;
+  display        : flex;
+  align-items    : center;
+  gap            : 1rem;
+}
+
+.mobile-menu a [data-icon] {
+  font-size: 1.25rem;
+  color    : var(--accent);
+}
+
+/* Separator before secondary / footer links */
+.mobile-menu-sep {
+  margin-top  : auto;
+  border-top  : 1px solid var(--border);
+  padding-top : 2rem;
+}
+
+.mobile-menu-sep a {
+  font-size  : 1rem;
+  font-weight: 500;
+}
+
+
+/* ── 8. RESPONSIVE BREAKPOINTS ──────────────────────────── */
+/* Hide text labels from nav links on mid-size screens so
+   only icons are visible — saves horizontal space.        */
+@media (max-width: 1280px) and (min-width: 601px) {
+  .nav-links a span  { display: none; }
+  .nav-links a       { padding: 0.45rem 0.6rem; }
+}
+
+/* At small screens, hide the nav links entirely and show
+   the hamburger button + mobile menu instead.            */
+@media (max-width: 600px) {
+  .nav-links  { display: none; }
+  .hamburger  { display: flex; }
+}

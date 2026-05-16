@@ -1,0 +1,35 @@
+/* ============================================================
+   utilities.css — Utility Classes & Animations
+   Small, single-purpose helpers that can be composed onto
+   any element without side effects.
+
+   Sections:
+     1. Scroll-reveal animation
+     2. Reveal delay modifiers
+   ============================================================ */
+
+
+/* ── 1. SCROLL-REVEAL ───────────────────────────────────── */
+/* Elements marked .reveal start invisible and shifted down.
+   JavaScript adds .visible once they enter the viewport,
+   triggering the transition to full opacity at position.  */
+.reveal {
+  transform : translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  /* Note: opacity intentionally left at its inherited/default
+     value here; JS should set opacity:0 initially via inline
+     style or a companion class before the element is shown.  */
+}
+
+.reveal.visible {
+  opacity  : 1;
+  transform: none;
+}
+
+
+/* ── 2. REVEAL DELAY MODIFIERS ──────────────────────────── */
+/* Stagger sibling reveals by adding one of these classes
+   alongside .reveal for a cascading entrance effect.      */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }

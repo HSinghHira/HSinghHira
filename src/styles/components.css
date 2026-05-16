@@ -1,0 +1,632 @@
+/* ============================================================
+   components.css — Reusable UI Components
+   All self-contained, composable UI blocks.  Each section
+   is independent; import order does not matter within this
+   file, but root.css must be loaded first for token access.
+
+   Sections:
+     1.  Buttons (.btn, .btn-primary, .btn-ghost, variants)
+     2.  Status badge & pulse dot
+     3.  Colour chips
+     4.  Forms (inputs, textarea, select, checkboxes, toggles)
+     5.  Alerts (info, success, warning, danger)
+     6.  Tables (.ds-table) & definition lists (.ds-dl)
+     7.  Breadcrumb navigation
+     8.  Pagination
+     9.  Tab bar
+     10. Tag pills (filter chips)
+     11. Stats grid
+     12. Abbreviations & tooltips
+     13. Code block UI (wrapper, lang label, copy button, expand)
+   ============================================================ */
+
+
+/* ── 1. BUTTONS ─────────────────────────────────────────── */
+/* Base button — all variants extend this */
+.btn {
+  display        : inline-flex;
+  align-items    : center;
+  justify-content: center;
+  gap            : 0.5rem;
+  padding        : 0.7rem 1.4rem;
+  border-radius  : 8px;
+  font-family    : var(--font-sans);
+  font-size      : 0.875rem;
+  font-weight    : 500;
+  cursor         : pointer;
+  text-decoration: none;
+  transition     : 0.25s;
+  border         : 1px solid transparent;
+}
+
+/* Filled primary button */
+.btn-primary            { background: var(--accent); color: #1a1209; border-color: var(--accent); }
+.btn-primary:hover       { filter: brightness(1.1); transform: translateY(-1px); }
+
+/* Ghost / outline button */
+.btn-ghost              { background: transparent; color: var(--text-2); border-color: var(--border-hover); }
+.btn-ghost:hover         { background: var(--bg-3); color: var(--text); transform: translateY(-1px); }
+
+/* Accent outline — for secondary actions next to a primary */
+.btn-accent-outline      { background: var(--accent-dim); color: var(--accent); border-color: rgba(200,169,122,0.25); }
+.btn-accent-outline:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+/* Semantic colour variants */
+.btn-green              { background: var(--green-dim); color: var(--green); border-color: rgba(77,189,116,0.2); }
+.btn-green:hover         { filter: brightness(1.1); transform: translateY(-1px); }
+
+.btn-danger             { background: rgba(239,68,68,0.1); color: #f87171; border-color: rgba(239,68,68,0.2); }
+.btn-danger:hover        { background: rgba(239,68,68,0.18); transform: translateY(-1px); }
+
+/* Size modifiers */
+.btn-sm  { padding: 0.5rem 1rem;  font-size: 0.8rem; }
+.btn-lg  { padding: 0.9rem 1.8rem; font-size: 1rem;  }
+
+/* Disabled state — prevent all interaction feedback */
+.btn:disabled,
+.btn[disabled] {
+  opacity  : 0.38;
+  cursor   : not-allowed;
+  transform: none   !important;
+  filter   : none   !important;
+}
+
+
+/* ── 2. STATUS BADGE & PULSE DOT ────────────────────────── */
+/* Small pill badge e.g. "● Available for work" */
+.status-badge {
+  display     : inline-flex;
+  align-items : center;
+  gap         : 0.5rem;
+  background  : var(--bg-3);
+  border      : 1px solid var(--border);
+  border-radius: 99px;
+  padding     : 0.35rem 0.9rem;
+  font-size   : 0.78rem;
+  color       : var(--text-2);
+  font-family : var(--font-mono);
+}
+
+/* Animated green dot indicating live / online status */
+.status-dot {
+  width       : 7px;
+  height      : 7px;
+  border-radius: 50%;
+  background  : var(--green);
+  box-shadow  : 0 0 8px var(--green);
+  animation   : pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1;   }
+  50%       { opacity: 0.4; }
+}
+
+
+/* ── 3. COLOUR CHIPS ────────────────────────────────────── */
+/* Used for category or skill tags with semantic colour coding */
+.color-chips {
+  display  : flex;
+  flex-wrap: wrap;
+  gap      : 0.6rem;
+}
+
+.chip {
+  font-family   : var(--font-mono);
+  font-size     : 0.7rem;
+  padding       : 0.3rem 0.75rem;
+  border-radius : 99px;
+  border        : 1px solid transparent;
+  letter-spacing: 0.04em;
+}
+
+/* Chip colour variants */
+.chip-text   { background: var(--accent-dim);  color: var(--accent);  border-color: rgba(200,169,122,0.2); }
+.chip-muted  { background: var(--bg-3);        color: var(--text-2);  border-color: var(--border-hover);   }
+.chip-dim    { background: transparent;         color: var(--text-3);  border-color: var(--border);         }
+.chip-green  { background: var(--green-dim);   color: var(--green);   border-color: rgba(77,189,116,0.2);  }
+.chip-blue   { background: var(--blue-dim);    color: var(--blue);    border-color: rgba(107,159,255,0.2); }
+.chip-purple { background: var(--purple-dim);  color: var(--purple);  border-color: rgba(167,139,250,0.1); }
+
+
+/* ── 4. FORMS ───────────────────────────────────────────── */
+/* Two-column responsive form grid */
+.form-grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+.form-group.full { grid-column: 1 / -1; } /* span both columns */
+
+/* Uppercase mono label above each field */
+.form-label {
+  font-family   : var(--font-mono);
+  font-size     : 0.68rem;
+  color         : var(--text-2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Shared input / textarea / select base */
+.form-input,
+.form-textarea,
+.form-select {
+  background  : var(--bg-2);
+  border      : 1px solid var(--border);
+  border-radius: 8px;
+  padding     : 0.65rem 0.9rem;
+  font-family : var(--font-sans);
+  font-size   : 0.9rem;
+  font-weight : 300;
+  color       : var(--text);
+  transition  : 0.2s;
+  outline     : none;
+  width       : 100%;
+}
+
+/* Focus ring */
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: var(--accent);
+  box-shadow  : 0 0 0 3px var(--accent-dim);
+}
+
+/* Validation states */
+.form-input.error   { border-color: #f87171; box-shadow: 0 0 0 3px rgba(248,113,113,0.12); }
+.form-input.success { border-color: var(--green); box-shadow: 0 0 0 3px var(--green-dim); }
+
+/* Textarea — allow vertical resize only */
+.form-textarea {
+  resize    : vertical;
+  min-height: 100px;
+  line-height: 1.65;
+}
+
+/* Select — hide native arrow, inject custom SVG chevron */
+.form-select {
+  appearance       : none;
+  cursor           : pointer;
+  padding-right    : 2.2rem;
+  background-image : url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239a9590' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat  : no-repeat;
+  background-position: right 0.85rem center;
+  background-size    : 12px;
+}
+
+/* Helper & validation message lines below inputs */
+.form-helper       { font-size: 0.75rem; color: var(--text-3);  font-family: var(--font-mono); letter-spacing: 0.02em; }
+.form-error-text   { font-size: 0.75rem; color: #f87171;        font-family: var(--font-mono); letter-spacing: 0.02em; }
+.form-success-text { font-size: 0.75rem; color: var(--green);   font-family: var(--font-mono); letter-spacing: 0.02em; }
+
+/* Checkbox / radio group */
+.check-group { display: flex; flex-direction: column; gap: 0.75rem; }
+.check-item  { display: flex; align-items: center; gap: 0.7rem; cursor: pointer; }
+
+/* Hide the real input; style our custom box instead */
+.check-item input[type="checkbox"],
+.check-item input[type="radio"] { display: none; }
+
+/* Custom checkbox & radio visuals */
+.check-box,
+.radio-box {
+  width          : 18px;
+  height         : 18px;
+  border-radius  : 5px;
+  flex-shrink    : 0;
+  background     : var(--bg-2);
+  border         : 1px solid var(--border-hover);
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  transition     : 0.2s;
+}
+.radio-box { border-radius: 50%; }
+
+/* Checked checkbox — filled with accent */
+.check-item input[type="checkbox"]:checked ~ .check-box {
+  background  : var(--accent);
+  border-color: var(--accent);
+}
+.check-box svg {
+  width           : 11px;
+  height          : 11px;
+  stroke          : #1a1209;
+  fill            : none;
+  stroke-width    : 2.5;
+  stroke-linecap  : round;
+  stroke-linejoin : round;
+  opacity         : 0;
+  transition      : 0.15s;
+}
+.check-item input[type="checkbox"]:checked ~ .check-box svg { opacity: 1; }
+
+/* Checked radio — accent border + filled dot */
+.check-item input[type="radio"]:checked ~ .radio-box { border-color: var(--accent); }
+.radio-dot {
+  width        : 8px;
+  height       : 8px;
+  border-radius: 50%;
+  background   : var(--accent);
+  opacity      : 0;
+  transition   : 0.15s;
+}
+.check-item input[type="radio"]:checked ~ .radio-box .radio-dot { opacity: 1; }
+
+.check-label { font-size: 0.9rem; color: var(--text-2); }
+
+/* Toggle switch */
+.toggle-wrap  { display: flex; align-items: center; gap: 0.6rem; cursor: pointer; }
+.toggle-track {
+  width        : 40px;
+  height       : 22px;
+  border-radius: 99px;
+  background   : var(--bg-4);
+  border       : 1px solid var(--border-hover);
+  position     : relative;
+  transition   : 0.25s;
+  flex-shrink  : 0;
+}
+.toggle-thumb {
+  position     : absolute;
+  top          : 3px;
+  left         : 3px;
+  width        : 14px;
+  height       : 14px;
+  border-radius: 50%;
+  background   : var(--text-3);
+  transition   : 0.25s;
+}
+input.toggle-input { display: none; }
+input.toggle-input:checked ~ .toggle-track               { background: var(--accent); border-color: var(--accent); }
+input.toggle-input:checked ~ .toggle-track .toggle-thumb { left: 21px; background: #1a1209; }
+
+
+/* ── 5. ALERTS ───────────────────────────────────────────── */
+.alert-stack { display: flex; flex-direction: column; gap: 0.85rem; }
+
+.alert {
+  display    : flex;
+  align-items: flex-start;
+  gap        : 0.85rem;
+  padding    : 0.9rem 1.1rem;
+  border-radius: 10px;
+  border     : 1px solid transparent;
+}
+.alert svg {
+  width          : 16px;
+  height         : 16px;
+  flex-shrink    : 0;
+  margin-top     : 0.12rem;
+  fill           : none;
+  stroke-width   : 2;
+  stroke-linecap : round;
+  stroke-linejoin: round;
+}
+.alert-title { font-family: var(--font-display); font-size: 0.875rem; font-weight: 600; margin-bottom: 0.2rem; }
+.alert-body  { font-size: 0.82rem; font-weight: 300; line-height: 1.55; color: var(--text-2); }
+
+/* Semantic alert variants */
+.alert-info    { background: var(--blue-dim);              border-color: rgba(107,159,255,0.2); color: var(--blue);   }
+.alert-success { background: var(--green-dim);             border-color: rgba(77,189,116,0.2);  color: var(--green);  }
+.alert-warning { background: rgba(251,191,36,0.08);        border-color: rgba(251,191,36,0.2);  color: #fbbf24;       }
+.alert-danger  { background: rgba(239,68,68,0.08);         border-color: rgba(239,68,68,0.2);   color: #f87171;       }
+
+
+/* ── 6. TABLES & DEFINITION LISTS ───────────────────────── */
+/* Scrollable table wrapper */
+.table-wrap {
+  overflow-x   : auto;
+  border-radius: 10px;
+  border       : 1px solid var(--border);
+  margin       : 2rem 0;
+}
+
+table.ds-table {
+  width           : 100%;
+  border-collapse : collapse;
+  font-size       : 0.875rem;
+}
+table.ds-table thead tr { background: var(--bg-3); }
+table.ds-table th {
+  font-family   : var(--font-mono);
+  font-size     : 0.68rem;
+  font-weight   : 500;
+  color         : var(--text-2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding       : 0.75rem 1.25rem;
+  text-align    : left;
+  border-bottom : 1px solid var(--border);
+}
+table.ds-table td {
+  padding      : 0.8rem 1.25rem;
+  color        : var(--text-2);
+  font-weight  : 300;
+  border-bottom: 1px solid var(--border);
+  line-height  : 1.5;
+}
+table.ds-table tbody tr:hover { background: var(--bg-2); }
+
+/* Cell modifier classes */
+table.ds-table td.td-accent { color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; }
+table.ds-table td.td-strong { color: var(--text);   font-weight: 500; }
+
+/* Two-column definition list */
+dl.ds-dl {
+  display              : grid;
+  grid-template-columns: auto 1fr;
+  gap                  : 0;
+  margin               : 2rem 0;
+}
+dl.ds-dl dt {
+  font-family   : var(--font-mono);
+  font-size     : 0.75rem;
+  color         : var(--accent);
+  font-weight   : 500;
+  letter-spacing: 0.04em;
+  padding       : 0.7rem 1.5rem 0.7rem 0;
+  border-bottom : 1px solid var(--border);
+  align-self    : center;
+}
+dl.ds-dl dd {
+  font-size    : 0.9rem;
+  color        : var(--text-2);
+  font-weight  : 300;
+  padding      : 0.7rem 0;
+  border-bottom: 1px solid var(--border);
+  line-height  : 1.55;
+}
+
+
+/* ── 7. BREADCRUMB ──────────────────────────────────────── */
+.breadcrumb       { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; margin: 1rem 0; }
+.breadcrumb-item  { font-size: 0.82rem; color: var(--text-3); font-family: var(--font-mono); letter-spacing: 0.02em; }
+.breadcrumb-item a         { color: var(--text-2); text-decoration: none; transition: 0.2s; }
+.breadcrumb-item a:hover   { color: var(--accent); }
+.breadcrumb-item.active    { color: var(--accent); }
+.breadcrumb-sep            { color: var(--text-3); font-size: 0.75rem; }
+
+
+/* ── 8. PAGINATION ──────────────────────────────────────── */
+.pagination { display: flex; align-items: center; gap: 0.35rem; margin: 2rem 0; }
+.page-btn {
+  width          : 34px;
+  height         : 34px;
+  border-radius  : 7px;
+  border         : 1px solid var(--border);
+  background     : transparent;
+  color          : var(--text-2);
+  font-size      : 0.82rem;
+  font-family    : var(--font-mono);
+  cursor         : pointer;
+  transition     : 0.2s;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+}
+.page-btn:hover  { background: var(--bg-3); color: var(--text); border-color: var(--border-hover); }
+.page-btn.active { background: var(--accent-dim); color: var(--accent); border-color: rgba(200,169,122,0.25); }
+.page-btn svg    { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+
+/* ── 9. TAB BAR ─────────────────────────────────────────── */
+.tab-bar {
+  display      : flex;
+  gap          : 0;
+  border-bottom: 1px solid var(--border);
+  margin       : 2rem 0;
+}
+.tab-item {
+  padding      : 0.6rem 1.1rem;
+  font-size    : 0.82rem;
+  font-weight  : 400;
+  color        : var(--text-3);
+  cursor       : pointer;
+  transition   : 0.2s;
+  border       : none;
+  background   : none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;          /* overlap the bar's border */
+  font-family  : var(--font-sans);
+}
+.tab-item:hover        { color: var(--text-2); }
+.tab-item.active       { color: var(--accent); border-bottom-color: var(--accent); }
+
+
+/* ── 10. TAG PILLS ───────────────────────────────────────── */
+/* Used in blog filter bars and anywhere tags are clickable */
+.tag-pill {
+  font-family  : var(--font-mono);
+  font-size    : 0.72rem;
+  padding      : 0.35rem 0.85rem;
+  border-radius: 99px;
+  border       : 1px solid var(--border);
+  background   : var(--bg-3);
+  color        : var(--text-2);
+  cursor       : pointer;
+  transition   : 0.2s;
+  letter-spacing: 0.04em;
+}
+.tag-pill:hover,
+.tag-pill.active {
+  background  : var(--accent-dim);
+  color       : var(--accent);
+  border-color: rgba(200,169,122,0.25);
+}
+
+
+/* ── 11. STATS GRID ─────────────────────────────────────── */
+/* Auto-fit grid of stat cards separated by 1 px borders */
+.stats-grid {
+  display              : grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap                  : 1px;
+  background           : var(--border);
+  border-radius        : 12px;
+  overflow             : hidden;
+  margin               : 2rem 0;
+}
+.stat-card   { background: var(--bg-2); padding: 1.5rem; }
+.stat-number {
+  font-family   : var(--font-display);
+  font-weight   : 800;
+  font-size     : clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.04em;
+  line-height   : 1;
+  color         : var(--text);
+  margin-bottom : 0.35rem;
+}
+.stat-number span { color: var(--accent); }
+.stat-label { font-family: var(--font-mono); font-size: 0.68rem; color: var(--comment); letter-spacing: 0.08em; text-transform: uppercase; }
+.stat-sub   { font-size: 0.8rem; color: var(--text-3); margin-top: 0.25rem; }
+
+
+/* ── 12. ABBREVIATIONS & TOOLTIPS ───────────────────────── */
+/* <abbr> element with a dotted accent underline */
+abbr.ds-abbr {
+  text-decoration      : underline dotted;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--accent);
+  color                : inherit;
+  cursor               : help;
+  position             : relative;
+}
+
+/* Hover tooltip */
+.tooltip-wrap    { position: relative; display: inline-block; }
+.tooltip-trigger {
+  font-family  : var(--font-mono);
+  font-size    : 0.8rem;
+  background   : var(--bg-3);
+  border       : 1px solid var(--border-hover);
+  border-radius: 6px;
+  padding      : 0.3rem 0.7rem;
+  color        : var(--text-2);
+  cursor       : default;
+  transition   : 0.2s;
+}
+.tooltip-box {
+  position      : absolute;
+  bottom        : calc(100% + 8px);
+  left          : 50%;
+  transform     : translateX(-50%);
+  background    : var(--bg-4);
+  border        : 1px solid var(--border-hover);
+  border-radius : 7px;
+  padding       : 0.5rem 0.85rem;
+  font-family   : var(--font-mono);
+  font-size     : 0.72rem;
+  color         : var(--text-2);
+  white-space   : nowrap;
+  pointer-events: none;
+  opacity       : 0;
+  transition    : 0.2s;
+  z-index       : 10;
+  box-shadow    : 0 4px 16px rgba(0,0,0,0.3);
+}
+.tooltip-wrap:hover .tooltip-box {
+  opacity: 1;
+  bottom : calc(100% + 10px);
+}
+/* Arrow caret pointing down from the tooltip box */
+.tooltip-box::after {
+  content     : '';
+  position    : absolute;
+  top         : 100%;
+  left        : 50%;
+  transform   : translateX(-50%);
+  border      : 5px solid transparent;
+  border-top-color: var(--border-hover);
+}
+
+
+/* ── 13. CODE BLOCK UI ───────────────────────────────────── */
+/* Wrapper that enables absolute positioning of overlay elements */
+.code-block-wrapper {
+  position: relative;
+  margin  : 1.75rem 0;
+}
+.code-block-wrapper pre { margin: 0; }
+
+/* Language label pinned to the top-left edge of the block */
+.code-lang-label {
+  position      : absolute;
+  top           : 0;
+  left          : 1rem;
+  transform     : translateY(-50%);
+  background    : var(--bg-3);
+  border        : 1px solid var(--border);
+  padding       : 2px 8px;
+  border-radius : 4px;
+  font-family   : var(--font-mono);
+  font-size     : 0.6rem;
+  color         : var(--accent);
+  text-transform: uppercase;
+  font-weight   : 700;
+  letter-spacing: 0.05em;
+  z-index       : 5;
+  box-shadow    : 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Copy button — hidden until the block is hovered */
+.copy-code-btn {
+  position  : absolute;
+  top       : 0.75rem;
+  right     : 0.75rem;
+  background: var(--bg-3);
+  border    : 1px solid var(--border);
+  color     : var(--text-3);
+  padding   : 4px 10px;
+  border-radius: 6px;
+  font-family : var(--font-mono);
+  font-size   : 0.65rem;
+  font-weight : 600;
+  cursor      : pointer;
+  transition  : all 0.2s ease;
+  /* Hidden by default */
+  opacity     : 0;
+  visibility  : hidden;
+  z-index     : 10;
+  pointer-events: all;
+}
+
+/* Reveal on hover */
+pre:hover .copy-code-btn,
+.code-block-wrapper:hover .copy-code-btn {
+  opacity   : 1;
+  visibility: visible;
+}
+
+.copy-code-btn:hover {
+  background  : var(--accent);
+  color       : white;
+  border-color: var(--accent);
+  transform   : translateY(-1px);
+}
+
+/* Briefly goes green after a successful copy */
+.copy-code-btn.copied {
+  background  : var(--green);
+  color       : white;
+  border-color: var(--green);
+}
+
+/* "Show more" expander button below long code blocks */
+.code-expand-btn {
+  display       : block;
+  width         : 100%;
+  margin-top    : -8px;
+  padding       : 0.5rem 1rem;
+  background    : var(--bg-3);
+  border        : 1px solid var(--border);
+  border-top    : none;
+  border-radius : 0 0 12px 12px;
+  font-family   : var(--font-mono);
+  font-size     : 0.72rem;
+  color         : var(--text-3);
+  cursor        : pointer;
+  transition    : 0.2s;
+  letter-spacing: 0.04em;
+}
+.code-expand-btn:hover {
+  background: var(--bg-4);
+  color     : var(--accent);
+}

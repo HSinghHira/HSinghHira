@@ -1,0 +1,70 @@
+/* ============================================================
+   base.css — Global Reset & Base Styles
+   Normalises browser defaults and sets the foundational
+   styles that every other partial builds on top of.
+
+   Sections:
+     • Box-model reset
+     • <html> & <body> defaults
+     • Text selection
+     • Custom scrollbar
+   ============================================================ */
+
+
+/* ── BOX-MODEL RESET ────────────────────────────────────── */
+/* Apply border-box sizing to every element so widths and
+   heights are predictable, and strip default margin/padding. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin : 0;
+  padding: 0;
+}
+
+
+/* ── HTML ───────────────────────────────────────────────── */
+html {
+  /* Smooth anchor-link scrolling */
+  scroll-behavior: smooth;
+}
+
+
+/* ── BODY ───────────────────────────────────────────────── */
+body {
+  background   : var(--bg);
+  color        : var(--text);
+  font-family  : var(--font-sans);
+  font-weight  : 300;
+  line-height  : var(--lh-base);
+  min-height   : 100vh;
+  overflow-x   : hidden;
+  /* Animate theme changes so the switch feels polished */
+  transition   : background 0.3s ease, color 0.3s ease;
+}
+
+
+/* ── TEXT SELECTION ─────────────────────────────────────── */
+/* Use the accent colour as the selection highlight so it
+   stays on-brand in both themes.                          */
+::selection {
+  background: var(--accent-dim);
+  color     : var(--accent);
+}
+
+
+/* ── CUSTOM SCROLLBAR (WebKit / Blink) ──────────────────── */
+/* Keep the scrollbar minimal so it doesn't compete with
+   page content.                                           */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background    : var(--bg-4);
+  border-radius : 99px;
+}

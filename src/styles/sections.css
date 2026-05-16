@@ -1,0 +1,854 @@
+/* ============================================================
+   sections.css — Page Sections & Feature Components
+   Each named section maps roughly to a page or view in the
+   app. Styles here are intentionally page-scoped; shared
+   atoms live in components.css.
+
+   Sections:
+     1.  Hero section
+     2.  About section (grid, dev card, stats, skills, timeline)
+     3.  Projects grid & project cards
+     4.  Project detail page
+     5.  Blog list (post cards, categories, filters)
+     6.  Article / story detail view
+     7.  Contact section
+     8.  Footer
+     9.  Journey / map page
+     10. Misc shared helpers
+     11. Responsive breakpoints
+   ============================================================ */
+
+
+/* ── 1. HERO SECTION ────────────────────────────────────── */
+#home {
+  padding-top: 0; /* Nav is fixed; no extra top padding needed */
+}
+
+.hero {
+  min-height     : 100vh;
+  display        : flex;
+  flex-direction : column;
+  justify-content: center;
+  padding        : 0 clamp(1.5rem, 5vw, 4rem);
+  position       : relative;
+  overflow       : hidden;
+}
+
+/* Subtle dot-grid background texture */
+.hero-grid {
+  position        : absolute;
+  inset           : 0;
+  opacity         : 0.022;
+  background-image: linear-gradient(rgba(200,169,122,0.6) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(200,169,122,0.6) 1px, transparent 1px);
+  background-size : 60px 60px;
+  pointer-events  : none;
+}
+
+[data-theme="light"] .hero-grid { opacity: 0.055; }
+
+/* Radial glow blobs */
+.hero-glow {
+  position      : absolute;
+  width         : 600px;
+  height        : 600px;
+  border-radius : 50%;
+  background    : radial-gradient(circle, var(--accent-dim) 0%, transparent 70%);
+  top           : -100px;
+  right         : -100px;
+  pointer-events: none;
+}
+.hero-glow2 {
+  position      : absolute;
+  width         : 400px;
+  height        : 400px;
+  border-radius : 50%;
+  background    : radial-gradient(circle, var(--blue-dim) 0%, transparent 70%);
+  bottom        : 0;
+  left          : -100px;
+  pointer-events: none;
+}
+
+/* Content wrapper inside the hero */
+.hero-inner {
+  max-width: 1100px;
+  margin   : 0 auto;
+  width    : 100%;
+  position : relative;
+  z-index  : 1;
+}
+
+/* "Available for work" status pill */
+.hero-status {
+  display      : inline-flex;
+  align-items  : center;
+  gap          : 0.5rem;
+  background   : var(--bg-3);
+  border       : 1px solid var(--border);
+  border-radius: 99px;
+  padding      : 0.35rem 0.9rem;
+  font-size    : 0.78rem;
+  color        : var(--text-2);
+  margin-bottom: 2rem;
+  font-family  : var(--font-mono);
+}
+
+/* Large animated name */
+.hero-name {
+  font-size     : clamp(2.5rem, 8vw, 5.5rem);
+  font-weight   : 800;
+  line-height   : 0.95;
+  letter-spacing: -0.04em;
+  color         : var(--text);
+  margin-bottom : 1.25rem;
+  animation     : fadeUp 0.8s ease 0.1s both;
+}
+.hero-name .accent { color: var(--accent); }
+
+.hero-tagline {
+  font-size    : clamp(1rem, 2.5vw, 1.35rem);
+  color        : var(--text-2);
+  font-weight  : 300;
+  margin-bottom: 2.5rem;
+  max-width    : 520px;
+  animation    : fadeUp 0.8s ease 0.25s both;
+}
+
+.hero-actions {
+  display    : flex;
+  flex-wrap  : wrap;
+  gap        : 0.75rem;
+  animation  : fadeUp 0.8s ease 0.4s both;
+}
+
+/* Scroll indicator at the very bottom of the hero */
+.hero-scroll {
+  position       : absolute;
+  bottom         : 2.5rem;
+  left           : 50%;
+  transform      : translateX(-50%);
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
+  gap            : 0.5rem;
+  color          : var(--text-3);
+  font-size      : 0.72rem;
+  font-family    : var(--font-mono);
+  animation      : fadeUp 0.8s ease 0.6s both;
+  cursor         : pointer;
+}
+
+/* Animated vertical line inside the scroll indicator */
+.scroll-line {
+  width     : 1px;
+  height    : 40px;
+  background: linear-gradient(to bottom, var(--text-3), transparent);
+  animation : scrollAnim 1.5s ease-in-out infinite;
+}
+
+/* Keyframes — hero animations */
+@keyframes scrollAnim {
+  0%  { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100%{ transform: scaleY(0); transform-origin: bottom; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Duplicate @keyframes pulse defined in components.css is
+   intentionally omitted here — the one in components.css
+   covers both the status dot and this section.           */
+
+
+/* ── 2. ABOUT SECTION ───────────────────────────────────── */
+.about-grid {
+  display              : grid;
+  grid-template-columns: 1fr 1fr;
+  gap                  : 4rem;
+  align-items          : start;
+}
+
+.about-text p {
+  color        : var(--text-2);
+  margin-bottom: 1.25rem;
+  font-size    : 1rem;
+}
+.about-text p:last-child { margin-bottom: 0; }
+
+/* Developer "business card" rendered in code style */
+.dev-card {
+  background  : var(--code-bg);
+  border      : 1px solid var(--border);
+  border-radius: 12px;
+  padding     : 1.5rem;
+  font-family : var(--font-mono);
+  font-size   : 0.78rem;
+  line-height : 1.95;
+  transition  : 0.3s;
+}
+.dev-card:hover { border-color: var(--border-hover); }
+
+/* Dev card syntax tokens */
+.dc-kw  { color: var(--blue);    }
+.dc-fn  { color: var(--accent);  }
+.dc-str { color: var(--green);   }
+.dc-num { color: #e07b6a; }
+.dc-cmt { color: var(--comment); }
+.dc-br  { color: var(--text-2);  }
+.dc-key { color: var(--text);    }
+[data-theme="light"] .dc-num { color: #b8442a; }
+
+/* About stats cards grid */
+.about-stats {
+  display              : grid;
+  grid-template-columns: 1fr 1fr;
+  gap                  : 1rem;
+}
+
+.stat-card {
+  background   : var(--bg-3);
+  border       : 1px solid var(--border);
+  border-radius: 12px;
+  padding      : 1.5rem;
+  transition   : 0.25s;
+}
+.stat-card:hover { border-color: var(--border-hover); background: var(--bg-4); }
+
+.stat-num {
+  font-family   : var(--font-display);
+  font-size     : 2.2rem;
+  font-weight   : 700;
+  color         : var(--accent);
+  letter-spacing: -0.04em;
+  line-height   : 1;
+  margin-bottom : 0.35rem;
+}
+.stat-label { font-size: 0.8rem; color: var(--text-3); }
+
+/* Skill tags row */
+.skills-list {
+  display  : flex;
+  flex-wrap: wrap;
+  gap      : 0.5rem;
+  margin-top: 2rem;
+}
+.skill-tag {
+  background   : var(--bg-3);
+  border       : 1px solid var(--border);
+  border-radius: 8px;
+  padding      : 0.35rem 0.75rem;
+  font-size    : 0.78rem;
+  color        : var(--text-2);
+  font-family  : var(--font-mono);
+  transition   : 0.25s;
+}
+.skill-tag:hover {
+  border-color: var(--accent);
+  color       : var(--accent);
+  background  : var(--accent-dim2);
+}
+
+/* Timeline component (used inside about & journey sections) */
+.timeline {
+  position    : relative;
+  padding-left: 1.75rem;
+}
+.timeline::before {
+  content   : '';
+  position  : absolute;
+  left      : 2px;
+  top       : 0.5rem;
+  bottom    : 0.5rem;
+  width     : 1px;
+  background: var(--border);
+}
+
+.tl-item {
+  position      : relative;
+  padding-bottom: 2rem;
+}
+.tl-item:last-child { padding-bottom: 0; }
+
+.tl-dot {
+  position     : absolute;
+  left         : -1.875rem;
+  top          : 0.45rem;
+  width        : 10px;
+  height       : 10px;
+  border-radius: 50%;
+  background   : var(--bg-4);
+  border       : 1.5px solid var(--border-hover);
+  transition   : 0.25s;
+}
+.tl-item:hover .tl-dot { background: var(--accent); border-color: var(--accent); }
+
+.tl-year  { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-3); margin-bottom: 0.25rem; }
+.tl-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
+.tl-desc  { font-size: 0.875rem; color: var(--text-2); }
+
+
+/* ── 3. PROJECTS GRID & CARDS ───────────────────────────── */
+.projects-grid {
+  display              : grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap                  : 1.25rem;
+}
+
+.project-card {
+  background    : var(--bg-2);
+  border        : 1px solid var(--border);
+  border-radius : 20px;
+  padding       : 0;
+  transition    : 0.25s;
+  display       : flex;
+  flex-direction: column;
+  position      : relative;
+  overflow      : hidden;
+  cursor        : pointer;
+  text-decoration: none;
+}
+
+/* Gradient overlay revealed on hover */
+.project-card::before {
+  content       : '';
+  position      : absolute;
+  inset         : 0;
+  background    : linear-gradient(135deg, var(--accent-dim2) 0%, transparent 60%);
+  opacity       : 0;
+  transition    : 0.25s;
+  pointer-events: none;
+}
+.project-card:hover { border-color: rgba(200,169,122,0.2); transform: translateY(-4px); box-shadow: var(--shadow); }
+.project-card:hover::before { opacity: 1; }
+
+/* Featured image / emoji placeholder at top of card */
+.project-hero-img {
+  width        : 100%;
+  aspect-ratio : 16/9;
+  height       : 240px;
+  object-fit   : cover;
+  border-radius: 16px 16px 0 0;
+  background   : linear-gradient(135deg, var(--bg-3) 0%, var(--bg-4) 100%);
+  display      : flex;
+  align-items  : center;
+  justify-content: center;
+  font-size    : 2.5rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink  : 0;
+}
+.project-hero-img.has-image { font-size: 0; }  /* hide emoji when real image present */
+.project-hero-img img       { width: 100%; height: 100%; object-fit: cover; border-radius: 16px 16px 0 0; display: block; }
+
+/* Card body */
+.project-card-body {
+  padding       : 1.75rem;
+  display       : flex;
+  flex-direction: column;
+  flex          : 1;
+}
+
+.project-icon {
+  width          : 42px;
+  height         : 42px;
+  background     : var(--accent-dim);
+  border         : 1px solid rgba(200,169,122,0.15);
+  border-radius  : 8px;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  font-size      : 1.2rem;
+  margin-bottom  : 1rem;
+}
+
+.project-name {
+  font-family   : var(--font-display);
+  font-size     : 1.15rem;
+  font-weight   : 700;
+  color         : var(--text);
+  margin-bottom : 0.5rem;
+  letter-spacing: -0.02em;
+}
+.project-desc {
+  font-size    : 0.875rem;
+  color        : var(--text-2);
+  line-height  : 1.65;
+  flex         : 1;
+  margin-bottom: 1.25rem;
+}
+
+/* Tech stack tag row */
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0; }
+.project-tag  {
+  background   : var(--bg-3);
+  border       : 1px solid var(--border);
+  border-radius: 99px;
+  padding      : 0.2rem 0.65rem;
+  font-size    : 0.72rem;
+  color        : var(--text-3);
+  font-family  : var(--font-mono);
+}
+
+.project-links { display: flex; gap: 0.5rem; }
+
+/* Featured project highlight */
+.project-featured { border-color: rgba(200,169,122,0.15); }
+.project-featured-badge {
+  position      : absolute;
+  top           : 1.25rem;
+  right         : 1.25rem;
+  background    : var(--accent-dim);
+  border        : 1px solid rgba(200,169,122,0.25);
+  border-radius : 99px;
+  padding       : 0.2rem 0.65rem;
+  font-size     : 0.68rem;
+  color         : var(--accent);
+  font-family   : var(--font-mono);
+  font-weight   : 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  z-index       : 2;
+}
+
+/* "View project →" label at card bottom */
+.project-cta {
+  margin-top : 1.25rem;
+  font-family: var(--font-mono);
+  font-size  : 0.72rem;
+  color      : var(--text-3);
+  display    : flex;
+  align-items: center;
+  gap        : 0.4rem;
+  transition : color 0.2s;
+}
+.project-card:hover .project-cta { color: var(--accent); }
+
+
+/* ── 4. PROJECT DETAIL PAGE ─────────────────────────────── */
+#project-view {
+  min-height: 100vh;
+  padding   : clamp(5rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 6vw, 5rem);
+}
+
+.project-back {
+  display        : inline-flex;
+  align-items    : center;
+  gap            : 0.4rem;
+  color          : var(--text-2);
+  font-size      : 0.85rem;
+  cursor         : pointer;
+  margin-bottom  : 2rem;
+  transition     : color 0.25s;
+  text-decoration: none;
+}
+.project-back:hover { color: var(--accent); }
+
+.project-page-hero {
+  width          : 100%;
+  max-height     : 420px;
+  border-radius  : 16px;
+  overflow       : hidden;
+  margin-bottom  : 2.5rem;
+  border         : 1px solid var(--border);
+  background     : var(--bg-3);
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+}
+.project-page-hero-emoji { font-size: 4rem; padding: 3rem; }
+.project-page-hero img   { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.project-page-title {
+  font-size     : clamp(2rem, 5vw, 2.5rem);
+  font-weight   : 800;
+  line-height   : 1.1;
+  letter-spacing: -0.04em;
+  margin-bottom : 1rem;
+}
+
+.project-page-meta {
+  display      : flex;
+  align-items  : center;
+  gap          : 1rem;
+  flex-wrap    : wrap;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.project-page-body {
+  width     : 100%;
+  font-size : 1.05rem;
+  line-height: 1.85;
+  color     : var(--text-2);
+}
+.project-page-body h2 {
+  font-size    : 1.5rem;
+  color        : var(--text);
+  margin       : 2.5rem 0 1rem;
+  font-family  : var(--font-display);
+}
+.project-page-body p  { margin-bottom: 1.4rem; }
+.project-page-body ul { margin: 0 0 1.4rem 1.5rem; }
+.project-page-body li { margin-bottom: 0.5rem; }
+
+.project-page-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.project-page-tags  { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+
+/* ── 5. BLOG LIST ───────────────────────────────────────── */
+.posts-list { display: flex; flex-direction: column; gap: 0; }
+
+/* Magazine-style post row */
+.post-card {
+  padding        : 1.75rem 0;
+  cursor         : pointer;
+  transition     : 0.25s;
+  border-bottom  : 1px solid var(--border);
+  text-decoration: none;
+  display        : block;
+  position       : relative;
+}
+.post-card-inner {
+  display    : flex;
+  gap        : 2rem;
+  align-items: flex-start;
+}
+.post-card-text { flex: 1; min-width: 0; }
+.post-card-num  {
+  font-family: var(--font-mono);
+  font-size  : 0.68rem;
+  color      : var(--text-3);
+  flex-shrink: 0;
+  width      : 2rem;
+  padding-top: 0.25rem;
+  text-align : right;
+}
+
+/* Post metadata row */
+.post-meta {
+  display    : flex;
+  align-items: center;
+  gap        : 0.75rem;
+  margin-bottom: 0.65rem;
+  flex-wrap  : wrap;
+}
+.post-category {
+  font-family   : var(--font-mono);
+  font-size     : 0.68rem;
+  font-weight   : 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding       : 0.2rem 0.6rem;
+  border-radius : 99px;
+}
+
+/* Category colour variants */
+.cat-tech  { background: var(--blue-dim);   color: var(--blue);   }
+.cat-life  { background: var(--green-dim);  color: var(--green);  }
+.cat-build { background: var(--accent-dim); color: var(--accent); }
+.cat-story { background: var(--purple-dim); color: var(--purple); }
+
+.post-date { font-size: 0.78rem; color: var(--text-3); font-family: var(--font-mono); }
+.post-read { font-size: 0.78rem; color: var(--text-3); margin-left: auto; font-family: var(--font-mono); }
+
+.post-title {
+  font-family   : var(--font-display);
+  font-size     : 1.25rem;
+  font-weight   : 700;
+  color         : var(--text);
+  margin-bottom : 0.5rem;
+  letter-spacing: -0.025em;
+  transition    : color 0.25s;
+  line-height   : 1.25;
+}
+.post-card:hover .post-title { color: var(--accent); }
+
+.post-excerpt {
+  font-size  : 0.875rem;
+  color      : var(--text-2);
+  line-height: 1.65;
+  margin     : 0;
+}
+
+/* Featured post variant — larger title */
+.post-card.featured .post-title { font-size: 1.5rem; }
+
+/* "Featured" pill badge on top of featured posts */
+.post-featured-flag {
+  display      : inline-flex;
+  align-items  : center;
+  gap          : 0.35rem;
+  font-family  : var(--font-mono);
+  font-size    : 0.65rem;
+  color        : var(--accent);
+  background   : var(--accent-dim2);
+  border       : 1px solid rgba(200,169,122,0.15);
+  border-radius: 99px;
+  padding      : 0.15rem 0.55rem;
+  margin-bottom: 0.65rem;
+}
+
+/* Blog category filter bar */
+.blog-filters-bar {
+  display      : flex;
+  align-items  : center;
+  gap          : 0.4rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+  flex-wrap    : wrap;
+}
+.blog-filters-label {
+  font-family: var(--font-mono);
+  font-size  : 0.7rem;
+  color      : var(--text-3);
+  margin-right: 0.25rem;
+}
+
+/* Post count summary line */
+.posts-summary {
+  font-family  : var(--font-mono);
+  font-size    : 0.72rem;
+  color        : var(--text-3);
+  margin-bottom: 0.5rem;
+  display      : block;
+}
+
+
+/* ── 6. ARTICLE / STORY DETAIL ──────────────────────────── */
+#article-view,
+#story-article-view {
+  min-height: 100vh;
+  padding   : clamp(5rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 6vw, 5rem);
+}
+
+.article-back {
+  display        : inline-flex;
+  align-items    : center;
+  gap            : 0.4rem;
+  color          : var(--text-2);
+  font-size      : 0.85rem;
+  cursor         : pointer;
+  margin-bottom  : 2rem;
+  transition     : color 0.25s;
+  text-decoration: none;
+}
+.article-back:hover { color: var(--accent); }
+
+.article-title {
+  font-size     : clamp(1.8rem, 5vw, 3rem);
+  font-weight   : 800;
+  line-height   : 1.1;
+  letter-spacing: -0.04em;
+  margin-bottom : 1.25rem;
+  color         : var(--text);
+}
+
+/* Long-form article body */
+.article-body {
+  max-width  : 720px;
+  margin     : 0 auto;
+  font-size  : 1.05rem;
+  line-height: 1.85;
+  color      : var(--text-2);
+}
+.article-body h2 { font-size: 1.5rem; color: var(--text); margin: 2.5rem 0 1rem; }
+.article-body p  { margin-bottom: 1.4rem; }
+
+/* Inline code inside article body */
+.article-body code {
+  font-family  : var(--font-mono);
+  font-size    : 0.85em;
+  background   : var(--bg-3);
+  border       : 1px solid var(--border);
+  padding      : 0.1em 0.4em;
+  border-radius: 4px;
+  color        : var(--accent);
+}
+
+/* Block <pre> inside article body */
+pre {
+  background   : var(--code-bg);
+  border       : 1px solid var(--border);
+  border-radius: 12px;
+  padding      : 1.5rem;
+  margin       : 1.75rem 0;
+  overflow-x   : auto;
+  position     : relative !important; /* required for copy button */
+}
+pre code {
+  background  : none;
+  border      : none;
+  padding     : 0;
+  font-size   : 0.875rem;
+  color       : var(--text-2);
+  font-family : var(--font-mono);
+}
+
+/* Blockquote inside article */
+.article-body blockquote {
+  border-left  : 2px solid var(--accent);
+  padding      : 0.75rem 1.5rem;
+  margin       : 1.75rem 0;
+  background   : var(--accent-dim2);
+  border-radius: 0 8px 8px 0;
+  color        : var(--text);
+}
+
+/* Life stories — purple-accented blockquote variant */
+.story-body blockquote {
+  border-left: 2px solid var(--purple);
+  background : var(--purple-dim);
+}
+
+/* Drop-cap for story openers */
+.story-dropcap::first-letter {
+  font-family: var(--font-display);
+  font-size  : 4rem;
+  font-weight: 800;
+  line-height: 0.8;
+  float      : left;
+  margin     : 0.1em 0.15em 0 0;
+  color      : var(--accent);
+}
+
+/* Stories section — override label accent to purple */
+.stories-label::before { background: var(--purple); }
+.stories-label          { color: var(--purple); }
+
+
+/* ── 7. CONTACT SECTION ─────────────────────────────────── */
+.contact-grid {
+  display              : grid;
+  grid-template-columns: 1fr 1fr;
+  gap                  : 4rem;
+  align-items          : start;
+}
+
+.contact-info h2 {
+  font-size    : clamp(2rem, 5vw, 3.5rem);
+  font-weight  : 800;
+  line-height  : 1.1;
+  margin-bottom: 1.25rem;
+  color        : var(--text);
+}
+.contact-info p { color: var(--text-2); margin-bottom: 2rem; }
+
+/* Social links list */
+.social-links {
+  display       : flex;
+  flex-direction: column;
+  gap           : 0.5rem;
+}
+.social-link {
+  display        : flex;
+  align-items    : center;
+  gap            : 1rem;
+  padding        : 0.75rem 1rem;
+  background     : var(--bg-3);
+  border         : 1px solid var(--border);
+  border-radius  : 12px;
+  text-decoration: none;
+  color          : var(--text-2);
+  font-size      : 0.875rem;
+  transition     : 0.25s;
+}
+.social-link:hover {
+  border-color: var(--border-hover);
+  color       : var(--text);
+  background  : var(--bg-4);
+  transform   : translateX(4px);
+}
+
+.social-icon {
+  width          : 34px;
+  height         : 34px;
+  background     : var(--bg-4);
+  border-radius  : 8px;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  font-size      : 1rem;
+  flex-shrink    : 0;
+}
+
+/* Form card */
+.contact-form-wrap {
+  background   : var(--bg-2);
+  border       : 1px solid var(--border);
+  border-radius: 20px;
+  padding      : 2rem;
+}
+
+
+/* ── 8. FOOTER ───────────────────────────────────────────── */
+footer {
+  padding        : 2.5rem clamp(1.5rem, 5vw, 4rem);
+  border-top     : 1px solid var(--border);
+  display        : flex;
+  align-items    : center;
+  justify-content: space-between;
+  flex-wrap      : wrap;
+  gap            : 1rem;
+}
+
+.footer-text { font-size: 0.8rem; color: var(--text-3); }
+.footer-text a        { color: var(--text-2); text-decoration: none; transition: color 0.25s; }
+.footer-text a:hover  { color: var(--accent); }
+
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a {
+  font-size      : 0.8rem;
+  color          : var(--text-3);
+  text-decoration: none;
+  transition     : color 0.25s;
+  cursor         : pointer;
+}
+.footer-links a:hover { color: var(--accent); }
+
+
+/* ── 9. JOURNEY / MAP PAGE ──────────────────────────────── */
+.journey-wrap {
+  min-height: 100vh;
+  padding   : clamp(6rem, 12vw, 9rem) 0 clamp(4rem, 8vw, 7rem);
+  position  : relative;
+  overflow  : hidden;
+}
+.journey-inner {
+  position: relative;
+  z-index : 1;
+}
+
+
+/* ── 10. MISC SHARED HELPERS ────────────────────────────── */
+/* Full-width hairline divider with horizontal padding */
+.divider {
+  border    : none;
+  border-top: 1px solid var(--border);
+  margin    : 0 clamp(1.5rem, 5vw, 4rem);
+}
+
+/* Spacing wrapper above a section's content */
+.section-header { margin-bottom: 3rem; }
+
+
+/* ── 11. RESPONSIVE BREAKPOINTS ─────────────────────────── */
+@media (max-width: 900px) {
+  .about-grid   { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-stats  { grid-template-columns: repeat(4, 1fr); }
+  .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .journey-grid { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 600px) {
+  .about-stats     { grid-template-columns: 1fr 1fr; }
+  .projects-grid   { grid-template-columns: 1fr; }
+  .hero-name       { font-size: 3rem; }
+  .post-card-num   { display: none; } /* de-clutters the post list on mobile */
+  .timeline        { padding-left: 1.5rem; }
+  .tl-dot          { left: -1.75rem; }
+}
