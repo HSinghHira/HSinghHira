@@ -2,6 +2,8 @@
 import Layout from "@/layouts/Layout.astro";
 import PostCard from "@/components/PostCard.astro";
 import FilterBar from "@/components/FilterBar.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import PageContainer from "@/components/PageContainer.astro";
 import { getCollection } from "astro:content";
 
 const posts = await getCollection("blog", ({ data }) => {
@@ -21,33 +23,32 @@ const filters = categories.map(cat => ({
 ---
 
 <Layout title="Blog | Harman Singh Hira" schemaType="posts">
-  <section style="padding-top:clamp(6rem,12vw,9rem);">
-    <div class="container">
-      <div class="section-header reveal">
-        <div class="code-comment">// blog.txt — writing down what I learn</div>
-        <h1 class="label">Blog</h1>
-        <h2 class="section-title">Latest posts</h2>
-        <p class="section-subtitle">If I can't explain it simply, I don't understand it well enough. This is my attempt at understanding.</p>
-      </div>
+  <PageContainer>
+    <PageHeader 
+      comment="// blog.txt — writing down what I learn"
+      label="Blog"
+      title="Latest posts"
+      subtitle="If I can't explain it simply, I don't understand it well enough. This is my attempt at understanding."
+    />
 
-      <FilterBar filters={filters} targetSelector=".post-card" />
+    <FilterBar filters={filters} targetSelector=".post-card" />
 
-      <div class="blog-grid">
-        {sortedPosts.map((post, i) => (
-          <PostCard 
-            title={post.data.title}
-            excerpt={post.data.description}
-            date={post.data.pubDatetime || new Date()}
-            readTime={post.data.readTime}
-            category={post.data.category}
-            featured={post.data.featured}
-            slug={post.id}
-            index={i + 1}
-            basePath="/posts"
-            tags={post.data.tags}
-          />
-        ))}
-      </div>
+    <div class="blog-grid">
+      {sortedPosts.map((post, i) => (
+        <PostCard 
+          title={post.data.title}
+          excerpt={post.data.description}
+          date={post.data.pubDatetime || new Date()}
+          readTime={post.data.readTime}
+          category={post.data.category}
+          featured={post.data.featured}
+          slug={post.id}
+          index={i + 1}
+          basePath="/posts"
+          tags={post.data.tags}
+        />
+      ))}
     </div>
-  </section>
+  </PageContainer>
 </Layout>
+

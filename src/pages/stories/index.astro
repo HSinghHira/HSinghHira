@@ -2,6 +2,8 @@
 import Layout from "@/layouts/Layout.astro";
 import PostCard from "@/components/PostCard.astro";
 import FilterBar from "@/components/FilterBar.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import PageContainer from "@/components/PageContainer.astro";
 import { getCollection } from "astro:content";
 
 const stories = await getCollection("stories");
@@ -13,7 +15,7 @@ const sortedStories = stories.sort((a, b) => {
 });
 
 // Automatically get categories for filters
-const categories = [...new Set(stories.map(s => s.data.category).filter(Boolean))];
+const categories = [...new Set(stories.map(s => s.data.category).filter((cat): cat is string => !!cat))];
 const filters = categories.map(cat => ({
   label: cat.charAt(0).toUpperCase() + cat.slice(1),
   value: cat.toLowerCase()
@@ -21,33 +23,32 @@ const filters = categories.map(cat => ({
 ---
 
 <Layout title="Life Stories | Harman Singh Hira" schemaType="posts">
-  <section style="padding-top:clamp(6rem,12vw,9rem);">
-    <div class="container">
-      <div class="section-header reveal">
-        <div class="code-comment">// life.log — things that actually matter</div>
-        <h1 class="label">Life Stories</h1>
-        <h2 class="section-title">Beyond the code</h2>
-        <p class="section-subtitle">Because there's more to life than the terminal. Being an immigrant, a dad, and figuring things out in Aotearoa.</p>
-      </div>
+  <PageContainer>
+    <PageHeader 
+      comment="// life.log — things that actually matter"
+      label="Life Stories"
+      title="Beyond the code"
+      subtitle="Because there's more to life than the terminal. Being an immigrant, a dad, and figuring things out in Aotearoa."
+    />
 
-      <FilterBar filters={filters} targetSelector=".post-card" />
+    <FilterBar filters={filters} targetSelector=".post-card" />
 
-      <div class="blog-grid">
-        {sortedStories.map((story, i) => (
-          <PostCard 
-            title={story.data.title}
-            excerpt={story.data.excerpt || ""}
-            date={story.data.pubDatetime || story.data.date || new Date()}
-            readTime={story.data.readTime}
-            category={story.data.category}
-            featured={story.data.featured}
-            slug={story.id}
-            index={i + 1}
-            basePath="/stories"
-            tags={story.data.tags}
-          />
-        ))}
-      </div>
+    <div class="blog-grid">
+      {sortedStories.map((story, i) => (
+        <PostCard 
+          title={story.data.title}
+          excerpt={story.data.excerpt || ""}
+          date={story.data.pubDatetime || story.data.date || new Date()}
+          readTime={story.data.readTime}
+          category={story.data.category}
+          featured={story.data.featured}
+          slug={story.id}
+          index={i + 1}
+          basePath="/stories"
+          tags={story.data.tags}
+        />
+      ))}
     </div>
-  </section>
+  </PageContainer>
 </Layout>
+

@@ -1,5 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import PageContainer from "@/components/PageContainer.astro";
 import { getCollection, render } from "astro:content";
 import { Icon } from "astro-icon/components";
 import SocialShare from "@/components/SocialShare.astro";
@@ -24,25 +26,29 @@ const formatDate = (date: Date | undefined | null) => {
 ---
 
 <Layout title={`${title} | Portfolio`} schemaType="portfolio">
-  <div id="project-view">
-    <div class="container">
-      <a href="/portfolio" class="project-back">← Back to portfolio</a>
-      <div class="project-page-hero">
-        {image ? (
-          <img src={image} alt={title} />
-        ) : (
-          <div class="project-page-hero-emoji">{icon || '🛠️'}</div>
-        )}
-      </div>
+  <PageContainer>
+    <a href="/portfolio" class="project-back">← Back to portfolio</a>
+    
+    <div class="project-page-hero">
+      {image ? (
+        <img src={image} alt={title} />
+      ) : (
+        <div class="project-page-hero-emoji">{icon || '🛠️'}</div>
+      )}
+    </div>
+
+    <header class="project-header">
       <h1 class="project-page-title">{title}</h1>
+      
       {(pubDatetime || modDatetime) && (
-        <div class="post-date" style="margin-bottom: 1.5rem;">
+        <div class="post-date">
           {pubDatetime && <span>Published: {formatDate(pubDatetime)}</span>}
-          {modDatetime && <span style="margin-left: 1rem; color: var(--text-3);">Updated: {formatDate(modDatetime)}</span>}
+          {modDatetime && <span class="updated-date">Updated: {formatDate(modDatetime)}</span>}
         </div>
       )}
-      <div class="project-page-meta" style="justify-content: space-between;">
-        <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
+
+      <div class="project-page-meta">
+        <div class="project-links-row">
           {(github || demo || (links && links.length > 0)) && (
             <div class="project-page-links">
               {demo && <a href={demo} target="_blank" class="btn btn-primary"><Icon name="mdi:open-in-new" />Live Demo</a>}
@@ -59,7 +65,7 @@ const formatDate = (date: Date | undefined | null) => {
         {((tags && tags.length > 0) || (technologies && technologies.length > 0)) && (
           <div class="project-page-tags">
             {technologies && technologies.map((tech: string) => (
-              <span class="project-tag" style="border-color: var(--accent); color: var(--accent);">{tech}</span>
+              <span class="project-tag tech-tag">{tech}</span>
             ))}
             {tags && tags.map((tag: string) => (
               <span class="project-tag">{tag}</span>
@@ -67,11 +73,73 @@ const formatDate = (date: Date | undefined | null) => {
           </div>
         )}
       </div>
-      <div class="project-page-body">
-        <Content />
-      </div>
+    </header>
 
-      <SocialShare title={title} url={currentUrl} />
+    <div class="project-page-body prose post-content">
+      <Content />
     </div>
-  </div>
+
+    <SocialShare title={title} url={currentUrl} />
+  </PageContainer>
 </Layout>
+
+<style>
+  .project-back {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--text-3);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    transition: 0.2s;
+  }
+
+  .project-back:hover {
+    color: var(--accent);
+    transform: translateX(-4px);
+  }
+
+  .project-header {
+    margin-bottom: 3rem;
+  }
+
+  .post-date {
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--text-3);
+    font-family: var(--font-mono);
+  }
+
+  .updated-date {
+    margin-left: 1rem;
+  }
+
+  .project-page-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .project-links-row {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .tech-tag {
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+  }
+
+  .project-page-body {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+</style>
+

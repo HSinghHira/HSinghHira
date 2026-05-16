@@ -2,6 +2,8 @@
 import Layout from "@/layouts/Layout.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
 import FilterBar from "@/components/FilterBar.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import PageContainer from "@/components/PageContainer.astro";
 import { getCollection } from "astro:content";
 
 // Get all portfolio items
@@ -26,31 +28,29 @@ const filters = uniqueTags.sort().map(tag => ({
 ---
 
 <Layout title="Portfolio | Harman Singh Hira" schemaType="portfolio">
-  <section style="padding-top:clamp(6rem,12vw,9rem);">
-    <div class="container">
-      <div class="section-header reveal">
-        <div class="code-comment">// portfolio.js — things I actually shipped</div>
-        <h1 class="label">Portfolio</h1>
-        <h2 class="section-title">What I've built</h2>
-        <p class="section-subtitle">Projects born from curiosity, necessity, or just because it seemed fun at 2am.</p>
-      </div>
-      
-      <FilterBar filters={filters} targetSelector=".project-card" />
-      
-      <div class="projects-grid">
-        {sortedProjects.map((project) => (
-          <ProjectCard 
-            name={project.data.title}
-            desc={project.data.description}
-            tags={project.data.tags}
-            icon={project.data.icon}
-            image={project.data.image}
-            featured={project.data.featured}
-            category={project.data.category}
-            slug={project.id}
-          />
-        ))}
-      </div>
+  <PageContainer>
+    <PageHeader 
+      comment="// portfolio.js — things I actually shipped"
+      label="Portfolio"
+      title="What I've built"
+      subtitle="Projects born from curiosity, necessity, or just because it seemed fun at 2am."
+    />
+    
+    <FilterBar filters={filters} targetSelector=".project-card" />
+    
+    <div class="projects-grid">
+      {sortedProjects.map((project) => (
+        <ProjectCard 
+          name={project.data.title}
+          desc={project.data.description}
+          tags={project.data.tags}
+          icon={project.data.icon}
+          image={project.data.image}
+          featured={project.data.featured}
+          category={project.data.category}
+          slug={project.id}
+        />
+      ))}
     </div>
-  </section>
-</Layout>
+  </PageContainer>
+</Layout>

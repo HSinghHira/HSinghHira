@@ -1,5 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import PageContainer from "@/components/PageContainer.astro";
 import { getCollection, render } from "astro:content";
 import SocialShare from "@/components/SocialShare.astro";
 
@@ -31,53 +33,118 @@ const formattedDate = formatDate(publishDate);
 ---
 
 <Layout title={`${title} | Life Stories`} schemaType="post">
-  <article class="post-article" style="padding-top:clamp(6rem,12vw,9rem); padding-bottom:5rem;">
-    <div class="container" style="max-width:800px; margin: 0 auto;">
-      <a href="/stories" class="project-back">← Back to life stories</a>
-      <div class="post-header" style="margin-bottom:1rem; border-bottom:1px solid var(--border); padding-bottom:2rem;">
-        <div class="post-meta" style="margin-bottom:1.5rem; font-family:var(--font-mono); font-size:0.875rem; color:var(--text-muted); display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
-          {category && <span class="post-category" style="background:var(--accent-dim); color:var(--accent); padding:0.2rem 0.6rem; border-radius:100px;">{category}</span>}
-          <span>{formattedDate}</span>
-          {readTime && <span>• {readTime}</span>}
-        </div>
-        
-        <h1 style="font-family:var(--font-display); font-size:clamp(2rem,4vw,3.5rem); font-weight:800; line-height:1.1; letter-spacing:-0.03em; margin-bottom:1.5rem;">{title}</h1>
-        
-        <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.5rem;">
-          {tags && (tags as string[]).map((tag: string) => (
-            <span style="font-size:0.75rem; color:var(--text-3); background:var(--bg-2); padding:0.1rem 0.5rem; border-radius:4px; border:1px solid var(--border);">#{tag}</span>
-          ))}
-        </div>
-
-        {excerpt && <p style="font-size:1.2rem; color:var(--text-2); line-height:1.6;">{excerpt}</p>}
-        {modDatetime && <div style="margin-top:1rem; font-size:0.75rem; color:var(--text-3); font-style:italic;">Last updated: {formatDate(modDatetime)}</div>}
+  <PageContainer>
+    <a href="/stories" class="project-back">← Back to life stories</a>
+    
+    <header class="story-header">
+      <div class="story-meta">
+        {category && <span class="story-category">{category}</span>}
+        <span class="story-date">{formattedDate}</span>
+        {readTime && <span class="story-readtime">• {readTime}</span>}
       </div>
-      <div class="post-content" style="font-size:1.125rem; line-height:1.8; color:var(--text); font-family:var(--font-sans);">
-        <Content />
+      
+      <h1 class="story-title">{title}</h1>
+      
+      <div class="story-tags">
+        {tags && (tags as string[]).map((tag: string) => (
+          <span class="story-tag">#{tag}</span>
+        ))}
       </div>
 
-      <SocialShare title={title} url={currentUrl} />
+      {excerpt && <p class="story-excerpt">{excerpt}</p>}
+      {modDatetime && <div class="story-updated">Last updated: {formatDate(modDatetime)}</div>}
+    </header>
+
+    <div class="story-content post-content">
+      <Content />
     </div>
-  </article>
+
+    <SocialShare title={title} url={currentUrl} />
+  </PageContainer>
 </Layout>
 
-<style is:global>
-.post-content h2 {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
-}
-.post-content h3 {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-}
-.post-content p {
-  margin-bottom: 1.5rem;
-}
+<style>
+  .project-back {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--text-3);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    transition: 0.2s;
+  }
+
+  .project-back:hover {
+    color: var(--accent);
+    transform: translateX(-4px);
+  }
+
+  .story-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .story-meta {
+    margin-bottom: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--text-3);
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .story-category {
+    background: var(--accent-dim);
+    color: var(--accent);
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+  }
+
+  .story-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  .story-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .story-tag {
+    font-size: 0.75rem;
+    color: var(--text-3);
+    background: var(--bg-2);
+    padding: 0.1rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+
+  .story-excerpt {
+    font-size: 1.2rem;
+    color: var(--text-2);
+    line-height: 1.6;
+    max-width: 800px;
+  }
+
+  .story-updated {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: var(--text-3);
+    font-style: italic;
+  }
+
+  .story-content {
+    margin-top: 3rem;
+  }
 </style>
+
+

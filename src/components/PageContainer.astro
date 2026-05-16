@@ -1,0 +1,36 @@
+---
+interface Props {
+  className?: string;
+  maxWidth?: string;
+}
+
+const { className = "", maxWidth = "1100px" } = Astro.props;
+---
+
+<main class={`page-container ${className}`}>
+  <div class="inner" style={maxWidth ? `max-width: ${maxWidth}` : undefined}>
+    <slot />
+  </div>
+</main>
+
+<style>
+  .page-container {
+    padding: clamp(6rem, 12vw, 9rem) clamp(1.25rem, 5vw, 4rem) 5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .inner {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .page-container {
+      padding: clamp(5rem, 10vw, 7rem) 1.25rem 4rem;
+    }
+  }
+</style>
+

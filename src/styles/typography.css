@@ -174,20 +174,21 @@ a.link-ghost:hover { background: var(--bg-4); color: var(--text); border-color: 
 
 /* Lists */
 .post-content ul, .prose ul, ul.custom-ul { list-style: none; padding: 0; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
-.post-content ul li, .prose ul li, ul.custom-ul li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 1.05rem; line-height: 1.7; }
-.post-content ul > li::before, .prose ul > li::before, ul.custom-ul > li::before { content: '✦'; color: var(--accent); font-size: 0.7rem; flex-shrink: 0; margin-top: 0.45em; }
+.post-content ul li, .prose ul li, ul.custom-ul li { position: relative; padding-left: 1.5rem; font-size: 1.05rem; line-height: 1.7; }
+.post-content ul > li::before, .prose ul > li::before, ul.custom-ul > li::before { content: '✦'; color: var(--accent); font-size: 0.7rem; position: absolute; left: 0; top: 0.5em; flex-shrink: 0; }
 
 .post-content ol, .prose ol, ol.custom-ol { list-style: none; padding: 0; counter-reset: post-ol-count; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
-.post-content ol li, .prose ol li, ol.custom-ol li { display: flex; align-items: flex-start; gap: 0.85rem; font-size: 1.05rem; counter-increment: post-ol-count; line-height: 1.7; }
+.post-content ol li, .prose ol li, ol.custom-ol li { position: relative; padding-left: 2rem; font-size: 1.05rem; counter-increment: post-ol-count; line-height: 1.7; }
 .post-content ol li::before, .prose ol li::before, ol.custom-ol li::before {
-  content: counter(post-ol-count, decimal-leading-zero); font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); min-width: 24px; flex-shrink: 0; margin-top: 0.35em;
+  content: counter(post-ol-count, decimal-leading-zero); font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); position: absolute; left: 0; top: 0.4em;
 }
 
 /* Nested Lists */
 ul.nested-ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
-ul.nested-ul li { font-size: 0.9rem; color: var(--text-2); line-height: 1.6; }
-ul.nested-ul > li { display: flex; align-items: flex-start; gap: 0.6rem; }
-ul.nested-ul > li::before { content: '✦'; color: var(--accent); font-size: 0.55rem; flex-shrink: 0; margin-top: 0.42em; }
+ul.nested-ul li { font-size: 0.9rem; color: var(--text-2); line-height: 1.6; position: relative; }
+ul.nested-ul > li { padding-left: 1.25rem; }
+ul.nested-ul > li::before { content: '✦'; color: var(--accent); font-size: 0.55rem; position: absolute; left: 0; top: 0.45em; }
+
 ul.nested-ul ul { padding-left: 1.25rem; margin-top: 0.4rem; display: flex; flex-direction: column; gap: 0.35rem; list-style: none; }
 ul.nested-ul ul li { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.85rem; }
 ul.nested-ul ul li::before { content: '–'; color: var(--text-3); flex-shrink: 0; }
@@ -200,7 +201,7 @@ ul.nested-ul ul ul li::before { content: '·'; color: var(--text-3); }
 }
 .post-content pre, .prose pre, .code-block {
   font-family: var(--font-mono); font-size: 0.875rem; line-height: 1.7; background: var(--code-bg);
-  border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 2.5rem 0; overflow-x: auto;
+  border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 2.5rem 0 0 0; overflow-x: auto;
   position: relative; /* needed for copy button absolute positioning */
 }
 .code-block .kw  { color: var(--purple); }
@@ -226,7 +227,6 @@ ul.nested-ul ul ul li::before { content: '·'; color: var(--text-3); }
 .btn-danger:hover { background: rgba(239,68,68,0.18); transform: translateY(-1px); }
 .btn-lg { padding: 0.9rem 1.8rem; font-size: 1rem; }
 .btn:disabled, .btn[disabled] { opacity: 0.38; cursor: not-allowed; transform: none !important; filter: none !important; }
-.btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 /* Labels, Badges & Chips */
 .status-badge {

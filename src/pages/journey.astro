@@ -1,6 +1,8 @@
 ---
 // src/pages/journey.astro
 import Layout from "@/layouts/Layout.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import PageContainer from "@/components/PageContainer.astro";
 import { getCollection } from "astro:content";
 
 const journeyEntries = await getCollection("journey");
@@ -8,35 +10,29 @@ const sortedJourney = journeyEntries.sort((a, b) => (a.data.order || 0) - (b.dat
 ---
 
 <Layout title="The Journey | Harman Singh Hira">
-  <main class="journey-wrap">
-    <div class="hero-grid"></div>
-    <div class="hero-glow"></div>
-    <div class="hero-glow2"></div>
+  <PageContainer>
+    <PageHeader 
+      comment="// journey.log — how I got here"
+      label="The Journey"
+      title="How it all<br><span>started.</span>"
+      subtitle="From a bedroom in Chandigarh to Aotearoa — the honest, non-linear story of a self-taught builder chasing curiosity wherever it goes."
+    />
 
-    <div class="container">
-      <div class="journey-inner">
-        <div class="code-comment">// journey.log — how I got here</div>
-        <h1 class="label">The Journey</h1>
-        <h2 class="section-title">How it all<br><span>started.</span></h2>
-        <p class="section-subtitle">From a bedroom in Chandigarh to Aotearoa — the honest, non-linear story of a self-taught builder chasing curiosity wherever it goes.</p>
-
-        <div class="timeline">
-          {sortedJourney.map((entry, i) => (
-            <div class={`tl-item reveal reveal-delay-${(i % 3) + 1}`}>
-              <div class="tl-dot"></div>
-              <div class="tl-year">{entry.data.year}</div>
-              <div class="tl-title">{entry.data.title}</div>
-              <div class="tl-desc">{entry.data.description}</div>
-            </div>
-          ))}
+    <div class="timeline">
+      {sortedJourney.map((entry, i) => (
+        <div class={`tl-item reveal reveal-delay-${(i % 3) + 1}`}>
+          <div class="tl-dot"></div>
+          <div class="tl-year">{entry.data.year}</div>
+          <div class="tl-title">{entry.data.title}</div>
+          <div class="tl-desc">{entry.data.description}</div>
         </div>
-      </div>
+      ))}
     </div>
-  </main>
+  </PageContainer>
 </Layout>
 
 <style>
-  /* Styles are already in global.css from previous USER edit */
+  /* Styles are already in global.css */
 </style>
 
 <script>
@@ -63,3 +59,4 @@ const sortedJourney = journeyEntries.sort((a, b) => (a.data.order || 0) - (b.dat
   setupReveal();
   document.addEventListener('astro:page-load', setupReveal);
 </script>
+

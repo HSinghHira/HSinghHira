@@ -1,18 +1,20 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import PageHeader from "@/components/PageHeader.astro";
+import PageContainer from "@/components/PageContainer.astro";
 
 const title = "About | Harman Singh Hira";
 const description = "About Harman Singh Hira — the honest version.";
 ---
 
 <Layout title={title} description={description} schemaType="profile">
-  <main class="page-wrap">
-    <div class="page-header reveal">
-      <span class="code-comment">// about_me.md — the unfiltered version</span>
-      <h1 class="label">About</h1>
-      <h2 class="page-title">Hi, I'm <span class="accent">Hira 💎</span></h2>
-      <p class="page-subtitle">Harman Singh Hira — but mostly people call me Hira.</p>
-    </div>
+  <PageContainer>
+    <PageHeader 
+      comment="// about_me.md — the unfiltered version"
+      label="About"
+      title="Hi, I'm <span class='accent'>Hira 💎</span>"
+      subtitle="Harman Singh Hira — but mostly people call me Hira."
+    />
 
     <div class="reveal-delay-1 dev-card reveal">
       <span class="dc-cmt">// harman_singh_hira.js</span><br />
@@ -90,60 +92,10 @@ const description = "About Harman Singh Hira — the honest version.";
         <p>If you made it this far — proper respect. Thanks for stopping by. Cheers 🥂</p>
       </div>
     </div>
-  </main>
+  </PageContainer>
 </Layout>
 
 <style>
-  .page-wrap {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 7rem clamp(1.5rem, 5vw, 2rem) 5rem;
-  }
-
-  .page-header {
-    margin-bottom: 3.5rem;
-  }
-
-  .label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    font-weight: 500;
-    color: var(--accent);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .label::before {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 1px;
-    background: var(--accent);
-  }
-
-  .page-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(2.2rem, 6vw, 3.5rem);
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1.05;
-    margin-bottom: 0.75rem;
-  }
-
-  .page-title .accent {
-    color: var(--accent);
-  }
-
-  .page-subtitle {
-    font-size: 1rem;
-    color: var(--text-2);
-    font-weight: 300;
-  }
-
   .dev-card {
     background: var(--bg-2);
     border: 1px solid var(--border);
@@ -214,3 +166,4 @@ const description = "About Harman Singh Hira — the honest version.";
     color: var(--text-2);
   }
 </style>
+
