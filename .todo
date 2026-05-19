@@ -1,0 +1,32 @@
+{
+  "tasks": [
+    {
+      "id": "1779177853332",
+      "title": "Update Portfolio Image Issues",
+      "category": "TODO",
+      "dueDate": null,
+      "completed": false
+    },
+    {
+      "id": "1779180085125",
+      "title": "Set .post-toc margin-bottom: 1.5rem",
+      "category": "Completed",
+      "dueDate": null,
+      "completed": true
+    },
+    {
+      "id": "1779180167727",
+      "title": "Set .code-expand-btn padding: .9rem 1rem 0.5rem;",
+      "category": "Completed",
+      "dueDate": null,
+      "completed": true
+    },
+    {
+      "id": "1779180312439",
+      "title": "Table of Content Fonts Fix - Make the Same Font Typography",
+      "category": "TODO",
+      "dueDate": null,
+      "completed": false
+    }
+  ]
+}

@@ -313,7 +313,7 @@ jobs:
             echo "✅ No changes to commit"
           else
             echo "💾 Committing changes..."
-            git commit -m "🤖 Auto-fix: Update markdown frontmatter dates" --no-verify
+            git commit -m "Update markdown frontmatter dates" --no-verify
             echo "🚀 Pushing changes..."
             git push
             echo "✅ Changes pushed successfully"
