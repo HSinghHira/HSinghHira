@@ -27,6 +27,27 @@
       "category": "TODO",
       "dueDate": null,
       "completed": false
+    },
+    {
+      "id": "1779181142808",
+      "title": "Add Data Language Highlights for Code Blocks",
+      "category": "TODO",
+      "dueDate": null,
+      "completed": false
+    },
+    {
+      "id": "1779181163117",
+      "title": "Add animation to Heart in Footer",
+      "category": "Completed",
+      "dueDate": null,
+      "completed": true
+    },
+    {
+      "id": "1779181337689",
+      "title": "Create a New Page for Credits, etc",
+      "category": "TODO",
+      "dueDate": null,
+      "completed": false
     }
   ]
 }

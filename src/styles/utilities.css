@@ -33,3 +33,28 @@
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
+
+.heart {
+    display: inline-block;
+    animation: bump 1.4s ease-in-out infinite;
+    transform-origin: center;
+}
+@keyframes bump {
+
+  0%,
+  to {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.2);
+  }
+
+  50% {
+    transform: scale(0.9);
+  }
+
+  75% {
+    transform: scale(1.15);
+  }
+}
