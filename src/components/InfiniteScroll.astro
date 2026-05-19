@@ -1,0 +1,315 @@
+---
+// src/components/InfiniteScroll.astro
+interface Props {
+  targetSelector: string; // CSS selector for the items to control, e.g. '.post-card'
+  pageSize?: number;       // Number of items to show per page
+  timelineMode?: boolean;  // Set to true for timeline style loading layout
+}
+
+const { 
+  targetSelector, 
+  pageSize = 6,
+  timelineMode = false
+} = Astro.props;
+
+// Create a unique instance ID to avoid conflicts if multiple infinite scrolls are on the same page
+const scrollId = Math.random().toString(36).substring(7);
+---
+
+<div class={`infinite-scroll-container ${timelineMode ? 'timeline-mode' : ''}`} id={`infinite-scroll-${scrollId}`}>
+  <!-- Premium Loading Spinner -->
+  <div class="infinite-loader" data-scroll-status="ready" style="display: none;">
+    <div class="loader-dots">
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+    </div>
+    <span class="loader-text">// fetching more logs...</span>
+  </div>
+
+  <!-- End of list badge -->
+  <div class="infinite-end" style="display: none;">
+    <div class="end-line"></div>
+    <span class="end-text">// end of log — you've seen it all</span>
+    <div class="end-line"></div>
+  </div>
+</div>
+
+<style>
+  /* --- Infinite Scroll Styles --- */
+  .infinite-scroll-container {
+    width: 100%;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Timeline mode alignment */
+  .infinite-scroll-container.timeline-mode {
+    margin-top: 1rem;
+    align-items: flex-start;
+    padding-left: 2rem;
+  }
+
+  /* Target item hide style */
+  :global([data-infinite-scroll="hidden"]) {
+    display: none !important;
+  }
+
+  /* Stagger fade animation for revealed items */
+  :global(.reveal-scrolled) {
+    animation: scrollFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes scrollFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Premium Loader styles */
+  .infinite-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 2rem 0;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .infinite-loader[data-scroll-status="active"] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .loader-dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .loader-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    opacity: 0.4;
+    animation: loaderBounce 1.2s infinite ease-in-out both;
+  }
+
+  .loader-dot:nth-child(1) { animation-delay: -0.32s; }
+  .loader-dot:nth-child(2) { animation-delay: -0.16s; }
+
+  @keyframes loaderBounce {
+    0%, 80%, 100% { 
+      transform: scale(0.6);
+      opacity: 0.3;
+    } 
+    40% { 
+      transform: scale(1.1);
+      opacity: 0.95;
+    }
+  }
+
+  .loader-text {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-3);
+    letter-spacing: 0.05em;
+  }
+
+  /* End of list styles */
+  .infinite-end {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+    padding: 2rem 0;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+  }
+
+  .end-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    max-width: 100px;
+  }
+
+  .end-text {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-3);
+    letter-spacing: 0.05em;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  /* Timeline mode specifics */
+  .timeline-mode .infinite-loader {
+    align-items: flex-start;
+    padding-left: 0.5rem;
+  }
+  .timeline-mode .infinite-end {
+    justify-content: flex-start;
+    padding-left: 0.5rem;
+  }
+  .timeline-mode .end-line {
+    display: none;
+  }
+</style>
+
+<script is:inline define:vars={{ targetSelector, pageSize, scrollId }}>
+  function initInfiniteScroll() {
+    const scrollContainer = document.getElementById(`infinite-scroll-${scrollId}`);
+    if (!scrollContainer) return;
+
+    const loader = scrollContainer.querySelector('.infinite-loader');
+    const endMessage = scrollContainer.querySelector('.infinite-end');
+    if (!loader || !endMessage) return;
+
+    let items = Array.from(document.querySelectorAll(targetSelector));
+    if (items.length === 0) return;
+
+    let visibleCount = pageSize;
+    let isCurrentlyLoading = false;
+    let currentFilter = 'all';
+
+    // Helper: Determine if item matches current filter
+    function matchesFilter(item) {
+      if (currentFilter === 'all') return true;
+
+      // Extract active filter category
+      const cat = item.getAttribute('data-category')?.toLowerCase();
+      const tags = item.getAttribute('data-tags')?.toLowerCase().split(',').map(t => t.trim()) || [];
+      return cat === currentFilter || tags.includes(currentFilter);
+    }
+
+    // Helper: Get matching items
+    function getMatchingItems() {
+      return items.filter(matchesFilter);
+    }
+
+    // Re-evaluate display state for all elements
+    function updateList() {
+      const matchingItems = getMatchingItems();
+      const nonMatchingItems = items.filter(item => !matchesFilter(item));
+
+      // Hide all non-matching items immediately
+      nonMatchingItems.forEach(item => {
+        item.setAttribute('data-infinite-scroll', 'hidden');
+        item.classList.remove('reveal-scrolled');
+      });
+
+      // Handle matching items
+      matchingItems.forEach((item, index) => {
+        if (index < visibleCount) {
+          item.setAttribute('data-infinite-scroll', 'visible');
+          // Add a subtle reveal class if not already visible
+          if (!item.classList.contains('reveal-scrolled') && !item.classList.contains('visible')) {
+            item.classList.add('reveal-scrolled');
+          }
+        } else {
+          item.setAttribute('data-infinite-scroll', 'hidden');
+          item.classList.remove('reveal-scrolled');
+        }
+      });
+
+      // Update loader and end of list states
+      if (matchingItems.length > visibleCount) {
+        loader.style.display = 'flex';
+        loader.setAttribute('data-scroll-status', 'ready');
+        endMessage.style.display = 'none';
+      } else {
+        loader.style.display = 'none';
+        loader.setAttribute('data-scroll-status', 'ready');
+        // Only show end of list message if we actually have items in the category
+        if (matchingItems.length > 0) {
+          endMessage.style.display = 'flex';
+        } else {
+          endMessage.style.display = 'none';
+        }
+      }
+    }
+
+    // Load next batch
+    function loadMore() {
+      if (isCurrentlyLoading) return;
+      isCurrentlyLoading = true;
+
+      // Premium visual feedback: set loader state to active
+      loader.setAttribute('data-scroll-status', 'active');
+
+      // Simulate a premium network fetch delay for high-fidelity experience
+      setTimeout(() => {
+        visibleCount += pageSize;
+        updateList();
+        isCurrentlyLoading = false;
+      }, 650);
+    }
+
+    // IntersectionObserver trigger
+    const observerOptions = {
+      root: null,
+      rootMargin: '120px', // trigger before hitting the absolute bottom
+      threshold: 0.05
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && loader.style.display !== 'none' && !isCurrentlyLoading) {
+          loadMore();
+        }
+      });
+    }, observerOptions);
+
+    // Observe our loader container
+    observer.observe(loader);
+
+    // Listen for category filter changes
+    const filterPillContainer = document.querySelector('.filter-bar-wrapper');
+    if (filterPillContainer) {
+      filterPillContainer.addEventListener('click', (e) => {
+        const targetBtn = e.target.closest('[data-filter]');
+        if (targetBtn) {
+          const filterValue = targetBtn.getAttribute('data-filter')?.toLowerCase() || 'all';
+          currentFilter = filterValue;
+          visibleCount = pageSize; // Reset count
+          
+          // Re-evaluate matching list with brief delay to let page filter styles apply
+          setTimeout(updateList, 20);
+        }
+      });
+    }
+
+    // Run initial update on page load
+    updateList();
+
+    // Clean up observer if page transitions occur (for Astro page loads)
+    return () => {
+      observer.disconnect();
+    };
+  }
+
+  // Run on first load
+  let cleanupScroll = initInfiniteScroll();
+
+  // Run on page transition reload
+  document.addEventListener('astro:page-load', () => {
+    if (cleanupScroll) cleanupScroll();
+    cleanupScroll = initInfiniteScroll();
+  });
+</script>

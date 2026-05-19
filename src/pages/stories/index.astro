@@ -4,6 +4,7 @@ import PostCard from "@/components/PostCard.astro";
 import FilterBar from "@/components/FilterBar.astro";
 import PageHeader from "@/components/PageHeader.astro";
 import PageContainer from "@/components/PageContainer.astro";
+import InfiniteScroll from "@/components/InfiniteScroll.astro";
 import { getCollection } from "astro:content";
 
 const stories = await getCollection("stories");
@@ -49,6 +50,8 @@ const filters = categories.map(cat => ({
         />
       ))}
     </div>
+
+    <InfiniteScroll targetSelector=".post-card" pageSize={3} />
   </PageContainer>
 </Layout>
 

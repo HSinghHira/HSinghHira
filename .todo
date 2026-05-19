@@ -48,6 +48,20 @@
       "category": "TODO",
       "dueDate": null,
       "completed": false
+    },
+    {
+      "id": "1779181714534",
+      "title": "Add Infinite Scroll for Blog Posts, Life Posts, Portfolio, Journey page",
+      "category": "Completed",
+      "dueDate": null,
+      "completed": true
+    },
+    {
+      "id": "1779182330750enzwan",
+      "title": "Review blocked/reverted work in src/styles/components.css",
+      "category": "Blocked",
+      "dueDate": null,
+      "completed": false
     }
   ]
 }
