@@ -14,7 +14,7 @@
    JavaScript adds .visible once they enter the viewport,
    triggering the transition to full opacity at position.  */
 .reveal {
-  transform : translateY(16px);
+  transform: translateY(16px);
   transition: opacity 0.6s ease, transform 0.6s ease;
   /* Note: opacity intentionally left at its inherited/default
      value here; JS should set opacity:0 initially via inline
@@ -22,7 +22,7 @@
 }
 
 .reveal.visible {
-  opacity  : 1;
+  opacity: 1;
   transform: none;
 }
 
@@ -30,15 +30,27 @@
 /* ── 2. REVEAL DELAY MODIFIERS ──────────────────────────── */
 /* Stagger sibling reveals by adding one of these classes
    alongside .reveal for a cascading entrance effect.      */
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.3s;
+}
+
+
+/* Heart animation for "With love" section */
 
 .heart {
-    display: inline-block;
-    animation: bump 1.4s ease-in-out infinite;
-    transform-origin: center;
+  display: inline-block;
+  animation: bump 1.4s ease-in-out infinite;
+  transform-origin: center;
 }
+
 @keyframes bump {
 
   0%,
