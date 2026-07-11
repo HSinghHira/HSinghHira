@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: HSinghHira/HSinghHira
-  branch: astro-site
+  branch: site
 
 # Media files
 media_folder: public/images/uploads
