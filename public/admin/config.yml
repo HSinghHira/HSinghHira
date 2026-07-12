@@ -84,7 +84,6 @@ collections:
           - {label: Title, name: title, widget: string}
           - {label: URL, name: url, widget: string}
           - {label: Icon, name: icon, widget: string, hint: 'Icon name (e.g., external, github)'}
-      - {label: Order, name: order, widget: number, required: false}
       - {label: Is Software, name: isSoftware, widget: boolean, default: false, required: false}
       - {label: Published Date, name: pubDatetime, widget: datetime, required: false}
       - {label: Modified Date, name: modDatetime, widget: datetime, required: false}
