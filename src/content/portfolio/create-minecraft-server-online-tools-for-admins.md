@@ -4,7 +4,8 @@ description: >-
   Discover Create Minecraft Server: Free, open-source tools to easily create,
   manage, and optimize your Minecraft server. All offline, private, and
   community-driven!
-image: /images/create-minecraft-server-online-tools-for-admins.png
+image: https://me.hsinghhira.me//images/create-minecraft-server-online-tools-for-admins.png
+icon: "🌐"
 tags:
   - Minecraft
 technologies:
@@ -13,11 +14,12 @@ technologies:
 github: "https://github.com/HSinghHira/Create-Minecraft-Server"
 demo: "https://createminecraftserver.hira.im/"
 draft: false
-modDatetime: '2025-12-17'
+modDatetime: "2025-12-17"
 pubDatetime: 2025-12-17T04:57:58.000Z
 
 author: Harman Singh Hira
 ---
+
 Hey there, fellow block-breakers and server bosses! 🎮🛠️ Once again, ya boy is dropping another epic tale from my project vault! This time, I'm hyped to spill all the deets on my dope creation called Create Minecraft Server. Get ready for some next-level server magic, zero hassle, and pure community vibes! 😎🔥
 
 But First, What Even IS Create Minecraft Server?! 😱❓
@@ -30,11 +32,11 @@ I went hard on the visuals too like clean interfaces, smooth flows, cuz who want
 
 Create Minecraft Server comes loaded with bangers like:
 
-* VanguardRanks Generator: Create unlimited ranks with a super easy GUI and auto LuckPerms integration!
-* Skript Generator: Turn basic Minecraft commands into pro Skript code instantly – loops, delays, permissions, all that jazz.
-* Server Optimizer: Give your server that performance glow-up with smart scans and one-click fixes.
-* PlayerKits 2 Kit Generator: Create professional PlayerKits 2 kits with full GUI, with cooldowns, prices, lore, and PAPI.
-* AdvancedServerList Generator: Create stunning, dynamic server list MOTDs with MiniMessage, gradients, alignment, etc.
-* Velocity Config Generator: Generate and customize your velocity.toml configuration file.
+- VanguardRanks Generator: Create unlimited ranks with a super easy GUI and auto LuckPerms integration!
+- Skript Generator: Turn basic Minecraft commands into pro Skript code instantly – loops, delays, permissions, all that jazz.
+- Server Optimizer: Give your server that performance glow-up with smart scans and one-click fixes.
+- PlayerKits 2 Kit Generator: Create professional PlayerKits 2 kits with full GUI, with cooldowns, prices, lore, and PAPI.
+- AdvancedServerList Generator: Create stunning, dynamic server list MOTDs with MiniMessage, gradients, alignment, etc.
+- Velocity Config Generator: Generate and customize your velocity.toml configuration file.
 
 And yeah, everything's free, open-source, offline-friendly with ZERO data collection. Your privacy is locked down tight! 🤞🔒
