@@ -5,7 +5,6 @@ description: >-
   manage, and optimize your Minecraft server. All offline, private, and
   community-driven!
 image: https://me.hsinghhira.me//images/create-minecraft-server-online-tools-for-admins.png
-icon: "🌐"
 tags:
   - Minecraft
 technologies:
