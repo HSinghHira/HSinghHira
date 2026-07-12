@@ -13,8 +13,6 @@ import remarkDirective from "remark-directive";
 import { transformerFileName } from "./src/utils/transformers/fileName";
 import { SITE } from "./src/config";
 import react from "@astrojs/react";
-import { visit } from "unist-util-visit";
-import type { Root, Image } from "mdast";
 
 import compress from "astro-compress";
 
@@ -23,31 +21,6 @@ import umami from "@yeskunall/astro-umami";
 import icon from "astro-icon";
 
 import mdx from "@astrojs/mdx";
-
-const remarkWeserv = () => (tree: Root) => {
-  visit(tree, "image", (node: Image) => {
-    if (
-      node.url.startsWith("http") ||
-      node.url.startsWith("data:") ||
-      node.url.includes("\n") ||
-      node.url.trim() === "" ||
-      node.url.includes("{") ||
-      node.url.includes("`")
-    ) {
-      return;
-    }
-
-    try {
-      const absoluteUrl = new URL(node.url, SITE.website).href;
-      node.url = `https://images.weserv.nl/?url=${encodeURIComponent(
-        absoluteUrl
-      )}&q=80&af&il&n=-1&output=webp&l=9`;
-    } catch {
-      // eslint-disable-next-line no-console
-      console.warn("remarkWeserv: Failed to process image URL:", node.url);
-    }
-  });
-};
 
 export default defineConfig({
   site: SITE.website,
@@ -70,7 +43,6 @@ export default defineConfig({
       remarkContainerDirectives,
       remarkLeafDirectives,
       remarkToc,
-      remarkWeserv,
     ],
     shikiConfig: {
       themes: { light: "min-light", dark: "night-owl" },

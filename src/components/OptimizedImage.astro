@@ -1,17 +1,18 @@
 ---
 // src/components/OptimizedImage.astro
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
 export interface Props {
-  src: string;
+  src: string | ImageMetadata;
   alt: string;
   width?: number;
   height?: number;
   class?: string;
   loading?: "lazy" | "eager";
-  quality?: number;
+  quality?: number | string;
   crop?: "center" | "top" | "bottom" | "left" | "right" | "entropy" | "attention";
 }
-
-import { SITE } from "@/config";
 
 const {
   src,
@@ -21,42 +22,18 @@ const {
   class: className,
   loading = "lazy",
   quality = 80,
-  crop = "center", // ← new option
 } = Astro.props;
-
-const absoluteSrc = src.startsWith("http")
-  ? src
-  : new URL(src, SITE.website).href;
-
-// weserv.nl parameters
-const params = new URLSearchParams({
-  url: absoluteSrc,
-  q: String(quality),
-  af: "",        // auto-format (WebP/AVIF)
-  il: "",        // progressive
-  "n": "-1",     // strip metadata
-  l: "9",        // compression level
-  output: "webp",
-});
-
-if (width) params.set("w", String(width));
-if (height) params.set("h", String(height));
-if (width && height) {
-  params.set("fit", "cover");
-  params.set("crop", crop); // ← forces center crop (or entropy, attention, etc.)
-}
-
-const isDev = import.meta.env.DEV;
-const weservUrl = isDev ? src : `https://images.weserv.nl/?${params.toString()}`;
 ---
 
-<img
-  src={weservUrl}
+<Image
+  src={src as any}
   alt={alt}
-  width={width}
-  height={height}
+  width={width as any}
+  height={height as any}
+  inferSize={(!width || !height) ? true : undefined}
   loading={loading}
   decoding="async"
   class={className}
+  quality={quality}
   style={width && height ? `aspect-ratio: ${width}/${height}` : undefined}
 />
